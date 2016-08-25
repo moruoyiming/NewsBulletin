@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:layout_gravity="bottom"
+              android:orientation="horizontal" >
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f9f9f9"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/tab_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableTop="@mipmap/tab_comprehensive_icon"
+            android:text="@string/home"
+            android:textColor="@color/color_bababa"/>
+        <RadioButton
+            android:id="@+id/tab_video"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableTop="@mipmap/tab_move_icon"
+            android:text="@string/video"
+            android:textColor="@color/color_bababa"/>
+        <RadioButton
+            android:id="@+id/tab_attention"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@mipmap/tab_found_icon"
+            android:gravity="center"
+            android:text="@string/attention"
+            android:textColor="@color/color_bababa"/>
+        <RadioButton
+            android:id="@+id/tab_mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:drawableTop="@mipmap/tab_me_icon"
+            android:text="@string/mine"
+            android:textColor="@color/color_bababa"/>
+    </RadioGroup>
+
+</LinearLayout>

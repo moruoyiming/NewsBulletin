@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+
+    <color name="color_78ABD9">#78ABD9</color>
+    <color name="white">#ffffffff</color>
+    <color name="color_f0f0f0">#f0f0f0</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+    <color name="color_bababa">#bababa</color>
+    <color name="color_fff5f5f5">#fff5f5f5</color>
+    <color name="color_fff3f3f3">#fff3f3f3</color>
+    <color name="color_ffdddddd">#ffdddddd</color>
+    <color name="color_ff909090">#ff909090</color>
+    <color name="color_ffd2d2d2">#ffd2d2d2</color>
+    <color name="color_ffcc3131">#ffcc3131</color>
+    <color name="color_ffffffff">#ffffffff</color>
+    <color name="color_ffd9d9d9">#ffd9d9d9</color>
+    <color name="color_ffefefef">#ffefefef</color>
+    <color name="color_ffcdcdcd">#ffcdcdcd</color>
+    <color name="color_fff9f9f9">#fff9f9f9</color>
+    <color name="color_ffb9b9b9">#ffb9b9b9</color>
+
+    <item name="subscribe_item_text_color_normal" type="color">@color/default_text</item>
+    <color name="default_text">#ff454545</color>
+    <color name="color_ff2e2e2e">#ff2e2e2e</color>
+    <color name="color_7fffffff">#7fffffff</color>
+</resources>
