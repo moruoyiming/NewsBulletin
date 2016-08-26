@@ -4,8 +4,9 @@ import android.content.Context;
 import android.os.SystemClock;
 import android.widget.Toast;
 
-import com.zhangkong.fastpay.QuFanApplication;
-import com.zhangkong.fastpay.util.ThreadManager;
+import com.mrym.newsbulletion.NewsApplication;
+import com.mrym.newsbulletion.utils.ThreadManager;
+
 
 /**
  * ToastUtils
@@ -49,7 +50,7 @@ public class ToastUtils {
             @Override
             public void run() {
                 SystemClock.sleep(3000);
-                synchronized (QuFanApplication.getContext()) {
+                synchronized (NewsApplication.getContext()) {
                     toast = null;
                 }
             }

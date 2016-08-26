@@ -3,12 +3,11 @@ package com.mrym.newsbulletion.utils.file;
 import android.util.Log;
 
 import com.mrym.newsbulletion.NewsApplication;
-import com.zhangkong.fastpay.QuFanApplication;
-import com.zhangkong.fastpay.util.common.AppUtils;
-
-import net.lingala.zip4j.exception.ZipException;
+import com.mrym.newsbulletion.utils.common.AppUtils;
 
 import java.io.IOException;
+import java.util.zip.ZipException;
+
 /**
  * Created by Jian on 2016/8/25.
  * Email: 798774875@qq.com
@@ -39,7 +38,7 @@ public class FileOperate {
         try {
             Zip4jUtil.unzip(AppUtils.getCacheDir() + "/start_page.zip", AppUtils.getBaseFilePath() + "/startPage", "123");
             return true;
-        } catch (ZipException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Log.e(TAG, "解压启动页包出错");
             return false;
