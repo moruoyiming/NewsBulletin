@@ -11,9 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.zhangkong.fastpay.R;
-import com.zhangkong.fastpay.authenticator.account.AccountTool;
-import com.zhangkong.fastpay.util.common.ToastUtils;
+
+import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.authenticator.account.AccountTool;
+import com.mrym.newsbulletion.utils.common.ToastUtils;
 
 import butterknife.ButterKnife;
 import rx.Subscription;

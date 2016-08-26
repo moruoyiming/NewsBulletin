@@ -9,6 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.authenticator.UniqueIdentity;
 import com.mrym.newsbulletion.domain.modle.UserBean;
 import com.mrym.newsbulletion.listener.DefaultListener;

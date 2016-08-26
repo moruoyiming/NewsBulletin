@@ -2,7 +2,7 @@ package com.mrym.newsbulletion.mvp;
 
 import android.os.Bundle;
 
-import com.zhangkong.fastpay.ui.BaseActivity;
+import com.mrym.newsbulletion.ui.BaseActivity;
 
 
 public abstract class MvpActivity<P extends BasePresenter> extends BaseActivity {

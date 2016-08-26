@@ -8,13 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.zhangkong.fastpay.R;
-import com.zhangkong.fastpay.authenticator.account.AccountTool;
-import com.zhangkong.fastpay.util.common.ToastUtils;
+import com.mrym.newsbulletion.authenticator.account.AccountTool;
+import com.mrym.newsbulletion.utils.common.ToastUtils;
 
 import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
+import com.mrym.newsbulletion.R;
 
 /**
  * A simple {@link Fragment} subclass.
