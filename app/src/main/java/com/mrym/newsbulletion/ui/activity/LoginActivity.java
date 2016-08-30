@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.authenticator.account.AccountTool;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.UserBean;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.login.LoginPresenter;
@@ -66,7 +69,7 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
                 break;
             case R.id.bt_sure:
 //                Log.d(TAG, "click----->bt_login" + btLogin.isClickable());
-                mvpPresenter.phoneLogin(etTel.getText().toString(), etVerification.getText().toString());
+                mvpPresenter.login(etVerification.getText().toString(), etTel.getText().toString());
                 break;
             case R.id.tv_wx_login:
 //                Log.d(TAG, "click----->tv_wx_login");
@@ -96,14 +99,8 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
 
     @Override
     public void loginFailure(int code, String msg) {
-//        Toast.makeText(mActivity.getApplicationContext(), "登陆失败了", Toast.LENGTH_SHORT).show();
-        try {
-            startMain();
-//            AccountTool accountTool = AccountTool.getInstance();
-//            accountTool.saveAccount(etTel.getText().toString(), "123456", "jianruilin");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Toast.makeText(mActivity.getApplicationContext(), "登陆失败!", Toast.LENGTH_SHORT).show();
+
     }
 
 

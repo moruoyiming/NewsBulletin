@@ -55,36 +55,36 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 }));
     }
 
-//    /**
-//     * 账号登陆
-//     *
-//     * @param username
-//     * @param password
-//     */
-//    public void login(String username, String password) {
-//        mvpView.showLoading();
-//        addSubscription(apiStores.login(password, username),
-//                new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
-//                    @Override
-//                    public void onSuccess(LoginModel model) {
-//                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
-//                            mvpView.loginSuccess(model.getData());
-//                        } else {
-//                            ToastUtils.show(model.getMsg());
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int code, String msg) {
-//                        mvpView.loginFailure(code, msg);
-//                    }
-//
-//                    @Override
-//                    public void onCompleted() {
-//                        mvpView.hideLoading();
-//                    }
-//                }));
-//    }
+    /**
+     * 账号登陆
+     *
+     * @param username
+     * @param password
+     */
+    public void login(String username, String password) {
+        mvpView.showLoading();
+        addSubscription(apiStores.login(password, username),
+                new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
+                    @Override
+                    public void onSuccess(LoginModel model) {
+                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
+                            mvpView.loginSuccess(model.getData());
+                        } else {
+                            ToastUtils.show(model.getMsg());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(int code, String msg) {
+                        mvpView.loginFailure(code, msg);
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        mvpView.hideLoading();
+                    }
+                }));
+    }
 
     /**
      * 手机号登陆
