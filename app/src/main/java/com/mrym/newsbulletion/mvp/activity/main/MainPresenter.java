@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
+import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.mvp.activity.login.LoginView;
 import com.mrym.newsbulletion.ui.fragment.FollowFragment;
@@ -17,7 +18,10 @@ import com.mrym.newsbulletion.ui.fragment.VideoFragment;
  * Github: https://github.com/moruoyiming
  */
 public class MainPresenter extends BasePresenter<MainView> {
-
+    public static final String FRAGMENT_TAG_HOME = "FRAGMENT_TAG_HOME";
+    public static final String FRAGMENT_TAG_VIDEO = "FRAGMENT_TAG_VIDEO";
+    public static final String FRAGMENT_TAG_FOLLOW = "FRAGMENT_TAG_FOLLOW";
+    public static final String FRAGMENT_TAG_MINE = "FRAGMENT_TAG_MINE";
     private Fragment preFragment;
     private FragmentManager fm;
 
@@ -32,5 +36,13 @@ public class MainPresenter extends BasePresenter<MainView> {
         Fragment video = new VideoFragment();
         Fragment follow = new FollowFragment();
         Fragment mine = new MineFragment();
+        fragmentTransaction.add(R.id.fl_content, preFragment, FRAGMENT_TAG_HOME)
+                .add(R.id.fl_content, video, FRAGMENT_TAG_VIDEO)
+                .add(R.id.fl_content, follow, FRAGMENT_TAG_FOLLOW)
+                .add(R.id.fl_content, mine, FRAGMENT_TAG_MINE)
+                .hide(video)
+                .hide(follow)
+                .hide(mine).show(preFragment);
+        fragmentTransaction.commit();
     }
 }
