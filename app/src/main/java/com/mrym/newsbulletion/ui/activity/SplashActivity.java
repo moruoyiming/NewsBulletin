@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
@@ -58,6 +59,7 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     public void startMain() {
 //            startActivity(new Intent(this, MainActivity.class));
 //            finish();
+        Toast.makeText(SplashActivity.this, "MainActivity", Toast.LENGTH_LONG).show();
     }
 
     @Override

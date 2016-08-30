@@ -2,7 +2,9 @@ package com.mrym.newsbulletion.mvp.activity.login;
 
 import android.content.Context;
 
+import com.mrym.newsbulletion.authenticator.account.AccountTool;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.rxjava.ApiCallback;
 import com.mrym.newsbulletion.rxjava.SubscriberCallBack;
@@ -34,20 +36,16 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         TimeCount time = new TimeCount(mvpView, 60000, 1000);
         time.start();
         addSubscription(apiStores.sendVerification(telNumber),
-                new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
+                new SubscriberCallBack<>(new ApiCallback<DefaultInterfaceBean>() {
                     @Override
-                    public void onSuccess(LoginModel model) {
-                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
-                            mvpView.loginSuccess(model.getData());
-                        } else {
-                            ToastUtils.show(model.getMsg());
-
-                        }
+                    public void onSuccess(DefaultInterfaceBean model) {
+                        mvpView.showToast("获取验证码，请等待！");
+                        mvpView.hideLoading();
                     }
 
                     @Override
                     public void onFailure(int code, String msg) {
-                        mvpView.loginFailure(code, msg);
+                        mvpView.hideLoading();
                     }
 
                     @Override
@@ -57,36 +55,36 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 }));
     }
 
-    /**
-     * 账号登陆
-     *
-     * @param username
-     * @param password
-     */
-    public void login(String username, String password) {
-        mvpView.showLoading();
-        addSubscription(apiStores.login(password, username),
-                new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
-                    @Override
-                    public void onSuccess(LoginModel model) {
-                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
-                            mvpView.loginSuccess(model.getData());
-                        } else {
-                            ToastUtils.show(model.getMsg());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(int code, String msg) {
-                        mvpView.loginFailure(code, msg);
-                    }
-
-                    @Override
-                    public void onCompleted() {
-                        mvpView.hideLoading();
-                    }
-                }));
-    }
+//    /**
+//     * 账号登陆
+//     *
+//     * @param username
+//     * @param password
+//     */
+//    public void login(String username, String password) {
+//        mvpView.showLoading();
+//        addSubscription(apiStores.login(password, username),
+//                new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
+//                    @Override
+//                    public void onSuccess(LoginModel model) {
+//                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
+//                            mvpView.loginSuccess(model.getData());
+//                        } else {
+//                            ToastUtils.show(model.getMsg());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int code, String msg) {
+//                        mvpView.loginFailure(code, msg);
+//                    }
+//
+//                    @Override
+//                    public void onCompleted() {
+//                        mvpView.hideLoading();
+//                    }
+//                }));
+//    }
 
     /**
      * 手机号登陆
@@ -100,11 +98,12 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
                     @Override
                     public void onSuccess(LoginModel model) {
-                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
-                            mvpView.loginSuccess(model.getData());
-                        } else {
-                            ToastUtils.show(model.getMsg());
-                        }
+//                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
+//                            mvpView.loginSuccess(model.getData());
+//                        } else {
+//                            ToastUtils.show(model.getMsg());
+//                        }
+                        mvpView.showToast("登陆成功 保存数据");
                     }
 
                     @Override
@@ -123,6 +122,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
      * 阅读协议
      */
     public void readAgreement(Context context) {
+        mvpView.showToast("阅读条约");
 //        Intent intent = new Intent(context, CordovaPageActivity.class);
 //        intent.putExtra(CordovaPageActivity.INTENT_URL_KEY, UrlFactory.PROVISION_PRIVACY);
 //        mActivity.startActivity(intent);

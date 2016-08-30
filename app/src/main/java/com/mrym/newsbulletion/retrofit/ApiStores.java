@@ -2,6 +2,7 @@ package com.mrym.newsbulletion.retrofit;
 
 
 import com.mrym.newsbulletion.domain.constans.UrlFactory;
+import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
 import com.mrym.newsbulletion.mvp.activity.login.LoginModel;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeModel;
 
@@ -32,7 +33,7 @@ public interface ApiStores {
     @GET(UrlFactory.LOGIN_PATH)
     Observable<LoginModel> phonelogin(@Query("telnumber") String telnumber, @Query("verification") String verification);
     @GET(UrlFactory.SEND_VERIFICATION)
-    Observable<LoginModel> sendVerification(@Query("telnumber") String telnumber);
+    Observable<DefaultInterfaceBean> sendVerification(@Query("telnumber") String telnumber);
 //
 //    @GET(UrlFactory.FORGOT_RESET_SEND_CODE)
 //    Observable<ForgotResetModel> sendCodeForForgotPwd(@Query("username") String username);
