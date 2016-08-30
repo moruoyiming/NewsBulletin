@@ -17,6 +17,7 @@
 // * Created by Shawn on 2016/8/18.
 // */
 //public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
+//    public static String TAG = MainActivity.class.getCanonicalName();
 //    @Bind(R.id.rg_main)
 //    RadioGroup rgMain;
 //    @Bind(R.id.rb_order)

@@ -2,6 +2,8 @@ package com.mrym.newsbulletion.utils.common;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.view.WindowManager;
 
@@ -38,6 +40,7 @@ public class AppUtils {
             return getContext().getCacheDir().getAbsolutePath();
         }
     }
+
     /**
      * 判断SD卡是否存在
      *
@@ -45,6 +48,32 @@ public class AppUtils {
      */
     public static boolean existSDCard() {
         return Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+    }
+
+    //版本名
+    public static String getVersionName() {
+        return getPackageInfo().versionName;
+    }
+
+    //版本号
+    public static int getVersionCode() {
+        return getPackageInfo().versionCode;
+    }
+
+    private static PackageInfo getPackageInfo() {
+        PackageInfo pi = null;
+        Context context = NewsApplication.getContext();
+        try {
+            PackageManager pm = context.getPackageManager();
+            pi = pm.getPackageInfo(context.getPackageName(),
+                    PackageManager.GET_CONFIGURATIONS);
+
+            return pi;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return pi;
     }
 
     public static void setBackgroundAlpha(Activity activity, float bgAlpha) {

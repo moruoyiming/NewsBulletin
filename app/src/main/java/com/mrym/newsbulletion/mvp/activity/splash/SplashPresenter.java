@@ -101,22 +101,26 @@ public class SplashPresenter extends BasePresenter<SplashView> {
         }, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE);
     }
 
+
     public void gotoNext() {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 AccountTool tool = mvpView.getAccountTool();
                 if (tool.checkAccountIfExits()) {
-                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(AppUtils.getContext());
-                    long last = sp.getLong(GlobalVariable.LAST_LOGIN_TIME, 0);
-                    long current = SystemClock.currentThreadTimeMillis();
-                    if (current - last <= 1000 * 3600 * 24 * 7) {
-                        mvpView.startMain();
-                        return;
-                    }
-                    ToastUtils.show(R.string.login_out_of_data);
-                    tool.removeAccount();
+//                    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(AppUtils.getContext());
+//                    long last = sp.getLong(GlobalVariable.LAST_LOGIN_TIME, 0);
+//                    long current = SystemClock.currentThreadTimeMillis();
+//                    if (current - last <= 1000 * 3600 * 24 * 7) {
+//                        mvpView.startMain();
+//                        return;
+//                    }
+//                    ToastUtils.show(R.string.login_out_of_data);
+//                    tool.removeAccount();
+                    mvpView.startMain();
+                } else {
+                    mvpView.startLogin();
                 }
-                mvpView.startLogin();
+
             }
         }, 1500);
     }

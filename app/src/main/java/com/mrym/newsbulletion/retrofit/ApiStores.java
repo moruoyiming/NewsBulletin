@@ -2,6 +2,7 @@ package com.mrym.newsbulletion.retrofit;
 
 
 import com.mrym.newsbulletion.domain.constans.UrlFactory;
+import com.mrym.newsbulletion.mvp.activity.login.LoginModel;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeModel;
 
 import retrofit2.http.GET;
@@ -26,8 +27,12 @@ public interface ApiStores {
 //    @GET("adat/sk/{cityId}.html")
 //    Observable<MainModel> loadData(@Path("cityId") String cityId);
 
-//    @GET(UrlFactory.LOGIN_PATH)
-//    Observable<LoginModel> login(@Query("password") String code, @Query("username") String username);
+    @GET(UrlFactory.LOGIN_PATH)
+    Observable<LoginModel> login(@Query("password") String code, @Query("username") String username);
+    @GET(UrlFactory.LOGIN_PATH)
+    Observable<LoginModel> phonelogin(@Query("telnumber") String telnumber, @Query("verification") String verification);
+    @GET(UrlFactory.SEND_VERIFICATION)
+    Observable<LoginModel> sendVerification(@Query("telnumber") String telnumber);
 //
 //    @GET(UrlFactory.FORGOT_RESET_SEND_CODE)
 //    Observable<ForgotResetModel> sendCodeForForgotPwd(@Query("username") String username);

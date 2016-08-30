@@ -16,8 +16,6 @@ public interface SplashView {
 
     void showSplash(int splash);
 
-    void gotoFirst();
-
     void startMain();
 
     void startLogin();

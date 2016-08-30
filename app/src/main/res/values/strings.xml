@@ -31,6 +31,8 @@
     <string name="merchant_name">商家名称：</string>
     <string name="print_time">出票时间：</string>
     <string name="sure">确定</string>
+    <string name="button_login">进入</string>
+    <string name="button_sure">确定</string>
     <string name="order_details">订单详情</string>
     <string name="today_order_money">今日交易额</string>
     <string name="tab_home">首页</string>
@@ -41,18 +43,24 @@
     <string name="CONNECT_PRINT">是否要连接打印机</string>
     <string name="OK">ok</string>
     <string name="Cancel">Cancel</string>
-    <string name="please_input_code">请输入验证码</string>
     <string name="send_code">发送验证码</string>
+    <string name="button_get_verification_code">获取验证码</string>
+    <string name="content_agreement"><u><i>《用户协议》</i></u></string>
+    <string name="content_read_agree">我已阅读并同意</string>
     <string name="login">登录</string>
     <string name="please_input_account">请输入帐号</string>
     <string name="next_step">下一步</string>
-    <string name="please_modify_password">为了您的帐号安全，请修改登录密码</string>
-    <string name="please_input_new_password">请输入新密码</string>
-    <string name="please_confirm_new_password">请确认新密码</string>
-    <string name="reset_password">密码重置</string>
-    <string name="twice_different">两次输入的密码不一致，请修改！</string>
-    <string name="login_first">第一次登录，请修改密码！</string>
-    <string name="reset_password_success">重置密码成功！</string>
+    <string name="login_tel_hint">请输入电话号码</string>
+    <string name="login_verification_hint">请输入验证码</string>
+    <string name="login_other">其他登录方式</string>
+    <string name="account_login">帐号登录</string>
+    <string name="input_tel_please">请输入手机号</string>
+    <string name="input_verification_please">请输入验证码</string>
+    <string name="tel_login">手机号验证码登录</string>
+    <string name="input_tel_or_account">输入帐号/手机号</string>
+    <string name="input_pwd">输入密码</string>
+    <string name="forgot_pwd">忘记密码</string>
+    <string name="obtain_again">重新获取</string>
     <string name="all">全部</string>
     <string name="mobile_gathering">移动收款</string>
     <string name="swiping_card_gathering">刷卡收款</string>
@@ -68,4 +76,5 @@
     <string name="transaction_time">交易时间：</string>
     <string name="network_catch">当前网络不可用，请检查网络是否连接</string>
     <string name="re_send">重新发送</string>
+    <string name="second">秒</string>
 </resources>

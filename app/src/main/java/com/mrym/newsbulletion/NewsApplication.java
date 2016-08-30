@@ -1,11 +1,16 @@
 package com.mrym.newsbulletion;
 
+import android.app.Activity;
 import android.app.Application;
 
 import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.mrym.newsbulletion.ui.activity.SplashActivity;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 
 /**
@@ -16,6 +21,7 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 public class NewsApplication extends Application {
 
     private static Context CONTEXT;
+    private static Map<String, Activity> activities = new HashMap<String, Activity>();
 
     @Override
     public void onCreate() {
@@ -43,5 +49,64 @@ public class NewsApplication extends Application {
     public static Context getContext() {
         return CONTEXT;
     }
+
+    /**
+     * 获取管理类中注册的所有Activity的map
+     *
+     * @return
+     */
+    public static Map<String, Activity> getActivitys() {
+        return activities;
+    }
+
+//    /**
+//     * 根据键值取对应的Activity
+//     *
+//     * @param key 键值
+//     * @return 键值对应的Activity
+//     */
+//    public static Activity getActivity(String key) {
+//        return activities.get(key) == null ? (activities.get(SplashActivity.TAG) == null ? activities.get(MainActivity.TAG) : activities.get(SplashActivity.TAG)) : activities.get(key);
+//    }
+
+    /**
+     * 注册Activity
+     *
+     * @param value
+     * @param key
+     */
+    public static void addActivity(Activity value, String key) {
+        activities.put(key, value);
+    }
+
+    /**
+     * 将key对应的Activity关闭
+     *
+     * @param key
+     */
+    public static void finishActivity(String key) {
+        activities.remove(key).finish();
+    }
+
+    /**
+     * 将key对应的Activity移除
+     *
+     * @param key
+     */
+    public static void removeActivity(String key) {
+        activities.remove(key);
+    }
+
+    /**
+     * finish掉所有的Activity移除所有的Activity
+     */
+    public static void removeAllActivity() {
+        Iterator<Activity> iterActivity = activities.values().iterator();
+        while (iterActivity.hasNext()) {
+            iterActivity.next().finish();
+        }
+        activities.clear();
+    }
+
 
 }

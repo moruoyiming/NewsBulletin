@@ -5,4 +5,15 @@
     <dimen name="drawable_padding_cash">10dp</dimen>
     <dimen name="order_item_height">50dp</dimen>
     <dimen name="item_order_date_space">10dp</dimen>
+    <!--what-->
+    <dimen name="activity_content_height">55dp</dimen>
+    <dimen name="activity_content_padding">15dp</dimen>
+    <dimen name="content_edit_height">110dp</dimen>
+    <dimen name="content_frame_padding">5dp</dimen>
+    <dimen name="content_text_margin_left">7dp</dimen>
+    <dimen name="content_frame">1dp</dimen>
+    <dimen name="content_text_margin">5dp</dimen>
+    <dimen name="activity_button_margin_top">40dp</dimen>
+    <dimen name="content_text_size_3">16sp</dimen>
+    <dimen name="content_text_margin_third_login">20dp</dimen>
 </resources>

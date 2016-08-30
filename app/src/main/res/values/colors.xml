@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#ABABAB</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorTitle">#2B9FF2</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#AAAAAA</color>
     <color name="pop_bg">#F5F5F5</color>
@@ -18,4 +19,5 @@
     <color name="line_keyboard">#7D7C7A</color>
     <color name="transparent">#00000000</color>
     <color name="half_transparent">#99000000</color>
+    <color name="color_55000000">#55000000</color>
 </resources>

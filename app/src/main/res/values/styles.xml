@@ -104,5 +104,26 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/line_keyboard</item>
     </style>
+    <style name="edit_tel_pwd">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/activity_content_height</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:inputType">phone</item>
+    </style>
+    <style name="tv_third_part_login">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/content_text_size_3</item>
+    </style>
 
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/color_55000000</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>
