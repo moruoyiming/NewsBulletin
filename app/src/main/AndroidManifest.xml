@@ -42,10 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.activity.LoginActivity"></activity>
         <activity
-            android:name=".ui.activity.LoginActivity"
+            android:name=".ui.activity.MainActivity"
             android:theme="@style/AppTheme_NoActionBar"></activity>
-        <activity android:name=".ui.activity.MainActivity"></activity>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.mrym.newsbulletion.ui.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,8 +38,8 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         NewsApplication.addActivity(this, TAG);
