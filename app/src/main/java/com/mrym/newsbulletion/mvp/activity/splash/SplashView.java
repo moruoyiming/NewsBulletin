@@ -13,10 +13,6 @@ import com.mrym.newsbulletion.authenticator.account.AccountTool;
 public interface SplashView {
     AccountTool getAccountTool();
 
-    void showSplash(Uri splash);
-
-    void showSplash(int splash);
-
     void startMain();
 
     void startLogin();

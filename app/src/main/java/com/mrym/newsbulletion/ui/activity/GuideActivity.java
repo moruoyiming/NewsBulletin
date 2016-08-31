@@ -14,11 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.utils.common.AppUtils;
 import com.mrym.newsbulletion.utils.common.UIUtils;
 
 import java.util.ArrayList;
@@ -38,7 +36,7 @@ public class GuideActivity extends Activity {
     LinearLayout llPoints;
     @Bind(R.id.guide_v_point_red)
     View pointRed;
-    ArrayList<SimpleDraweeView> imageViews;
+    ArrayList<ImageView> imageViews;
     int[] guideIds;
 
     @Override
@@ -70,9 +68,9 @@ public class GuideActivity extends Activity {
             } else {
                 pointRed.setVisibility(View.GONE);
             }
-            SimpleDraweeView simpleDraweeView=new SimpleDraweeView(getApplicationContext());
+            ImageView simpleDraweeView=new ImageView(getApplicationContext());
             simpleDraweeView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            simpleDraweeView.setImageURI(Uri.parse("res://com.mrym.newsbulletion/"+guideIds[i]));
+            Glide.with(this).load(Uri.parse("res://com.mrym.newsbulletion/"+guideIds[i])).centerCrop().crossFade().into(simpleDraweeView);
             imageViews.add(simpleDraweeView);
         }
     }
@@ -127,7 +125,7 @@ public class GuideActivity extends Activity {
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            SimpleDraweeView child = imageViews.get(position);
+            ImageView child = imageViews.get(position);
             container.addView(child);
             if (position == guideIds.length - 1) {
                 child.setOnClickListener(new View.OnClickListener() {

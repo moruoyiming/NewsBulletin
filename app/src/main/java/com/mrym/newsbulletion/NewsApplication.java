@@ -5,8 +5,7 @@ import android.app.Application;
 
 import android.content.Context;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.mrym.newsbulletion.ui.activity.SplashActivity;
+import com.mrym.newsbulletion.service.InitializeService;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,23 +26,7 @@ public class NewsApplication extends Application {
     public void onCreate() {
         super.onCreate();
         CONTEXT = this;
-//        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(CONTEXT)
-//                .setBitmapMemoryCacheParamsSupplier(bitmapCacheParamsSupplier)
-//                .setCacheKeyFactory(cacheKeyFactory)
-//                .setDownsampleEnabled(true)
-//                .setWebpSupportEnabled(true)
-//                .setEncodedMemoryCacheParamsSupplier(encodedCacheParamsSupplier)
-//                .setExecutorSupplier(executorSupplier)
-//                .setImageCacheStatsTracker(imageCacheStatsTracker)
-//                .setMainDiskCacheConfig(mainDiskCacheConfig)
-//                .setMemoryTrimmableRegistry(memoryTrimmableRegistry)
-//                .setNetworkFetchProducer(networkFetchProducer)
-//                .setPoolFactory(poolFactory)
-//                .setProgressiveJpegConfig(progressiveJpegConfig)
-//                .setRequestListeners(requestListeners)
-//                .setSmallImageDiskCacheConfig(smallImageDiskCacheConfig)
-//                .build();
-        Fresco.initialize(CONTEXT);
+        InitializeService.start(this);
     }
 
     public static Context getContext() {

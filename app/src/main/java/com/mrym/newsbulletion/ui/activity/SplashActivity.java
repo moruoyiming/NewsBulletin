@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
@@ -25,8 +25,6 @@ import butterknife.ButterKnife;
  */
 public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
     public static final String TAG = SplashActivity.class.getCanonicalName();
-    @Bind(R.id.iv_splash)
-    SimpleDraweeView ivSplash;
 
     @Override
     protected SplashPresenter createPresenter() {
@@ -39,30 +37,13 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         NewsApplication.addActivity(this, TAG);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mvpPresenter.requestPermission();
-        } else {
-            mvpPresenter.gotoNext();
-        }
-        mvpPresenter.initSplash(getWindowManager());
-    }
-
-
-    @Override
-    public void showSplash(Uri splash) {
-        ivSplash.setImageURI(splash);
-    }
-
-    @Override
-    public void showSplash(int splash) {
-        ivSplash.setImageResource(splash);
+        mvpPresenter.gotoNext();
     }
 
     @Override
     public void startMain() {
-//            startActivity(new Intent(this, MainActivity.class));
-//            finish();
-        Toast.makeText(SplashActivity.this, "MainActivity", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     @Override
