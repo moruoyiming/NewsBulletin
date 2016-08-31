@@ -1,12 +1,11 @@
 package com.mrym.newsbulletion.ui.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.NewsApplication;
@@ -17,6 +16,7 @@ import com.mrym.newsbulletion.mvp.activity.splash.SplashView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Jian on 2016/8/26.
@@ -25,6 +25,10 @@ import butterknife.ButterKnife;
  */
 public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
     public static final String TAG = SplashActivity.class.getCanonicalName();
+    @Bind(R.id.login_skip)
+    Button loginSkip;
+    @Bind(R.id.login_splash)
+    ImageView loginSplash;
 
     @Override
     protected SplashPresenter createPresenter() {
@@ -34,9 +38,11 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         NewsApplication.addActivity(this, TAG);
+        mvpPresenter.showAdvertisement();
         mvpPresenter.gotoNext();
     }
 
@@ -58,8 +64,20 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     }
 
     @Override
+    public void showAdvertisement(String url) {
+        Glide.with(this).load(url).crossFade().into(loginSplash);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+        mvpPresenter = null;
         NewsApplication.removeActivity(TAG);
+    }
+
+    @OnClick(R.id.login_skip)
+    public void onClick() {
+        mvpPresenter.close();
+        startMain();
     }
 }

@@ -39,19 +39,36 @@ public class SplashPresenter extends BasePresenter<SplashView> {
 
     public static final String TAG = SplashPresenter.class.getCanonicalName();
 
+    public Handler handler;
+
     public SplashPresenter(SplashView splashView) {
         attachView(splashView);
+        handler = new Handler();
     }
+
+    public void showAdvertisement() {
+        mvpView.showAdvertisement("http://mmbiz.qpic.cn/mmbiz_jpg/0DSXLNibvwCDAVwEOiaNrA7Kyw8Ww5x6CnB6kDexG4YEbjhvpakupicsvTlMKriaibUy63ARkK2icWUCAQ6uFOwoIaVg/640?wx_fmt=jpeg&tp=jpeg&wxfrom=5&wx_lazy=1");
+    }
+
     public void gotoNext() {
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                AccountTool tool = mvpView.getAccountTool();
-                if (tool.checkAccountIfExits()) {
-                    mvpView.startMain();
-                } else {
-                    mvpView.startLogin();
+        if (handler != null) {
+            handler.postDelayed(new Runnable() {
+                public void run() {
+//                    AccountTool tool = mvpView.getAccountTool();
+//                    if (tool.checkAccountIfExits()) {
+//                        mvpView.startMain();
+//                    } else {
+//                        mvpView.startLogin();
+//                    }
+                    if (handler != null) {
+                        mvpView.startMain();
+                    }
                 }
-            }
-        }, 1500);
+            }, 3000);
+        }
+    }
+
+    public void close() {
+        handler = null;
     }
 }

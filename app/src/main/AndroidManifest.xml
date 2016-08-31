@@ -35,14 +35,16 @@
 
         <activity
             android:name="com.mrym.newsbulletion.ui.activity.SplashActivity"
-            android:theme="@style/AppTheme_NoActionBar">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.LoginActivity"></activity>
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:theme="@style/AppTheme_NoActionBar"></activity>
         <activity android:name=".ui.activity.MainActivity"></activity>
     </application>
 

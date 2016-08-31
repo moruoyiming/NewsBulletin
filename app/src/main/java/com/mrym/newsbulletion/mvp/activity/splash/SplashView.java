@@ -18,4 +18,6 @@ public interface SplashView {
     void startLogin();
 
     void shutDown();
+
+    void showAdvertisement(String url);
 }

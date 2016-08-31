@@ -54,6 +54,7 @@
     <string name="login_tel_hint">请输入电话号码</string>
     <string name="login_verification_hint">请输入验证码</string>
     <string name="login_other">其他登录方式</string>
+    <string name="login_skip">跳过</string>
     <string name="account_login">帐号登录</string>
     <string name="input_tel_please">请输入手机号</string>
     <string name="input_verification_please">请输入验证码</string>
@@ -78,4 +79,5 @@
     <string name="network_catch">当前网络不可用，请检查网络是否连接</string>
     <string name="re_send">重新发送</string>
     <string name="second">秒</string>
+
 </resources>
