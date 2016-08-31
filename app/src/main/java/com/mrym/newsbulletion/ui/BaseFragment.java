@@ -14,12 +14,14 @@ import com.mrym.newsbulletion.utils.common.ToastUtils;
 import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
+import solid.ren.skinlibrary.base.SkinBaseFragment;
+
 import com.mrym.newsbulletion.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BaseFragment extends Fragment {
+public class BaseFragment extends SkinBaseFragment {
     public Activity mActivity;
     protected AccountTool tool;
 

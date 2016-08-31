@@ -1,12 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_mine"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="wode"/>
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
 
-</LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/fragment_mine_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/main_iv_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/gray"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="none" />
+
+                <FrameLayout
+                    android:id="@+id/main_fl_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    app:layout_collapseMode="parallax">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/guide_1"
+                        app:civ_border_color="@color/white"
+                        app:civ_border_width="3dp" />
+                </FrameLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/fragment_mine_shoucang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/base5dp"
+                        android:background="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fragment_mine_shoucang"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/base5dp"
+                        android:text="收藏" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/fragment_mine_yejian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/base5dp"
+                        android:background="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fragment_mine_yejian"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/base5dp"
+                        android:text="收藏" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/fragment_mine_setting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/base5dp"
+                        android:background="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fragment_mine_setting"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/base5dp"
+                        android:text="设置" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/mine_rl_message"
+                    style="@style/activity_mine_item_relativeLayout">
+
+                    <TextView
+                        android:id="@+id/mine_tv_message"
+                        style="@style/mine_info_tv_left"
+                        android:text="消息通知" />
+
+                    <ImageView
+                        android:id="@+id/mine_iv_message_img"
+                        style="@style/mine_info_iv" />
+                </RelativeLayout>
+
+                <View style="@style/mine_view_style_d8d8d8" />
+
+                <RelativeLayout
+                    android:id="@+id/mine_rl_offline"
+                    style="@style/activity_mine_item_relativeLayout">
+
+                    <TextView
+                        android:id="@+id/mine_tv_offline"
+                        style="@style/mine_info_tv_left"
+                        android:text="离线" />
+
+                    <ImageView
+                        android:id="@+id/mine_iv_offline_img"
+                        style="@style/mine_info_iv" />
+                </RelativeLayout>
+
+                <View style="@style/mine_view_style_d8d8d8" />
+
+                <RelativeLayout
+                    android:id="@+id/mine_rl_skin"
+                    style="@style/activity_mine_item_relativeLayout">
+
+                    <TextView
+                        android:id="@+id/mine_tv_skin"
+                        style="@style/mine_info_tv_left"
+                        android:text="换肤" />
+
+                    <ImageView
+                        android:id="@+id/mine_iv_skin_img"
+                        style="@style/mine_info_iv" />
+                </RelativeLayout>
+                <View
+                    style="@style/mine_view_style_d8d8d8"/>
+                <RelativeLayout
+                    android:id="@+id/mine_rl_about"
+                    style="@style/activity_mine_item_relativeLayout">
+
+                    <TextView
+                        android:id="@+id/mine_tv_about"
+                        style="@style/mine_info_tv_left"
+                        android:text="关于" />
+
+                    <ImageView
+                        android:id="@+id/mine_iv_about_img"
+                        style="@style/mine_info_iv" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

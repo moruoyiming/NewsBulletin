@@ -20,4 +20,8 @@
     <color name="transparent">#00000000</color>
     <color name="half_transparent">#99000000</color>
     <color name="color_55000000">#55000000</color>
+    <color name="color_f4f4f4">#f4f4f4</color>
+    <color name="color_d8d8d8">#d8d8d8</color>
+    <color name="color_353535">#353535</color>
+    <color name="item_pressed">#f6f6f9</color>
 </resources>

@@ -11,13 +11,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import solid.ren.skinlibrary.base.SkinBaseApplication;
+
 
 /**
  * Created by Jian on 2016/8/25.
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class NewsApplication extends Application {
+public class NewsApplication extends SkinBaseApplication {
 
     private static Context CONTEXT;
     private static Map<String, Activity> activities = new HashMap<String, Activity>();

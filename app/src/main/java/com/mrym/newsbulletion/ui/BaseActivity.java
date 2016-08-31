@@ -19,8 +19,9 @@ import com.mrym.newsbulletion.utils.common.ToastUtils;
 import butterknife.ButterKnife;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
+import solid.ren.skinlibrary.base.SkinBaseActivity;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends SkinBaseActivity {
     public Activity mActivity;
     protected AccountTool tool;
 
