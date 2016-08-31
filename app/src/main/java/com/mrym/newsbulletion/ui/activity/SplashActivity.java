@@ -2,11 +2,13 @@ package com.mrym.newsbulletion.ui.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
@@ -24,7 +26,7 @@ import butterknife.ButterKnife;
 public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
     public static final String TAG = SplashActivity.class.getCanonicalName();
     @Bind(R.id.iv_splash)
-    ImageView ivSplash;
+    SimpleDraweeView ivSplash;
 
     @Override
     protected SplashPresenter createPresenter() {
@@ -45,9 +47,10 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
         mvpPresenter.initSplash(getWindowManager());
     }
 
+
     @Override
-    public void showSplash(Bitmap splash) {
-        ivSplash.setImageBitmap(splash);
+    public void showSplash(Uri splash) {
+        ivSplash.setImageURI(splash);
     }
 
     @Override

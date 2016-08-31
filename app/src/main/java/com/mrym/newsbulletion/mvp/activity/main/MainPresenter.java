@@ -3,6 +3,7 @@ package com.mrym.newsbulletion.mvp.activity.main;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.widget.RadioGroup;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.BasePresenter;
@@ -45,4 +46,35 @@ public class MainPresenter extends BasePresenter<MainView> {
                 .hide(mine).show(preFragment);
         fragmentTransaction.commit();
     }
+
+    public void setCurrentItem(String tag) {
+        Fragment currentFragment = fm.findFragmentByTag(tag);
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.hide(preFragment);
+        fragmentTransaction.show(currentFragment);
+        fragmentTransaction.commitAllowingStateLoss();
+        preFragment = currentFragment;
+    }
+
+    public class RadioChangedListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            switch (checkedId) {
+                case R.id.rb_home:
+                    setCurrentItem(FRAGMENT_TAG_HOME);
+                    break;
+                case R.id.rb_video:
+                    setCurrentItem(FRAGMENT_TAG_VIDEO);
+                    break;
+                case R.id.rb_follow:
+                    setCurrentItem(FRAGMENT_TAG_FOLLOW);
+                    break;
+                case R.id.rb_mine:
+                    setCurrentItem(FRAGMENT_TAG_MINE);
+                    break;
+            }
+        }
+    }
+
 }

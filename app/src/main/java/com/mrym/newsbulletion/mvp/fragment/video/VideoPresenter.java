@@ -11,4 +11,5 @@ public class VideoPresenter extends BasePresenter<VideoView> {
     public VideoPresenter(VideoView videoview) {
         attachView(videoview);
     }
+
 }

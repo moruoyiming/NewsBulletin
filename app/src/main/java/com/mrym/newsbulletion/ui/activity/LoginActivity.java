@@ -69,7 +69,9 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
                 break;
             case R.id.bt_sure:
 //                Log.d(TAG, "click----->bt_login" + btLogin.isClickable());
-                mvpPresenter.login(etVerification.getText().toString(), etTel.getText().toString());
+//                mvpPresenter.login(etVerification.getText().toString(), etTel.getText().toString());
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tv_wx_login:
 //                Log.d(TAG, "click----->tv_wx_login");

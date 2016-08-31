@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
@@ -69,8 +70,8 @@ public class SplashPresenter extends BasePresenter<SplashView> {
         File file = new File(fileName);
         Log.e(TAG, "startPageName -->" + fileName + "file.exists() --> " + file.exists());
         if (file.exists()) {
-            Bitmap bm = BitmapFactory.decodeFile(fileName);
-            mvpView.showSplash(bm);
+//            Bitmap bm = BitmapFactory.decodeFile(fileName);
+            mvpView.showSplash(Uri.parse("file://"+fileName));
         } else {
             mvpView.showSplash(R.mipmap.splash);
             if (FileOperate.copyStartPage()) {

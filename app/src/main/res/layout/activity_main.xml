@@ -25,7 +25,7 @@
             android:text="@string/tab_home" />
 
         <RadioButton
-            android:id="@+id/tab_video"
+            android:id="@+id/rb_video"
             style="@style/main_tab"
             android:drawableTop="@drawable/selector_tab_home"
             android:text="@string/tab_video" />

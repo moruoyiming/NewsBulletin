@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.mvp.activity.splash;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 
 import com.mrym.newsbulletion.authenticator.account.AccountTool;
 
@@ -12,7 +13,7 @@ import com.mrym.newsbulletion.authenticator.account.AccountTool;
 public interface SplashView {
     AccountTool getAccountTool();
 
-    void showSplash(Bitmap splash);
+    void showSplash(Uri splash);
 
     void showSplash(int splash);
 

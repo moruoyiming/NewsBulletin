@@ -28,7 +28,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     FrameLayout flContent;
     @Bind(R.id.rb_home)
     RadioButton rbHome;
-    @Bind(R.id.tab_video)
+    @Bind(R.id.rb_video)
     RadioButton tabVideo;
     @Bind(R.id.rb_follow)
     RadioButton rbFollow;
