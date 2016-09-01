@@ -8,10 +8,14 @@ import com.mrym.newsbulletion.mvp.BasePresenter;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class MinePresenter extends BasePresenter<MineView>{
+public class MinePresenter extends BasePresenter<MineView> {
 
     public MinePresenter(MineView view) {
         attachView(view);
+    }
+
+    public void initUserData() {
+//        mvpView.initUserData();
     }
 
 }

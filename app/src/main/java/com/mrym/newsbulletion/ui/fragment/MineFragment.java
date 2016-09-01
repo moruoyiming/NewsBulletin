@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.ui.fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.domain.modle.UserBean;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.mine.MinePresenter;
 import com.mrym.newsbulletion.mvp.fragment.mine.MineView;
+import com.mrym.newsbulletion.ui.activity.LoginActivity;
+import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.widget.DialogView;
 
@@ -55,6 +59,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_mine, null);
         ButterKnife.bind(this, view);
+        mvpPresenter.initUserData();
         return view;
     }
 
@@ -67,6 +72,22 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Override
     public void hideLoading(String msg, int code) {
         loadingDialog.dismiss();
+    }
+
+    @Override
+    public void initUserData(UserBean userBean) {
+    }
+
+    @Override
+    public void startLoginActivity() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void startUserDetilsActivity() {
+        Intent intent = new Intent(getActivity(), UserDetailsActivity.class);
+        startActivity(intent);
     }
 
     @Override
