@@ -28,13 +28,11 @@
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="none" />
 
-                <FrameLayout
-                    android:id="@+id/main_fl_title"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    app:layout_collapseMode="parallax">
-
+                    android:orientation="vertical">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_image"
@@ -44,7 +42,16 @@
                         android:src="@mipmap/guide_1"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="3dp" />
-                </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="@dimen/base15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="Brigitte" />
+                </LinearLayout>
+
 
             </RelativeLayout>
 
@@ -54,6 +61,7 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
+                    android:id="@+id/fragment_mine_collect_r1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -72,17 +80,18 @@
                         android:layout_below="@id/fragment_mine_shoucang"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="@dimen/base5dp"
-                        android:text="收藏" />
+                        android:text="@string/collect" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/fragment_mine_commont_r1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/fragment_mine_yejian"
+                        android:id="@+id/fragment_mine_commont"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -92,13 +101,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/fragment_mine_yejian"
+                        android:layout_below="@id/fragment_mine_commont"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="@dimen/base5dp"
-                        android:text="收藏" />
+                        android:text="@string/comment" />
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/fragment_mine_setting_r1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -117,7 +127,7 @@
                         android:layout_below="@id/fragment_mine_setting"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="@dimen/base5dp"
-                        android:text="设置" />
+                        android:text="@string/setting" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -171,8 +181,9 @@
                         android:id="@+id/mine_iv_skin_img"
                         style="@style/mine_info_iv" />
                 </RelativeLayout>
-                <View
-                    style="@style/mine_view_style_d8d8d8"/>
+
+                <View style="@style/mine_view_style_d8d8d8" />
+
                 <RelativeLayout
                     android:id="@+id/mine_rl_about"
                     style="@style/activity_mine_item_relativeLayout">

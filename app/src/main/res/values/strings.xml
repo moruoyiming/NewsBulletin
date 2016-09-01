@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">闪电付</string>
+    <string name="app_name">快讯</string>
     <string name="more_than_one_account_error">账户已存在</string>
     <string name="login_success">登录成功</string>
     <string name="cash_gathering">现金收款</string>
@@ -79,5 +79,7 @@
     <string name="network_catch">当前网络不可用，请检查网络是否连接</string>
     <string name="re_send">重新发送</string>
     <string name="second">秒</string>
-
+    <string name="collect">收藏</string>
+    <string name="comment">评论</string>
+    <string name="setting">设置</string>
 </resources>
