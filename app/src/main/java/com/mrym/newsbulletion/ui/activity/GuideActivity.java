@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.common.UIUtils;
 
 import java.util.ArrayList;
@@ -68,9 +69,10 @@ public class GuideActivity extends Activity {
             } else {
                 pointRed.setVisibility(View.GONE);
             }
-            ImageView simpleDraweeView=new ImageView(getApplicationContext());
+            ImageView simpleDraweeView = new ImageView(getApplicationContext());
             simpleDraweeView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            Glide.with(this).load(Uri.parse("res://com.mrym.newsbulletion/"+guideIds[i])).centerCrop().crossFade().into(simpleDraweeView);
+            GlideUtils.getInstance().LoadContextBitmap(this, "res://com.mrym.newsbulletion/" + guideIds[i], simpleDraweeView, R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
+//            Glide.with(this).load(Uri.parse("res://com.mrym.newsbulletion/"+guideIds[i])).centerCrop().crossFade().into(simpleDraweeView);
             imageViews.add(simpleDraweeView);
         }
     }
@@ -147,13 +149,14 @@ public class GuideActivity extends Activity {
     }
 
     @Override
-    public void onBackPressed() {}
+    public void onBackPressed() {
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         imageViews.clear();
-        imageViews=null;
+        imageViews = null;
         NewsApplication.removeActivity(TAG);
     }
 

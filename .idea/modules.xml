@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/NewsBulletin.iml" filepath="$PROJECT_DIR$/NewsBulletin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-iamge-selector/multi-iamge-selector.iml" filepath="$PROJECT_DIR$/multi-iamge-selector/multi-iamge-selector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" filepath="$PROJECT_DIR$/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" />
     </modules>
   </component>
 </project>

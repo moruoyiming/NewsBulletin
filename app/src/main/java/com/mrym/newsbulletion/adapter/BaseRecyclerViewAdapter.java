@@ -1,4 +1,5 @@
 package com.mrym.newsbulletion.adapter;
+
 import android.animation.Animator;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -44,13 +45,13 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
 
     public void add(E e) {
         this.list.add(0, e);
-        Log.d("BaseRecycler","list:"+list.size());
+        Log.d("BaseRecycler", "list:" + list.size());
         notifyItemInserted(0);
     }
 
-    public void addLast(E e){
+    public void addLast(E e) {
         this.list.add(e);
-        notifyItemInserted(list.size()-1);
+        notifyItemInserted(list.size() - 1);
     }
 
     public void update(E e, int fromPosition, int toPosition) {
@@ -68,15 +69,17 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
     public void update(E e, int fromPosition) {
         update(e, fromPosition, fromPosition);
     }
+
     public void update(E e) {
-        Log.d("tag","列表："+list.toString());
+        Log.d("tag", "列表：" + list.toString());
         int fromPosition = this.list.indexOf(e);
         update(e, fromPosition);
     }
-    public void updateLast(E e){
+
+    public void updateLast(E e) {
 //        int fromPosition = this.list.indexOf(e);
-        int num = list.size()-1;
-        update(e, num,num);
+        int num = list.size() - 1;
+        update(e, num, num);
     }
 
     public void remove(E e) {
@@ -95,10 +98,11 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
         //notifyDataSetChanged();
     }
 
-    public void addAll(List<E> list){
+    public void addAll(List<E> list) {
         this.list.addAll(list);
         notifyDataSetChanged();
     }
+
     public List<E> getList() {
         return list;
     }
@@ -116,7 +120,7 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder != null) {
-            Log.d("BaseRecyclerView","position---------->"+position+"list length:"+list.size());
+            Log.d("BaseRecyclerView", "position---------->" + position + "list length:" + list.size());
 
             addInternalClickListener(holder.itemView, position, list.get(position));
         }
