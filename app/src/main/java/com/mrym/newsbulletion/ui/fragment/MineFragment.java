@@ -1,16 +1,23 @@
 package com.mrym.newsbulletion.ui.fragment;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.UserBean;
 import com.mrym.newsbulletion.mvp.MvpFragment;
@@ -18,13 +25,17 @@ import com.mrym.newsbulletion.mvp.fragment.mine.MinePresenter;
 import com.mrym.newsbulletion.mvp.fragment.mine.MineView;
 import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
+import com.mrym.newsbulletion.utils.GlideUtils;
+import com.mrym.newsbulletion.utils.SystemStatusManager;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DialogView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import me.nereo.multi_image_selector.utils.ScreenUtils;
 
 /**
  * Created by Shawn on 2016/8/18.
@@ -49,6 +60,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     RelativeLayout mineRlSkin;
     @Bind(R.id.mine_rl_about)
     RelativeLayout mineRlAbout;
+    @Bind(R.id.profile_name)
+    TextView profileName;
     private Dialog loadingDialog;
 
     @Override
@@ -58,15 +71,15 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_mine, null);
+        View view = inflater.inflate( R.layout.fragment_mine,container, false);
         ButterKnife.bind(this, view);
-
-        return view;
+         return view;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        StatusBarCompat.translucentStatusBar(getActivity(), false);
         mvpPresenter.initUserData();
     }
 
@@ -83,6 +96,10 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
 
     @Override
     public void initUserData(UserBean userBean) {
+        Log.i("initUserData", userBean.toString());
+        profileName.setText(userBean.getNickName());
+        GlideUtils.getInstance().LoadContextBitmap(getActivity(), userBean.getHeadImg(), profileImage, R.mipmap.touxiang, R.mipmap.touxiang);
+        GlideUtils.getInstance().LoadContextBitmap(getActivity(), userBean.getBackgroudImg(), mainIvPlaceholder, R.mipmap.shouyetu, R.mipmap.shouyetu);
     }
 
     @Override

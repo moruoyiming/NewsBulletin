@@ -24,6 +24,7 @@ public class UserBean {
    private String hobby; //爱好
    private String isShow; //是否可见
    private String headImg; //头像路径
+   private String backgroudImg;//背景图路径
    private String age; //年龄
    private String birthDate; //出生日期
    private Objects updateTime; //修改时间
@@ -77,6 +78,14 @@ public class UserBean {
 
    public void setLongitude(Double longitude) {
       this.longitude = longitude;
+   }
+
+   public String getBackgroudImg() {
+      return backgroudImg;
+   }
+
+   public void setBackgroudImg(String backgroudImg) {
+      this.backgroudImg = backgroudImg;
    }
 
    public String getWeixinopenid() {

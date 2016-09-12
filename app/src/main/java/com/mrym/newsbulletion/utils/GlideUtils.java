@@ -139,6 +139,18 @@ public class GlideUtils {
     }
 
     /**
+     * 头像图片去掉加载动画
+     * @param context
+     * @param path
+     * @param imageView
+     * @param placeid
+     * @param errorid
+     */
+    public void LoadContextBitmap(Context context, String path, ImageView imageView, int placeid, int errorid) {
+        Glide.with(context).load(path).dontAnimate().placeholder(placeid).error(errorid).into(imageView);
+    }
+
+    /**
      * Glide请求图片，会受到Fragment 生命周期控制。
      *
      * @param fragment
