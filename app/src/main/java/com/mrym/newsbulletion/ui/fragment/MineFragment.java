@@ -35,7 +35,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
-import me.nereo.multi_image_selector.utils.ScreenUtils;
 
 /**
  * Created by Shawn on 2016/8/18.

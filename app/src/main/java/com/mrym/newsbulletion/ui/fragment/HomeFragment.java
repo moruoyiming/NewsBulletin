@@ -1,23 +1,30 @@
 package com.mrym.newsbulletion.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
+import com.mrym.newsbulletion.Demo;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
-import com.mrym.newsbulletion.domain.modle.OrderBean;
 import com.mrym.newsbulletion.mvp.MvpFragment;
+import com.mrym.newsbulletion.mvp.fragment.DemoFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by Shawn on 2016/8/18.
@@ -25,6 +32,18 @@ import butterknife.OnClick;
 public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView {
 
     private static final String TAG = "HomeFragment";
+    @Bind(R.id.toolbar_title)
+    TextView toolbarTitle;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+    @Bind(R.id.tab)
+    FrameLayout tab;
+    @Bind(R.id.header)
+    LinearLayout header;
+    @Bind(R.id.viewpager)
+    ViewPager viewpager;
+    @Bind(R.id.fragment_home)
+    LinearLayout fragmentHome;
 
     @Override
     protected HomePresenter createPresenter() {
@@ -35,7 +54,23 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = View.inflate(getActivity(), R.layout.fragment_home, null);
         initToolBar(root, R.string.app_name);
+        ButterKnife.bind(this, root);
         return root;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
+        SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
+        FragmentPagerItems pages = new FragmentPagerItems(getActivity());
+        for (int titleResId : Demo.tabs()) {
+            pages.add(FragmentPagerItem.of(getString(titleResId), DemoFragment.class));
+        }
+        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
+                getFragmentManager(), pages);
+        viewpager.setAdapter(adapter);
+        viewPagerTab.setViewPager(viewpager);
     }
 
     @Override

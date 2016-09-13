@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary">#3C515C</color>
+    <color name="primary_dark">#142E3C</color>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#ABABAB</color>
     <color name="colorAccent">#FF4081</color>
@@ -24,4 +26,5 @@
     <color name="color_d8d8d8">#d8d8d8</color>
     <color name="color_353535">#353535</color>
     <color name="item_pressed">#f6f6f9</color>
+    <color name="accent">#40C4FF</color>
 </resources>
