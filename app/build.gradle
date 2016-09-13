@@ -40,4 +40,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile project(':xrecyclerviewlibrary')
     compile project(':baserecyclerviewadapterhelper')
+    compile 'org.xutils:xutils:3.3.22'
 }
