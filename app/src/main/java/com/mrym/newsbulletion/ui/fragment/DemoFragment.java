@@ -1,4 +1,4 @@
-package com.mrym.newsbulletion.mvp.fragment;
+package com.mrym.newsbulletion.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -15,7 +15,6 @@ import com.mrym.newsbulletion.Demo;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
 import com.mrym.newsbulletion.mvp.MvpFragment;
-import com.mrym.newsbulletion.mvp.fragment.DemoFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
