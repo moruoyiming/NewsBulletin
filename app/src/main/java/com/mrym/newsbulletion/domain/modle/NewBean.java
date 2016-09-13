@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class NewBean implements MultiItemEntity, Serializable {
+public class NewBean extends DefaultInterfaceBean implements MultiItemEntity, Serializable {
 
     @Override
     public int getItemType() {
