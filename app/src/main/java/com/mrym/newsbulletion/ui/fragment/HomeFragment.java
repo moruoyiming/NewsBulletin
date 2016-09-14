@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mrym.newsbulletion.Demo;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;

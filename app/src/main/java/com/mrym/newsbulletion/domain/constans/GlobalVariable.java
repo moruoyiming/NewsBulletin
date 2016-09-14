@@ -34,4 +34,15 @@ public class GlobalVariable {
         }
         return Environment.getExternalStorageDirectory() + File.separator + "Documents" + File.separator;
     }
+
+    /** newType=0 ：文字 */
+    public final static int ITEM_TEXT = 0;
+    /** newType=1 ：大图 */
+    public final static int ITEM_BIGPIC     = 1;
+    /** newType=2 ：右侧小图 */
+    public final static int ITEM_SMALLPIC = 2;
+    /** newType=3 ：三图 */
+    public final static int mark_exclusive = 3;
+    /** newType=4 ：视频 */
+    public final static int mark_favor = 4;
 }

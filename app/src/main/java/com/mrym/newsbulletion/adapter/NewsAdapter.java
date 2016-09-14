@@ -21,6 +21,8 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
      */
     public NewsAdapter(List<NewsEntity> data) {
         super(data);
+        addItemType(MultipleItem.TEXT, R.layout.item_text_view);
+        addItemType(MultipleItem.IMG, R.layout.item_image_view);
     }
 
     @Override
