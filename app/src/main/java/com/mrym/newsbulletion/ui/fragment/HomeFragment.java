@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.Demo;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.db.entity.HomeCateGory;
+import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
@@ -21,6 +23,8 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,8 +67,9 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
         FragmentPagerItems pages = new FragmentPagerItems(getActivity());
-        for (int titleResId : Demo.tabs()) {
-            pages.add(FragmentPagerItem.of(getString(titleResId), DemoFragment.class));
+        ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
+        for (HomeCateGory homeCateGory : homeCateGories) {
+            pages.add(FragmentPagerItem.of(homeCateGory.getCategory(), DemoFragment.class));
         }
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getFragmentManager(), pages);
@@ -75,7 +80,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onResume() {
         super.onResume();
-
         Log.e(TAG, "onResume");
         mvpPresenter.getOrderPriceSum(tool.getAccountId());
     }

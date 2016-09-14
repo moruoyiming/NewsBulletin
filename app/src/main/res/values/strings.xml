@@ -83,13 +83,13 @@
     <string name="comment">评论</string>
     <string name="setting">设置</string>
 
-    <string name="demo_tab_1">Cupcake</string>
-    <string name="demo_tab_2">Donut</string>
-    <string name="demo_tab_3">Eclair</string>
-    <string name="demo_tab_4">Froyo</string>
-    <string name="demo_tab_5">Gingerbread</string>
-    <string name="demo_tab_6">Honeycomb</string>
-    <string name="demo_tab_7">Ice Cream Sandwich</string>
+    <string name="demo_tab_1">推荐</string>
+    <string name="demo_tab_2">热点</string>
+    <string name="demo_tab_3">视频</string>
+    <string name="demo_tab_4">社会</string>
+    <string name="demo_tab_5">旅游</string>
+    <string name="demo_tab_6">美食</string>
+    <string name="demo_tab_7">搞笑</string>
     <string name="demo_tab_8">Jelly Bean</string>
     <string name="demo_tab_9">KitKat</string>
     <string name="demo_tab_10">Lollipop</string>

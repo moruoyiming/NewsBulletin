@@ -5,7 +5,10 @@ import android.app.Application;
 
 import android.content.Context;
 
+import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.service.InitializeService;
+
+import org.xutils.x;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,6 +31,9 @@ public class NewsApplication extends SkinBaseApplication {
     public void onCreate() {
         super.onCreate();
         CONTEXT = this;
+        x.Ext.init(NewsApplication.this);
+        x.Ext.setDebug(true);
+        HomeCateGoryUtils.getInstance(getApplicationContext()).initData();
         InitializeService.start(this);
     }
 

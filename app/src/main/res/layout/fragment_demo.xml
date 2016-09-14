@@ -4,17 +4,22 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/item_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Page:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/fragment_demo_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
 
-    <TextView
-        android:id="@+id/item_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="80sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/item_subtitle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Page:"-->
+        <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/item_title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="80sp" />-->
 
 </LinearLayout>

@@ -29,8 +29,50 @@ public class NewsBean extends BaseNewBean implements MultiItemEntity {
      */
     private String videotime;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getVideotime() {
+        return videotime;
+    }
+
+    public void setVideotime(String videotime) {
+        this.videotime = videotime;
+    }
+
+    public List<String> getPics() {
+        return pics;
+    }
+
+    public void setPics(List<String> pics) {
+        this.pics = pics;
+    }
+
+    public String getVideourl() {
+        return videourl;
+    }
+
+    public void setVideourl(String videourl) {
+        this.videourl = videourl;
+    }
+
+    @Override
+    public String toString() {
+        return "NewsBean{" +
+                "title='" + title + '\'' +
+                ", pics=" + pics +
+                ", videourl='" + videourl + '\'' +
+                ", videotime='" + videotime + '\'' +
+                '}';
+    }
+
     @Override
     public int getItemType() {
-        return 0;
+        return getNewType();
     }
 }

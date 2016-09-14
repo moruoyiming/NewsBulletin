@@ -4,7 +4,11 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
+import com.mrym.newsbulletion.NewsApplication;
+import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.utils.file.FileOperate;
+
+import org.xutils.x;
 
 /**
  * Created by Jian on 2016/8/31.
@@ -37,23 +41,7 @@ public class InitializeService extends IntentService {
 
     private void performInit() {
         //TODO 启动加载超时操作
-//        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(CONTEXT)
-//                .setBitmapMemoryCacheParamsSupplier(bitmapCacheParamsSupplier)
-//                .setCacheKeyFactory(cacheKeyFactory)
-//                .setDownsampleEnabled(true)
-//                .setWebpSupportEnabled(true)
-//                .setEncodedMemoryCacheParamsSupplier(encodedCacheParamsSupplier)
-//                .setExecutorSupplier(executorSupplier)
-//                .setImageCacheStatsTracker(imageCacheStatsTracker)
-//                .setMainDiskCacheConfig(mainDiskCacheConfig)
-//                .setMemoryTrimmableRegistry(memoryTrimmableRegistry)
-//                .setNetworkFetchProducer(networkFetchProducer)
-//                .setPoolFactory(poolFactory)
-//                .setProgressiveJpegConfig(progressiveJpegConfig)
-//                .setRequestListeners(requestListeners)
-//                .setSmallImageDiskCacheConfig(smallImageDiskCacheConfig)
-//                .build();
-//        Fresco.initialize(this.getApplicationContext());
+
         if (FileOperate.copyStartPage()) {
             FileOperate.unZipStartPage();
         }
