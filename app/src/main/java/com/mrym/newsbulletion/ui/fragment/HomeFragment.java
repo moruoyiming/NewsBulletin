@@ -69,7 +69,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         FragmentPagerItems pages = new FragmentPagerItems(getActivity());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
         for (HomeCateGory homeCateGory : homeCateGories) {
-            pages.add(FragmentPagerItem.of(homeCateGory.getCategory(), DemoFragment.class));
+            pages.add(FragmentPagerItem.of(homeCateGory.getCategory(), GateGoryFragment.class));
         }
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getFragmentManager(), pages);
@@ -81,7 +81,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     public void onResume() {
         super.onResume();
         Log.e(TAG, "onResume");
-        mvpPresenter.getOrderPriceSum(tool.getAccountId());
+//        mvpPresenter.getOrderPriceSum(tool.getAccountId());
     }
 
     @Override

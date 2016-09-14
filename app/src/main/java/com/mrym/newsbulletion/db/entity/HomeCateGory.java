@@ -21,15 +21,6 @@ public class HomeCateGory {
     @Column(name = "field")
     private String field;
 
-
-    public HomeCateGory getHomeCateGory() {
-        HomeCateGory homeCateGory = new HomeCateGory();
-        homeCateGory.setId(getId());
-        homeCateGory.setCategory(getCategory());
-        homeCateGory.setField(getField());
-        return homeCateGory;
-    }
-
     public Long getId() {
         return id;
     }

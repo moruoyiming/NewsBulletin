@@ -30,7 +30,7 @@ public class HomeCateGoryUtils extends DatabaseUtil<HomeCateGory> {
     }
 
     public void initData() {
-        if (getAllCache() == null) {
+        if (getHomeCateGory() == null) {
             HomeCateGory homeCateGory = new HomeCateGory();
             homeCateGory.setCategory(mContext.getString(R.string.demo_tab_1));
             homeCateGory.setField("category_recommend");
@@ -75,7 +75,7 @@ public class HomeCateGoryUtils extends DatabaseUtil<HomeCateGory> {
         try {
             ArrayList<HomeCateGory> dbHomeCateGory = getAllCache();
             if (dbHomeCateGory == null) {
-                dbHomeCateGory = (ArrayList<HomeCateGory>) getDefaultDbManager().selector(HomeCateGory.class)
+                dbHomeCateGory = (ArrayList<HomeCateGory>) getDefaultDbManager().selector(HomeCateGory.class).orderBy("id")
                         .findAll();
                 createCache(dbHomeCateGory);
             }

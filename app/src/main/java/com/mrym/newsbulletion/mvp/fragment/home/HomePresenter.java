@@ -18,23 +18,23 @@ public class HomePresenter extends BasePresenter<HomeView> {
     }
 
     public void getOrderPriceSum(long accountId) {
-        addSubscription(apiStores.getOrderPriceSum(accountId), new SubscriberCallBack<>(new ApiCallback<HomeModel>() {
-            @Override
-            public void onSuccess(HomeModel model) {
-                if (TextUtils.equals(model.getState(), GlobalVariable.SUCCESS)) {
-                    mvpView.getSuccess(model.getOrder());
-                } else {
-                    ToastUtils.show(model.getMsg());
-                }
-            }
-
-            @Override
-            public void onFailure(int code, String msg) {
-                mvpView.getFailure(code, msg);
-            }
-
-            @Override
-            public void onCompleted() {}
-        }));
+//        addSubscription(apiStores.getOrderPriceSum(accountId), new SubscriberCallBack<>(new ApiCallback<HomeModel>() {
+//            @Override
+//            public void onSuccess(HomeModel model) {
+//                if (TextUtils.equals(model.getState(), GlobalVariable.SUCCESS)) {
+//                    mvpView.getSuccess(model.getOrder());
+//                } else {
+//                    ToastUtils.show(model.getMsg());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(int code, String msg) {
+//                mvpView.getFailure(code, msg);
+//            }
+//
+//            @Override
+//            public void onCompleted() {}
+//        }));
     }
 }

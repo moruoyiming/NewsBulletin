@@ -39,13 +39,17 @@ public class BasePresenter<V> implements Presenter<V> {
     }
 
 
-    public void addSubscription(Observable observable, Subscriber subscriber) {
+    public void addSubscription(Observable observable, Subscriber subscriber)  {
         if (mCompositeSubscription == null) {
             mCompositeSubscription = new CompositeSubscription();
         }
-        mCompositeSubscription.add(observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber));
+        try {
+            mCompositeSubscription.add(observable
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(subscriber));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
