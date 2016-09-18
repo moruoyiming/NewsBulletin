@@ -2,6 +2,8 @@ package com.mrym.newsbulletion.adapter;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
 
 import java.util.List;
@@ -21,8 +23,11 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
      */
     public NewsAdapter(List<NewsEntity> data) {
         super(data);
-        addItemType(MultipleItem.TEXT, R.layout.item_text_view);
-        addItemType(MultipleItem.IMG, R.layout.item_image_view);
+        addItemType(GlobalVariable.ITEM_TEXT, R.layout.item_text_view);
+        addItemType(GlobalVariable.ITEM_SMALLPIC, R.layout.item_smallpic_view);
+        addItemType(GlobalVariable.ITEM_BIGPIC, R.layout.item_bigpic_view);
+        addItemType(GlobalVariable.ITEM_EXCLUSIVE, R.layout.item_exclusive_view);
+        addItemType(GlobalVariable.ITEM_VIDEO, R.layout.item_video_view);
     }
 
     @Override

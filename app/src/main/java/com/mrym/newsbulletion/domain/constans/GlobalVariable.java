@@ -42,7 +42,7 @@ public class GlobalVariable {
     /** newType=2 ：右侧小图 */
     public final static int ITEM_SMALLPIC = 2;
     /** newType=3 ：三图 */
-    public final static int mark_exclusive = 3;
+    public final static int ITEM_EXCLUSIVE = 3;
     /** newType=4 ：视频 */
-    public final static int mark_favor = 4;
+    public final static int ITEM_VIDEO= 4;
 }

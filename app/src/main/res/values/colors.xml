@@ -27,4 +27,6 @@
     <color name="color_353535">#353535</color>
     <color name="item_pressed">#f6f6f9</color>
     <color name="accent">#40C4FF</color>
+    <color name="item_bg">#e0e4e7</color>
+    <color name="txt_color">#1d1e1e</color>
 </resources>
