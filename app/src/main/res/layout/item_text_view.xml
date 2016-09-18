@@ -28,8 +28,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_basic_autherhead"
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="@dimen/base30dp"
+            android:layout_width="@dimen/base20dp"
+            android:layout_height="@dimen/base20dp"
           />
         <TextView
             android:id="@+id/item_basic_authername"

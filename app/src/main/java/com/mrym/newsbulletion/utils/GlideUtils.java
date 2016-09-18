@@ -146,7 +146,7 @@ public class GlideUtils {
         if (path == null || imageView == null) {
             return;
         }
-        Glide.with(context).load(path).crossFade().placeholder(placeid).error(errorid).into(imageView);
+        Glide.with(context).load(path).placeholder(placeid).error(errorid).into(imageView);
     }
     /**
      * 使用Application上下文，Glide请求将不受Activity/Fragment生命周期控制
