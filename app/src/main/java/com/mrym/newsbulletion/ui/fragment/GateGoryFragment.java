@@ -55,14 +55,15 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         mNews = new ArrayList<>();
         mNewAdapter = new NewsAdapter(getActivity(), mNews);
         int position = FragmentPagerItem.getPosition(getArguments());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
         mCurrentCate = homeCateGories.get(position).getField();
         categoryList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
         categoryList.setLoadingMoreProgressStyle(ProgressStyle.BallBeat);
         categoryList.setAdapter(mNewAdapter);
@@ -78,8 +79,13 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
                 switchActionAndLoadData(GlobalVariable.ACTION_LOAD_MORE);
             }
         });
-        categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshing(true);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 
     public void switchActionAndLoadData(int action) {
@@ -91,8 +97,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
                 mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
                 break;
             case GlobalVariable.ACTION_LOAD_MORE:
-//                mCurrentPageIndex++;
-//                mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
+                mCurrentPageIndex++;
+                mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
                 break;
         }
     }

@@ -231,12 +231,12 @@ public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerV
         if (mNextLoadEnable) {
             mLoadingMoreEnable = false;
         }
-        notifyItemRangeChanged(mData.size()-newData.size(), newData.size());
+        notifyItemRangeChanged(mData.size() - newData.size(), newData.size());
     }
 
     /**
      * @return Whether the Adapter is actively showing load
-     *         progress.
+     * progress.
      */
     public boolean isLoading() {
         return mLoadingMoreEnable;
@@ -550,25 +550,29 @@ public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerV
      */
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int positions) {
-        int viewType = holder.getItemViewType();
+        try {
+            int viewType = holder.getItemViewType();
 
-        switch (viewType) {
-            case 0:
-                convert((BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
-                break;
-            case LOADING_VIEW:
-                addLoadMore(holder);
-                break;
-            case HEADER_VIEW:
-                break;
-            case EMPTY_VIEW:
-                break;
-            case FOOTER_VIEW:
-                break;
-            default:
-                convert((BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
-                onBindDefViewHolder((BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
-                break;
+            switch (viewType) {
+                case 0:
+                    convert((BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
+                    break;
+                case LOADING_VIEW:
+                    addLoadMore(holder);
+                    break;
+                case HEADER_VIEW:
+                    break;
+                case EMPTY_VIEW:
+                    break;
+                case FOOTER_VIEW:
+                    break;
+                default:
+                    convert((BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
+                    onBindDefViewHolder((BaseViewHolder) holder, mData.get(holder.getLayoutPosition() - getHeaderLayoutCount()));
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
@@ -980,8 +984,8 @@ public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerV
     /**
      * Expand an expandable item
      *
-     * @param position position of the item
-     * @param animate expand items with animation
+     * @param position     position of the item
+     * @param animate      expand items with animation
      * @param shouldNotify notify the RecyclerView to rebind items, <strong>false</strong> if you want to do it yourself.
      * @return the number of items that have been added.
      */
@@ -1023,7 +1027,7 @@ public abstract class BaseQuickAdapter<T> extends RecyclerView.Adapter<RecyclerV
      * Expand an expandable item
      *
      * @param position position of the item
-     * @param animate expand items with animation
+     * @param animate  expand items with animation
      * @return the number of items that have been added.
      */
     public int expand(@IntRange(from = 0) int position, boolean animate) {

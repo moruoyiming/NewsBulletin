@@ -40,6 +40,7 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
         addItemType(GlobalVariable.ITEM_VIDEO, R.layout.item_video_view);
     }
 
+
     @Override
     protected void convert(BaseViewHolder helper, NewsEntity item) {
         if (item == null) {
@@ -49,23 +50,21 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
         helper.setText(R.id.item_basic_authername, item.getAuthor());
         helper.setText(R.id.item_basic_commontnubmer, item.getCommentNum() + "评论");
         helper.setText(R.id.item_basic_publicdate, MsgDateUtils.getTimestampString(new Date(item.getPublishTime())));
-        GlideUtils.getInstance().LoadCircleImageViewBitmap(mContext, item.getHeadimg(), (CircleImageView) helper.getView(R.id.item_basic_autherhead), R.mipmap.touxiang, R.mipmap.touxiang);
-        switch (helper.getItemViewType()) {
+        Picasso.with(mContext).load(item.getHeadimg()).placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(helper.getImageView(R.id.item_basic_autherhead));
+        switch (item.getNewType()) {
             case GlobalVariable.ITEM_TEXT:
                 break;
             case GlobalVariable.ITEM_SMALLPIC:
-//                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_smallpic_rightpic), R.mipmap.shouyetu, R.mipmap.shouyetu);
-//                Glide.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_smallpic_rightpic));
                 Picasso.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_smallpic_rightpic));
                 break;
             case GlobalVariable.ITEM_BIGPIC:
                 helper.setText(R.id.item_bigpic_number, item.getPicList().size() + "张");
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), helper.getImageView(R.id.item_bigpic_toppic), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                Picasso.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_bigpic_toppic));
                 break;
             case GlobalVariable.ITEM_EXCLUSIVE:
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), helper.getImageView(R.id.item_exclusive_im1), R.mipmap.shouyetu, R.mipmap.shouyetu);
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicTwo(), helper.getImageView(R.id.item_exclusive_im2), R.mipmap.shouyetu, R.mipmap.shouyetu);
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicThr(), helper.getImageView(R.id.item_exclusive_im3), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                Picasso.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_exclusive_im1));
+                Picasso.with(mContext).load(item.getPicTwo()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_exclusive_im2));
+                Picasso.with(mContext).load(item.getPicThr()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_exclusive_im3));
                 break;
             case GlobalVariable.ITEM_VIDEO:
                 // set imgs data
