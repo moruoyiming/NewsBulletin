@@ -3,22 +3,19 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
+    android:layout_margin="@dimen/base10dp"
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:id="@+id/item_text_center"
         android:layout_width="match_parent"
         android:layout_height="50dip"
-        android:layout_gravity="center">
+        >
 
         <TextView
             android:id="@+id/item_basic_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:textColor="@color/txt_color" />
     </RelativeLayout>
 

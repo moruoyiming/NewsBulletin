@@ -23,7 +23,8 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
     public GateGoryPresenter(GateGoryView getGoryView) {
         attachView(getGoryView);
     }
-    public void getGategoryData(String gateGory)  {
+    public void getGategoryData(String gateGory,int pageIndex)  {
+        Log.i("pageIndex","当前页数："+pageIndex);
         List<NewsEntity> newsList=new ArrayList<NewsEntity>();
         for(int i =0 ; i < 10 ; i++){
             NewsEntity news = new NewsEntity();
@@ -36,23 +37,27 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
             news.setReadStatus(false);
             news.setNewsCategory("推荐");
             news.setNewsCategoryId(1);
+            news.setAuthor("腾讯网");
+            news.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
             news.setTitle("可以用谷歌眼镜做的10件酷事：导航、玩游戏");
             List<String> url_list = new ArrayList<String>();
             if(i%2 == 1){
-                String url1 = "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066094_400_640.jpg";
-                String url2 = "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066096_400_640.jpg";
-                String url3 = "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066099_400_640.jpg";
+                String url1 = "http://img1.imgtn.bdimg.com/it/u=1205280251,2634350720&fm=21&gp=0.jpg";
+                String url2 = "http://p0.qhimg.com/t019c6684eeb0484ea1.jpg?size=1500x1000";
+                String url3 = "http://p0.qhimg.com/t0107a32d125af97c90.jpg?size=1500x1000";
                 news.setPicOne(url1);
                 news.setPicTwo(url2);
                 news.setPicThr(url3);
                 url_list.add(url1);
                 url_list.add(url2);
                 url_list.add(url3);
+                news.setNewType(3);
             }else{
                 news.setTitle("AA用车:智能短租租车平台");
-                String url = "http://r3.sinaimg.cn/2/2014/0417/a7/6/92478595/580x1000x75x0.jpg";
+                String url = "http://p0.qhimg.com/t01979caeefeb88b526.jpg?size=1500x1000";
                 news.setPicOne(url);
                 url_list.add(url);
+                news.setNewType(2);
             }
             news.setPicList(url_list);
             news.setPublishTime(Long.valueOf(i));
@@ -64,15 +69,17 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
                 news.setTitle("部落战争强势回归");
                 news.setLocal("推广");
                 news.setLarge(true);
-                String url = "http://imgt2.bdstatic.com/it/u=3269155243,2604389213&fm=21&gp=0.jpg";
+                String url = "http://p0.qhimg.com/t0162d7001d832987be.jpg?size=1500x1000";
                 news.setPicOne(url);
                 url_list.clear();
                 url_list.add(url);
+                news.setNewType(1);
             }else{
                 news.setLarge(false);
             }
             newsList.add(news);
         }
+        mvpView.loadComplete();
         mvpView.loadingSuccess(newsList);
 //        addSubscription(apiStores.getCategoryNews(gateGory), new SubscriberCallBack<>(new ApiCallback<GateGoryModel>() {
 //            @Override

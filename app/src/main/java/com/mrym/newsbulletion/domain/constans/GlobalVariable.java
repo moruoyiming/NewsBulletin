@@ -38,11 +38,14 @@ public class GlobalVariable {
     /** newType=0 ：文字 */
     public final static int ITEM_TEXT = 0;
     /** newType=1 ：大图 */
-    public final static int ITEM_BIGPIC     = 1;
+    public final static int ITEM_BIGPIC= 1;
     /** newType=2 ：右侧小图 */
     public final static int ITEM_SMALLPIC = 2;
     /** newType=3 ：三图 */
     public final static int ITEM_EXCLUSIVE = 3;
     /** newType=4 ：视频 */
     public final static int ITEM_VIDEO= 4;
+    /** XRecycleViewState */
+    public static final int ACTION_REFRESH = 1;
+    public static final int ACTION_LOAD_MORE = 2;
 }

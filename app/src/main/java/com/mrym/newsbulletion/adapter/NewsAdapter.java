@@ -1,5 +1,6 @@
 package com.mrym.newsbulletion.adapter;
 
+import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -29,7 +30,7 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
      *
      * @param data A new list is created out of this one to avoid mutable list
      */
-    public NewsAdapter(List<NewsEntity> data) {
+    public NewsAdapter(Context context, List<NewsEntity> data) {
         super(data);
         addItemType(GlobalVariable.ITEM_TEXT, R.layout.item_text_view);
         addItemType(GlobalVariable.ITEM_SMALLPIC, R.layout.item_smallpic_view);
@@ -45,23 +46,23 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
         }
         helper.setText(R.id.item_basic_title, item.getTitle());
         helper.setText(R.id.item_basic_authername, item.getAuthor());
-        helper.setText(R.id.item_basic_commontnubmer, item.getCommentNum()+"评论");
+        helper.setText(R.id.item_basic_commontnubmer, item.getCommentNum() + "评论");
         helper.setText(R.id.item_basic_publicdate, MsgDateUtils.getTimestampString(new Date(item.getPublishTime())));
-        GlideUtils.getInstance().LoadCircleImageViewBitmap(mContext,item.getHeadimg(),(CircleImageView)helper.getView(R.id.item_basic_autherhead),R.mipmap.touxiang,R.mipmap.touxiang);
+        GlideUtils.getInstance().LoadCircleImageViewBitmap(mContext, item.getHeadimg(), (CircleImageView) helper.getView(R.id.item_basic_autherhead), R.mipmap.touxiang, R.mipmap.touxiang);
         switch (helper.getItemViewType()) {
             case GlobalVariable.ITEM_TEXT:
                 break;
             case GlobalVariable.ITEM_SMALLPIC:
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicOne(),(ImageView)helper.getView(R.id.item_smallpic_rightpic),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_smallpic_rightpic), R.mipmap.shouyetu, R.mipmap.shouyetu);
                 break;
             case GlobalVariable.ITEM_BIGPIC:
-                helper.setText(R.id.item_bigpic_number, item.getPicList().size()+"张");
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicOne(),(ImageView)helper.getView(R.id.item_bigpic_toppic),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                helper.setText(R.id.item_bigpic_number, item.getPicList().size() + "张");
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_bigpic_toppic), R.mipmap.shouyetu, R.mipmap.shouyetu);
                 break;
             case GlobalVariable.ITEM_EXCLUSIVE:
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicOne(),(ImageView)helper.getView(R.id.item_exclusive_im1),R.mipmap.shouyetu,R.mipmap.shouyetu);
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicTwo(),(ImageView)helper.getView(R.id.item_exclusive_im2),R.mipmap.shouyetu,R.mipmap.shouyetu);
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicThr(),(ImageView)helper.getView(R.id.item_exclusive_im3),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_exclusive_im1), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicTwo(), (ImageView) helper.getView(R.id.item_exclusive_im2), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicThr(), (ImageView) helper.getView(R.id.item_exclusive_im3), R.mipmap.shouyetu, R.mipmap.shouyetu);
                 break;
             case GlobalVariable.ITEM_VIDEO:
                 // set imgs data

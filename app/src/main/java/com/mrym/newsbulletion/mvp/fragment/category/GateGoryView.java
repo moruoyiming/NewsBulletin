@@ -16,4 +16,6 @@ public interface GateGoryView {
 
     public void loadingSuccess(List<NewsEntity> news);
 
+    public void loadComplete();
+
 }
