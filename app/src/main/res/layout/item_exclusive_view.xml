@@ -16,8 +16,8 @@
             android:id="@+id/item_basic_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/sp_16"
-            android:textColor="@color/txt_color" />
+            android:textColor="@color/txt_color"
+            android:textSize="@dimen/sp_16" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,12 +58,14 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_basic_autherhead"
             android:layout_width="@dimen/base20dp"
-            android:layout_height="@dimen/base20dp" />
+            android:layout_height="@dimen/base20dp"
+            android:layout_gravity="center_vertical" />
 
         <TextView
             android:id="@+id/item_basic_authername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />
@@ -72,6 +74,7 @@
             android:id="@+id/item_basic_commontnubmer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />
@@ -80,6 +83,7 @@
             android:id="@+id/item_basic_publicdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />

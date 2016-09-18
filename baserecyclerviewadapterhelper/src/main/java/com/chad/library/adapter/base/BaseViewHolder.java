@@ -39,6 +39,8 @@ import android.widget.TextView;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -494,6 +496,23 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return (T) view;
     }
 
+    public CircleImageView getCircleImageView(int viewId) {
+        CircleImageView view = (CircleImageView) views.get(viewId);
+        if (view == null) {
+            view = (CircleImageView) convertView.findViewById(viewId);
+            views.put(viewId, view);
+        }
+        return (CircleImageView) view;
+    }
+
+    public ImageView getImageView(int viewId) {
+        ImageView view = (ImageView) views.get(viewId);
+        if (view == null) {
+            view = (ImageView) convertView.findViewById(viewId);
+            views.put(viewId, view);
+        }
+        return (ImageView) view;
+    }
 
     /**
      * Retrieves the last converted object on this view.

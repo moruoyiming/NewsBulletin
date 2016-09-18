@@ -11,6 +11,7 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.common.MsgDateUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.Date;
 import java.util.List;
@@ -53,16 +54,18 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
             case GlobalVariable.ITEM_TEXT:
                 break;
             case GlobalVariable.ITEM_SMALLPIC:
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_smallpic_rightpic), R.mipmap.shouyetu, R.mipmap.shouyetu);
+//                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_smallpic_rightpic), R.mipmap.shouyetu, R.mipmap.shouyetu);
+//                Glide.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_smallpic_rightpic));
+                Picasso.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_smallpic_rightpic));
                 break;
             case GlobalVariable.ITEM_BIGPIC:
                 helper.setText(R.id.item_bigpic_number, item.getPicList().size() + "张");
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_bigpic_toppic), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), helper.getImageView(R.id.item_bigpic_toppic), R.mipmap.shouyetu, R.mipmap.shouyetu);
                 break;
             case GlobalVariable.ITEM_EXCLUSIVE:
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), (ImageView) helper.getView(R.id.item_exclusive_im1), R.mipmap.shouyetu, R.mipmap.shouyetu);
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicTwo(), (ImageView) helper.getView(R.id.item_exclusive_im2), R.mipmap.shouyetu, R.mipmap.shouyetu);
-                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicThr(), (ImageView) helper.getView(R.id.item_exclusive_im3), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicOne(), helper.getImageView(R.id.item_exclusive_im1), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicTwo(), helper.getImageView(R.id.item_exclusive_im2), R.mipmap.shouyetu, R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext, item.getPicThr(), helper.getImageView(R.id.item_exclusive_im3), R.mipmap.shouyetu, R.mipmap.shouyetu);
                 break;
             case GlobalVariable.ITEM_VIDEO:
                 // set imgs data

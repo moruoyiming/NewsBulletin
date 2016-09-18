@@ -40,6 +40,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
             news.setAuthor("腾讯网");
             news.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
             news.setTitle("可以用谷歌眼镜做的10件酷事：导航、玩游戏");
+            news.setPicOne("http://p0.qhimg.com/t013fe2b1888f2cab96.jpg?size=750x1125");
             List<String> url_list = new ArrayList<String>();
             if(i%2 == 1){
                 String url1 = "http://img1.imgtn.bdimg.com/it/u=1205280251,2634350720&fm=21&gp=0.jpg";

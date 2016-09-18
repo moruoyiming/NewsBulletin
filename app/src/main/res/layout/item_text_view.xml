@@ -9,8 +9,7 @@
     <RelativeLayout
         android:id="@+id/item_text_center"
         android:layout_width="match_parent"
-        android:layout_height="50dip"
-        >
+        android:layout_height="50dip">
 
         <TextView
             android:id="@+id/item_basic_title"
@@ -30,11 +29,13 @@
             android:id="@+id/item_basic_autherhead"
             android:layout_width="@dimen/base20dp"
             android:layout_height="@dimen/base20dp"
-          />
+            android:layout_gravity="center_vertical" />
+
         <TextView
             android:id="@+id/item_basic_authername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />
@@ -43,6 +44,7 @@
             android:id="@+id/item_basic_commontnubmer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />
@@ -51,6 +53,7 @@
             android:id="@+id/item_basic_publicdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />

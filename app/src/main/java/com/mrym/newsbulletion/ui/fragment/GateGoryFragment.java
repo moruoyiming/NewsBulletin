@@ -35,11 +35,10 @@ import butterknife.ButterKnife;
 public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements GateGoryView {
     @Bind(R.id.category_list)
     XRecyclerView categoryList;
-    private String TAG = "GateGoryFragment";
-    private NewsAdapter mNewAdapter;
-    private List<NewsEntity> mNews;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
+    private NewsAdapter mNewAdapter;
+    private List<NewsEntity> mNews;
     private String mCurrentCate = null;
 
     @Override
@@ -92,8 +91,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
                 mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
                 break;
             case GlobalVariable.ACTION_LOAD_MORE:
-                mCurrentPageIndex++;
-                mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
+//                mCurrentPageIndex++;
+//                mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
                 break;
         }
     }
