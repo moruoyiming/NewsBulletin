@@ -22,7 +22,7 @@
             android:background="@mipmap/shouyetu" />
 
         <TextView
-            android:id="@+id/item_smallpic_title"
+            android:id="@+id/item_basic_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@id/item_smallpic_rightpic"
@@ -39,13 +39,13 @@
         android:layout_gravity="center"
         android:orientation="horizontal">
 
-        <android.support.v4.widget.CircleImageView
-        android:id="@+id/item_smallpic_autherhead"
-        android:layout_width="@dimen/base30dp"
-        android:layout_height="@dimen/base30dp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_basic_autherhead"
+            android:layout_width="@dimen/base30dp"
+            android:layout_height="@dimen/base30dp" />
 
         <TextView
-            android:id="@+id/item_smallpic_authername"
+            android:id="@+id/item_basic_authername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base5dp"
@@ -53,7 +53,7 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/item_smallpic_commontnubmer"
+            android:id="@+id/item_basic_commontnubmer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base5dp"
@@ -61,7 +61,7 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/item_smallpic_publicdate"
+            android:id="@+id/item_basic_publicdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base5dp"

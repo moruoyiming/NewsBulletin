@@ -118,6 +118,36 @@ public class GlideUtils {
      */
     public static String LOAD_GIF = "GLIDEUTILS_GLIDE_LOAD_GIF";
 
+
+    /**
+     * 头像图片去掉加载动画
+     *
+     * @param context
+     * @param path
+     * @param imageView
+     * @param placeid
+     * @param errorid
+     */
+    public void LoadCircleImageViewBitmap(Context context, String path, ImageView imageView, int placeid, int errorid) {
+        if (path == null || imageView == null) {
+            return;
+        }
+        Glide.with(context).load(path).dontAnimate().placeholder(placeid).error(errorid).into(imageView);
+    }
+    /**
+     * 加载普通图片
+     * @param context
+     * @param path
+     * @param imageView
+     * @param placeid
+     * @param errorid
+     */
+    public void LoadImageViewBitmap(Context context, String path, ImageView imageView, int placeid, int errorid) {
+        if (path == null || imageView == null) {
+            return;
+        }
+        Glide.with(context).load(path).crossFade().placeholder(placeid).error(errorid).into(imageView);
+    }
     /**
      * 使用Application上下文，Glide请求将不受Activity/Fragment生命周期控制
      * 使用activity 会受到Activity生命周期控制
@@ -137,19 +167,6 @@ public class GlideUtils {
             Glide.with(context).load(path).asGif().crossFade().into(imageView);
         }
     }
-
-    /**
-     * 头像图片去掉加载动画
-     * @param context
-     * @param path
-     * @param imageView
-     * @param placeid
-     * @param errorid
-     */
-    public void LoadContextBitmap(Context context, String path, ImageView imageView, int placeid, int errorid) {
-        Glide.with(context).load(path).dontAnimate().placeholder(placeid).error(errorid).into(imageView);
-    }
-
     /**
      * Glide请求图片，会受到Fragment 生命周期控制。
      *

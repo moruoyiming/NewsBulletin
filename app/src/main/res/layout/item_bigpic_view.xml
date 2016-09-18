@@ -15,7 +15,7 @@
         android:layout_gravity="center">
 
         <TextView
-            android:id="@+id/item_bigpic_title"
+            android:id="@+id/item_basic_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -25,8 +25,16 @@
             android:id="@+id/item_bigpic_toppic"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base180dp"
-            android:layout_below="@id/item_bigpic_title"
+            android:layout_below="@id/item_basic_title"
             android:background="@mipmap/shouyetu" />
+
+        <TextView
+            android:id="@+id/item_bigpic_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/base5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
     <LinearLayout
@@ -36,13 +44,13 @@
         android:layout_gravity="center"
         android:orientation="horizontal">
 
-        <android.support.v4.widget.CircleImageView
-            android:id="@+id/item_bigpic_autherhead"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_basic_autherhead"
             android:layout_width="@dimen/base30dp"
             android:layout_height="@dimen/base30dp" />
 
         <TextView
-            android:id="@+id/item_bigpic_authername"
+            android:id="@+id/item_basic_authername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base5dp"
@@ -50,7 +58,7 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/item_bigpic_commontnubmer"
+            android:id="@+id/item_basic_commontnubmer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base5dp"
@@ -58,7 +66,7 @@
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/item_bigpic_publicdate"
+            android:id="@+id/item_basic_publicdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/base5dp"

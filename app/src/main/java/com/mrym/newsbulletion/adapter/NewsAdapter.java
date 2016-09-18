@@ -1,12 +1,20 @@
 package com.mrym.newsbulletion.adapter;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.utils.GlideUtils;
+import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 
+import java.util.Date;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -32,6 +40,32 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
 
     @Override
     protected void convert(BaseViewHolder helper, NewsEntity item) {
-
+        if (item == null) {
+            return;
+        }
+        helper.setText(R.id.item_basic_title, item.getTitle());
+        helper.setText(R.id.item_basic_authername, item.getAuthor());
+        helper.setText(R.id.item_basic_commontnubmer, item.getCommentNum()+"评论");
+        helper.setText(R.id.item_basic_publicdate, MsgDateUtils.getTimestampString(new Date(item.getPublishTime())));
+        GlideUtils.getInstance().LoadCircleImageViewBitmap(mContext,item.getHeadimg(),(CircleImageView)helper.getView(R.id.item_basic_autherhead),R.mipmap.touxiang,R.mipmap.touxiang);
+        switch (helper.getItemViewType()) {
+            case GlobalVariable.ITEM_TEXT:
+                break;
+            case GlobalVariable.ITEM_SMALLPIC:
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicOne(),(ImageView)helper.getView(R.id.item_smallpic_rightpic),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                break;
+            case GlobalVariable.ITEM_BIGPIC:
+                helper.setText(R.id.item_bigpic_number, item.getPicList().size()+"张");
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicOne(),(ImageView)helper.getView(R.id.item_bigpic_toppic),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                break;
+            case GlobalVariable.ITEM_EXCLUSIVE:
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicOne(),(ImageView)helper.getView(R.id.item_exclusive_im1),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicTwo(),(ImageView)helper.getView(R.id.item_exclusive_im2),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                GlideUtils.getInstance().LoadImageViewBitmap(mContext,item.getPicThr(),(ImageView)helper.getView(R.id.item_exclusive_im3),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                break;
+            case GlobalVariable.ITEM_VIDEO:
+                // set imgs data
+                break;
+        }
     }
 }
