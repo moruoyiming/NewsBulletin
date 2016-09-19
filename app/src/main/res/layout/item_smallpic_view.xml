@@ -26,7 +26,8 @@
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@id/item_smallpic_rightpic"
             android:textColor="@color/txt_color"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
 
 
     </RelativeLayout>

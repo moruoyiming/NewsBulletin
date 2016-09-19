@@ -15,7 +15,9 @@
             android:id="@+id/item_basic_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColor="@color/txt_color" />
+            android:textColor="@color/txt_color"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <LinearLayout
@@ -47,7 +49,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
-            android:textSize="10sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/item_basic_publicdate"

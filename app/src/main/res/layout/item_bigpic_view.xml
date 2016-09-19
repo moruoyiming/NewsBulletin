@@ -21,11 +21,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/txt_color"
-            android:textSize="@dimen/sp_16" />
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/item_bigpic_toppic"
             android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/base2dp"
             android:background="@mipmap/shouyetu"
             android:layout_height="@dimen/base180dp"
             android:layout_below="@id/item_basic_title" />
