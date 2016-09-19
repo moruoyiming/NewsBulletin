@@ -27,7 +27,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Shawn on 2016/5/17.
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class GuideActivity extends Activity {
     private static final String TAG = GuideActivity.class.getCanonicalName();

@@ -14,9 +14,10 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 
-
 /**
- * Created by Shawn on 2016/3/10.
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class DialogView {
     private static final String TAG = DialogView.class.getCanonicalName();

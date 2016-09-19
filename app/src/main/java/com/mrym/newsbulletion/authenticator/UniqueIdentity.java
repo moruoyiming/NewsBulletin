@@ -18,14 +18,6 @@ import java.security.NoSuchAlgorithmException;
 public class UniqueIdentity {
     private static UniqueIdentity INSTANCE;
     private Context mContext;
-    private final String USER_UNIQUE_PREFIX = "user-";
-    private final String USER_STATE_UNIQUE_PREFIX = USER_UNIQUE_PREFIX + "state-";
-    private final String GROUP_UNIQUE_PREFIX = "shop-";
-    //private final String GAME_TYPE_UNIQUE_PREFIX = "game-type-";
-    //private final String GAME_UNIQUE_PREFIX = "game-";
-    public final String SYSTEM_PUSH_UNIQUE_NAME = "system-push";
-    private final String COMMENT_DYNAMIC = USER_UNIQUE_PREFIX + "comment-dynamic-";
-    //private String mySelfIdentity = "";
     private String mCombinedDeviceId;
 
     private UniqueIdentity(Context context) {
@@ -158,66 +150,4 @@ public class UniqueIdentity {
         return m_szUniqueID.toUpperCase();
     }
 
-    /**
-     * 获取用户唯一标识
-     *
-     * @param userId 用户ID
-     * @param assign 是否赋值
-     * @return 唯一标识
-     **/
-    private String getUserUnique(String userId, boolean assign) {
-        //userId = "test_client";
-        //Long myUserId = Long.valueOf(userId);
-        //if (assign) mySelfIdentity = userId;
-        if (userId == null || userId.trim().equals("")) {
-            if (mCombinedDeviceId == null) {
-                mCombinedDeviceId = getCombinedDeviceId();
-            }
-            //mySelfIdentity = mCombinedDeviceId;
-//            if (!mySelfIdentity.equals("") && !userId.equals(mySelfIdentity)) {
-//                ClientConnection.getInstance(mContext).disconnection();
-//            }
-            return mCombinedDeviceId;
-        }
-        return USER_UNIQUE_PREFIX + userId;
-    }
-
-    public String getUserUniqueAssign(String userId) {
-        return getUserUnique(userId, true);
-    }
-
-    public String getUserUniqueNotAssign(String userId) {
-        return getUserUnique(userId, false);
-    }
-
-    /**
-     * 获取用户状态唯一标识
-     **/
-    public String getUserStateUnique(String userId) {
-        if (userId == null) return null;
-        return USER_STATE_UNIQUE_PREFIX + userId;
-    }
-
-    /**
-     * 获取群组唯一标识
-     *
-     * @param groupId 群组ID
-     * @return 唯一标识
-     **/
-
-    public String getGroupUnique(String groupId) {
-        if (groupId == null) return null;
-        return GROUP_UNIQUE_PREFIX + groupId;
-    }
-
-    /**
-     * 动态评论唯一标识
-     *
-     * @param userId 用户id
-     * @return 唯一标识
-     **/
-    public String getCommentDynamicUnique(String userId) {
-        if (userId == null) return null;
-        return COMMENT_DYNAMIC + userId;
-    }
 }

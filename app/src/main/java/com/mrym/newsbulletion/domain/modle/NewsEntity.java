@@ -1,10 +1,14 @@
 package com.mrym.newsbulletion.domain.modle;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
+ */
 public class NewsEntity implements Serializable {
     /**
      * 新闻类别 ID

@@ -1,7 +1,9 @@
 package com.mrym.newsbulletion.domain.constans;
 
 /**
- * Created by Shawn on 2016/8/18.
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class UrlFactory {
     //登陆接口

@@ -151,13 +151,6 @@ public class AccountTool {
         return -1;
     }
 
-    /**
-     * 获取账户唯一标识
-     **/
-    public String getAccountUnique() {
-        return UniqueIdentity.getInstance(mContext).getUserUniqueNotAssign(String.valueOf(getAccountId()));
-    }
-
     public void removeAccount() {
         Account account = getCurrentAccount();
         if (account == null) {

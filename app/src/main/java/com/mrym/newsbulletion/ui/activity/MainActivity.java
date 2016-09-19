@@ -23,7 +23,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Shawn on 2016/8/18.
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
     public static String TAG = MainActivity.class.getCanonicalName();

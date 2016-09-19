@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Shawn on 2016/8/18.
+ * Created by Jian on 2016/9/19.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class GlobalVariable {
     public static final String SUCCESS = "success";
@@ -21,7 +23,6 @@ public class GlobalVariable {
     public static final String FIRST_LOGIN_STATE = "FIRST_LOGIN_STATE";
     public static final int SUCCESS_CODE = 200;
     public static final String EXTRA_DEVICE_ADDRESS = "device_address";
-    public static final String VERSION_KEY_ENTER_GUIDE = "ZHANG_KONG_HU_DONG_ENTER_GUIDE";
 
     @SuppressLint("NewApi")
     public static String getLogSavePath() {
