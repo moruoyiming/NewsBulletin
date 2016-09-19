@@ -9,14 +9,14 @@
     <RelativeLayout
         android:id="@+id/item_smallpic_center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="110dip"
+        android:layout_gravity="center">
 
         <ImageView
             android:id="@+id/item_smallpic_rightpic"
             android:layout_width="@dimen/base130dp"
             android:layout_height="@dimen/base100dp"
-            android:layout_alignParentRight="true"
-            android:scaleType="fitCenter" />
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/item_basic_title"

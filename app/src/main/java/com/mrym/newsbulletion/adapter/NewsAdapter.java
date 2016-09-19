@@ -1,73 +1,106 @@
-//package com.mrym.newsbulletion.adapter;
-//
-//import android.content.Context;
-//import android.util.Log;
-//import android.widget.ImageView;
-//
-//import com.bumptech.glide.Glide;
-//import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-//import com.chad.library.adapter.base.BaseViewHolder;
-//import com.mrym.newsbulletion.R;
-//import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-//import com.mrym.newsbulletion.domain.modle.NewsEntity;
-//import com.mrym.newsbulletion.utils.GlideUtils;
-//import com.mrym.newsbulletion.utils.common.MsgDateUtils;
-//import com.squareup.picasso.Picasso;
-//
-//import java.util.Date;
-//import java.util.List;
-//
-//import de.hdodenhof.circleimageview.CircleImageView;
-//
-//
-///**
-// * Created by Jian on 2016/9/13.
-// * Email: 798774875@qq.com
-// * Github: https://github.com/moruoyiming
-// */
-//public class NewsAdapter extends BaseMultiItemQuickAdapter<NewsEntity> {
-//    /**
-//     * Same as QuickAdapter#QuickAdapter(Context,int) but with
-//     * some initialization data.
-//     *
-//     * @param data A new list is created out of this one to avoid mutable list
-//     */
-//    public NewsAdapter(Context context, List<NewsEntity> data) {
-//        super(data);
-//        addItemType(GlobalVariable.ITEM_TEXT, R.layout.item_text_view);
-//        addItemType(GlobalVariable.ITEM_SMALLPIC, R.layout.item_smallpic_view);
-//        addItemType(GlobalVariable.ITEM_BIGPIC, R.layout.item_bigpic_view);
-//        addItemType(GlobalVariable.ITEM_EXCLUSIVE, R.layout.item_exclusive_view);
-//        addItemType(GlobalVariable.ITEM_VIDEO, R.layout.item_video_view);
-//    }
-//
-//    @Override
-//    protected void convert(BaseViewHolder helper, NewsEntity item) {
-//        Log.i("helper",helper.getItemViewType()+"");
-//        Log.i("convert",item.toString());
-//        helper.setText(R.id.item_basic_title, item.getTitle());
-//        helper.setText(R.id.item_basic_authername, item.getAuthor());
-//        helper.setText(R.id.item_basic_commontnubmer, item.getCommentNum() + "评论");
-//        helper.setText(R.id.item_basic_publicdate, MsgDateUtils.getTimestampString(new Date(item.getPublishTime())));
-//        Picasso.with(mContext).load(item.getHeadimg()).placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(helper.getImageView(R.id.item_basic_autherhead));
-//        switch (item.getNewType()) {
-//            case GlobalVariable.ITEM_TEXT:
-//                break;
-//            case GlobalVariable.ITEM_SMALLPIC:
-//                Picasso.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_smallpic_rightpic));
-//                break;
-//            case GlobalVariable.ITEM_BIGPIC:
-//                helper.setText(R.id.item_bigpic_number, item.getPicList().size() + "张");
-//                Picasso.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_bigpic_toppic));
-//                break;
-//            case GlobalVariable.ITEM_EXCLUSIVE:
-//                Picasso.with(mContext).load(item.getPicOne()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_exclusive_im1));
-//                Picasso.with(mContext).load(item.getPicTwo()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_exclusive_im2));
-//                Picasso.with(mContext).load(item.getPicThr()).placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(helper.getImageView(R.id.item_exclusive_im3));
-//                break;
-//            case GlobalVariable.ITEM_VIDEO:
-//                // set imgs data
-//                break;
-//        }
-//    }
-//}
+package com.mrym.newsbulletion.adapter;
+
+import android.animation.Animator;
+import android.app.Activity;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.bumptech.glide.Glide;
+import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.utils.common.MsgDateUtils;
+import com.squareup.picasso.Picasso;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by Jian on 2016/9/19.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
+ */
+public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
+
+    private final String TAG = "NewsAdapter";
+    private LayoutInflater mInflater;
+    private Context mContext;
+
+    public NewsAdapter(List<NewsEntity> list, Context context) {
+        super(list, context);
+        this.mContext = context;
+        this.mInflater = LayoutInflater.from(mContext);
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = null;
+        switch (viewType) {
+            case GlobalVariable.ITEM_TEXT:
+                //接收文本
+                view = mInflater.inflate(R.layout.item_text_view, parent, false);
+                break;
+            case GlobalVariable.ITEM_SMALLPIC:
+                view = mInflater.inflate(R.layout.item_smallpic_view, parent, false);
+                break;
+            case GlobalVariable.ITEM_BIGPIC:
+                view = mInflater.inflate(R.layout.item_bigpic_view, parent, false);
+                break;
+            case GlobalVariable.ITEM_EXCLUSIVE:
+                view = mInflater.inflate(R.layout.item_exclusive_view, parent, false);
+                break;
+        }
+        return new NewsViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        super.onBindViewHolder(holder, position);
+        NewsViewHolder hd = (NewsViewHolder) holder;
+        NewsEntity newsEntity = list.get(position);
+        Log.d(TAG, "newsEntity内容：" + newsEntity.toString());
+        hd.getmAutherName().setText(newsEntity.getAuthor());
+        hd.getmTiltle().setText(newsEntity.getTitle());
+        hd.getmCommontNumber().setText(newsEntity.getCommentNum() + "评论");
+        hd.getmPublicdate().setText(MsgDateUtils.getTimestampString(new Date(newsEntity.getPublishTime())));
+        Glide.with(mContext).load(newsEntity.getHeadimg()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
+        switch (getItemViewType(position)) {
+            case GlobalVariable.ITEM_TEXT:
+                break;
+            case GlobalVariable.ITEM_BIGPIC:
+                Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
+                break;
+            case GlobalVariable.ITEM_SMALLPIC:
+                Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
+                break;
+            case GlobalVariable.ITEM_EXCLUSIVE:
+                Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
+                Glide.with(mContext).load(newsEntity.getPicTwo()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
+                Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
+                break;
+            case GlobalVariable.ITEM_VIDEO:
+                break;
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        NewsEntity msgContent = list.get(position);
+        return msgContent.getNewType();
+
+    }
+
+    @Override
+    protected Animator[] getAnimators(View view) {
+        return new Animator[0];
+    }
+}

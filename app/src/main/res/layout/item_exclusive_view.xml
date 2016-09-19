@@ -30,21 +30,24 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/base100dp"
                 android:layout_weight="1"
-                android:scaleType="fitCenter" />
+                android:layout_margin="@dimen/base2dp"
+                />
 
             <ImageView
                 android:id="@+id/item_exclusive_im2"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/base100dp"
+                android:layout_margin="@dimen/base2dp"
                 android:layout_weight="1"
-                android:scaleType="fitCenter" />
+                />
 
             <ImageView
                 android:id="@+id/item_exclusive_im3"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/base100dp"
+                android:layout_margin="@dimen/base2dp"
                 android:layout_weight="1"
-                android:scaleType="fitCenter" />
+               />
         </LinearLayout>
     </RelativeLayout>
 

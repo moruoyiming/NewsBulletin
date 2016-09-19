@@ -26,9 +26,7 @@
             android:id="@+id/item_bigpic_toppic"
             android:layout_width="match_parent"
             android:layout_height="@dimen/base180dp"
-            android:layout_below="@id/item_basic_title"
-            android:background="@mipmap/shouyetu"
-            android:scaleType="fitCenter" />
+            android:layout_below="@id/item_basic_title" />
 
         <TextView
             android:id="@+id/item_bigpic_number"

@@ -3,6 +3,7 @@ package com.mrym.newsbulletion.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,7 @@ import android.view.ViewGroup;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.adapter.NewsAdapter2;
-import com.mrym.newsbulletion.adapter.RecyclerViewAdapter;
+import com.mrym.newsbulletion.adapter.NewsAdapter;
 import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
@@ -37,10 +37,11 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     XRecyclerView categoryList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
-    private NewsAdapter2 ma;
-    private RecyclerViewAdapter adapter;
+    private NewsAdapter ma;
+//    private RecyclerViewAdapter adapter;
     private List<NewsEntity> mNews;
     private String mCurrentCate = null;
+    private int i = 0;
 
     @Override
     protected GateGoryPresenter createPresenter() {
@@ -59,9 +60,9 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mNews = new ArrayList<>();
-        ma = new NewsAdapter2(mNews, getActivity());
-        adapter=new RecyclerViewAdapter(getActivity());
-        categoryList.setAdapter(adapter);
+        ma = new NewsAdapter(mNews, getActivity());
+//        adapter = new RecyclerViewAdapter(getActivity());
+        categoryList.setAdapter(ma);
         int position = FragmentPagerItem.getPosition(getArguments());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
         mCurrentCate = homeCateGories.get(position).getField();
@@ -82,6 +83,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             }
         });
         categoryList.setRefreshing(true);
+        Log.i("onActivityCreated", "界面被创建" + i++);
     }
 
     @Override
@@ -112,8 +114,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 
     @Override
     public void loadingSuccess(List<NewsEntity> news) {
-//        ma.addAll(news);
-        adapter.setDatas(news);
+        ma.addAll(news);
+//        adapter.setDatas(news);
     }
 
 
