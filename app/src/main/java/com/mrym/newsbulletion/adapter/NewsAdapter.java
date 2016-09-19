@@ -63,7 +63,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
         try {
             NewsViewHolder hd = (NewsViewHolder) holder;
             NewsEntity newsEntity = list.get(position);
-            Log.d(TAG, "newsEntity内容：" + newsEntity.toString());
+//            Log.d(TAG, "newsEntity内容：" + newsEntity.toString());
             hd.getmAutherName().setText(newsEntity.getAuthor());
             hd.getmTiltle().setText(newsEntity.getTitle());
             hd.getmCommontNumber().setText(newsEntity.getCommentNum() + "评论");

@@ -183,8 +183,8 @@ public class DatabaseUtil<T> {
 
 
     public File getDbPath() {
-        String userId = AccountTool.getInstance().getAccountUnique();
-        return userId == null || userId.trim().equals("") ? new File(dbSavePath) : new File(dbSavePath + File.separator + UniqueIdentity.getInstance(mContext).getUserUniqueNotAssign(userId));
+        String userId = String.valueOf(AccountTool.getInstance().getAccountId());
+        return userId == null || userId.trim().equals("") ? new File(dbSavePath) : new File(dbSavePath + File.separator + UniqueIdentity.getInstance(mContext).getIMEI());
     }
 
     /**

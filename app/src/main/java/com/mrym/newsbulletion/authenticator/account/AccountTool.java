@@ -68,11 +68,6 @@ public class AccountTool {
         saveAccount(userName, password, data);
     }
 
-//     public void phoneLogin(String userName, String password, String user,
-//                            DefaultListener defaultListener) {
-//         mDefaultListener = defaultListener;
-//         phoneLogin(userName, password, user);
-//     }
 
     public void saveAccount(String userName, String password, String data) {
         final Account account = new Account(userName, mPackageName);

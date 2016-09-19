@@ -38,7 +38,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
     private NewsAdapter ma;
-//    private RecyclerViewAdapter adapter;
     private List<NewsEntity> mNews;
     private String mCurrentCate = null;
     private int i = 0;
@@ -61,7 +60,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         super.onActivityCreated(savedInstanceState);
         mNews = new ArrayList<>();
         ma = new NewsAdapter(mNews, getActivity());
-//        adapter = new RecyclerViewAdapter(getActivity());
         categoryList.setAdapter(ma);
         int position = FragmentPagerItem.getPosition(getArguments());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
@@ -84,6 +82,16 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         });
         categoryList.setRefreshing(true);
         Log.i("onActivityCreated", "界面被创建" + i++);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            //TODO now visible to user
+        } else {
+            //TODO now invisible to user
+        }
     }
 
     @Override
@@ -115,7 +123,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     @Override
     public void loadingSuccess(List<NewsEntity> news) {
         ma.addAll(news);
-//        adapter.setDatas(news);
     }
 
 
@@ -137,6 +144,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.i("onActivityCreated", "界面被销毁" + i++);
         mNews = null;
         mvpPresenter = null;
         categoryList = null;

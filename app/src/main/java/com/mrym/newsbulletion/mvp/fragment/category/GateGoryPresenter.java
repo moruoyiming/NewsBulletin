@@ -25,7 +25,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
     }
 
     public void getGategoryData(String gateGory, int pageIndex) {
-        Log.i("pageIndex", "当前页数：" + pageIndex);
+//        Log.i("pageIndex", "当前页数：" + pageIndex);
         List<NewsEntity> newsList = new ArrayList<NewsEntity>();
         NewsEntity newsEntity = new NewsEntity();
         newsEntity.setId(0);
