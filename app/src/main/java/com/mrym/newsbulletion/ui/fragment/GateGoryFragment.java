@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.adapter.NewsAdapter;
+import com.mrym.newsbulletion.adapter.NewsAdapter2;
+import com.mrym.newsbulletion.adapter.RecyclerViewAdapter;
 import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
@@ -18,7 +19,6 @@ import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
-import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import java.util.ArrayList;
@@ -37,7 +37,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     XRecyclerView categoryList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
-    private NewsAdapter mNewAdapter;
+    private NewsAdapter2 ma;
+    private RecyclerViewAdapter adapter;
     private List<NewsEntity> mNews;
     private String mCurrentCate = null;
 
@@ -58,7 +59,9 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mNews = new ArrayList<>();
-        mNewAdapter = new NewsAdapter(getActivity(), mNews);
+        ma = new NewsAdapter2(mNews, getActivity());
+        adapter=new RecyclerViewAdapter(getActivity());
+        categoryList.setAdapter(adapter);
         int position = FragmentPagerItem.getPosition(getArguments());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
         mCurrentCate = homeCateGories.get(position).getField();
@@ -66,7 +69,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
         categoryList.setLoadingMoreProgressStyle(ProgressStyle.BallBeat);
-        categoryList.setAdapter(mNewAdapter);
         categoryList.setLoadingMoreEnabled(true);
         categoryList.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
@@ -110,9 +112,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 
     @Override
     public void loadingSuccess(List<NewsEntity> news) {
-        mNews.addAll(news);
-        ToastUtils.show("加载的数据: "+news.size()+"总数："+mNews.size());
-        mNewAdapter.notifyDataSetChanged();
+//        ma.addAll(news);
+        adapter.setDatas(news);
     }
 
 

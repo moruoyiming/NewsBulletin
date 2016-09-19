@@ -72,10 +72,10 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity2.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
         newsEntity2.setTitle("习近平谈中国人民抗日战争");
         String url12 = "http://himg2.huanqiu.com/attachment2010/2016/0918/20160918083147693.jpg";
-        newsEntity2.setPicOne(url11);
+        newsEntity2.setPicOne(url12);
         List<String> url_list12 = new ArrayList<String>();
         url_list12.add(url12);
-        newsEntity2.setNewType(1);
+        newsEntity2.setNewType(2);
         newsEntity2.setPicList(url_list2);
         newsEntity2.setPublishTime(Long.valueOf(1474188530));
         newsEntity2.setReadStatus(false);

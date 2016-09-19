@@ -5,65 +5,124 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import java.io.Serializable;
 import java.util.List;
 
-public class NewsEntity implements MultiItemEntity,Serializable {
-	/** 新闻类别 ID */
-	private Integer newsCategoryId;
-	/** 新闻类型 */
-	private String newsCategory;
-	/** 标记状态，如推荐之类的 */
-	private Integer mark;
-	/** 评论数量 */
-	private Integer commentNum;
-	/** ID */
-	private Integer id;
-	/** 新闻ID */
-	private Integer newsId;
-	/** 标题 */
-	private String title;
-	/** 新闻源 */
-	private String source;
-	/** 发布时间 */
-	private Long publishTime;
-	/** 总结 */
-	private String summary;
-	/** 摘要 */
-	private String newsAbstract;
-	/** 评论 */
-	private String comment;
-	/** 特殊标签，如广告推广之类的 ，可以为空 */
-	private String local;
-	/** 图片列表字符串 */
-	private String picListString;
-	/** 图片1 URL */
-	private String picOne;
-	/** 图片2 URL */
-	private String picTwo;
-	/** 图片3 URL */
-	private String picThr;
-	/** 图片 列表 */
-	private List<String> picList;
-	/** 图片类型是否为大图 */
-	private Boolean isLarge;
-	/** 阅读状态 ，读过的话显示灰色背景 */
-	private Boolean readStatus;
-	/** 收藏状态 */
-	private Boolean collectStatus;
-	/** 喜欢 状态 */
-	private Boolean likeStatus;
-	/** 感兴趣状态 */
-	private Boolean interestedStatus;
-	/** 视频源 URL*/
+public class NewsEntity implements Serializable {
+    /**
+     * 新闻类别 ID
+     */
+    private Integer newsCategoryId;
+    /**
+     * 新闻类型
+     */
+    private String newsCategory;
+    /**
+     * 标记状态，如推荐之类的
+     */
+    private Integer mark;
+    /**
+     * 评论数量
+     */
+    private Integer commentNum;
+    /**
+     * ID
+     */
+    private Integer id;
+    /**
+     * 新闻ID
+     */
+    private Integer newsId;
+    /**
+     * 标题
+     */
+    private String title;
+    /**
+     * 新闻源
+     */
+    private String source;
+    /**
+     * 发布时间
+     */
+    private Long publishTime;
+    /**
+     * 总结
+     */
+    private String summary;
+    /**
+     * 摘要
+     */
+    private String newsAbstract;
+    /**
+     * 评论
+     */
+    private String comment;
+    /**
+     * 特殊标签，如广告推广之类的 ，可以为空
+     */
+    private String local;
+    /**
+     * 图片列表字符串
+     */
+    private String picListString;
+    /**
+     * 图片1 URL
+     */
+    private String picOne;
+    /**
+     * 图片2 URL
+     */
+    private String picTwo;
+    /**
+     * 图片3 URL
+     */
+    private String picThr;
+    /**
+     * 图片 列表
+     */
+    private List<String> picList;
+    /**
+     * 图片类型是否为大图
+     */
+    private Boolean isLarge;
+    /**
+     * 阅读状态 ，读过的话显示灰色背景
+     */
+    private Boolean readStatus;
+    /**
+     * 收藏状态
+     */
+    private Boolean collectStatus;
+    /**
+     * 喜欢 状态
+     */
+    private Boolean likeStatus;
+    /**
+     * 感兴趣状态
+     */
+    private Boolean interestedStatus;
+    /**
+     * 视频源 URL
+     */
     private String videoUrl;
-    /** 视频图片 URL*/
+    /**
+     * 视频图片 URL
+     */
     private String videoPic;
-    /** 类型 */
+    /**
+     * 类型
+     */
     private int newType;
-    /** 作者 */
+    /**
+     * 作者
+     */
     private String author;
-    /** 作者头像 */
+    /**
+     * 作者头像
+     */
     private String headimg;
-    /** 是否已读 */
+    /**
+     * 是否已读
+     */
     private boolean read;
+
 
     public Integer getNewsCategoryId() {
         return newsCategoryId;
@@ -332,8 +391,4 @@ public class NewsEntity implements MultiItemEntity,Serializable {
                 '}';
     }
 
-    @Override
-    public int getItemType() {
-        return getNewType();
-    }
 }
