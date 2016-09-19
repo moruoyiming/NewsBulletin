@@ -13,18 +13,20 @@
         android:id="@+id/item_bigpic_center"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base200dp"
+        android:layout_margin="@dimen/base2dp"
         android:layout_gravity="center">
 
         <TextView
             android:id="@+id/item_basic_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="@color/txt_color"
             android:textSize="@dimen/sp_16" />
 
         <ImageView
             android:id="@+id/item_bigpic_toppic"
             android:layout_width="match_parent"
+            android:background="@mipmap/shouyetu"
             android:layout_height="@dimen/base180dp"
             android:layout_below="@id/item_basic_title" />
 

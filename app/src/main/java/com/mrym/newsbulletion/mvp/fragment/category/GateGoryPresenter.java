@@ -98,9 +98,9 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
             news.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
             List<String> url_list = new ArrayList<String>();
             if (i % 2 == 1) {
-                String url1 = "http://img1.imgtn.bdimg.com/it/u=1205280251,2634350720&fm=21&gp=0.jpg";
-                String url2 = "http://p0.qhimg.com/t019c6684eeb0484ea1.jpg?size=1500x1000";
-                String url3 = "http://p0.qhimg.com/t0107a32d125af97c90.jpg?size=1500x1000";
+                String url1 = "http://d.hiphotos.baidu.com/image/h%3D200/sign=d9896d755f2c11dfc1d1b82353266255/342ac65c1038534340a22db79b13b07eca808833.jpg";
+                String url2 = "http://img4.imgtn.bdimg.com/it/u=1817423038,3367055410&fm=21&gp=0.jpg";
+                String url3 = "http://img5.imgtn.bdimg.com/it/u=1614013440,1930745513&fm=21&gp=0.jpg";
                 news.setPicOne(url1);
                 news.setPicTwo(url2);
                 news.setPicThr(url3);
@@ -111,7 +111,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
                 news.setNewType(3);
             } else {
                 news.setTitle("AA用车:智能短租租车平台");
-                String url = "http://p0.qhimg.com/t01979caeefeb88b526.jpg?size=1500x1000";
+                String url = "http://p0.qhimg.com/t010ad40562d5e4fed8.jpg?size=750x1125";
                 news.setPicOne(url);
                 url_list.add(url);
                 news.setNewType(1);
@@ -126,7 +126,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
                 news.setTitle("部落战争强势回归");
                 news.setLocal("推广");
                 news.setLarge(true);
-                String url = "http://p0.qhimg.com/t0162d7001d832987be.jpg?size=1500x1000";
+                String url = "http://b.hiphotos.baidu.com/image/h%3D200/sign=203ed536fe03738dc14a0b22831ab073/91529822720e0cf34ef5e46d0246f21fbe09aa22.jpg";
                 news.setPicOne(url);
                 url_list.clear();
                 url_list.add(url);

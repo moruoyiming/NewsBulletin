@@ -60,40 +60,47 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        NewsViewHolder hd = (NewsViewHolder) holder;
-        NewsEntity newsEntity = list.get(position);
-        Log.d(TAG, "newsEntity内容：" + newsEntity.toString());
-        hd.getmAutherName().setText(newsEntity.getAuthor());
-        hd.getmTiltle().setText(newsEntity.getTitle());
-        hd.getmCommontNumber().setText(newsEntity.getCommentNum() + "评论");
-        hd.getmPublicdate().setText(MsgDateUtils.getTimestampString(new Date(newsEntity.getPublishTime())));
-        Glide.with(mContext).load(newsEntity.getHeadimg()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
-        switch (getItemViewType(position)) {
-            case GlobalVariable.ITEM_TEXT:
-                break;
-            case GlobalVariable.ITEM_BIGPIC:
-                Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
-                break;
-            case GlobalVariable.ITEM_SMALLPIC:
-                Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
-                break;
-            case GlobalVariable.ITEM_EXCLUSIVE:
-                Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
-                Glide.with(mContext).load(newsEntity.getPicTwo()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
-                Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
-                break;
-            case GlobalVariable.ITEM_VIDEO:
-                break;
+        try {
+            NewsViewHolder hd = (NewsViewHolder) holder;
+            NewsEntity newsEntity = list.get(position);
+            Log.d(TAG, "newsEntity内容：" + newsEntity.toString());
+            hd.getmAutherName().setText(newsEntity.getAuthor());
+            hd.getmTiltle().setText(newsEntity.getTitle());
+            hd.getmCommontNumber().setText(newsEntity.getCommentNum() + "评论");
+            hd.getmPublicdate().setText(MsgDateUtils.getTimestampString(new Date(newsEntity.getPublishTime())));
+            Glide.with(mContext).load(newsEntity.getHeadimg()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
+            switch (getItemViewType(position)) {
+                case GlobalVariable.ITEM_TEXT:
+                    break;
+                case GlobalVariable.ITEM_BIGPIC:
+                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
+                    break;
+                case GlobalVariable.ITEM_SMALLPIC:
+                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
+                    break;
+                case GlobalVariable.ITEM_EXCLUSIVE:
+                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
+                    Glide.with(mContext).load(newsEntity.getPicTwo()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
+                    Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
+                    break;
+                case GlobalVariable.ITEM_VIDEO:
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list == null ? 0 : list.size();
     }
 
     @Override
     public int getItemViewType(int position) {
+        if (list == null) {
+            Log.i(TAG, "list must not null");
+        }
         NewsEntity msgContent = list.get(position);
         return msgContent.getNewType();
 

@@ -9,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/item_smallpic_center"
         android:layout_width="match_parent"
-        android:layout_height="110dip"
+        android:layout_margin="@dimen/base2dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <ImageView
@@ -20,8 +21,9 @@
 
         <TextView
             android:id="@+id/item_basic_title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@id/item_smallpic_rightpic"
             android:textColor="@color/txt_color"
             android:textSize="@dimen/sp_16" />
