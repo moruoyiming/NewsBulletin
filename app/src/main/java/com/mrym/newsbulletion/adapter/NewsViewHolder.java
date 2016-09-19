@@ -9,7 +9,9 @@ import android.widget.TextView;
 import com.mrym.newsbulletion.R;
 
 /**
- * Created by Ryan on 2016/4/6.
+ * Created by Jian on 2016/9/19.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class NewsViewHolder extends RecyclerView.ViewHolder {
 
