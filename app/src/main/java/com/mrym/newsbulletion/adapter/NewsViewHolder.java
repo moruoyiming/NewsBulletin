@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.mrym.newsbulletion.R;
 
 /**
@@ -15,20 +16,22 @@ import com.mrym.newsbulletion.R;
  */
 public class NewsViewHolder extends RecyclerView.ViewHolder {
 
-    private  TextView mTiltle;
-    private  TextView mAutherName;
-    private  TextView mCommontNumber;
-    private  TextView mPublicdate;
-    private  ImageView mAutherHead;
+    private TextView mTiltle;
+    private TextView mAutherName;
+    private TextView mCommontNumber;
+    private TextView mPublicdate;
+    private ImageView mAutherHead;
 
-    private  ImageView mRightpic;
+    private ImageView mRightpic;
 
-    private  ImageView mToppic;
-    private  TextView mNumber;
+    private ImageView mToppic;
+    private TextView mNumber;
 
-    private  ImageView mBottom1;
-    private  ImageView mBottom2;
-    private  ImageView mBottom3;
+    private ImageView mBottom1;
+    private ImageView mBottom2;
+    private ImageView mBottom3;
+
+    private SimpleExoPlayerView simpleExoPlayerView;
 
     public NewsViewHolder(View itemView) {
         super(itemView);
@@ -43,7 +46,12 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         mBottom1 = (ImageView) itemView.findViewById(R.id.item_exclusive_im1);
         mBottom2 = (ImageView) itemView.findViewById(R.id.item_exclusive_im2);
         mBottom3 = (ImageView) itemView.findViewById(R.id.item_exclusive_im3);
+        simpleExoPlayerView = (SimpleExoPlayerView) itemView.findViewById(R.id.player_view);
 
+    }
+
+    public SimpleExoPlayerView getSimpleExoPlayerView() {
+        return simpleExoPlayerView;
     }
 
     public TextView getmTiltle() {
