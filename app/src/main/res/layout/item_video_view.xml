@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/item_basic_title"
+            android:layout_margin="@dimen/base2dp"
             android:focusable="true" />
     </RelativeLayout>
 
