@@ -10,6 +10,7 @@
         android:id="@+id/item_exclusive_center"
         android:layout_width="match_parent"
         android:layout_height="110dip"
+        android:layout_margin="@dimen/base2dp"
         android:layout_gravity="center">
 
         <TextView

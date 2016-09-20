@@ -9,57 +9,64 @@
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
-        android:id="@+id/item_text_center"
+        android:id="@+id/item_video_center"
         android:layout_width="match_parent"
-        android:layout_height="150dip"
-        android:layout_gravity="center">
+        android:layout_height="200dip"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/base2dp">
 
         <TextView
-            android:id="@+id/item_text_title"
+            android:id="@+id/item_basic_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/txt_color" />
+            android:textColor="@color/txt_color"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
 
         <com.google.android.exoplayer2.ui.SimpleExoPlayerView
             android:id="@+id/player_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/item_text_title"
+            android:layout_below="@id/item_basic_title"
             android:focusable="true" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_text_center"
+        android:layout_below="@id/item_video_center"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_basic_autherhead"
-            android:layout_width="@dimen/base30dp"
-            android:layout_height="@dimen/base30dp" />
+            android:layout_width="@dimen/base20dp"
+            android:layout_height="@dimen/base20dp"
+            android:layout_gravity="center_vertical" />
 
         <TextView
-            android:id="@+id/item_text_authername"
+            android:id="@+id/item_basic_authername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/item_text_commontnubmer"
+            android:id="@+id/item_basic_commontnubmer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />
 
         <TextView
-            android:id="@+id/item_text_publicdate"
+            android:id="@+id/item_basic_publicdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/base5dp"
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />

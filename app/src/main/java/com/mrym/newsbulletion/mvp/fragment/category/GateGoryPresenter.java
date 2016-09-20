@@ -83,7 +83,34 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity2.setSummary("2015年9月3日，纪念中国人民抗日战争暨世界反法西斯战争胜利70周年大会在北京天安门广场隆重举行。这是中共中央总书记、国家主席、中央军委主席习近平在大会上发表重要讲话。新华社记者兰红光摄");
         newsEntity2.setMark(1);
         newsList.add(newsEntity2);
-        for (int i = 2; i < 10; i++) {
+
+
+        NewsEntity newsEntity3 = new NewsEntity();
+        newsEntity3.setId(2);
+        newsEntity3.setNewsId(2);
+        newsEntity3.setCollectStatus(false);
+        newsEntity3.setCommentNum(10);
+        newsEntity3.setInterestedStatus(true);
+        newsEntity3.setLikeStatus(true);
+        newsEntity3.setReadStatus(false);
+        newsEntity3.setNewsCategory("推荐");
+        newsEntity3.setNewsCategoryId(2);
+        newsEntity3.setAuthor("优酷网");
+        newsEntity3.setHeadimg("http://static.youku.com/youku/dist/img/find/yk-logo-0412.png");
+        newsEntity3.setTitle("<微微一笑很倾城>不巧 我在等你");
+        String url13 = "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2847548982,4144768474&fm=58";
+        newsEntity3.setPicOne(url13);
+        List<String> url_list13 = new ArrayList<String>();
+        url_list13.add(url13);
+        newsEntity3.setNewType(4);
+        newsEntity3.setPicList(url_list13);
+        newsEntity3.setPublishTime(Long.valueOf(1474188530));
+        newsEntity3.setReadStatus(false);
+        newsEntity3.setSource("优酷网视频");
+        newsEntity3.setSummary("《微微一笑很倾城》是根据顾漫同名小说改编，由上海剧酷文化传播有限公司出品的都市青春偶像剧，由林玉芬执导，郑爽、杨洋、毛晓彤、白宇、牛骏峰、郑业成、崔航等联袂主演。");
+        newsEntity3.setMark(1);
+        newsList.add(newsEntity3);
+        for (int i = 3; i < 10; i++) {
             NewsEntity news = new NewsEntity();
             news.setId(i);
             news.setNewsId(i);
