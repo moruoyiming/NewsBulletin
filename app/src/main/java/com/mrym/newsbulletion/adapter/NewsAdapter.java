@@ -53,6 +53,9 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
             case GlobalVariable.ITEM_EXCLUSIVE:
                 view = mInflater.inflate(R.layout.item_exclusive_view, parent, false);
                 break;
+            case GlobalVariable.ITEM_VIDEO:
+                view = mInflater.inflate(R.layout.item_video_view, parent, false);
+                break;
         }
         return new NewsViewHolder(view);
     }

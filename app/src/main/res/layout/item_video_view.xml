@@ -11,15 +11,21 @@
     <RelativeLayout
         android:id="@+id/item_text_center"
         android:layout_width="match_parent"
-        android:layout_height="50dip"
+        android:layout_height="150dip"
         android:layout_gravity="center">
 
         <TextView
             android:id="@+id/item_text_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:textColor="@color/txt_color" />
+
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/item_text_title"
+            android:focusable="true" />
     </RelativeLayout>
 
     <LinearLayout
