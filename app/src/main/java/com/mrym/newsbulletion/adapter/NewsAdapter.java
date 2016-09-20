@@ -2,8 +2,10 @@ package com.mrym.newsbulletion.adapter;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +16,21 @@ import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.dash.DashMediaSource;
+import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource;
+import com.google.android.exoplayer2.source.hls.HlsMediaSource;
+import com.google.android.exoplayer2.source.smoothstreaming.DefaultSsChunkSource;
+import com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource;
 import com.google.android.exoplayer2.trackselection.AdaptiveVideoTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.util.Util;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
@@ -110,7 +119,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
                     break;
                 case GlobalVariable.ITEM_VIDEO:
                     ((NewsViewHolder) holder).getSimpleExoPlayerView().setPlayer(player);
-//                    MediaSource videoSource = new ExtractorMediaSource(mp4VideoUri,...);
+                    player.setPlayWhenReady(true);
 //                    player.prepare(videoSource);
                     break;
             }
@@ -118,7 +127,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
             e.printStackTrace();
         }
     }
-
     @Override
     public int getItemCount() {
         return list == null ? 0 : list.size();
