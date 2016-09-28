@@ -98,6 +98,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity3.setAuthor("优酷网");
         newsEntity3.setHeadimg("http://static.youku.com/youku/dist/img/find/yk-logo-0412.png");
         newsEntity3.setTitle("<微微一笑很倾城>不巧 我在等你");
+        newsEntity3.setVideoPic("https://storage.googleapis.com/wvmedia/clear/h264/tears/tears.mpd");
         String url13 = "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2847548982,4144768474&fm=58";
         newsEntity3.setPicOne(url13);
         List<String> url_list13 = new ArrayList<String>();

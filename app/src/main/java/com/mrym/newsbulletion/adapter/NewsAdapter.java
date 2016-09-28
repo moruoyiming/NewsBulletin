@@ -119,6 +119,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
                     break;
                 case GlobalVariable.ITEM_VIDEO:
                     ((NewsViewHolder) holder).getSimpleExoPlayerView().setPlayer(player);
+                    newsEntity.getVideoUrl();
                     player.setPlayWhenReady(true);
 //                    player.prepare(videoSource);
                     break;
