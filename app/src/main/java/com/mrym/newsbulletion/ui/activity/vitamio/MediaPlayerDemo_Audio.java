@@ -62,10 +62,10 @@ public class MediaPlayerDemo_Audio extends Activity {
 				/**
 				 * TODO: Set the path variable to a local audio file path.
 				 */
-				path = "";
+				path = "/storage/emulated/0/DCIM/Camera/VID_20161004_143022.mp4";
 				if (path == "") {
 					// Tell the user to provide an audio file URL.
-					Toast.makeText(MediaPlayerDemo_Audio.this, "Please edit MediaPlayer_Audio Activity, " + "and set the path variable to your audio file path." + " Your audio file must be stored on sdcard.", Toast.LENGTH_LONG).show();
+					Toast.makeText(MediaPlayerDemo_Audio.this, "Please edit MediaPlayer_Audio Activity, " +path, Toast.LENGTH_LONG).show();
 					return;
 				}
 				mMediaPlayer = new MediaPlayer(this);

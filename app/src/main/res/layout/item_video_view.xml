@@ -8,28 +8,10 @@
     android:layout_marginRight="5dp"
     android:foreground="?android:attr/selectableItemBackground">
 
-    <RelativeLayout
-        android:id="@+id/item_video_center"
-        android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/base2dp">
-
-        <TextView
-            android:id="@+id/item_basic_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/txt_color"
-            android:textSize="@dimen/sp_16"
-            android:textStyle="bold" />
-
-
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_video_center"
+        android:layout_below="@+id/item_video_center"
         android:layout_gravity="center"
         android:orientation="horizontal">
 
@@ -66,5 +48,38 @@
             android:layout_marginRight="@dimen/base5dp"
             android:textSize="10sp" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_video_center"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/base2dp"
+        android:layout_marginRight="@dimen/base2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/item_basic_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/txt_color"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold" />
+        <io.vov.vitamio.widget.CenterLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/item_basic_title"
+            android:orientation="vertical" >
+
+            <SurfaceView
+                android:id="@+id/surface"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" >
+            </SurfaceView>
+        </io.vov.vitamio.widget.CenterLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

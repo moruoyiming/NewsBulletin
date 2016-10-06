@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +22,8 @@ import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 import java.util.Date;
 import java.util.List;
 
+import io.vov.vitamio.MediaPlayer;
+
 /**
  * Created by Jian on 2016/9/19.
  * Email: 798774875@qq.com
@@ -30,7 +34,10 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
-
+    private MediaPlayer mMediaPlayer;
+    private SurfaceView mPreview;
+    private SurfaceHolder holder;
+    private String path;
     public NewsAdapter(List<NewsEntity> list, Context context) {
         super(list, context);
         this.mContext = context;

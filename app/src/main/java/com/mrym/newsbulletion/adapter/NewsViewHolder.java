@@ -1,12 +1,15 @@
 package com.mrym.newsbulletion.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
+
+import io.vov.vitamio.widget.CenterLayout;
 
 /**
  * Created by Jian on 2016/9/19.
@@ -30,6 +33,8 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     private ImageView mBottom2;
     private ImageView mBottom3;
 
+    private CenterLayout conterlCenterLayout;
+    private SurfaceView surfaceView;
 
     public NewsViewHolder(View itemView) {
         super(itemView);
@@ -45,6 +50,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         mBottom2 = (ImageView) itemView.findViewById(R.id.item_exclusive_im2);
         mBottom3 = (ImageView) itemView.findViewById(R.id.item_exclusive_im3);
 
+        surfaceView = (SurfaceView) itemView.findViewById(R.id.surface);
     }
 
 
@@ -90,5 +96,13 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
 
     public ImageView getmBottom3() {
         return mBottom3;
+    }
+
+    public SurfaceView getSurfaceView() {
+        return surfaceView;
+    }
+
+    public void setSurfaceView(SurfaceView surfaceView) {
+        this.surfaceView = surfaceView;
     }
 }
