@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.ui.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,7 +22,7 @@ import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
-import com.mrym.newsbulletion.ui.activity.PlayerActivity;
+import com.mrym.newsbulletion.ui.activity.vitamio.VitamioListActivity;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
@@ -45,6 +46,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     private List<NewsEntity> mNews;
     private String mCurrentCate = null;
     private int i = 0;
+    private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener;
 
     @Override
     protected GateGoryPresenter createPresenter() {
@@ -86,15 +88,10 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         });
         categoryList.setRefreshing(true);
         Log.i("onActivityCreated", "界面被创建" + i++);
-        ma.setOnInViewClickListener(R.layout.item_video_view, new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
+        onInternalClickListener= new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsEntity values) {
-                ToastUtils.show("视频被电击1");
-                Intent intent = new Intent(getActivity(), PlayerActivity.class);
-                intent.putExtra(PlayerActivity.PREFER_EXTENSION_DECODERS, preferExtensionDecoders);
-                intent.putExtra(PlayerActivity.DRM_SCHEME_UUID_EXTRA, drmSchemeUuid.toString());
-                intent.putExtra(PlayerActivity.DRM_LICENSE_URL, drmLicenseUrl);
-                intent.putExtra(PlayerActivity.DRM_KEY_REQUEST_PROPERTIES, drmKeyRequestProperties);
+                Intent intent = new Intent(getActivity(), VitamioListActivity.class);
                 getActivity().startActivity(intent);
             }
 
@@ -102,7 +99,9 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             public void OnLongClickListener(View parentV, View v, Integer position, NewsEntity values) {
 
             }
-        });
+        };
+        ma.setOnInViewClickListener(R.id.card_view,onInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_video_center,onInternalClickListener);
     }
 
     @Override

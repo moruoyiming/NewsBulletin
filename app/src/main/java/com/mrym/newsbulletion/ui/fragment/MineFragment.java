@@ -3,6 +3,8 @@ package com.mrym.newsbulletion.ui.fragment;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.UserBean;
+import com.mrym.newsbulletion.listener.WifiStateReceiver;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.mine.MinePresenter;
 import com.mrym.newsbulletion.mvp.fragment.mine.MineView;
@@ -45,6 +48,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
 
     @Bind(R.id.main_iv_placeholder)
     ImageView mainIvPlaceholder;
+    @Bind(R.id.fragment_mine_setting)
+    ImageView wifistate;
     @Bind(R.id.profile_image)
     CircleImageView profileImage;
     @Bind(R.id.fragment_mine_collect_r1)
@@ -72,9 +77,9 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate( R.layout.fragment_mine,container, false);
+        View view = inflater.inflate(R.layout.fragment_mine, container, false);
         ButterKnife.bind(this, view);
-         return view;
+        return view;
     }
 
     @Override
@@ -82,6 +87,13 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
         super.onViewCreated(view, savedInstanceState);
         StatusBarCompat.translucentStatusBar(getActivity(), false);
         mvpPresenter.initUserData();
+        //WIFI状态接收器
+        WifiStateReceiver wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(WifiManager.RSSI_CHANGED_ACTION);
+        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        getActivity().registerReceiver(wifiReceiver, filter);
     }
 
     @Override

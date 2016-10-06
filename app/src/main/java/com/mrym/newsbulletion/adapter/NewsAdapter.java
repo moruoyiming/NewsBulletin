@@ -12,25 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.google.android.exoplayer2.DefaultLoadControl;
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.LoadControl;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.MediaSource;
-import com.google.android.exoplayer2.source.dash.DashMediaSource;
-import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource;
-import com.google.android.exoplayer2.source.hls.HlsMediaSource;
-import com.google.android.exoplayer2.source.smoothstreaming.DefaultSsChunkSource;
-import com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource;
-import com.google.android.exoplayer2.trackselection.AdaptiveVideoTrackSelection;
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
-import com.google.android.exoplayer2.util.Util;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
@@ -49,22 +30,11 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
-    SimpleExoPlayer player;
 
     public NewsAdapter(List<NewsEntity> list, Context context) {
         super(list, context);
         this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
-        // 1. Create a default TrackSelector
-        Handler mainHandler = new Handler();
-        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-        TrackSelection.Factory videoTrackSelectionFactory =
-                new AdaptiveVideoTrackSelection.Factory(bandwidthMeter);
-        TrackSelector trackSelector =
-                new DefaultTrackSelector(mainHandler, videoTrackSelectionFactory);
-        // 2. Create a default LoadControl
-        LoadControl loadControl = new DefaultLoadControl();
-        player = ExoPlayerFactory.newSimpleInstance(context, trackSelector, loadControl);
     }
 
     @Override
@@ -118,10 +88,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
                     Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
                     break;
                 case GlobalVariable.ITEM_VIDEO:
-                    ((NewsViewHolder) holder).getSimpleExoPlayerView().setPlayer(player);
-                    newsEntity.getVideoUrl();
-                    player.setPlayWhenReady(true);
-//                    player.prepare(videoSource);
                     break;
             }
         } catch (Exception e) {

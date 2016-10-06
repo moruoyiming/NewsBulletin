@@ -167,4 +167,9 @@
         <item name="android:src">@mipmap/jinru</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
+
+    <style name="PlayerTheme" parent="android:Theme.Holo">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
 </resources>

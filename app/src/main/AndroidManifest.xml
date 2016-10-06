@@ -21,6 +21,7 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
@@ -46,6 +47,56 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:theme="@style/AppTheme_NoActionBar"></activity>
+        <!-- Don't forgot InitActivity -->
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".ui.activity.vitamio.VitamioListActivity" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.MediaPlayerDemo"
+            android:label="Media/MediaPlayer" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.VideoViewDemo"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:label="Media/VideoView" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.MediaPlayerDemo_Video"
+            android:label="Media/MediaPlayer" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.MediaPlayerDemo_setSurface"
+            android:label="Media/MediaPlayer" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.MediaPlayerDemo_Audio"
+            android:label="Media/MediaPlayer" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.MediaMetadataRetrieverDemo"
+            android:label="Media/MediaMetadata" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.MediaPlayerSubtitle"
+            android:label="@string/title_activity_media_player_subtitle" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.VideoViewSubtitle"
+            android:label="@string/title_activity_video_view_subtitle" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.VideoSubtitleList"
+            android:label="@string/title_activity_video_subtitle_list" >
+        </activity>
+        <activity
+            android:name=".ui.activity.vitamio.VideoViewBuffer"
+            android:label="@string/title_activity_video_buffer" >
+        </activity>
     </application>
 
 </manifest>
