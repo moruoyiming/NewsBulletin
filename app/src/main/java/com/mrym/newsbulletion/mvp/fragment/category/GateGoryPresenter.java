@@ -40,9 +40,9 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity.setAuthor("腾讯网");
         newsEntity.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
         newsEntity.setTitle("可以用谷歌眼镜做的10件酷事：导航、玩游戏");
-        String url11 = "http://img1.imgtn.bdimg.com/it/u=1205280251,2634350720&fm=21&gp=0.jpg";
-        String url21 = "http://p0.qhimg.com/t019c6684eeb0484ea1.jpg?size=1500x1000";
-        String url31 = "http://p0.qhimg.com/t0107a32d125af97c90.jpg?size=1500x1000";
+        String url11 = "http://www.4k123.com/data/attachment/forum/201402/10/011129jks7fp0u2r87k8si.jpg";
+        String url21 = "http://www.4k123.com/data/attachment/forum/201402/10/011130di8bb6l6v5dlm6ib.jpg";
+        String url31 = "http://www.4k123.com/data/attachment/forum/201402/10/011131fmfzby0x0fafubmf.jpg";
         newsEntity.setPicOne(url11);
         newsEntity.setPicTwo(url21);
         newsEntity.setPicThr(url31);
@@ -71,7 +71,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity2.setAuthor("百度");
         newsEntity2.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
         newsEntity2.setTitle("习近平谈中国人民抗日战争");
-        String url12 = "http://himg2.huanqiu.com/attachment2010/2016/0918/20160918083147693.jpg";
+        String url12 = "http://www.4k123.com/data/attachment/forum/201402/10/011132djj5la2aoreaxmoa.jpg";
         newsEntity2.setPicOne(url12);
         ArrayList<String> url_list12 = new ArrayList<String>();
         url_list12.add(url12);
@@ -126,9 +126,9 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
             news.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
             ArrayList<String> url_list = new ArrayList<String>();
             if (i % 2 == 1) {
-                String url1 = "http://d.hiphotos.baidu.com/image/h%3D200/sign=d9896d755f2c11dfc1d1b82353266255/342ac65c1038534340a22db79b13b07eca808833.jpg";
-                String url2 = "http://img4.imgtn.bdimg.com/it/u=1817423038,3367055410&fm=21&gp=0.jpg";
-                String url3 = "http://img5.imgtn.bdimg.com/it/u=1614013440,1930745513&fm=21&gp=0.jpg";
+                String url1 = "http://www.4k123.com/data/attachment/forum/201406/19/005333v52k8gvf212borl0.jpg";
+                String url2 = "http://www.4k123.com/data/attachment/forum/201402/10/011607sgwbg81m1ussrogn.jpg";
+                String url3 = "http://www.4k123.com/data/attachment/forum/201402/10/011608ga73z3u6ueikuayz.jpg";
                 news.setPicOne(url1);
                 news.setPicTwo(url2);
                 news.setPicThr(url3);
@@ -139,7 +139,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
                 news.setNewType(3);
             } else {
                 news.setTitle("AA用车:智能短租租车平台");
-                String url = "http://p0.qhimg.com/t010ad40562d5e4fed8.jpg?size=750x1125";
+                String url = "http://www.4k123.com/data/attachment/forum/201505/05/105731i0ur74aoe7momt77.jpg";
                 news.setPicOne(url);
                 url_list.add(url);
                 news.setNewType(1);
