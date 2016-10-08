@@ -2,6 +2,7 @@ package com.mrym.newsbulletion.domain.modle;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -81,7 +82,7 @@ public class NewsEntity implements Serializable {
     /**
      * 图片 列表
      */
-    private List<String> picList;
+    private ArrayList<String> picList;
     /**
      * 图片类型是否为大图
      */
@@ -264,11 +265,11 @@ public class NewsEntity implements Serializable {
         this.picThr = picThr;
     }
 
-    public List<String> getPicList() {
+    public ArrayList<String> getPicList() {
         return picList;
     }
 
-    public void setPicList(List<String> picList) {
+    public void setPicList(ArrayList<String> picList) {
         this.picList = picList;
     }
 

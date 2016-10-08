@@ -97,6 +97,9 @@
             android:name=".ui.activity.vitamio.VideoViewBuffer"
             android:label="@string/title_activity_video_buffer" >
         </activity>
+        <activity
+            android:name=".ui.activity.ViewPagerActivity"
+            android:label="图片" />
     </application>
 
 </manifest>

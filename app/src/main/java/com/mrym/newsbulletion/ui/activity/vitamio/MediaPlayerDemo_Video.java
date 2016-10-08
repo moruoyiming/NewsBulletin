@@ -19,6 +19,7 @@ package com.mrym.newsbulletion.ui.activity.vitamio;
 import android.app.Activity;
 import android.graphics.PixelFormat;
 import android.media.AudioManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -86,7 +87,7 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
                  * TODO: Set the path variable to a local media file path.
 				 */
                     try {
-                        path = "/storage/emulated/0/DCIM/Camera/VID_20161004_143022.mp4";
+                        path = "/DCIM/Camera/VID_20161004_143022.mp4";
                         if (path == "") {
                             // Tell the user to provide a media file URL.
                             Toast.makeText(MediaPlayerDemo_Video.this, "Please edit MediaPlayerDemo_Video Activity, " + "and set the path variable to your media file path." + " Your media file must be stored on sdcard.", Toast.LENGTH_LONG).show();
@@ -108,7 +109,7 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 				 */
                     path = "/DCIM/Camera/VID_20161004_143022.mp4";
                     if (path == "") {
-                        // Tell the user to provide a media file URL.
+                        // Tell t he user to provide a media file URL.
                         Toast.makeText(MediaPlayerDemo_Video.this, "Please edit MediaPlayerDemo_Video Activity," + " and set the path variable to your media file URL.", Toast.LENGTH_LONG).show();
                         return;
                     }
@@ -119,7 +120,8 @@ public class MediaPlayerDemo_Video extends Activity implements OnBufferingUpdate
 
             // Create a new media player and set the listeners
             mMediaPlayer = new MediaPlayer(this);
-            mMediaPlayer.setDataSource(path);
+//            mMediaPlayer.setDataSource(path);
+            mMediaPlayer.setDataSource(this, Uri.parse("http://www.modrails.com/videos/passenger_nginx.mov"));
             mMediaPlayer.setDisplay(holder);
             mMediaPlayer.prepareAsync();
             mMediaPlayer.setOnBufferingUpdateListener(this);

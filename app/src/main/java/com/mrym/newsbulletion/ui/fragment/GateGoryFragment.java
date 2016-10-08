@@ -22,6 +22,7 @@ import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
+import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import com.mrym.newsbulletion.ui.activity.vitamio.VitamioListActivity;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
@@ -46,7 +47,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     private List<NewsEntity> mNews;
     private String mCurrentCate = null;
     private int i = 0;
-    private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener;
+    private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
 
     @Override
     protected GateGoryPresenter createPresenter() {
@@ -88,7 +89,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         });
         categoryList.setRefreshing(true);
         Log.i("onActivityCreated", "界面被创建" + i++);
-        onInternalClickListener= new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
+        onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsEntity values) {
                 Intent intent = new Intent(getActivity(), VitamioListActivity.class);
@@ -100,8 +101,24 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 
             }
         };
-        ma.setOnInViewClickListener(R.id.card_view,onInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_video_center,onInternalClickListener);
+        picOnInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
+            @Override
+            public void OnClickListener(View parentV, View v, Integer position, NewsEntity values) {
+                ToastUtils.show("position : "+position +"list : "+values.getPicList().toString());
+                Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
+                intent.putStringArrayListExtra("list", values.getPicList());
+                getActivity().startActivity(intent);
+            }
+
+            @Override
+            public void OnLongClickListener(View parentV, View v, Integer position, NewsEntity values) {
+
+            }
+        };
+        ma.setOnInViewClickListener(R.id.item_video_center, onInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_smallpic_center, picOnInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_bigpic_center, picOnInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_exclusive_center, picOnInternalClickListener);
     }
 
     @Override

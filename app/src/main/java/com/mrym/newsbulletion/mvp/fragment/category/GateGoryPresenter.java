@@ -46,7 +46,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity.setPicOne(url11);
         newsEntity.setPicTwo(url21);
         newsEntity.setPicThr(url31);
-        List<String> url_list2 = new ArrayList<String>();
+        ArrayList<String> url_list2 = new ArrayList<String>();
         url_list2.add(url11);
         url_list2.add(url21);
         url_list2.add(url31);
@@ -73,10 +73,10 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity2.setTitle("习近平谈中国人民抗日战争");
         String url12 = "http://himg2.huanqiu.com/attachment2010/2016/0918/20160918083147693.jpg";
         newsEntity2.setPicOne(url12);
-        List<String> url_list12 = new ArrayList<String>();
+        ArrayList<String> url_list12 = new ArrayList<String>();
         url_list12.add(url12);
         newsEntity2.setNewType(2);
-        newsEntity2.setPicList(url_list2);
+        newsEntity2.setPicList(url_list12);
         newsEntity2.setPublishTime(Long.valueOf(1474188530));
         newsEntity2.setReadStatus(false);
         newsEntity2.setSource("百度");
@@ -101,7 +101,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity3.setVideoPic("https://storage.googleapis.com/wvmedia/clear/h264/tears/tears.mpd");
         String url13 = "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2847548982,4144768474&fm=58";
         newsEntity3.setPicOne(url13);
-        List<String> url_list13 = new ArrayList<String>();
+        ArrayList<String> url_list13 = new ArrayList<String>();
         url_list13.add(url13);
         newsEntity3.setNewType(4);
         newsEntity3.setPicList(url_list13);
@@ -124,7 +124,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
             news.setNewsCategoryId(1);
             news.setAuthor("腾讯网");
             news.setHeadimg("http://p0.qhimg.com/t0136dd69d77510bbcb.jpg?size=780x520");
-            List<String> url_list = new ArrayList<String>();
+            ArrayList<String> url_list = new ArrayList<String>();
             if (i % 2 == 1) {
                 String url1 = "http://d.hiphotos.baidu.com/image/h%3D200/sign=d9896d755f2c11dfc1d1b82353266255/342ac65c1038534340a22db79b13b07eca808833.jpg";
                 String url2 = "http://img4.imgtn.bdimg.com/it/u=1817423038,3367055410&fm=21&gp=0.jpg";
