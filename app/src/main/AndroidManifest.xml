@@ -100,6 +100,10 @@
         <activity
             android:name=".ui.activity.ViewPagerActivity"
             android:label="图片" />
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".ui.activity.SkinChangeActivity"
+            android:label="换肤" />
     </application>
 
 </manifest>

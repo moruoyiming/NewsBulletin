@@ -48,7 +48,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     ViewPager viewpager;
     @Bind(R.id.fragment_home)
     LinearLayout fragmentHome;
-
     @Override
     protected HomePresenter createPresenter() {
         return new HomePresenter(this);
@@ -65,6 +64,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        dynamicAddView(header, "background", R.color.primary);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
         FragmentPagerItems pages = new FragmentPagerItems(getActivity());

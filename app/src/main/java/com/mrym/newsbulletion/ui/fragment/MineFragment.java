@@ -1,35 +1,28 @@
 package com.mrym.newsbulletion.ui.fragment;
 
-import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.UserBean;
 import com.mrym.newsbulletion.listener.WifiStateReceiver;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.mine.MinePresenter;
 import com.mrym.newsbulletion.mvp.fragment.mine.MineView;
+import com.mrym.newsbulletion.ui.activity.SkinChangeActivity;
 import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
 import com.mrym.newsbulletion.utils.GlideUtils;
-import com.mrym.newsbulletion.utils.SystemStatusManager;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DialogView;
@@ -158,7 +151,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 ToastUtils.show("离线");
                 break;
             case R.id.mine_rl_skin:
-                ToastUtils.show("换肤");
+                Intent intent = new Intent(getActivity(), SkinChangeActivity.class);
+                getActivity().startActivity(intent);
                 break;
             case R.id.mine_rl_about:
                 ToastUtils.show("关于");
