@@ -166,27 +166,27 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         }
         mvpView.loadComplete();
         mvpView.loadingSuccess(newsList);
-//        addSubscription(apiStores.getCategoryNews(gateGory), new SubscriberCallBack<>(new ApiCallback<GateGoryModel>() {
-//            @Override
-//            public void onSuccess(GateGoryModel model) {
-////                if (TextUtils.equals(model.getState(), GlobalVariable.SUCCESS)) {
-////                    mvpView.loadingSuccess(model.getNews());
-////                } else {
-////                    mvpView.loadingError("加载失败！");
-////                }
-//                Log.i("GateGoryPresenter",model.toString());
-//
-//            }
-//
-//            @Override
-//            public void onFailure(int code, String msg) {
-////                mvpView.loadingError(msg);
-//            }
-//
-//            @Override
-//            public void onCompleted() {
-//            }
-//        }));
+        addSubscription(apiStores.getCategoryNews(gateGory), new SubscriberCallBack<>(new ApiCallback<GateGoryModel>() {
+            @Override
+            public void onSuccess(GateGoryModel model) {
+//                if (TextUtils.equals(model.getState(), GlobalVariable.SUCCESS)) {
+//                    mvpView.loadingSuccess(model.getNews());
+//                } else {
+//                    mvpView.loadingError("加载失败！");
+//                }
+                Log.i("GateGoryPresenter",model.toString());
+
+            }
+
+            @Override
+            public void onFailure(int code, String msg) {
+//                mvpView.loadingError(msg);
+            }
+
+            @Override
+            public void onCompleted() {
+            }
+        }));
     }
 
 }

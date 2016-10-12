@@ -13,7 +13,7 @@
     <RadioGroup
         android:id="@+id/rg_main"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="50dp"
         android:background="@drawable/line_foot_tab"
         android:orientation="horizontal">
 
@@ -27,7 +27,7 @@
         <RadioButton
             android:id="@+id/rb_video"
             style="@style/main_tab"
-            android:drawableTop="@drawable/selector_tab_home"
+            android:drawableTop="@drawable/selector_tab_discover"
             android:text="@string/tab_video" />
 
         <RadioButton

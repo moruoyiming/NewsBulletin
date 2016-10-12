@@ -36,8 +36,6 @@ import butterknife.ButterKnife;
 public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView {
 
     private static final String TAG = "HomeFragment";
-    @Bind(R.id.toolbar_title)
-    TextView toolbarTitle;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.tab)
@@ -56,7 +54,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = View.inflate(getActivity(), R.layout.fragment_home, null);
-        initToolBar(root, R.string.app_name);
+//        initToolBar(root, R.string.app_name);
         ButterKnife.bind(this, root);
         return root;
     }
@@ -64,7 +62,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dynamicAddView(header, "background", R.color.primary);
+        dynamicAddView(header, "background", R.color.primary_dark);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
         FragmentPagerItems pages = new FragmentPagerItems(getActivity());

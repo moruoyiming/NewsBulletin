@@ -2,7 +2,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 顶层Logo居中 -->
     <item>
-        <bitmap android:src="@mipmap/background_splash" />
+        <bitmap
+            android:gravity="top"
+            android:src="@mipmap/background_splash" />
     </item>
     <item>
         <bitmap

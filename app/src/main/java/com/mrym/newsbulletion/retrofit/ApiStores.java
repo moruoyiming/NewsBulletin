@@ -18,8 +18,10 @@ import rx.Observable;
  */
 public interface ApiStores {
 
-    String BASE_PATH = "http://123.56.202.160:8080/";
-
+    String BASE_PATH = "http://news-at.zhihu.com/api/4/";
+    //启动页广告
+    @GET(UrlFactory.START_IMAGE)
+    Observable<LoginModel> startImage();
     //登陆
     @GET(UrlFactory.LOGIN_PATH)
     Observable<LoginModel> login(@Query("password") String code, @Query("username") String username);

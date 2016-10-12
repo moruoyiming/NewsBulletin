@@ -23,6 +23,9 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.authenticator.account.AccountTool;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.mvp.BasePresenter;
+import com.mrym.newsbulletion.mvp.fragment.category.GateGoryModel;
+import com.mrym.newsbulletion.rxjava.ApiCallback;
+import com.mrym.newsbulletion.rxjava.SubscriberCallBack;
 import com.mrym.newsbulletion.utils.common.AppUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.file.FileOperate;
@@ -47,7 +50,25 @@ public class SplashPresenter extends BasePresenter<SplashView> {
     }
 
     public void showAdvertisement() {
-        mvpView.showAdvertisement("http://mmbiz.qpic.cn/mmbiz_jpg/0DSXLNibvwCDAVwEOiaNrA7Kyw8Ww5x6CnB6kDexG4YEbjhvpakupicsvTlMKriaibUy63ARkK2icWUCAQ6uFOwoIaVg/640?wx_fmt=jpeg&tp=jpeg&wxfrom=5&wx_lazy=1");
+        addSubscription(apiStores.startImage(), new SubscriberCallBack<>(new ApiCallback<SplashModel>() {
+
+            @Override
+            public void onSuccess(SplashModel model) {
+                Log.i(TAG,model.toString());
+                mvpView.showAdvertisement(model.getImg());
+            }
+
+            @Override
+            public void onFailure(int code, String msg) {
+                mvpView.showAdvertisement("http://mmbiz.qpic.cn/mmbiz_jpg/0DSXLNibvwCDAVwEOiaNrA7Kyw8Ww5x6CnB6kDexG4YEbjhvpakupicsvTlMKriaibUy63ARkK2icWUCAQ6uFOwoIaVg/640?wx_fmt=jpeg&tp=jpeg&wxfrom=5&wx_lazy=1");
+            }
+
+            @Override
+            public void onCompleted() {
+
+            }
+        }));
+
     }
 
     public void gotoNext() {
@@ -64,7 +85,7 @@ public class SplashPresenter extends BasePresenter<SplashView> {
                         mvpView.startMain();
                     }
                 }
-            }, 1000);
+            }, 4000);
         }
     }
 

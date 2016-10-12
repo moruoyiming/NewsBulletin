@@ -6,6 +6,8 @@ package com.mrym.newsbulletion.domain.constans;
  * Github: https://github.com/moruoyiming
  */
 public class UrlFactory {
+    //启动页广告接口
+    public final static String START_IMAGE="start-image/1080*1776";
     //登陆接口
     public final static String LOGIN_PATH = "zhangkongpay/loginControl/login.shtml";
     //发送短信接口
