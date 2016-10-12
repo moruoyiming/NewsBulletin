@@ -46,7 +46,7 @@
         <activity android:name=".ui.activity.LoginActivity"></activity>
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/AppTheme_NoActionBar"></activity>
+            ></activity>
         <!-- Don't forgot InitActivity -->
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"

@@ -42,7 +42,6 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     @Bind(R.id.rg_main)
     RadioGroup rgMain;
 
-
     @Override
     protected MainPresenter createPresenter() {
         return new MainPresenter(this);
