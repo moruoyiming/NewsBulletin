@@ -47,6 +47,9 @@
         <activity
             android:name=".ui.activity.MainActivity"
             ></activity>
+        <activity
+            android:name=".ui.activity.SkinChangeActivity"
+            android:label="换肤" />
         <!-- Don't forgot InitActivity -->
         <activity
             android:name="io.vov.vitamio.activity.InitActivity"
@@ -100,10 +103,7 @@
         <activity
             android:name=".ui.activity.ViewPagerActivity"
             android:label="图片" />
-        <activity
-            android:theme="@style/AppTheme"
-            android:name=".ui.activity.SkinChangeActivity"
-            android:label="换肤" />
+
     </application>
 
 </manifest>

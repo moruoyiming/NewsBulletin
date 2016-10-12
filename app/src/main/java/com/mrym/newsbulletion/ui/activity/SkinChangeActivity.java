@@ -1,11 +1,17 @@
 package com.mrym.newsbulletion.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.skin.ChageSkinPresenter;
@@ -29,10 +35,22 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     Button btnnot;
     @Bind(R.id.btn_from_net)
     Button skin;
+    @Bind(R.id.activity_changeskin_rc)
+    XRecyclerView mSkinGrid;
+    @Bind(R.id.header)
+    LinearLayout header;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activit_changeskin);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            // Translucent status bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+        dynamicAddView(header, "background", R.color.primary_dark);
         dialog = new MaterialDialog.Builder(SkinChangeActivity.this)
                 .title("换肤中")
                 .content("请耐心等待")
