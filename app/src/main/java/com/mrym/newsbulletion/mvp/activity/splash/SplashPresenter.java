@@ -60,7 +60,7 @@ public class SplashPresenter extends BasePresenter<SplashView> {
 
             @Override
             public void onFailure(int code, String msg) {
-                mvpView.showAdvertisement("http://mmbiz.qpic.cn/mmbiz_jpg/0DSXLNibvwCDAVwEOiaNrA7Kyw8Ww5x6CnB6kDexG4YEbjhvpakupicsvTlMKriaibUy63ARkK2icWUCAQ6uFOwoIaVg/640?wx_fmt=jpeg&tp=jpeg&wxfrom=5&wx_lazy=1");
+                mvpView.showAdvertisement("http://p3.image.hiapk.com/uploads/allimg/150513/7730-150513155P8-52.jpg");
             }
 
             @Override

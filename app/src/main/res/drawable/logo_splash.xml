@@ -3,7 +3,6 @@
     <!-- 顶层Logo居中 -->
     <item>
         <bitmap
-            android:gravity="top"
             android:src="@mipmap/background_splash" />
     </item>
     <item>

@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/fragment_mine"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/guide_2"
     android:orientation="vertical">
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
         android:layout_height="wrap_content"
-        android:text="wode"/>
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/tab2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_dark"
+            android:paddingBottom="4dp">
+
+            <com.ogaclejapan.smarttablayout.SmartTabLayout
+                android:id="@+id/viewpagertab2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:stl_defaultTabTextColor="@color/white"
+                app:stl_defaultTabTextHorizontalPadding="24dp"
+                app:stl_indicatorColor="@color/accent"
+                app:stl_indicatorCornerRadius="1.5dp"
+                app:stl_indicatorInterpolation="smart"
+                app:stl_indicatorThickness="3dp"
+                app:stl_underlineColor="@color/transparent" />
+        </FrameLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tab2"
+            android:background="@color/bg_gray" />
+    </LinearLayout>
+
 
 </LinearLayout>

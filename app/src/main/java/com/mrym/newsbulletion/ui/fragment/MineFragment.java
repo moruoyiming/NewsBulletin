@@ -62,6 +62,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Bind(R.id.profile_name)
     TextView profileName;
     private Dialog loadingDialog;
+    private WifiStateReceiver wifiReceiver;
 
     @Override
     protected MinePresenter createPresenter() {
@@ -81,7 +82,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
         StatusBarCompat.translucentStatusBar(getActivity(), false);
         mvpPresenter.initUserData();
         //WIFI状态接收器
-        WifiStateReceiver wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
+        wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.RSSI_CHANGED_ACTION);
         filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
@@ -123,6 +124,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        getActivity().unregisterReceiver(wifiReceiver);
         ButterKnife.unbind(this);
     }
 
