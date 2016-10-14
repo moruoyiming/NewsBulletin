@@ -12,7 +12,8 @@ import android.view.WindowManager;
  * View topView = findViewById(R.id.lin);
  * ImmersedStatusbarUtils.initAfterSetContentView(this, topView);
  */
-public class ImmersedStatusbarUtils {
+public class
+ImmersedStatusbarUtils {
 
     /**
      * 在{@link Activity#setContentView}之后调用

@@ -50,24 +50,25 @@ public class SplashPresenter extends BasePresenter<SplashView> {
     }
 
     public void showAdvertisement() {
-        addSubscription(apiStores.startImage(), new SubscriberCallBack<>(new ApiCallback<SplashModel>() {
-
-            @Override
-            public void onSuccess(SplashModel model) {
-                Log.i(TAG,model.toString());
-                mvpView.showAdvertisement(model.getImg());
-            }
-
-            @Override
-            public void onFailure(int code, String msg) {
-                mvpView.showAdvertisement("http://p3.image.hiapk.com/uploads/allimg/150513/7730-150513155P8-52.jpg");
-            }
-
-            @Override
-            public void onCompleted() {
-
-            }
-        }));
+        mvpView.showAdvertisement("http://p3.image.hiapk.com/uploads/allimg/150513/7730-150513155P8-52.jpg");
+//        addSubscription(apiStores.startImage(), new SubscriberCallBack<>(new ApiCallback<SplashModel>() {
+//
+//            @Override
+//            public void onSuccess(SplashModel model) {
+//                Log.i(TAG,model.toString());
+//                mvpView.showAdvertisement(model.getImg());
+//            }
+//
+//            @Override
+//            public void onFailure(int code, String msg) {
+//
+//            }
+//
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//        }));
 
     }
 
