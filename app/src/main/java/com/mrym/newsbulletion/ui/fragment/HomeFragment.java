@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
@@ -18,6 +19,8 @@ import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
+import com.mrym.newsbulletion.ui.activity.MainActivity;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
@@ -44,8 +47,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     LinearLayout header;
     @Bind(R.id.viewpager)
     ViewPager viewpager;
-    @Bind(R.id.fragment_home)
-    LinearLayout fragmentHome;
     @Override
     protected HomePresenter createPresenter() {
         return new HomePresenter(this);
@@ -62,6 +63,8 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+//        StatusBarCompat.translucentStatusBar(getActivity(), true);
+        StatusBarCompat.setStatusBarColor(getActivity(), R.color.black,255);
         dynamicAddView(header, "background", R.color.primary_dark);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);

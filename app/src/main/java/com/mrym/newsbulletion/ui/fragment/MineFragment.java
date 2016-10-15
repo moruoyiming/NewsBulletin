@@ -79,7 +79,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        StatusBarCompat.translucentStatusBar(getActivity(), false);
+//        StatusBarCompat.translucentStatusBar(getActivity(), false);
         mvpPresenter.initUserData();
         //WIFI状态接收器
         wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);

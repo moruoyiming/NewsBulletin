@@ -30,6 +30,7 @@ import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import com.mrym.newsbulletion.ui.activity.vitamio.VitamioListActivity;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
@@ -51,6 +52,8 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     FrameLayout tab2;
     @Bind(R.id.viewpager2)
     ViewPager viewpager2;
+    @Bind(R.id.l1)
+    LinearLayout l1;
     @Override
     protected VideoPresenter createPresenter() {
         return new VideoPresenter(this);
@@ -59,7 +62,6 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root =View.inflate(getActivity(), R.layout.fragment_video, null);
-//        initToolBar(root, R.string.app_name);
         ButterKnife.bind(this, root);
         return root;
     }
@@ -67,16 +69,9 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        dynamicAddView(tab2, "background", R.color.primary_dark);
-        tab2.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab2, false));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getActivity().getWindow();
-            // Translucent status bar
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+//        StatusBarCompat.translucentStatusBar(getActivity(), false);
+        dynamicAddView(l1, "background", R.color.primary_dark);
+        tab2.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator2, tab2, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab2);
         FragmentPagerItems pages = new FragmentPagerItems(getActivity());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();

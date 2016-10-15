@@ -9,6 +9,8 @@
 
     <LinearLayout
         android:id="@+id/header"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary_dark"
@@ -21,14 +23,13 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="true"
-            android:fitsSystemWindows="true"
             android:gravity="center_vertical"
             skin:enable="true">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/widget_title" />
+                android:background="@mipmap/all_toutiaologo_new" />
 
 
         </android.support.v7.widget.Toolbar>
