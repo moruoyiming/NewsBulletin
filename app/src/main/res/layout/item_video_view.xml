@@ -66,19 +66,6 @@
             android:textColor="@color/txt_color"
             android:textSize="@dimen/sp_16"
             android:textStyle="bold" />
-        <io.vov.vitamio.widget.CenterLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/item_basic_title"
-            android:orientation="vertical" >
-
-            <SurfaceView
-                android:id="@+id/surface"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" >
-            </SurfaceView>
-        </io.vov.vitamio.widget.CenterLayout>
 
     </RelativeLayout>
 

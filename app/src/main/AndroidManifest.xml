@@ -50,61 +50,15 @@
         <activity
             android:name=".ui.activity.SkinChangeActivity"
             android:label="换肤" />
-        <!-- Don't forgot InitActivity -->
-        <activity
-            android:name="io.vov.vitamio.activity.InitActivity"
-            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".ui.activity.vitamio.VitamioListActivity" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.MediaPlayerDemo"
-            android:label="Media/MediaPlayer" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.VideoViewDemo"
-            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
-            android:label="Media/VideoView" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.MediaPlayerDemo_Video"
-            android:label="Media/MediaPlayer" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.MediaPlayerDemo_setSurface"
-            android:label="Media/MediaPlayer" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.MediaPlayerDemo_Audio"
-            android:label="Media/MediaPlayer" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.MediaMetadataRetrieverDemo"
-            android:label="Media/MediaMetadata" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.MediaPlayerSubtitle"
-            android:label="@string/title_activity_media_player_subtitle" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.VideoViewSubtitle"
-            android:label="@string/title_activity_video_view_subtitle" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.VideoSubtitleList"
-            android:label="@string/title_activity_video_subtitle_list" >
-        </activity>
-        <activity
-            android:name=".ui.activity.vitamio.VideoViewBuffer"
-            android:label="@string/title_activity_video_buffer" >
-        </activity>
+
         <activity
             android:name=".ui.activity.ViewPagerActivity"
             android:label="图片"
             android:theme="@android:style/Theme.NoTitleBar"/>
-
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:label="图片"
+          />
     </application>
 
 </manifest>

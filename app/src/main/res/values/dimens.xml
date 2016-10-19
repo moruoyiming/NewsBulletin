@@ -16,4 +16,13 @@
     <dimen name="activity_button_margin_top">40dp</dimen>
     <dimen name="content_text_size_3">16sp</dimen>
     <dimen name="content_text_margin_third_login">20dp</dimen>
+
+
+    <!-- font -->
+    <dimen name="font_tiny">10sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_normal">14sp</dimen>
+    <dimen name="font_normal2">16sp</dimen>
+    <dimen name="font_normal3">20sp</dimen>
+    <dimen name="font_large">24sp</dimen>
 </resources>

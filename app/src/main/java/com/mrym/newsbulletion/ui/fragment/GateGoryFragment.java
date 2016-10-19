@@ -23,7 +23,6 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
-import com.mrym.newsbulletion.ui.activity.vitamio.VitamioListActivity;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
@@ -92,8 +91,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsEntity values) {
-                Intent intent = new Intent(getActivity(), VitamioListActivity.class);
-                getActivity().startActivity(intent);
             }
 
             @Override

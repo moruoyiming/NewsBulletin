@@ -5,8 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/NewsBulletin.iml" filepath="$PROJECT_DIR$/NewsBulletin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baserecyclerviewadapterhelper/baserecyclerviewadapterhelper.iml" filepath="$PROJECT_DIR$/baserecyclerviewadapterhelper/baserecyclerviewadapterhelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ijkplayerdemo/ijkplayerdemo.iml" filepath="$PROJECT_DIR$/ijkplayerdemo/ijkplayerdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" filepath="$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-iamge-selector/multi-iamge-selector.iml" filepath="$PROJECT_DIR$/multi-iamge-selector/multi-iamge-selector.iml" />
-      <module fileurl="file://$PROJECT_DIR$/vitamio/vitamio.iml" filepath="$PROJECT_DIR$/vitamio/vitamio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videoexo/videoexo.iml" filepath="$PROJECT_DIR$/videoexo/videoexo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/videolib/videolib.iml" filepath="$PROJECT_DIR$/videolib/videolib.iml" />
       <module fileurl="file://$PROJECT_DIR$/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" filepath="$PROJECT_DIR$/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" />
     </modules>
   </component>

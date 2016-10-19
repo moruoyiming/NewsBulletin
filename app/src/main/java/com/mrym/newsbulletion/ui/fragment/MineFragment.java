@@ -19,6 +19,7 @@ import com.mrym.newsbulletion.listener.WifiStateReceiver;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.mine.MinePresenter;
 import com.mrym.newsbulletion.mvp.fragment.mine.MineView;
+import com.mrym.newsbulletion.ui.activity.AboutActivity;
 import com.mrym.newsbulletion.ui.activity.SkinChangeActivity;
 import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
@@ -157,7 +158,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 getActivity().startActivity(intent);
                 break;
             case R.id.mine_rl_about:
-                ToastUtils.show("关于");
+                AboutActivity.startAction(getActivity());
                 break;
         }
     }

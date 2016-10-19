@@ -11,8 +11,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baserecyclerviewadapterhelper" />
+            <option value="$PROJECT_DIR$/ijkplayerdemo" />
+            <option value="$PROJECT_DIR$/jcvideoplayer" />
             <option value="$PROJECT_DIR$/multi-iamge-selector" />
-            <option value="$PROJECT_DIR$/vitamio" />
+            <option value="$PROJECT_DIR$/videoexo" />
+            <option value="$PROJECT_DIR$/videolib" />
             <option value="$PROJECT_DIR$/xrecyclerviewlibrary" />
           </set>
         </option>

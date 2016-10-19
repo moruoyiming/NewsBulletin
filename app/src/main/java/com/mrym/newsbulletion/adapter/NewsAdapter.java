@@ -22,7 +22,6 @@ import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 import java.util.Date;
 import java.util.List;
 
-import io.vov.vitamio.MediaPlayer;
 
 /**
  * Created by Jian on 2016/9/19.
@@ -34,7 +33,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
-    private MediaPlayer mMediaPlayer;
     private SurfaceView mPreview;
     private SurfaceHolder holder;
     private String path;

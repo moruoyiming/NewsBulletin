@@ -4,12 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 
-import io.vov.vitamio.widget.CenterLayout;
 
 /**
  * Created by Jian on 2016/9/19.
@@ -33,7 +31,6 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     private ImageView mBottom2;
     private ImageView mBottom3;
 
-    private CenterLayout conterlCenterLayout;
     private SurfaceView surfaceView;
 
     public NewsViewHolder(View itemView) {
