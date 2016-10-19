@@ -95,15 +95,16 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
         newsEntity3.setReadStatus(false);
         newsEntity3.setNewsCategory("推荐");
         newsEntity3.setNewsCategoryId(2);
-        newsEntity3.setAuthor("优酷网");
+        newsEntity3.setAuthor("新媒体");
         newsEntity3.setHeadimg("http://static.youku.com/youku/dist/img/find/yk-logo-0412.png");
         newsEntity3.setTitle("<微微一笑很倾城>不巧 我在等你");
-        newsEntity3.setVideoPic("https://storage.googleapis.com/wvmedia/clear/h264/tears/tears.mpd");
+        newsEntity3.setVideoPic("http://vimg1.ws.126.net/image/snapshot/2016/9/E/I/VC0FKG2EI.jpg");
         String url13 = "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2847548982,4144768474&fm=58";
         newsEntity3.setPicOne(url13);
         ArrayList<String> url_list13 = new ArrayList<String>();
         url_list13.add(url13);
         newsEntity3.setNewType(4);
+        newsEntity3.setVideoUrl("http://flv2.bn.netease.com/videolib3/1610/18/GEOZU6004/HD/GEOZU6004-mobile.mp4");
         newsEntity3.setPicList(url_list13);
         newsEntity3.setPublishTime(Long.valueOf(1474188530));
         newsEntity3.setReadStatus(false);

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
@@ -21,6 +22,9 @@ import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 
 import java.util.Date;
 import java.util.List;
+
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 
 /**
@@ -33,9 +37,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
-    private SurfaceView mPreview;
-    private SurfaceHolder holder;
-    private String path;
     public NewsAdapter(List<NewsEntity> list, Context context) {
         super(list, context);
         this.mContext = context;
@@ -93,6 +94,19 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
                     Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
                     break;
                 case GlobalVariable.ITEM_VIDEO:
+                    hd.getTv_play_time().setText("what ");
+                    hd.getTv_from().setText("Tv_from ");
+                    JCVideoPlayerStandard jcVideoPlayerStandard=hd.getJcVideoPlayerStandard();
+                    boolean setUp = jcVideoPlayerStandard.setUp(
+                            newsEntity.getVideoUrl(), JCVideoPlayer.SCREEN_LAYOUT_LIST,
+                            newsEntity.getTitle());
+                    if (setUp) {
+                        Glide.with(mContext).load(newsEntity.getVideoPic())
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .centerCrop()
+                                .error(R.mipmap.ic_launcher)
+                                .crossFade().into(jcVideoPlayerStandard.thumbImageView);
+                    }
                     break;
             }
         } catch (Exception e) {

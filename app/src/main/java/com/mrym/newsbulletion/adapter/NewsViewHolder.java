@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+
 
 /**
  * Created by Jian on 2016/9/19.
@@ -31,7 +33,10 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     private ImageView mBottom2;
     private ImageView mBottom3;
 
-    private SurfaceView surfaceView;
+    private JCVideoPlayerStandard jcVideoPlayerStandard;
+    private ImageView videologo;
+    private TextView tv_from;
+    private TextView tv_play_time;
 
     public NewsViewHolder(View itemView) {
         super(itemView);
@@ -47,7 +52,10 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         mBottom2 = (ImageView) itemView.findViewById(R.id.item_exclusive_im2);
         mBottom3 = (ImageView) itemView.findViewById(R.id.item_exclusive_im3);
 
-        surfaceView = (SurfaceView) itemView.findViewById(R.id.surface);
+        jcVideoPlayerStandard= (JCVideoPlayerStandard) itemView.findViewById(R.id.videoplayer);
+        videologo= (ImageView) itemView.findViewById(R.id.iv_logo);
+        tv_from= (TextView) itemView.findViewById(R.id.tv_from);
+        tv_play_time= (TextView) itemView.findViewById(R.id.tv_play_time);
     }
 
 
@@ -95,11 +103,35 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         return mBottom3;
     }
 
-    public SurfaceView getSurfaceView() {
-        return surfaceView;
+    public JCVideoPlayerStandard getJcVideoPlayerStandard() {
+        return jcVideoPlayerStandard;
     }
 
-    public void setSurfaceView(SurfaceView surfaceView) {
-        this.surfaceView = surfaceView;
+    public void setJcVideoPlayerStandard(JCVideoPlayerStandard jcVideoPlayerStandard) {
+        this.jcVideoPlayerStandard = jcVideoPlayerStandard;
+    }
+
+    public ImageView getVideologo() {
+        return videologo;
+    }
+
+    public void setVideologo(ImageView videologo) {
+        this.videologo = videologo;
+    }
+
+    public TextView getTv_from() {
+        return tv_from;
+    }
+
+    public void setTv_from(TextView tv_from) {
+        this.tv_from = tv_from;
+    }
+
+    public TextView getTv_play_time() {
+        return tv_play_time;
+    }
+
+    public void setTv_play_time(TextView tv_play_time) {
+        this.tv_play_time = tv_play_time;
     }
 }

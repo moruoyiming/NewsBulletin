@@ -31,6 +31,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
  * Created by Jian on 2016/9/14.
@@ -123,8 +124,10 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         super.onHiddenChanged(hidden);
         if (hidden) {
             //TODO now visible to user
+
         } else {
             //TODO now invisible to user
+            JCVideoPlayer.releaseAllVideos();
         }
     }
 
@@ -174,7 +177,11 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         }
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        JCVideoPlayer.releaseAllVideos();
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
