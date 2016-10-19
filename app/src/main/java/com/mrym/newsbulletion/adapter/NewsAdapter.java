@@ -94,8 +94,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
                     Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
                     break;
                 case GlobalVariable.ITEM_VIDEO:
-                    hd.getTv_play_time().setText("what ");
-                    hd.getTv_from().setText("Tv_from ");
                     JCVideoPlayerStandard jcVideoPlayerStandard=hd.getJcVideoPlayerStandard();
                     boolean setUp = jcVideoPlayerStandard.setUp(
                             newsEntity.getVideoUrl(), JCVideoPlayer.SCREEN_LAYOUT_LIST,

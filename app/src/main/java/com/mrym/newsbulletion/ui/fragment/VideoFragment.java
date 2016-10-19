@@ -24,6 +24,7 @@ import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoPresenter;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
@@ -72,7 +73,7 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
         FragmentPagerItems pages = new FragmentPagerItems(getActivity());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
         for (HomeCateGory homeCateGory : homeCateGories) {
-            pages.add(FragmentPagerItem.of(homeCateGory.getCategory(), GateGoryFragment.class));
+            pages.add(FragmentPagerItem.of(homeCateGory.getCategory(), VideosFragment.class));
         }
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getFragmentManager(), pages);
@@ -85,7 +86,7 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     }
 
     @Override
-    public void loadingSuccess(List<NewsEntity> news) {
+    public void loadingSuccess(List<VideoData> news) {
 
     }
 

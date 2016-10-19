@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.mvp.fragment.video;
 
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.domain.modle.VideoData;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public interface VideoView {
     public void loadingError(String errormsg);
 
-    public void loadingSuccess(List<NewsEntity> news);
+    public void loadingSuccess(List<VideoData> videoDatas);
 
     public void loadComplete();
 }

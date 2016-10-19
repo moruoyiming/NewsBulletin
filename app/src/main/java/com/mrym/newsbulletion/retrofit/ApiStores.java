@@ -38,4 +38,8 @@ public interface ApiStores {
     @GET(UrlFactory.GET_GATEGORY_NEWS)
     Observable<GateGoryModel> getCategoryNews(@Query("gategory") String gategory);
 
+    //获取类型新闻
+    @GET(UrlFactory.GET_GATEGORY_VIDEOS)
+    Observable<GateGoryModel> getCategoryVideos(@Query("gategory") String gategory);
+
 }
