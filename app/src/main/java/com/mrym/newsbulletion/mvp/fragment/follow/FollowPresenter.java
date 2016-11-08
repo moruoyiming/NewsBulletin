@@ -8,4 +8,12 @@ import com.mrym.newsbulletion.mvp.BasePresenter;
  * Github: https://github.com/moruoyiming
  */
 public class FollowPresenter extends BasePresenter<FollowView> {
+
+    public FollowPresenter(FollowView followView) {
+        attachView(followView);
+    }
+
+    public void getPhotoGrils(String type,int page){
+
+    }
 }

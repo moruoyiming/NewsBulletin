@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_mine"
     android:layout_width="match_parent"
-    android:background="@mipmap/guide_1"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/fragment_follow_r"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="wode"/>
+        android:layout_height="match_parent"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+
 
 </LinearLayout>
