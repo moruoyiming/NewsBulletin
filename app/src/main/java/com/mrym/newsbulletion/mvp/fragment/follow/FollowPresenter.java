@@ -13,7 +13,10 @@ public class FollowPresenter extends BasePresenter<FollowView> {
         attachView(followView);
     }
 
-    public void getPhotoGrils(String type,int page){
+    public void getPhotoGrils(String type, int page) {
+        for (int i = 0; i < 14; i++) {
+
+        }
 
     }
 }
