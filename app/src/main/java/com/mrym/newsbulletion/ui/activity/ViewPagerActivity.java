@@ -14,11 +14,13 @@ import android.widget.RelativeLayout;
 
 import com.bm.library.PhotoView;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.ImmersedStatusbarUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 

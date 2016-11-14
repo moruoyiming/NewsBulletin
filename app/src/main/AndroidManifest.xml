@@ -59,6 +59,9 @@
             android:name=".ui.activity.AboutActivity"
             android:label="图片"
           />
+        <activity android:name=".ui.activity.PhotosDetailActivity"
+            android:theme="@style/Trans"
+            />
     </application>
 
 </manifest>

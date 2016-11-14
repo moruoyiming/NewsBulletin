@@ -33,6 +33,7 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
     private final String TAG = "PhotoGirlsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
+
     public PhotoGirlsAdapter(List<PhotoGirl> list, Context context) {
         super(list, context);
         this.mContext = context;
@@ -41,7 +42,7 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= mInflater.inflate(R.layout.item_grils, parent, false);
+        View view = mInflater.inflate(R.layout.item_grils, parent, false);
         return new GirlsViewHolder(view);
     }
 
@@ -51,11 +52,12 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
         try {
             GirlsViewHolder hd = (GirlsViewHolder) holder;
             PhotoGirl photoGirl = list.get(position);
-            Glide.with(mContext).load(photoGirl.getUrl()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getGirlsimage());
+            Glide.with(mContext).load(photoGirl.getUrl()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getGirlsimage());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public int getItemCount() {
         return list == null ? 0 : list.size();

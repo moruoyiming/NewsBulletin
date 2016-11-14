@@ -174,4 +174,9 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/black</item>
     </style>
+
+    <style name="Trans">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>

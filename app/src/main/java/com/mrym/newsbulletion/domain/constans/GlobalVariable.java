@@ -23,7 +23,7 @@ public class GlobalVariable {
     public static final String FIRST_LOGIN_STATE = "FIRST_LOGIN_STATE";
     public static final int SUCCESS_CODE = 200;
     public static final String EXTRA_DEVICE_ADDRESS = "device_address";
-
+    public static final String PHOTO_DETAIL = "photo_detail";
     @SuppressLint("NewApi")
     public static String getLogSavePath() {
         if (Build.VERSION.SDK_INT >= 19) {

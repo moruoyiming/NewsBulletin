@@ -1,8 +1,11 @@
 package com.mrym.newsbulletion.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +13,16 @@ import android.view.ViewGroup;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
 import com.mrym.newsbulletion.adapter.PhotoGirlsAdapter;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.follow.FollowPresenter;
 import com.mrym.newsbulletion.mvp.fragment.follow.FollowView;
+import com.mrym.newsbulletion.ui.activity.PhotosDetailActivity;
+import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
+import com.mrym.newsbulletion.utils.common.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +43,7 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     protected int mCurrentPageIndex = 1;
     private List<PhotoGirl> mPhotogirls;
     private PhotoGirlsAdapter mPhotoAdapter;
+    private BaseRecyclerViewAdapter.onInternalClickListener onPhotoGirlsClick;
     @Override
     protected FollowPresenter createPresenter() {
         return new FollowPresenter(this);
@@ -54,7 +62,7 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
         mPhotogirls=new ArrayList<>();
         mPhotoAdapter=new PhotoGirlsAdapter(mPhotogirls,getActivity());
         girlsList.setAdapter(mPhotoAdapter);
-        girlsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        girlsList.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         girlsList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         girlsList.setRefreshProgressStyle(ProgressStyle.BallBeat);
         girlsList.setLoadingMoreProgressStyle(ProgressStyle.BallBeat);
@@ -71,6 +79,18 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
             }
         });
         girlsList.setRefreshing(true);
+        onPhotoGirlsClick = new BaseRecyclerViewAdapter.onInternalClickListener<PhotoGirl>() {
+            @Override
+            public void OnClickListener(View parentV, View v, Integer position, PhotoGirl values) {
+                PhotosDetailActivity.startAction(getActivity(),values.getUrl());
+            }
+
+            @Override
+            public void OnLongClickListener(View parentV, View v, Integer position, PhotoGirl values) {
+
+            }
+        };
+        mPhotoAdapter.setOnInViewClickListener(R.id.item_grils_im, onPhotoGirlsClick);
     }
     public void switchActionAndLoadData(int action) {
         mCurrentAction = action;
@@ -90,5 +110,30 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void loadingError(String errormsg) {
+
+    }
+
+    @Override
+    public void loadingSuccess(List<PhotoGirl> girls) {
+        Log.i("FollowFragment",mPhotogirls.size()+"daxiao");
+        mPhotoAdapter.addAll(girls);
+    }
+
+    @Override
+    public void loadComplete() {
+        try {
+            if (mCurrentAction == GlobalVariable.ACTION_REFRESH) {
+                girlsList.refreshComplete();
+            }
+            if (mCurrentAction == GlobalVariable.ACTION_LOAD_MORE) {
+                girlsList.loadMoreComplete();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

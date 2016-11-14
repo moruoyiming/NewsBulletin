@@ -66,7 +66,8 @@
     <string name="demo_tab_8">Jelly Bean</string>
     <string name="demo_tab_9">KitKat</string>
     <string name="demo_tab_10">Lollipop</string>
-
+    <string name="photo_details">图片详情</string>
+    <string name="photo">图片</string>
     <string name="vitamio_demo_name">VitamioDemo</string>
     <string name="local_video">Play Video from Local File</string>
     <string name="local_video_setsurface">Play Video use setSurface</string>
@@ -83,7 +84,8 @@
     <string name="title_activity_video_buffer">VideoViewBuffer</string>
     <string name="openvideo1">Open Video1</string>
     <string name="openvideo2">Open Video2</string>
-
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
     <string name="care_about_wechat">快讯介绍:基于Rxjava+Retrofit的框架,高仿头条新闻.\n本项目纯属技术练习,如涉及版权问题,请及时联系我.\n项目地址:https://github.com/moruoyiming/NewsBulletin\nEmail:moruoyiming123@gamil.com\nQQ:798774875\nName:Brigitte</string>
     <string name="share">分享</string>
     <string name="share_contents">来自「Moruoyiming」的分享：%1$s %2$s</string>
