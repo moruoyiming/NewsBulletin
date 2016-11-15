@@ -32,8 +32,9 @@
         android:alpha="0"
         android:background="@drawable/bg_toolbar_shade"
         android:fitsSystemWindows="true"
-        app:navigationIcon="@mipmap/ic_arrow_back"
+        app:navigationIcon="@drawable/left_back"
         app:title="@string/photo"
+        app:titleTextColor="@color/white"
         tools:alpha="1.0" />
 </RelativeLayout>
 
