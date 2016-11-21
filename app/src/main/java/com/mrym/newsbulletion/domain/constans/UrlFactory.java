@@ -13,7 +13,7 @@ public class UrlFactory {
     //发送短信接口
     public final static String SEND_VERIFICATION = "zhangkongpay/orderControl/getOrdersByPayType.shtml";
     //获取类型新闻接口
-    public final static String GET_GATEGORY_NEWS = "countOnlineManager/getByShop.shtml";
+    public final static String GET_GATEGORY_NEWS = "headline/T1348647909107/0-10.html";
     //获取类型视频接口
     public final static String GET_GATEGORY_VIDEOS = "countOnlineManager/getByShop.shtml";
 }

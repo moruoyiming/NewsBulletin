@@ -1,8 +1,12 @@
 package com.mrym.newsbulletion.utils.common;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 /**
  * Created by Jian on 2016/8/25.
@@ -48,5 +52,15 @@ public class JsonUtils {
         Gson gson = new Gson();
         String jsonStr = gson.toJson(obj);
         return jsonStr;
+    }
+
+    public static <T> ArrayList<T> fromJsonList(String json, Class<T> cls) {
+        ArrayList<T> mList = new ArrayList<T>();
+        Gson gson = new Gson();
+        JsonArray array = new JsonParser().parse(json).getAsJsonArray();
+        for(final JsonElement elem : array){
+            mList.add(gson.fromJson(elem, cls));
+        }
+        return mList;
     }
 }

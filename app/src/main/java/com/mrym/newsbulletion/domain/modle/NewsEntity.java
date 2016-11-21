@@ -26,7 +26,7 @@ public class NewsEntity implements Serializable {
     /**
      * 评论数量
      */
-    private Integer commentNum;
+    private Double commentNum;
     /**
      * ID
      */
@@ -46,7 +46,7 @@ public class NewsEntity implements Serializable {
     /**
      * 发布时间
      */
-    private Long publishTime;
+    private String publishTime;
     /**
      * 总结
      */
@@ -153,11 +153,11 @@ public class NewsEntity implements Serializable {
         this.mark = mark;
     }
 
-    public Integer getCommentNum() {
+    public Double getCommentNum() {
         return commentNum;
     }
 
-    public void setCommentNum(Integer commentNum) {
+    public void setCommentNum(Double commentNum) {
         this.commentNum = commentNum;
     }
 
@@ -193,11 +193,11 @@ public class NewsEntity implements Serializable {
         this.source = source;
     }
 
-    public Long getPublishTime() {
+    public String getPublishTime() {
         return publishTime;
     }
 
-    public void setPublishTime(Long publishTime) {
+    public void setPublishTime(String publishTime) {
         this.publishTime = publishTime;
     }
 

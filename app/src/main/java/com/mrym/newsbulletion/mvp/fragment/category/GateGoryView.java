@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.mvp.fragment.category;
 
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.domain.modle.NewsSummary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public interface GateGoryView {
 
     public void loadingError(String errormsg);
 
-    public void loadingSuccess(List<NewsEntity> news);
+    public void loadingSuccess(List<NewsSummary> news);
 
     public void loadComplete();
 

@@ -18,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 
 import java.util.Date;
@@ -32,12 +33,12 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
+public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
 
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
-    public NewsAdapter(List<NewsEntity> list, Context context) {
+    public NewsAdapter(List<NewsSummary> list, Context context) {
         super(list, context);
         this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
@@ -72,41 +73,42 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
         super.onBindViewHolder(holder, position);
         try {
             NewsViewHolder hd = (NewsViewHolder) holder;
-            NewsEntity newsEntity = list.get(position);
+            NewsSummary newsEntity = list.get(position);
 //            Log.d(TAG, "newsEntity内容：" + newsEntity.toString());
-            hd.getmAutherName().setText(newsEntity.getAuthor());
+            hd.getmAutherName().setText(newsEntity.getSource());
             hd.getmTiltle().setText(newsEntity.getTitle());
-            hd.getmCommontNumber().setText(newsEntity.getCommentNum() + "评论");
-            hd.getmPublicdate().setText(MsgDateUtils.getTimestampString(new Date(newsEntity.getPublishTime())));
-            Glide.with(mContext).load(newsEntity.getHeadimg()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
-            switch (getItemViewType(position)) {
-                case GlobalVariable.ITEM_TEXT:
-                    break;
-                case GlobalVariable.ITEM_BIGPIC:
-                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
-                    break;
-                case GlobalVariable.ITEM_SMALLPIC:
-                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
-                    break;
-                case GlobalVariable.ITEM_EXCLUSIVE:
-                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
-                    Glide.with(mContext).load(newsEntity.getPicTwo()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
-                    Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
-                    break;
-                case GlobalVariable.ITEM_VIDEO:
-                    JCVideoPlayerStandard jcVideoPlayerStandard=hd.getJcVideoPlayerStandard();
-                    boolean setUp = jcVideoPlayerStandard.setUp(
-                            newsEntity.getVideoUrl(), JCVideoPlayer.SCREEN_LAYOUT_LIST,
-                            newsEntity.getTitle());
-                    if (setUp) {
-                        Glide.with(mContext).load(newsEntity.getVideoPic())
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .centerCrop()
-                                .error(R.mipmap.ic_launcher)
-                                .crossFade().into(jcVideoPlayerStandard.thumbImageView);
-                    }
-                    break;
-            }
+            hd.getmCommontNumber().setText(newsEntity.getReplyCount() + "评论");
+            hd.getmPublicdate().setText(newsEntity.getPtime());
+            Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
+            Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
+//            switch (getItemViewType(position)) {
+//                case GlobalVariable.ITEM_TEXT:
+//                    break;
+//                case GlobalVariable.ITEM_BIGPIC:
+//                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
+//                    break;
+//                case GlobalVariable.ITEM_SMALLPIC:
+
+//                    break;
+//                case GlobalVariable.ITEM_EXCLUSIVE:
+//                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
+//                    Glide.with(mContext).load(newsEntity.getPicTwo()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
+//                    Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
+//                    break;
+//                case GlobalVariable.ITEM_VIDEO:
+//                    JCVideoPlayerStandard jcVideoPlayerStandard=hd.getJcVideoPlayerStandard();
+//                    boolean setUp = jcVideoPlayerStandard.setUp(
+//                            newsEntity.getVideoUrl(), JCVideoPlayer.SCREEN_LAYOUT_LIST,
+//                            newsEntity.getTitle());
+//                    if (setUp) {
+//                        Glide.with(mContext).load(newsEntity.getVideoPic())
+//                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                .centerCrop()
+//                                .error(R.mipmap.ic_launcher)
+//                                .crossFade().into(jcVideoPlayerStandard.thumbImageView);
+//                    }
+//                    break;
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -121,9 +123,13 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsEntity> {
         if (list == null) {
             Log.i(TAG, "list must not null");
         }
-        NewsEntity msgContent = list.get(position);
-        return msgContent.getNewType();
-
+        NewsSummary msgContent = list.get(position);
+        if(msgContent.getAds().size()==0){
+            return 1;
+        }else if(msgContent.getAds().size()>0){
+            return 2;
+        }
+        return 0;
     }
 
     @Override

@@ -19,6 +19,7 @@ import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
@@ -44,7 +45,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
     private NewsAdapter ma;
-    private List<NewsEntity> mNews;
+    private List<NewsSummary> mNews;
     private String mCurrentCate = null;
     private int i = 0;
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
@@ -158,7 +159,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     }
 
     @Override
-    public void loadingSuccess(List<NewsEntity> news) {
+    public void loadingSuccess(List<NewsSummary> news) {
         ma.addAll(news);
     }
 
