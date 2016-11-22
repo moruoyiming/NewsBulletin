@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.authenticator.account.AccountTool;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.ButterKnife;
 import rx.Subscription;
@@ -65,7 +66,18 @@ public class BaseActivity extends SkinBaseActivity {
         onUnsubscribe();
         super.onDestroy();
     }
-
+    /**
+     * 着色状态栏（4.4以上系统有效）
+     */
+    protected void SetStatusBarColor(int color){
+        StatusBarCompat.setStatusBarColor(this,color);
+    }
+    /**
+     * 沉浸状态栏（4.4以上系统有效）
+     */
+    protected void SetTranslanteBar(){
+        StatusBarCompat.translucentStatusBar(this);
+    }
     private CompositeSubscription mCompositeSubscription;
 
     public void onUnsubscribe() {

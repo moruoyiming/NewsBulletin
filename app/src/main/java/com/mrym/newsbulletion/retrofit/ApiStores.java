@@ -3,7 +3,10 @@ package com.mrym.newsbulletion.retrofit;
 
 import com.mrym.newsbulletion.domain.constans.UrlFactory;
 import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
+import com.mrym.newsbulletion.domain.modle.GirlData;
+import com.mrym.newsbulletion.domain.modle.NewsDetail;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
+import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.activity.login.LoginModel;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryModel;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeModel;
@@ -26,9 +29,11 @@ import rx.Observable;
 public interface ApiStores {
 
     String BASE_PATH = "http://c.m.163.com/";
+
     //启动页广告
     @GET(UrlFactory.START_IMAGE)
     Observable<LoginModel> startImage();
+
     //登陆
     @GET(UrlFactory.LOGIN_PATH)
     Observable<LoginModel> login(@Query("password") String code, @Query("username") String username);
@@ -41,15 +46,27 @@ public interface ApiStores {
     @GET(UrlFactory.SEND_VERIFICATION)
     Observable<DefaultInterfaceBean> sendVerification(@Query("telnumber") String telnumber);
 
+    //    //获取类型新闻
+//    @GET(UrlFactory.GET_GATEGORY_NEWS)
+//    Observable<GateGoryModel> getCategoryNews(@Query("gategory") String gategory);
     //获取类型新闻
     @GET(UrlFactory.GET_GATEGORY_NEWS)
-    Observable<GateGoryModel> getCategoryNews(@Query("gategory") String gategory);
-
-    @GET("nc/article/{type}/{id}/{startPage}-20.html")
     Observable<HashMap<String, List<NewsSummary>>> getNewsList(@Path("type") String type, @Path("id") String id,
                                                                @Path("startPage") int startPage);
     //获取类型新闻
-    @GET(UrlFactory.GET_GATEGORY_VIDEOS)
-    Observable<GateGoryModel> getCategoryVideos(@Query("gategory") String gategory);
 
+    @GET("data/福利/{size}/{page}")
+    Observable<GirlData> getPhotoList(
+            @Path("size") int size,
+            @Path("page") int page);
+
+    //获取类型新闻
+    @GET(UrlFactory.GET_GATEGORY_VIDEOS)
+    Observable<Map<String, List<VideoData>>> getVideoList(
+            @Path("type") String type,
+            @Path("startPage") int startPage);
+    //获取新闻详情
+    @GET("nc/article/{postId}/full.html")
+    Observable<Map<String, NewsDetail>> getNewDetail(
+            @Path("postId") String postId);
 }

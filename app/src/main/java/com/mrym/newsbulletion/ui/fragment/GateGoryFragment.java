@@ -23,6 +23,8 @@ import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
+import com.mrym.newsbulletion.ui.activity.NewsBrowserActivity;
+import com.mrym.newsbulletion.ui.activity.PhotosDetailActivity;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
@@ -43,13 +45,14 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     @Bind(R.id.category_list)
     XRecyclerView categoryList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
-    protected int mCurrentPageIndex = 1;
+    protected int mCurrentPageIndex = 0;
     private NewsAdapter ma;
     private List<NewsSummary> mNews;
     private String mCurrentCate = null;
     private int i = 0;
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
-
+    private String mNewsId;
+    private String mNewsType;
     @Override
     protected GateGoryPresenter createPresenter() {
         return new GateGoryPresenter(this);
@@ -69,9 +72,11 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         mNews = new ArrayList<>();
         ma = new NewsAdapter(mNews, getActivity());
         categoryList.setAdapter(ma);
-        int position = FragmentPagerItem.getPosition(getArguments());
-        ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
-        mCurrentCate = homeCateGories.get(position).getField();
+        if (getArguments() != null) {
+            mNewsId = getArguments().getString(GlobalVariable.NEWS_ID);
+            mNewsType = getArguments().getString(GlobalVariable.NEWS_TYPE);
+        }
+        mNewsType="T1348647909107";
         categoryList.setLayoutManager(new LinearLayoutManager(getActivity()));
         categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
@@ -90,27 +95,30 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         });
         categoryList.setRefreshing(true);
         Log.i("onActivityCreated", "界面被创建" + i++);
-        onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
+        onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
-            public void OnClickListener(View parentV, View v, Integer position, NewsEntity values) {
+            public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
             }
 
             @Override
-            public void OnLongClickListener(View parentV, View v, Integer position, NewsEntity values) {
+            public void OnLongClickListener(View parentV, View v, Integer position, NewsSummary values) {
 
             }
         };
-        picOnInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
+        picOnInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
-            public void OnClickListener(View parentV, View v, Integer position, NewsEntity values) {
-                ToastUtils.show("position : "+position +"list : "+values.getPicList().toString());
-                Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
-                intent.putStringArrayListExtra("list", values.getPicList());
-                getActivity().startActivity(intent);
+            public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
+//                ToastUtils.show("position : "+position +"list : "+values.getImgsrc());
+//                Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
+//                intent.putStringArrayListExtra("list", values.getPicList());
+//                getActivity().startActivity(intent);
+                PhotosDetailActivity.startAction(getActivity(), values.getImgsrc());
+//                NewsBrowserActivity.startAction(getActivity(),"www.baidu.com",values.getTitle());
             }
 
+
             @Override
-            public void OnLongClickListener(View parentV, View v, Integer position, NewsEntity values) {
+            public void OnLongClickListener(View parentV, View v, Integer position, NewsSummary values) {
 
             }
         };
@@ -125,9 +133,11 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         super.onHiddenChanged(hidden);
         if (hidden) {
             //TODO now visible to user
+            Log.i("onHiddenChanged","  "+hidden);
 
         } else {
             //TODO now invisible to user
+            Log.i("onHiddenChanged"," WHAT "+hidden);
             JCVideoPlayer.releaseAllVideos();
         }
     }
@@ -143,12 +153,12 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         switch (mCurrentAction) {
             case GlobalVariable.ACTION_REFRESH:
                 mNews.clear();
-                mCurrentPageIndex = 1;
-                mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
+                mCurrentPageIndex = 0;
+                mvpPresenter.getGategoryData(mNewsType, mCurrentPageIndex);
                 break;
             case GlobalVariable.ACTION_LOAD_MORE:
-                mCurrentPageIndex++;
-                mvpPresenter.getGategoryData(mCurrentCate, mCurrentPageIndex);
+                mCurrentPageIndex+=20;
+                mvpPresenter.getGategoryData(mNewsType, mCurrentPageIndex);
                 break;
         }
     }

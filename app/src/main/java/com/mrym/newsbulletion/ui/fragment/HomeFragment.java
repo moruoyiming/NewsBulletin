@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,9 +14,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
 import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
+import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
@@ -27,6 +31,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -47,6 +52,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     LinearLayout header;
     @Bind(R.id.viewpager)
     ViewPager viewpager;
+    private BaseFragmentAdapter fragmentAdapter;
     @Override
     protected HomePresenter createPresenter() {
         return new HomePresenter(this);
@@ -68,17 +74,25 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         dynamicAddView(header, "background", R.color.primary_dark);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
-        FragmentPagerItems pages = new FragmentPagerItems(getActivity());
         ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
-        for (HomeCateGory homeCateGory : homeCateGories) {
-            pages.add(FragmentPagerItem.of(homeCateGory.getCategory(), GateGoryFragment.class));
+        List<String> channelNames = new ArrayList<>();
+        List<Fragment> mNewsFragmentList = new ArrayList<>();
+        for (int i = 0; i < homeCateGories.size(); i++) {
+            channelNames.add(homeCateGories.get(i).getCategory());
+            mNewsFragmentList.add(createListFragments(homeCateGories.get(i)));
         }
-        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
-                getFragmentManager(), pages);
-        viewpager.setAdapter(adapter);
+        fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelNames);
+        viewpager.setAdapter(fragmentAdapter);
         viewPagerTab.setViewPager(viewpager);
     }
-
+    private GateGoryFragment createListFragments(HomeCateGory homeCateGory) {
+        GateGoryFragment fragment = new GateGoryFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(GlobalVariable.NEWS_ID, homeCateGory.getCategory());
+        bundle.putString(GlobalVariable.NEWS_TYPE, homeCateGory.getField());
+        fragment.setArguments(bundle);
+        return fragment;
+    }
     @Override
     public void onResume() {
         super.onResume();

@@ -38,6 +38,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
+
     public NewsAdapter(List<NewsSummary> list, Context context) {
         super(list, context);
         this.mContext = context;
@@ -80,22 +81,22 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             hd.getmCommontNumber().setText(newsEntity.getReplyCount() + "评论");
             hd.getmPublicdate().setText(newsEntity.getPtime());
             Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
-            Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
-//            switch (getItemViewType(position)) {
-//                case GlobalVariable.ITEM_TEXT:
-//                    break;
-//                case GlobalVariable.ITEM_BIGPIC:
-//                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
-//                    break;
-//                case GlobalVariable.ITEM_SMALLPIC:
 
-//                    break;
-//                case GlobalVariable.ITEM_EXCLUSIVE:
-//                    Glide.with(mContext).load(newsEntity.getPicOne()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
-//                    Glide.with(mContext).load(newsEntity.getPicTwo()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
-//                    Glide.with(mContext).load(newsEntity.getPicThr()).dontAnimate().fitCenter().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
-//                    break;
-//                case GlobalVariable.ITEM_VIDEO:
+            switch (getItemViewType(position)) {
+                case GlobalVariable.ITEM_TEXT:
+                    break;
+                case GlobalVariable.ITEM_BIGPIC:
+                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
+                    break;
+                case GlobalVariable.ITEM_SMALLPIC:
+                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
+                    break;
+                case GlobalVariable.ITEM_EXCLUSIVE:
+                    Glide.with(mContext).load(newsEntity.getImgextra().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
+                    Glide.with(mContext).load(newsEntity.getImgextra().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
+//                    Glide.with(mContext).load(newsEntity.getImgextra().get(2).getImgsrc() + "").dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
+                    break;
+                case GlobalVariable.ITEM_VIDEO:
 //                    JCVideoPlayerStandard jcVideoPlayerStandard=hd.getJcVideoPlayerStandard();
 //                    boolean setUp = jcVideoPlayerStandard.setUp(
 //                            newsEntity.getVideoUrl(), JCVideoPlayer.SCREEN_LAYOUT_LIST,
@@ -107,12 +108,13 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
 //                                .error(R.mipmap.ic_launcher)
 //                                .crossFade().into(jcVideoPlayerStandard.thumbImageView);
 //                    }
-//                    break;
-//            }
+                    break;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public int getItemCount() {
         return list == null ? 0 : list.size();
@@ -124,12 +126,17 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             Log.i(TAG, "list must not null");
         }
         NewsSummary msgContent = list.get(position);
-        if(msgContent.getAds().size()==0){
-            return 1;
-        }else if(msgContent.getAds().size()>0){
-            return 2;
+        if ("photoset".equals(msgContent.getSkipType())) {
+            if (msgContent.getImgextra() != null && msgContent.getImgextra().size() > 0) {
+                return GlobalVariable.ITEM_EXCLUSIVE;
+            } else {
+                return GlobalVariable.ITEM_SMALLPIC;
+            }
+        } else if ("special".equals(msgContent.getSkipType())) {
+            return GlobalVariable.ITEM_BIGPIC;
+        } else {
+            return GlobalVariable.ITEM_SMALLPIC;
         }
-        return 0;
     }
 
     @Override

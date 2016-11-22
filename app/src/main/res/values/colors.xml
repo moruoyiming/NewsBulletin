@@ -32,7 +32,8 @@
     <color name="accent">#40C4FF</color>
     <color name="item_bg">#e0e4e7</color>
     <color name="txt_color">#1d1e1e</color>
-
+    <!--87%white-->
+    <color name="progress_bar_unfinished">#D4D4D4</color>
     <color name="item_tv_title_color">#050505</color>
     <color name="item_tv_content_color">#FF4081</color>
     <color name="item_tv_date_color">#FFCD01</color>

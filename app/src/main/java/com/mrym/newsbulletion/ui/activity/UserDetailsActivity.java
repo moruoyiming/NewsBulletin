@@ -1,5 +1,6 @@
 package com.mrym.newsbulletion.ui.activity;
 
+import com.mrym.newsbulletion.domain.modle.NewsDetail;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsPresenter;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsView;
@@ -13,5 +14,10 @@ public class UserDetailsActivity extends MvpActivity<DetailsPresenter> implement
     @Override
     protected DetailsPresenter createPresenter() {
         return new DetailsPresenter(this);
+    }
+
+    @Override
+    public void returnOneNewsData(NewsDetail newsDetail) {
+
     }
 }

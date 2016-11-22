@@ -73,7 +73,7 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
         images = new ArrayList<>();
         images.add("http://f.hiphotos.baidu.com/news/q%3D100/sign=c0c87a1c7af082022b92953f7bfafb8a/4d086e061d950a7b6f8bd0fb03d162d9f2d3c957.jpg");
         images.add("http://d.hiphotos.baidu.com/news/q%3D100/sign=ca91accda844ad3428bf8387e0a30c08/35a85edf8db1cb1312e63233d454564e92584b06.jpg");
-        titles = new String[]{"习近平出席亚太经合组织工商领导人峰会并发表主旨演讲", "习近平出席亚太经合组织领导人同工商咨询理事会代表对话会"};
+        titles = new String[]{"习近平出席亚太峰会并发表主旨演讲", "习近平出席亚太咨询理事会代表对话会"};
         View view = View.inflate(getActivity(), R.layout.fragment_banner, null);
         Banner banner = (Banner) view.findViewById(R.id.banner);
         //设置banner样式
