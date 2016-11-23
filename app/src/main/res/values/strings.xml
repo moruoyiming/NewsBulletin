@@ -57,7 +57,7 @@
     <string name="setting">设置</string>
 
     <string name="demo_tab_1">推荐</string>
-    <string name="demo_tab_2">房产</string>
+    <string name="demo_tab_2">精选</string>
     <string name="demo_tab_3">娱乐</string>
     <string name="demo_tab_4">体育</string>
     <string name="demo_tab_5">电影</string>
@@ -86,7 +86,7 @@
     <string name="openvideo2">Open Video2</string>
     <!-- 共享过度动画 -->
     <string name="transition_photos">transition_animation_news_photos</string>
-    <string name="care_about_wechat">快讯介绍:基于Rxjava+Retrofit的框架,高仿头条新闻.\n本项目纯属技术练习,如涉及版权问题,请及时联系我.\n项目地址:https://github.com/moruoyiming/NewsBulletin\nEmail:moruoyiming123@gamil.com\nQQ:798774875\nName:Brigitte</string>
+    <string name="care_about_wechat">快讯介绍:基于Rxjava+Retrofit的框架,高仿头条新闻.\n本项目纯属技术练习,如涉及版权问题,请及时联系我.\n项目地址:https://github.com/moruoyiming/NewsBulletin\nEmail:moruoyiming123@gmail.com\nQQ:798774875\nName:Brigitte</string>
     <string name="share">分享</string>
     <string name="share_contents">来自「Moruoyiming」的分享：%1$s %2$s</string>
     <string name="reload">重新尝试</string>

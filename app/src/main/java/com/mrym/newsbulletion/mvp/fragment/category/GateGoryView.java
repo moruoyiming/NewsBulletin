@@ -15,7 +15,7 @@ public interface GateGoryView {
 
     public void loadingError(String errormsg);
 
-    public void loadingSuccess(List<NewsSummary> news);
+    public void loadingSuccess(List<NewsSummary> news,String tag);
 
     public void loadComplete();
 

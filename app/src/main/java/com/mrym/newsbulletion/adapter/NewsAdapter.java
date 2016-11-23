@@ -80,20 +80,20 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             hd.getmTiltle().setText(newsEntity.getTitle());
             hd.getmCommontNumber().setText(newsEntity.getReplyCount() + "评论");
             hd.getmPublicdate().setText(newsEntity.getPtime());
-            Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().fitCenter().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
+            Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
 
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_TEXT:
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
-                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
+                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
                     break;
                 case GlobalVariable.ITEM_SMALLPIC:
-                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
+                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
                     break;
                 case GlobalVariable.ITEM_EXCLUSIVE:
-                    Glide.with(mContext).load(newsEntity.getImgextra().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
-                    Glide.with(mContext).load(newsEntity.getImgextra().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
+                    Glide.with(mContext).load(newsEntity.getImgextra().get(0).getImgsrc() + "").dontAnimate().crossFade().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
+                    Glide.with(mContext).load(newsEntity.getImgextra().get(1).getImgsrc() + "").dontAnimate().crossFade().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
 //                    Glide.with(mContext).load(newsEntity.getImgextra().get(2).getImgsrc() + "").dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
                     break;
                 case GlobalVariable.ITEM_VIDEO:

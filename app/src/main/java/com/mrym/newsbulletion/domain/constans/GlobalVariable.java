@@ -32,6 +32,7 @@ public class GlobalVariable {
     public static final String NEWS_ID = "news_id";
     public static final String NEWS_TYPE = "news_type";
     public static final String CHANNEL_POSITION = "channel_position";
+    public static final int CONNECT_TIMEOUT = 5000;
     @SuppressLint("NewApi")
     public static String getLogSavePath() {
         if (Build.VERSION.SDK_INT >= 19) {
@@ -119,4 +120,34 @@ public class GlobalVariable {
     public static final String MSG_ID = "T1371543208049";
     // 军事
     public static final String MILITARY_ID = "T1348648141035";
+    public static final String NETEAST_HOST = "http://c.m.163.com/";
+    /**
+     * 新浪图片新闻
+     * http://gank.io/api/data/福利/{size}/{page}
+     */
+    public static final String SINA_PHOTO_HOST = "http://gank.io/api/";
+    /**
+     * 获取对应的host
+     *
+     * @param hostType host类型
+     * @return host
+     */
+    public static String getHost(int hostType) {
+        String host;
+        switch (hostType) {
+            case HostType.NETEASE_NEWS_VIDEO:
+                host = NETEAST_HOST;
+                break;
+            case HostType.GANK_GIRL_PHOTO:
+                host = SINA_PHOTO_HOST;
+                break;
+            case HostType.NEWS_DETAIL_HTML_PHOTO:
+                host = "http://kaku.com/";
+                break;
+            default:
+                host = "";
+                break;
+        }
+        return host;
+    }
 }

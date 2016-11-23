@@ -52,7 +52,13 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
         try {
             GirlsViewHolder hd = (GirlsViewHolder) holder;
             PhotoGirl photoGirl = list.get(position);
-            Glide.with(mContext).load(photoGirl.getUrl()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getGirlsimage());
+//            Glide.with(mContext).load(photoGirl.getUrl()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getGirlsimage());
+            Glide.with(mContext).load(photoGirl.getUrl())
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .placeholder(R.mipmap.shouyetu)
+                    .error(R.mipmap.shouyetu)
+                    .centerCrop().override(1090, 1090*3/4)
+                    .crossFade().into(hd.getGirlsimage());
         } catch (Exception e) {
             e.printStackTrace();
         }

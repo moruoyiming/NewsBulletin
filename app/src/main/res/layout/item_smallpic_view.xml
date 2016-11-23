@@ -17,6 +17,7 @@
             android:id="@+id/item_smallpic_rightpic"
             android:layout_width="@dimen/base130dp"
             android:layout_height="@dimen/base100dp"
+            android:scaleType="centerCrop"
             android:layout_alignParentRight="true" />
 
         <TextView

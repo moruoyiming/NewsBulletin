@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -39,6 +40,8 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     XRecyclerView mSkinGrid;
     @Bind(R.id.header)
     LinearLayout header;
+    @Bind(R.id.leftback_toobar_l1)
+    RelativeLayout back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,12 +65,19 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
                 mvpPresenter.restoreDefaultTheme();
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                        finish();
+            }
+        });
         skin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mvpPresenter.chageSkinFromLocal("theme.skin");
             }
         });
+
     }
 
     @Override

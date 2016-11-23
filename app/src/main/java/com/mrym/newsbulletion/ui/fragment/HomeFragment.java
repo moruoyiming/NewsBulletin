@@ -82,6 +82,8 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
             mNewsFragmentList.add(createListFragments(homeCateGories.get(i)));
         }
         fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelNames);
+
+        viewpager.setOffscreenPageLimit(1);
         viewpager.setAdapter(fragmentAdapter);
         viewPagerTab.setViewPager(viewpager);
     }

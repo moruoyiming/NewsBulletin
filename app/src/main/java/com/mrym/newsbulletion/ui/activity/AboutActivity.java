@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -35,8 +36,8 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
     ImageView newsDetailPhotoIv;
     @Bind(R.id.mask_view)
     View maskView;
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
+//    @Bind(R.id.toolbar)
+//    Toolbar toolbar;
     @Bind(R.id.toolbar_layout)
     CollapsingToolbarLayout toolbarLayout;
     @Bind(R.id.app_bar)
@@ -48,7 +49,8 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
     @Bind(R.id.fab)
     FloatingActionButton fab;
     private String mShareLink;
-
+    @Bind(R.id.leftback_toobar_l1)
+    RelativeLayout back;
     /**
      * 入口
      *
@@ -70,18 +72,24 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
         }
         setContentView(R.layout.activity_about);
 //        dynamicAddView(toolbar, "background", R.color.primary_dark);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    finishAfterTransition();
+//                } else {
+//                    finish();
+//                }
+//            }
+//        });
+//        toolbar.setTitle(getString(R.string.app_name));
+//        toolbarLayout.setTitle(getString(R.string.app_name));
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    finishAfterTransition();
-                } else {
-                    finish();
-                }
+            public void onClick(View v) {
+                finish();
             }
         });
-        toolbar.setTitle(getString(R.string.app_name));
-        toolbarLayout.setTitle(getString(R.string.app_name));
         //分享
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

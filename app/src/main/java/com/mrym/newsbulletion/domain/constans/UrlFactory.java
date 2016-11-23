@@ -1,5 +1,7 @@
 package com.mrym.newsbulletion.domain.constans;
 
+import com.mrym.newsbulletion.retrofit.ApiStores;
+
 /**
  * Created by Jian on 2016/8/25.
  * Email: 798774875@qq.com
@@ -16,4 +18,5 @@ public class UrlFactory {
     public final static String GET_GATEGORY_NEWS = "nc/article/{type}/{id}/{startPage}-20.html";//"headline/T1348647909107/0-10.html"
     //获取类型视频接口
     public final static String GET_GATEGORY_VIDEOS = "nc/video/list/{type}/n/{startPage}-10.html";
+
 }

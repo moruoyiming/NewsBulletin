@@ -37,7 +37,7 @@ public class HomeCateGoryUtils extends DatabaseUtil<HomeCateGory> {
             homeCateGory.setField(GlobalVariable.HEADLINE_ID);
             HomeCateGory homeCateGory2 = new HomeCateGory();
             homeCateGory2.setCategory(mContext.getString(R.string.demo_tab_2));
-            homeCateGory2.setField(GlobalVariable.HOUSE_ID);
+            homeCateGory2.setField(GlobalVariable.CHOICE_ID);
             HomeCateGory homeCateGory3 = new HomeCateGory();
             homeCateGory3.setCategory(mContext.getString(R.string.demo_tab_3));
             homeCateGory3.setField(GlobalVariable.ENTERTAINMENT_ID);

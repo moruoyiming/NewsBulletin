@@ -49,7 +49,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     private NewsAdapter ma;
     private List<NewsSummary> mNews;
     private String mCurrentCate = null;
-    private int i = 0;
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
     private String mNewsId;
     private String mNewsType;
@@ -76,7 +75,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             mNewsId = getArguments().getString(GlobalVariable.NEWS_ID);
             mNewsType = getArguments().getString(GlobalVariable.NEWS_TYPE);
         }
-        mNewsType="T1348647909107";
+//        mNewsType="T1348647909107";
         categoryList.setLayoutManager(new LinearLayoutManager(getActivity()));
         categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
@@ -94,7 +93,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             }
         });
         categoryList.setRefreshing(true);
-        Log.i("onActivityCreated", "界面被创建" + i++);
         onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
@@ -129,6 +127,12 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (hidden) {
@@ -142,11 +146,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         }
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-    }
 
     public void switchActionAndLoadData(int action) {
         mCurrentAction = action;
@@ -169,7 +168,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     }
 
     @Override
-    public void loadingSuccess(List<NewsSummary> news) {
+    public void loadingSuccess(List<NewsSummary> news,String mtag) {
         ma.addAll(news);
     }
 
@@ -196,7 +195,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i("onActivityCreated", "界面被销毁" + i++);
         mNews = null;
         mvpPresenter = null;
         categoryList = null;
