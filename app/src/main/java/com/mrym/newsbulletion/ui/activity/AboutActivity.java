@@ -25,9 +25,9 @@ import butterknife.Bind;
 
 
 /**
- * des:关于
- * Created by xsf
- * on 2016.09.16:57
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class AboutActivity  extends MvpActivity<AboutPresenter> implements AboutView {
 

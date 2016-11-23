@@ -44,9 +44,9 @@ import rx.Observable;
 import rx.Subscriber;
 
 /**
- * des:普通新闻详情
- * Created by xsf
- * on 2016.09.16:57
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements DetailsView {
 

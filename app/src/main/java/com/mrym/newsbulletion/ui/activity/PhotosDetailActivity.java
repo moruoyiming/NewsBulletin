@@ -27,9 +27,9 @@ import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
- * des:大图详情
- * Created by xsf
- * on 2016.09.14:35
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class PhotosDetailActivity extends AppCompatActivity implements PullBackLayout.Callback {
 
