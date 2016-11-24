@@ -45,7 +45,8 @@ public class PhotosDetailActivity extends AppCompatActivity implements PullBackL
     private boolean mIsToolBarHidden;
     private boolean mIsStatusBarHidden;
     private ColorDrawable mBackground;
-
+    @Bind(R.id.leftback_toobar_l1)
+    RelativeLayout back;
 
     public static void startAction(Context context,String url){
         Intent intent = new Intent(context, PhotosDetailActivity.class);
@@ -80,10 +81,16 @@ public class PhotosDetailActivity extends AppCompatActivity implements PullBackL
     }
 
     private void initToolbar() {
-        toolbar.setTitle(getString(R.string.photo_details));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//        toolbar.setTitle(getString(R.string.photo_details));
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 finish();
             }
         });

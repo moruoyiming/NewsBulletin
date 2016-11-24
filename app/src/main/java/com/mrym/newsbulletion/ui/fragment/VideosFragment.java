@@ -38,9 +38,9 @@ import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 /**
- * des:视频fragment
- * Created by xsf
- * on 2016.09.17:30
+ * Created by Jian on 2016/8/30.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class VideosFragment extends MvpFragment<VideosPresenter> implements VideoView{
     @Bind(R.id.category_list)
@@ -49,7 +49,7 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
     protected int mCurrentPageIndex = 1;
     private VideosAdapter ma;
     private List<VideoData> mViedeos;
-    private String mCurrentCate = null;
+    private String mVideoType = null;
     private int i = 0;
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
 
@@ -72,9 +72,9 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
         mViedeos = new ArrayList<>();
         ma = new VideosAdapter(mViedeos, getActivity());
         categoryList.setAdapter(ma);
-        int position = FragmentPagerItem.getPosition(getArguments());
-        ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
-        mCurrentCate = homeCateGories.get(position).getField();
+        if (getArguments() != null) {
+            mVideoType = getArguments().getString(GlobalVariable.VIDEO_TYPE);
+        }
         categoryList.setLayoutManager(new LinearLayoutManager(getActivity()));
         categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
@@ -116,11 +116,11 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
             case GlobalVariable.ACTION_REFRESH:
                 mViedeos.clear();
                 mCurrentPageIndex = 1;
-                mvpPresenter.getVideosData(mCurrentCate, mCurrentPageIndex);
+                mvpPresenter.getVideosData(mVideoType, mCurrentPageIndex);
                 break;
             case GlobalVariable.ACTION_LOAD_MORE:
                 mCurrentPageIndex++;
-                mvpPresenter.getVideosData(mCurrentCate, mCurrentPageIndex);
+                mvpPresenter.getVideosData(mVideoType, mCurrentPageIndex);
                 break;
         }
     }

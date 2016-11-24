@@ -24,6 +24,7 @@ import com.mrym.newsbulletion.ui.activity.PhotosDetailActivity;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import com.mrym.newsbulletion.utils.GlideImageLoader;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -68,6 +69,7 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+//        StatusBarCompat.setStatusBarColor(getActivity(), R.color.black,255);
         mPhotogirls = new ArrayList<>();
         mPhotoAdapter = new PhotoGirlsAdapter(mPhotogirls, getActivity());
         girlsList.setAdapter(mPhotoAdapter);

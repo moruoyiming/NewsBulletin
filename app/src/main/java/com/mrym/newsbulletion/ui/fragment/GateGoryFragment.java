@@ -24,6 +24,7 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
 import com.mrym.newsbulletion.ui.activity.NewsBrowserActivity;
+import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
 import com.mrym.newsbulletion.ui.activity.PhotosDetailActivity;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
@@ -110,8 +111,9 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 //                Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
 //                intent.putStringArrayListExtra("list", values.getPicList());
 //                getActivity().startActivity(intent);
-                PhotosDetailActivity.startAction(getActivity(), values.getImgsrc());
+//                PhotosDetailActivity.startAction(getActivity(), values.getImgsrc());
 //                NewsBrowserActivity.startAction(getActivity(),"www.baidu.com",values.getTitle());
+                NewsDetailActivity.startAction(getActivity(),values.getPostid(),values.getImgsrc());
             }
 
 

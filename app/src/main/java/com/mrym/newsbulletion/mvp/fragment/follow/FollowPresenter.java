@@ -2,7 +2,10 @@ package com.mrym.newsbulletion.mvp.fragment.follow;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.constans.HostType;
 import com.mrym.newsbulletion.domain.modle.GirlData;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
@@ -14,6 +17,10 @@ import com.mrym.newsbulletion.rxjava.SubscriberCallBack;
 import com.mrym.newsbulletion.rxjava.baserx.RxManager;
 import com.mrym.newsbulletion.rxjava.baserx.RxSchedulers;
 import com.mrym.newsbulletion.rxjava.baserx.RxSubscriber;
+import com.mrym.newsbulletion.utils.net.BaseCallBack;
+import com.mrym.newsbulletion.utils.net.NetUtils;
+
+import org.xutils.http.RequestParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +57,36 @@ public class FollowPresenter extends BasePresenter<FollowView> {
         }
         mvpView.loadComplete();
         mvpView.loadingSuccess(girls);
+//        RequestParams paramsData = new RequestParams(GlobalVariable.getHost(HostType.GANK_GIRL_PHOTO)+"data/福利/"+size+"/"+page);
+//        NetUtils.get(paramsData, new BaseCallBack<String>() {
+//            @Override
+//            public boolean onCache(String result) {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onSuccess(String result) {
+//                try {
+//                    GirlData girlData = new Gson().fromJson(result, new TypeToken<GirlData>() {
+//                    }.getType());
+//                    List<PhotoGirl> list = girlData.getResults();
+//                    mvpView.loadComplete();
+//                    mvpView.loadingSuccess(list);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//            }
+//
+//
+//        });
 //        Api.getDefault(HostType.GANK_GIRL_PHOTO)
 //                .getPhotoList(size, page)
 //                .subscribeOn(Schedulers.io())

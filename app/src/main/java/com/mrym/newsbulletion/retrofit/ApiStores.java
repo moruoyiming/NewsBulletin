@@ -36,35 +36,38 @@ public interface ApiStores {
 
     //登陆
     @GET(UrlFactory.LOGIN_PATH)
-    Observable<LoginModel> login(@Query("password") String code, @Query("username") String username);
+    Observable<LoginModel> login(
+            @Query("password") String code,
+            @Query("username") String username);
 
     //手机号登陆
     @GET(UrlFactory.LOGIN_PATH)
-    Observable<LoginModel> phonelogin(@Query("telnumber") String telnumber, @Query("verification") String verification);
+    Observable<LoginModel> phonelogin(
+            @Query("telnumber") String telnumber,
+            @Query("verification") String verification);
 
     //发送验证码
     @GET(UrlFactory.SEND_VERIFICATION)
-    Observable<DefaultInterfaceBean> sendVerification(@Query("telnumber") String telnumber);
+    Observable<DefaultInterfaceBean> sendVerification(
+            @Query("telnumber") String telnumber);
 
-    //    //获取类型新闻
-//    @GET(UrlFactory.GET_GATEGORY_NEWS)
-//    Observable<GateGoryModel> getCategoryNews(@Query("gategory") String gategory);
     //获取类型新闻
     @GET(UrlFactory.GET_GATEGORY_NEWS)
-    Observable<HashMap<String, List<NewsSummary>>> getNewsList(@Path("type") String type, @Path("id") String id,
-                                                               @Path("startPage") int startPage);
-    //获取类型新闻
-
+    Observable<HashMap<String, List<NewsSummary>>> getNewsList(
+            @Path("type") String type, @Path("id") String id,
+            @Path("startPage") int startPage);
+    //获取美女图片
     @GET("data/福利/{size}/{page}")
     Observable<GirlData> getPhotoList(
             @Path("size") int size,
             @Path("page") int page);
 
-    //获取类型新闻
+    //获取视频新闻
     @GET(UrlFactory.GET_GATEGORY_VIDEOS)
     Observable<Map<String, List<VideoData>>> getVideoList(
             @Path("type") String type,
             @Path("startPage") int startPage);
+
     //获取新闻详情
     @GET("nc/article/{postId}/full.html")
     Observable<Map<String, NewsDetail>> getNewDetail(

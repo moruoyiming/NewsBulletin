@@ -31,6 +31,8 @@ public class GlobalVariable {
     public static String NEWS_TITLE = "NEWS_TITLE";
     public static final String NEWS_ID = "news_id";
     public static final String NEWS_TYPE = "news_type";
+    /* 视频*/
+    public static final String VIDEO_TYPE = "VIDEO_TYPE";
     public static final String CHANNEL_POSITION = "channel_position";
     public static final int CONNECT_TIMEOUT = 5000;
     @SuppressLint("NewApi")

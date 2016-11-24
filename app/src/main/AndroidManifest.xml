@@ -59,6 +59,7 @@
         <activity
             android:name=".ui.activity.PhotosDetailActivity"
             android:theme="@style/Trans" />
+        <activity android:name=".ui.activity.NewsDetailActivity"/>
         <activity android:name=".ui.activity.NewsBrowserActivity" />
     </application>
 

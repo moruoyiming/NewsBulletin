@@ -23,11 +23,12 @@ public class DetailsPresenter extends BasePresenter<DetailsView> {
         attachView(detailsView);
     }
 
-    public void getOneNewsDataRequest(String postId) {
-        addSubscription(apiStores.getNewDetail(postId), new SubscriberCallBack<>(new ApiCallback<NewsDetail>() {
+    public void getOneNewsDataRequest(final String postId) {
+        addSubscription(apiStores.getNewDetail(postId), new SubscriberCallBack<>(new ApiCallback<Map<String, NewsDetail>>() {
             @Override
-            public void onSuccess(NewsDetail newsDetail) {
-                mvpView.returnOneNewsData(newsDetail);
+            public void onSuccess(Map<String, NewsDetail> newsDetail) {
+                NewsDetail detail= newsDetail.get(postId);
+                mvpView.returnOneNewsData(detail);
             }
 
             @Override

@@ -70,7 +70,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        StatusBarCompat.translucentStatusBar(getActivity(), true);
-        StatusBarCompat.setStatusBarColor(getActivity(), R.color.black,255);
+//        StatusBarCompat.setStatusBarColor(getActivity(), R.color.primary_dark,255);
         dynamicAddView(header, "background", R.color.primary_dark);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);

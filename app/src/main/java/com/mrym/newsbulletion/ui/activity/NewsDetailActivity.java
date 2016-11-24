@@ -79,22 +79,22 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
      * @param mContext
      * @param postId
      */
-    public static void startAction(Context mContext, View view, String postId, String imgUrl) {
+    public static void startAction(Context mContext,  String postId, String imgUrl) {
         Intent intent = new Intent(mContext, NewsDetailActivity.class);
         intent.putExtra(GlobalVariable.NEWS_POST_ID, postId);
         intent.putExtra(GlobalVariable.NEWS_IMG_RES, imgUrl);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions
-                    .makeSceneTransitionAnimation((Activity) mContext, view, GlobalVariable.TRANSITION_ANIMATION_NEWS_PHOTOS);
-            mContext.startActivity(intent, options.toBundle());
-        } else {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            ActivityOptions options = ActivityOptions
+//                    .makeSceneTransitionAnimation((Activity) mContext, view, GlobalVariable.TRANSITION_ANIMATION_NEWS_PHOTOS);
+//            mContext.startActivity(intent, options.toBundle());
+//        } else {
 
             //让新的Activity从一个小的范围扩大到全屏
-            ActivityOptionsCompat options = ActivityOptionsCompat
-                    .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
-            ActivityCompat.startActivity((Activity) mContext, intent, options.toBundle());
-        }
+//            ActivityOptionsCompat options = ActivityOptionsCompat
+//                    .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
+            ActivityCompat.startActivity((Activity) mContext, intent, null);
+//        }
 
     }
 
@@ -169,7 +169,7 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
         //mNewsDetailTitleTv.setText(newsTitle);
         newsDetailFromTv.setText(getString(R.string.news_from, newsSource, newsTime));
         setNewsDetailPhotoIv(NewsImgSrc);
-//        setNewsDetailBodyTv(newsDetail, newsBody);
+        setNewsDetailBodyTv(newsDetail, newsBody);
     }
 
     private void setToolBarLayout(String newsTitle) {
@@ -185,39 +185,39 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
                 .crossFade().into(newsDetailPhotoIv);
     }
 
-//    private void setNewsDetailBodyTv(final NewsDetail newsDetail, final String newsBody) {
-//       ApiStores apiStores = AppClient.retrofit().create(ApiStores.class);
-//        apiStores.add(Observable.timer(500, TimeUnit.MILLISECONDS)
-//                .compose(RxSchedulers.<Long>io_main())
-//                .subscribe(new Subscriber<Long>() {
-//                    @Override
-//                    public void onCompleted() {
-//                        progressBar.setVisibility(View.GONE);
-//                        fab.setVisibility(View.VISIBLE);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        progressBar.setVisibility(View.GONE);
-//                    }
-//
-//                    @Override
-//                    public void onNext(Long aLong) {
-//                        setBody(newsDetail, newsBody);
-//                    }
-//                }));
-//    }
 
-//    private void setBody(NewsDetail newsDetail, String newsBody) {
-//        int imgTotal = newsDetail.getImg().size();
-//        if (isShowBody(newsBody, imgTotal)) {
-////              mNewsDetailBodyTv.setMovementMethod(LinkMovementMethod.getInstance());//加这句才能让里面的超链接生效,实测经常卡机崩溃
+    private void setNewsDetailBodyTv(final NewsDetail newsDetail, final String newsBody) {
+        new RxManager().add(Observable.timer(500, TimeUnit.MILLISECONDS)
+                .compose(RxSchedulers.<Long>io_main())
+                .subscribe(new Subscriber<Long>() {
+                    @Override
+                    public void onCompleted() {
+                        progressBar.setVisibility(View.GONE);
+                        fab.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        progressBar.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        setBody(newsDetail, newsBody);
+                    }
+                }));
+    }
+
+    private void setBody(NewsDetail newsDetail, String newsBody) {
+        int imgTotal = newsDetail.getImg().size();
+        if (isShowBody(newsBody, imgTotal)) {
+//              mNewsDetailBodyTv.setMovementMethod(LinkMovementMethod.getInstance());//加这句才能让里面的超链接生效,实测经常卡机崩溃
 //            mUrlImageGetter = new URLImageGetter(newsDetailBodyTv, newsBody, imgTotal);
-//            newsDetailBodyTv.setText(Html.fromHtml(newsBody, mUrlImageGetter, null));
-//        } else {
-//            newsDetailBodyTv.setText(Html.fromHtml(newsBody));
-//        }
-//    }
+            newsDetailBodyTv.setText(Html.fromHtml(newsBody));
+        } else {
+            newsDetailBodyTv.setText(Html.fromHtml(newsBody));
+        }
+    }
 
     private boolean isShowBody(String newsBody, int imgTotal) {
         return imgTotal >= 2 && newsBody != null;

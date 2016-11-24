@@ -1,10 +1,12 @@
 package com.mrym.newsbulletion.mvp.activity.main;
 
+import android.app.Activity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.RadioGroup;
 
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.mvp.activity.login.LoginView;
@@ -12,6 +14,7 @@ import com.mrym.newsbulletion.ui.fragment.FollowFragment;
 import com.mrym.newsbulletion.ui.fragment.HomeFragment;
 import com.mrym.newsbulletion.ui.fragment.MineFragment;
 import com.mrym.newsbulletion.ui.fragment.VideoFragment;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 /**
  * Created by Jian on 2016/8/30.
@@ -65,12 +68,14 @@ public class MainPresenter extends BasePresenter<MainView> {
                     setCurrentItem(FRAGMENT_TAG_HOME);
                     break;
                 case R.id.rb_video:
+//                    StatusBarCompat.setStatusBarColor(activity, R.color.primary_dark, 255);
                     setCurrentItem(FRAGMENT_TAG_VIDEO);
                     break;
                 case R.id.rb_follow:
                     setCurrentItem(FRAGMENT_TAG_FOLLOW);
                     break;
                 case R.id.rb_mine:
+
                     setCurrentItem(FRAGMENT_TAG_MINE);
                     break;
             }

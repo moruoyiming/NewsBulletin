@@ -20,8 +20,8 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleMarginEnd="@dimen/base24dp"
-            app:expandedTitleMarginStart="@dimen/base24dp"
+            app:expandedTitleMarginEnd="@dimen/title_margin"
+            app:expandedTitleMarginStart="@dimen/title_margin"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <!--app:expandedTitleGravity="bottom"-->
@@ -32,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:transitionName="transition_animation_news_photos"
+                android:transitionName="@string/transition_photos"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7"
                 tools:targetApi="lollipop"/>
@@ -64,7 +64,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base16dp"
+        android:layout_margin="@dimen/fab_margin"
         android:src="@mipmap/ic_share"
         android:visibility="gone"
         app:layout_anchor="@id/app_bar"

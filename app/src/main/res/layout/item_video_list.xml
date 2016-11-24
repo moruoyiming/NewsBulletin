@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/item_video_center"
         android:layout_width="match_parent"
         android:layout_height="200dip"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginLeft="@dimen/base2dp"
-        android:layout_marginRight="@dimen/base2dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+        android:layout_marginRight="@dimen/base2dp">
 
         <TextView
             android:id="@+id/item_basic_title"
@@ -22,6 +22,7 @@
             android:textColor="@color/txt_color"
             android:textSize="@dimen/sp_16"
             android:textStyle="bold" />
+
         <RelativeLayout
             android:id="@+id/rl_root"
             android:layout_width="match_parent"
@@ -30,40 +31,43 @@
             <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
                 android:id="@+id/videoplayer"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"/>
-            <ImageView
+                android:layout_height="160dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_logo"
                 android:layout_width="28dp"
-                android:layout_below="@+id/videoplayer"
+                android:layout_height="28dp"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="4dp"
-                android:layout_height="28dp" />
+                android:layout_below="@+id/videoplayer"
+                android:layout_margin="4dp" />
+
             <TextView
                 android:id="@+id/tv_from"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/iv_logo"
+                android:layout_alignTop="@+id/iv_logo"
+                android:layout_toRightOf="@+id/iv_logo"
+                android:gravity="center"
                 android:textColor="@color/gray_deep"
                 android:textSize="@dimen/font_normal"
-                tools:text="世锋日上"
-                android:gravity="center"
-                android:layout_alignBottom="@+id/iv_logo"
-                android:layout_toRightOf="@+id/iv_logo"
-                android:layout_alignTop="@+id/iv_logo"
-                android:layout_height="wrap_content" />
+                tools:text="世锋日上" />
+
             <TextView
                 android:id="@+id/tv_play_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/videoplayer"
                 android:layout_alignBottom="@+id/iv_logo"
-                android:layout_alignTop="@+id/iv_logo"
-                android:layout_marginBottom="4dp"
-                android:padding="5dp"
-                android:gravity="center"
-                android:layout_marginRight="8dp"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/iv_logo"
+                android:layout_below="@+id/videoplayer"
+                android:layout_marginBottom="4dp"
+                android:layout_marginRight="8dp"
+                android:gravity="center"
+                android:padding="5dp"
                 android:textSize="@dimen/font_tiny"
-                tools:text="1111次播放"/>
+                tools:text="1111次播放" />
 
         </RelativeLayout>
 
