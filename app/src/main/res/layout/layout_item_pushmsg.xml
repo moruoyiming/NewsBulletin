@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/layout_item_pushmsg_l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/setting_item_selector"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/layout_item_pushmsg_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:lines="2"
+            android:text="夏天到了，你还准备去哪呢？"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/layout_item_pushmsg_pic"
+            android:layout_width="50.0dip"
+            android:layout_height="50.0dip"
+            android:scaleType="centerCrop"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

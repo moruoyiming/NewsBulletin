@@ -97,6 +97,13 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
+
+                try {
+                    PhotosDetailActivity.startAction(getActivity(),  values.getAds().get(0).getImgsrc());
+//                    NewsDetailActivity.startAction(getActivity(),values.getAds().get(0).getUrl(),values.getAds().get(0).getImgsrc());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -111,7 +118,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 //                Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
 //                intent.putStringArrayListExtra("list", values.getPicList());
 //                getActivity().startActivity(intent);
-//                PhotosDetailActivity.startAction(getActivity(), values.getImgsrc());
+//
 //                NewsBrowserActivity.startAction(getActivity(),"www.baidu.com",values.getTitle());
                 NewsDetailActivity.startAction(getActivity(),values.getPostid(),values.getImgsrc());
             }
@@ -122,10 +129,10 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 
             }
         };
-        ma.setOnInViewClickListener(R.id.item_video_center, onInternalClickListener);
+//        ma.setOnInViewClickListener(R.id.item_video_center, onInternalClickListener);
         ma.setOnInViewClickListener(R.id.item_smallpic_center, picOnInternalClickListener);
         ma.setOnInViewClickListener(R.id.item_bigpic_center, picOnInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_exclusive_center, picOnInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_exclusive_center, onInternalClickListener);
     }
 
     @Override

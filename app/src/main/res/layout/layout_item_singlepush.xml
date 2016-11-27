@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/item_singlepush_pushtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/timestampe_bg"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="3dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="3dp"
+        android:textSize="12sp"
+        android:textColor="@color/alpha_80_white"
+        android:text="2015年6月2日17:59:19" />
+
+    <LinearLayout
+        android:id="@+id/item_singlepush_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_singlepush_pushtime"
+        android:layout_margin="20dp"
+        android:background="@drawable/btn_bg_gray2"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <TextView
+            android:id="@+id/item_singlepush_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="菲儿"
+            android:textSize="18.0dip" />
+
+        <TextView
+            android:id="@+id/item_singlepush_publishtime"
+            android:layout_marginTop="5dp"
+            android:text="5月3日"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/alpha_80_white"
+            android:textSize="12dip" />
+
+        <ImageView
+            android:id="@+id/item_singlepush_photo"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/shouyetu" />
+
+        <TextView
+            android:id="@+id/item_singlepush_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="扫一扫上面的二维码图案，加我微信"
+            android:textColor="@color/alpha_80_white"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:background="@color/alpha_80_white" />
+
+        <TextView
+            android:id="@+id/item_singlepush_more"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:drawableRight="@mipmap/right"
+            android:gravity="bottom"
+            android:text="阅读全文"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</RelativeLayout>
