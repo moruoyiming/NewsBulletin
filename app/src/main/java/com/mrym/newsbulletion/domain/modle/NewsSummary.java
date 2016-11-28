@@ -302,6 +302,17 @@ public class NewsSummary implements Parcelable {
         this.imgextra = imgextra;
     }
 
+    @Override
+    public String toString() {
+        return "NewsSummary{" +
+                "postid='" + postid + '\'' +
+                ", title='" + title + '\'' +
+                ", imgsrc='" + imgsrc + '\'' +
+                ", ads=" + ads.toString() +
+                ", imgextra=" + imgextra.toString() +
+                '}';
+    }
+
     public static class AdsBean {
         private String title;
         private String tag;
@@ -348,6 +359,17 @@ public class NewsSummary implements Parcelable {
         public void setUrl(String url) {
             this.url = url;
         }
+
+        @Override
+        public String toString() {
+            return "AdsBean{" +
+                    "title='" + title + '\'' +
+                    ", tag='" + tag + '\'' +
+                    ", imgsrc='" + imgsrc + '\'' +
+                    ", subtitle='" + subtitle + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
     }
 
     public static class ImgextraBean {
@@ -359,6 +381,13 @@ public class NewsSummary implements Parcelable {
 
         public void setImgsrc(String imgsrc) {
             this.imgsrc = imgsrc;
+        }
+
+        @Override
+        public String toString() {
+            return "ImgextraBean{" +
+                    "imgsrc='" + imgsrc + '\'' +
+                    '}';
         }
     }
 

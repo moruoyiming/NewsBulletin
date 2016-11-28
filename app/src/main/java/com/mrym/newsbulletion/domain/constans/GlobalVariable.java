@@ -51,14 +51,16 @@ public class GlobalVariable {
     public final static int ITEM_TEXT = 0;
     /** newType=1 ：大图 */
     public final static int ITEM_BIGPIC= 1;
-    /** newType=2 ：右侧小图 */
-    public final static int ITEM_SMALLPIC = 2;
-    /** newType=3 ：三图 */
-    public final static int ITEM_EXCLUSIVE = 3;
-    /** newType=4 ：视频 */
-    public final static int ITEM_VIDEO= 4;
-    /** newType=5 ： geduo */
-    public final static int ITEM_MOSTPIC= 5;
+    /** newType=2 ：一图 */
+    public final static int ITEM_ONE_PIC = 2;
+    /** newType=3 ：二图 */
+    public final static int ITEM_TWO_PIC = 3;
+    /** newType=4 ：三图 */
+    public final static int ITEM_THREE_PIC= 4;
+    /** newType=5 ：视频 */
+    public final static int ITEM_VIDEO= 5;
+    /** newType=6 ：其他 */
+    public final static int ITEM_OTHER= 6;
     /** XRecycleViewState */
     public static final int ACTION_REFRESH = 1;
     public static final int ACTION_LOAD_MORE = 2;

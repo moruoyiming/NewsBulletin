@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.domain.Enum.PushTypeEnum;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
@@ -51,16 +50,16 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = null;
         switch (viewType) {
-            case GlobalVariable.ITEM_SMALLPIC:
+            case GlobalVariable.ITEM_ONE_PIC:
                 view = mInflater.inflate(R.layout.layout_item_singlepush, parent, false);
                 break;
             case GlobalVariable.ITEM_BIGPIC:
                 view = mInflater.inflate(R.layout.layout_item_pushmsg, parent, false);
                 break;
-            case GlobalVariable.ITEM_EXCLUSIVE:
+            case GlobalVariable.ITEM_TWO_PIC:
                 view = mInflater.inflate(R.layout.layout_item_multipush, parent, false);
                 break;
-            case GlobalVariable.ITEM_MOSTPIC:
+            case GlobalVariable.ITEM_OTHER:
                 view = mInflater.inflate(R.layout.layout_item_pushmsg, parent, false);
                 break;
         }
@@ -74,14 +73,14 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             PushViewHolder hd = (PushViewHolder) holder;
             NewsSummary newsSummary = list.get(position);
             switch (getItemViewType(position)) {
-                case GlobalVariable.ITEM_SMALLPIC:
+                case GlobalVariable.ITEM_ONE_PIC:
                     hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
                     break;
-                case GlobalVariable.ITEM_EXCLUSIVE:
+                case GlobalVariable.ITEM_TWO_PIC:
                     hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
                     if( newsSummary.getAds()!=null&&newsSummary.getAds().size()>0){
@@ -103,7 +102,7 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     hd.getmMultiRecycleview().setAdapter(adapter2);
                     adapter2.setOnInViewClickListener(R.id.layout_item_pushmsg_l1,onInternalClickListener);
                     break;
-                case GlobalVariable.ITEM_MOSTPIC:
+                case GlobalVariable.ITEM_OTHER:
                     hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
@@ -129,18 +128,18 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
         NewsSummary msgContent = list.get(position);
         if ("photoset".equals(msgContent.getSkipType())) {
             if (msgContent.getImgextra() != null && msgContent.getImgextra().size() > 0) {
-                return GlobalVariable.ITEM_EXCLUSIVE;
-            } else if(msgContent.getAds()!=null&&msgContent.getAds().size()>0){
-                return GlobalVariable.ITEM_EXCLUSIVE;
+                   return GlobalVariable.ITEM_TWO_PIC;
+            } else if (msgContent.getAds() != null && msgContent.getAds().size() > 0) {
+                    return GlobalVariable.ITEM_TWO_PIC;
             } else {
-                return GlobalVariable.ITEM_SMALLPIC;
+                return GlobalVariable.ITEM_ONE_PIC;
             }
         } else if ("special".equals(msgContent.getSkipType())) {
             return GlobalVariable.ITEM_BIGPIC;
-        } else if(1==msgContent.getHasImg()){
-            return GlobalVariable.ITEM_MOSTPIC;
+        } else if (1 == msgContent.getHasImg()) {
+            return GlobalVariable.ITEM_OTHER;
         } else {
-            return GlobalVariable.ITEM_SMALLPIC;
+            return GlobalVariable.ITEM_ONE_PIC;
         }
     }
     @Override

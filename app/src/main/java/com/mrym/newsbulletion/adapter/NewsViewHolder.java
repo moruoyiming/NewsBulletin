@@ -24,10 +24,14 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     private TextView mPublicdate;
     private ImageView mAutherHead;
 
-    private ImageView mRightpic;
-
     private ImageView mToppic;
     private TextView mNumber;
+
+    private ImageView mRightpic;
+
+
+    private ImageView mBottom_t1;
+    private ImageView mBottom_t2;
 
     private ImageView mBottom1;
     private ImageView mBottom2;
@@ -48,9 +52,13 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         mRightpic = (ImageView) itemView.findViewById(R.id.item_smallpic_rightpic);
         mToppic = (ImageView) itemView.findViewById(R.id.item_bigpic_toppic);
         mNumber = (TextView) itemView.findViewById(R.id.item_bigpic_number);
-        mBottom1 = (ImageView) itemView.findViewById(R.id.item_exclusive_im1);
-        mBottom2 = (ImageView) itemView.findViewById(R.id.item_exclusive_im2);
-        mBottom3 = (ImageView) itemView.findViewById(R.id.item_exclusive_im3);
+
+        mBottom_t1= (ImageView) itemView.findViewById(R.id.item_two_im1);
+        mBottom_t2= (ImageView) itemView.findViewById(R.id.item_two_im2);
+
+        mBottom1 = (ImageView) itemView.findViewById(R.id.item_three_im1);
+        mBottom2 = (ImageView) itemView.findViewById(R.id.item_three_im2);
+        mBottom3 = (ImageView) itemView.findViewById(R.id.item_three_im3);
 
         jcVideoPlayerStandard= (JCVideoPlayerStandard) itemView.findViewById(R.id.videoplayer);
         videologo= (ImageView) itemView.findViewById(R.id.iv_logo);
@@ -63,44 +71,104 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         return mTiltle;
     }
 
+    public void setmTiltle(TextView mTiltle) {
+        this.mTiltle = mTiltle;
+    }
+
     public TextView getmAutherName() {
         return mAutherName;
+    }
+
+    public void setmAutherName(TextView mAutherName) {
+        this.mAutherName = mAutherName;
     }
 
     public TextView getmCommontNumber() {
         return mCommontNumber;
     }
 
+    public void setmCommontNumber(TextView mCommontNumber) {
+        this.mCommontNumber = mCommontNumber;
+    }
+
     public TextView getmPublicdate() {
         return mPublicdate;
+    }
+
+    public void setmPublicdate(TextView mPublicdate) {
+        this.mPublicdate = mPublicdate;
     }
 
     public ImageView getmAutherHead() {
         return mAutherHead;
     }
 
-    public ImageView getmRightpic() {
-        return mRightpic;
+    public void setmAutherHead(ImageView mAutherHead) {
+        this.mAutherHead = mAutherHead;
     }
 
     public ImageView getmToppic() {
         return mToppic;
     }
 
+    public void setmToppic(ImageView mToppic) {
+        this.mToppic = mToppic;
+    }
+
     public TextView getmNumber() {
         return mNumber;
+    }
+
+    public void setmNumber(TextView mNumber) {
+        this.mNumber = mNumber;
+    }
+
+    public ImageView getmRightpic() {
+        return mRightpic;
+    }
+
+    public void setmRightpic(ImageView mRightpic) {
+        this.mRightpic = mRightpic;
+    }
+
+    public ImageView getmBottom_t1() {
+        return mBottom_t1;
+    }
+
+    public void setmBottom_t1(ImageView mBottom_t1) {
+        this.mBottom_t1 = mBottom_t1;
+    }
+
+    public ImageView getmBottom_t2() {
+        return mBottom_t2;
+    }
+
+    public void setmBottom_t2(ImageView mBottom_t2) {
+        this.mBottom_t2 = mBottom_t2;
     }
 
     public ImageView getmBottom1() {
         return mBottom1;
     }
 
+    public void setmBottom1(ImageView mBottom1) {
+        this.mBottom1 = mBottom1;
+    }
+
     public ImageView getmBottom2() {
         return mBottom2;
     }
 
+    public void setmBottom2(ImageView mBottom2) {
+        this.mBottom2 = mBottom2;
+    }
+
     public ImageView getmBottom3() {
         return mBottom3;
+    }
+
+    public void setmBottom3(ImageView mBottom3) {
+        this.mBottom3 = mBottom3;
     }
 
     public JCVideoPlayerStandard getJcVideoPlayerStandard() {

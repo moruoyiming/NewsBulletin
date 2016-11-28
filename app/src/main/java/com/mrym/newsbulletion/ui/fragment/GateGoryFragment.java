@@ -19,6 +19,7 @@ import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
+import com.mrym.newsbulletion.domain.modle.NewsPhotoDetail;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
@@ -99,8 +100,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
 
                 try {
-                    PhotosDetailActivity.startAction(getActivity(),  values.getAds().get(0).getImgsrc());
-//                    NewsDetailActivity.startAction(getActivity(),values.getAds().get(0).getUrl(),values.getAds().get(0).getImgsrc());
+                    NewsDetailActivity.startAction(getActivity(),values.getPostid(),values.getImgsrc());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -114,13 +114,41 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         picOnInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
-//                ToastUtils.show("position : "+position +"list : "+values.getImgsrc());
-//                Intent intent = new Intent(getActivity(), ViewPagerActivity.class);
-//                intent.putStringArrayListExtra("list", values.getPicList());
-//                getActivity().startActivity(intent);
-//
-//                NewsBrowserActivity.startAction(getActivity(),"www.baidu.com",values.getTitle());
-                NewsDetailActivity.startAction(getActivity(),values.getPostid(),values.getImgsrc());
+                try {
+//                    ToastUtils.show(values.toString());
+                    if(values.getAds()!=null&&values.getAds().size()>0){
+//                        for(int i=0;i<values.getAds().size();i++){
+//                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
+//                            picture.setImgSrc(values.getAds().get(i).getImgsrc());
+//                            picture.setTitle(values.getAds().get(i).getTitle());
+//                            list.add(picture);
+//                        }
+                        NewsDetailActivity.startAction(getActivity(),values.getPostid(),values.getAds().get(0).getImgsrc());
+                    }
+
+//                    NewsPhotoDetail newsPhotoDetail=new NewsPhotoDetail();
+//                    List<NewsPhotoDetail.Picture> list=new ArrayList<>();
+//                    if(values.getAds()!=null&&values.getAds().size()>0){
+//                        for(int i=0;i<values.getAds().size();i++){
+//                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
+//                            picture.setImgSrc(values.getAds().get(i).getImgsrc());
+//                            picture.setTitle(values.getAds().get(i).getTitle());
+//                            list.add(picture);
+//                        }
+//                    }else if(values.getImgextra()!=null&&values.getImgextra().size()>0){
+//                        for(int i=0;i<values.getImgextra().size();i++){
+//                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
+//                            picture.setImgSrc(values.getImgextra().get(i).getImgsrc());
+//                            list.add(picture);
+//                        }
+//                    }
+//                    newsPhotoDetail.setTitle(values.getTitle());
+//                    newsPhotoDetail.setPictures(list);
+//                    ViewPagerActivity.startAction(getActivity(),newsPhotoDetail);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
 
 
@@ -130,9 +158,10 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             }
         };
 //        ma.setOnInViewClickListener(R.id.item_video_center, onInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_smallpic_center, picOnInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_bigpic_center, picOnInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_exclusive_center, onInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_smallpic_center, onInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_bigpic_center, onInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_two_center, picOnInternalClickListener);
+        ma.setOnInViewClickListener(R.id.item_three_center, onInternalClickListener);
     }
 
     @Override
