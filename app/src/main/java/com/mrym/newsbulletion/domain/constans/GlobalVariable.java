@@ -57,6 +57,8 @@ public class GlobalVariable {
     public final static int ITEM_EXCLUSIVE = 3;
     /** newType=4 ：视频 */
     public final static int ITEM_VIDEO= 4;
+    /** newType=5 ： geduo */
+    public final static int ITEM_MOSTPIC= 5;
     /** XRecycleViewState */
     public static final int ACTION_REFRESH = 1;
     public static final int ACTION_LOAD_MORE = 2;

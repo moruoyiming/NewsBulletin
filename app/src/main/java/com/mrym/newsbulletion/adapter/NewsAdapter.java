@@ -19,6 +19,8 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
+import com.mrym.newsbulletion.utils.ImageLoaderUtils;
+import com.mrym.newsbulletion.utils.common.DateUtils;
 import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 
 import java.util.Date;
@@ -65,6 +67,9 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             case GlobalVariable.ITEM_VIDEO:
                 view = mInflater.inflate(R.layout.item_video_view, parent, false);
                 break;
+            case GlobalVariable.ITEM_MOSTPIC:
+                view = mInflater.inflate(R.layout.item_bigpic_view, parent, false);
+                break;
         }
         return new NewsViewHolder(view);
     }
@@ -92,9 +97,15 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
                     break;
                 case GlobalVariable.ITEM_EXCLUSIVE:
-                    Glide.with(mContext).load(newsEntity.getImgextra().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
-                    Glide.with(mContext).load(newsEntity.getImgextra().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
-//                    Glide.with(mContext).load(newsEntity.getImgextra().get(2).getImgsrc() + "").dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
+                    if( newsEntity.getAds()!=null&&newsEntity.getAds().size()>0){
+                        Glide.with(mContext).load(newsEntity.getAds().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
+                        Glide.with(mContext).load(newsEntity.getAds().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
+//                        Glide.with(mContext).load(newsEntity.getAds().get(2).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
+                    }else{
+                        Glide.with(mContext).load(newsEntity.getImgextra().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom1());
+                        Glide.with(mContext).load(newsEntity.getImgextra().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom2());
+//                        Glide.with(mContext).load(newsEntity.getImgextra().get(2).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom3());
+                    }
                     break;
                 case GlobalVariable.ITEM_VIDEO:
 //                    JCVideoPlayerStandard jcVideoPlayerStandard=hd.getJcVideoPlayerStandard();
@@ -108,6 +119,9 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
 //                                .error(R.mipmap.ic_launcher)
 //                                .crossFade().into(jcVideoPlayerStandard.thumbImageView);
 //                    }
+                    break;
+                case GlobalVariable.ITEM_MOSTPIC:
+                    Glide.with(mContext).load(newsEntity.getAds().get(0).getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
                     break;
             }
         } catch (Exception e) {
@@ -129,11 +143,15 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
         if ("photoset".equals(msgContent.getSkipType())) {
             if (msgContent.getImgextra() != null && msgContent.getImgextra().size() > 0) {
                 return GlobalVariable.ITEM_EXCLUSIVE;
+            } else if (msgContent.getAds() != null && msgContent.getAds().size() > 0) {
+                return GlobalVariable.ITEM_EXCLUSIVE;
             } else {
                 return GlobalVariable.ITEM_SMALLPIC;
             }
         } else if ("special".equals(msgContent.getSkipType())) {
             return GlobalVariable.ITEM_BIGPIC;
+        } else if (1 == msgContent.getHasImg()) {
+            return GlobalVariable.ITEM_MOSTPIC;
         } else {
             return GlobalVariable.ITEM_SMALLPIC;
         }
