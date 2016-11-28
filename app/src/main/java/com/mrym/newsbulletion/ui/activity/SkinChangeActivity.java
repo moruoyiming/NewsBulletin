@@ -2,14 +2,13 @@ package com.mrym.newsbulletion.ui.activity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -17,13 +16,8 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.skin.ChageSkinPresenter;
 import com.mrym.newsbulletion.mvp.activity.skin.SkinView;
-import com.mrym.newsbulletion.mvp.activity.splash.SplashPresenter;
-import com.mrym.newsbulletion.mvp.activity.splash.SplashView;
-import com.mrym.newsbulletion.ui.BaseActivity;
 
 import butterknife.Bind;
-import solid.ren.skinlibrary.listener.ILoaderListener;
-import solid.ren.skinlibrary.loader.SkinManager;
 
 /**
  * Created by Jian on 2016/10/10.
@@ -42,10 +36,12 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     LinearLayout header;
     @Bind(R.id.leftback_toobar_l1)
     RelativeLayout back;
+    @Bind(R.id.left_back_title)
+    TextView mTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activit_changeskin);
+        setContentView(R.layout.activity_changeskin);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             // Translucent status bar
@@ -65,6 +61,7 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
                 mvpPresenter.restoreDefaultTheme();
             }
         });
+        mTitle.setText("换肤");
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto">
+   >
 
     <TextView
         android:id="@+id/item_singlepush_pushtime"
@@ -11,10 +11,11 @@
         android:background="@drawable/timestampe_bg"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="5dp"
         android:paddingTop="3dp"
-        android:paddingRight="8dp"
+        android:paddingRight="5dp"
         android:paddingBottom="3dp"
         android:textSize="12sp"
         android:textColor="@color/alpha_80_white"
@@ -25,10 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/item_singlepush_pushtime"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:background="@drawable/btn_bg_gray2"
         android:orientation="vertical"
-        android:padding="16dp" >
+        android:padding="10dp" >
 
         <TextView
             android:id="@+id/item_singlepush_name"
@@ -39,10 +40,10 @@
 
         <TextView
             android:id="@+id/item_singlepush_publishtime"
-            android:layout_marginTop="5dp"
             android:text="5月3日"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:textColor="@color/alpha_80_white"
             android:textSize="12dip" />
 
@@ -51,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="170dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/shouyetu" />
 
@@ -62,7 +63,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:text="扫一扫上面的二维码图案，加我微信"
-            android:textColor="@color/alpha_80_white"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
         <View
@@ -74,7 +75,8 @@
             android:id="@+id/item_singlepush_more"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:drawableRight="@mipmap/right"
             android:gravity="bottom"
             android:text="阅读全文"

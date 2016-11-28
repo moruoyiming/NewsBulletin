@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/timestampe_bg"
         android:paddingBottom="3dp"
         android:paddingLeft="8dp"
@@ -20,16 +21,16 @@
         android:textSize="12sp" />
 
     <LinearLayout
+        android:id="@+id/item_multipush_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/item_multipush_pushtime"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:background="@drawable/btn_bg_gray2"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="10dp">
 
         <RelativeLayout
-            android:id="@+id/item_multipush_layout"
             android:layout_width="fill_parent"
             android:layout_height="150dp">
 
@@ -38,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/shouyetu" />
             <TextView
@@ -58,8 +59,6 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="1.0dip"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
             android:background="@color/alpha_80_white" />
 
         <RelativeLayout
@@ -73,7 +72,9 @@
                 android:id="@+id/layout_item_multipush_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
 
             </android.support.v7.widget.RecyclerView>
 
@@ -83,8 +84,6 @@
         <View
             android:layout_width="fill_parent"
             android:layout_height="1.0dip"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
             android:background="@color/alpha_80_white" />
 
     </LinearLayout>

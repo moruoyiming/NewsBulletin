@@ -20,6 +20,7 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.mine.MinePresenter;
 import com.mrym.newsbulletion.mvp.fragment.mine.MineView;
 import com.mrym.newsbulletion.ui.activity.AboutActivity;
+import com.mrym.newsbulletion.ui.activity.PushMsgActivity;
 import com.mrym.newsbulletion.ui.activity.SkinChangeActivity;
 import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
@@ -148,7 +149,9 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 ToastUtils.show("设置");
                 break;
             case R.id.mine_rl_message:
-                ToastUtils.show("消息");
+//                ToastUtils.show("消息");
+                Intent inten2t = new Intent(getActivity(), PushMsgActivity.class);
+                getActivity().startActivity(inten2t);
                 break;
             case R.id.mine_rl_offline:
                 ToastUtils.show("离线");

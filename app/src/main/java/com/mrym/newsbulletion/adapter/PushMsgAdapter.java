@@ -2,18 +2,14 @@ package com.mrym.newsbulletion.adapter;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.domain.Enum.PushTypeEnum;
-import com.mrym.newsbulletion.domain.modle.NewInfo;
-import com.mrym.newsbulletion.domain.modle.PushInfo;
+import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.utils.ImageLoaderUtils;
-import com.mrym.newsbulletion.utils.common.DateUtils;
 
 import java.util.List;
 
@@ -21,11 +17,13 @@ import java.util.List;
  * Created by Jian on 2016/11/27.
  */
 
-public class PushMsgAdapter extends BaseRecyclerViewAdapter<NewInfo> {
+public class PushMsgAdapter extends BaseRecyclerViewAdapter<NewsSummary.AdsBean> {
     private LayoutInflater mInflater;
-    public PushMsgAdapter(Context context, List<NewInfo> list) {
+
+    public PushMsgAdapter(Context context, List<NewsSummary.AdsBean> list) {
         super(list,context);
         this.mInflater = LayoutInflater.from(mContext);
+
     }
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,8 +35,8 @@ public class PushMsgAdapter extends BaseRecyclerViewAdapter<NewInfo> {
         super.onBindViewHolder(holder, position);
         try {
             PushViewHolder hd = (PushViewHolder) holder;
-            NewInfo newInfo = list.get(position);
-            ImageLoaderUtils.display(mContext,hd.getmImagepushImage(),newInfo.getImgurl(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+            NewsSummary.AdsBean newInfo = list.get(position);
+            ImageLoaderUtils.display(mContext,hd.getmImagepushImage(),newInfo.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
             hd.getmImagepushTitle().setText(newInfo.getTitle());
         } catch (Exception e) {
             e.printStackTrace();

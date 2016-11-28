@@ -48,7 +48,9 @@
         <activity
             android:name=".ui.activity.SkinChangeActivity"
             android:label="换肤" />
-
+        <activity
+            android:name=".ui.activity.PushMsgActivity"
+            android:label="换肤" />
         <activity
             android:name=".ui.activity.ViewPagerActivity"
             android:label="图片"

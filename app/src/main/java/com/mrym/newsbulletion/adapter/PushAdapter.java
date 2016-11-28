@@ -2,7 +2,6 @@ package com.mrym.newsbulletion.adapter;
 
 import android.animation.Animator;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,13 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.Enum.PushTypeEnum;
-import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.modle.NewInfo;
-import com.mrym.newsbulletion.domain.modle.PushInfo;
-import com.mrym.newsbulletion.utils.GlideUtils;
+import com.mrym.newsbulletion.domain.modle.NewsSummary;
+import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
 import com.mrym.newsbulletion.utils.ImageLoaderUtils;
 import com.mrym.newsbulletion.utils.common.DateUtils;
 
@@ -28,15 +24,26 @@ import java.util.List;
  * Github: https://github.com/moruoyiming
  */
 
-public class PushAdapter extends BaseRecyclerViewAdapter<PushInfo> {
+public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
     private Context mContext;
-
-    public PushAdapter(List<PushInfo> list, Context context) {
+    private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener;
+    public PushAdapter(List<NewsSummary> list, Context context) {
         super(list, context);
         this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
+        onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary.AdsBean>() {
+            @Override
+            public void OnClickListener(View parentV, View v, Integer position, NewsSummary.AdsBean values) {
+                NewsDetailActivity.startAction(mContext,values.getUrl(),values.getImgsrc());
+            }
+
+            @Override
+            public void OnLongClickListener(View parentV, View v, Integer position, NewsSummary.AdsBean values) {
+
+            }
+        };
     }
 
     @Override
@@ -61,23 +68,32 @@ public class PushAdapter extends BaseRecyclerViewAdapter<PushInfo> {
         super.onBindViewHolder(holder, position);
         try {
             PushViewHolder hd = (PushViewHolder) holder;
-            PushInfo pushInfo = list.get(position);
+            NewsSummary newsSummary = list.get(position);
             switch (getItemViewType(position)) {
                 case PushTypeEnum.PUSHTYPE_SINGLE:
-                    hd.getmSinglepushTime().setText(DateUtils.formatDate(pushInfo.getPushTime()));
-                    hd.getmSingleAuthName().setText(pushInfo.getAuther());
-                    hd.getmSinglePushTitle().setText(pushInfo.getTitle());
-                    hd.getmSinglePubliTime().setText(DateUtils.formatDate(pushInfo.getPublishTime()));
-                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),pushInfo.getPicUrl(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    hd.getmSingleAuthName().setText(newsSummary.getSource());
+                    hd.getmSinglePushTitle().setText(newsSummary.getTitle());
+                    hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
                     break;
                 case PushTypeEnum.PUSHTYPE_MULTI:
-                    hd.getmMultipushTime().setText(DateUtils.formatDate(pushInfo.getPushTime()));
-                    hd.getmMultipushTitle().setText(pushInfo.getTitle());
+                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    hd.getmMultipushTitle().setText(newsSummary.getTitle());
+                    ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
-                    PushMsgAdapter adapter = new PushMsgAdapter(mContext, pushInfo.getMsgInfos());
+                    PushMsgAdapter adapter = new PushMsgAdapter(mContext, newsSummary.getAds());
                     hd.getmMultiRecycleview().setAdapter(adapter);
+                    adapter.setOnInViewClickListener(R.id.layout_item_pushmsg_l1,onInternalClickListener);
                     break;
                 case PushTypeEnum.PUSHTYPE_IMAGE:
+                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    hd.getmMultipushTitle().setText(newsSummary.getTitle());
+                    ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
+                    PushMsgAdapter adapter2 = new PushMsgAdapter(mContext, newsSummary.getAds());
+                    hd.getmMultiRecycleview().setAdapter(adapter2);
+                    adapter2.setOnInViewClickListener(R.id.layout_item_pushmsg_l1,onInternalClickListener);
                     break;
             }
         } catch (Exception e) {
@@ -95,14 +111,25 @@ public class PushAdapter extends BaseRecyclerViewAdapter<PushInfo> {
         if (list == null) {
             Log.i(TAG, "list must not null");
         }
-        PushInfo pushInfo = list.get(position);
+        NewsSummary pushInfo = list.get(position);
         int itemType = 0;
-        if (PushTypeEnum.SINGLE.getCode() == pushInfo.getPushType()) {
+//        if (PushTypeEnum.SINGLE.getCode() == pushInfo.getPushType()) {
+//            itemType = PushTypeEnum.SINGLE.getCode();
+//        } else if (PushTypeEnum.MULTI.getCode() == pushInfo.getPushType()) {
+//            itemType = PushTypeEnum.MULTI.getCode();
+//        }else if (PushTypeEnum.IMAGE.getCode() == pushInfo.getPushType()) {
+//            itemType = PushTypeEnum.IMAGE.getCode();
+//        }
+        if ("photoset".equals(pushInfo.getSkipType())) {
+            if (pushInfo.getImgextra() != null && pushInfo.getImgextra().size() > 0) {
+                itemType = PushTypeEnum.MULTI.getCode();
+            } else {
+                itemType = PushTypeEnum.IMAGE.getCode();
+            }
+        } else if ("special".equals(pushInfo.getSkipType())) {
             itemType = PushTypeEnum.SINGLE.getCode();
-        } else if (PushTypeEnum.MULTI.getCode() == pushInfo.getPushType()) {
-            itemType = PushTypeEnum.MULTI.getCode();
-        }else if (PushTypeEnum.IMAGE.getCode() == pushInfo.getPushType()) {
-            itemType = PushTypeEnum.IMAGE.getCode();
+        } else {
+            itemType = PushTypeEnum.SINGLE.getCode();
         }
         return itemType;
     }
