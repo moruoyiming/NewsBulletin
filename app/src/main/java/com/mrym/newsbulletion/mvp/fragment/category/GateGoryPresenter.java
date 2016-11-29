@@ -3,34 +3,18 @@ package com.mrym.newsbulletion.mvp.fragment.category;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
-import com.mrym.newsbulletion.domain.constans.HostType;
-import com.mrym.newsbulletion.domain.constans.UrlFactory;
-import com.mrym.newsbulletion.domain.modle.GirlData;
-import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
-import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.retrofit.ApiStores;
-import com.mrym.newsbulletion.rxjava.Api;
-import com.mrym.newsbulletion.rxjava.ApiCallback;
-import com.mrym.newsbulletion.rxjava.SubscriberCallBack;
-import com.mrym.newsbulletion.rxjava.baserx.RxSchedulers;
-import com.mrym.newsbulletion.utils.common.JsonUtils;
 import com.mrym.newsbulletion.utils.net.BaseCallBack;
 import com.mrym.newsbulletion.utils.net.NetUtils;
 
 import org.xutils.http.RequestParams;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Jian on 2016/9/14.
@@ -74,33 +58,6 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
 
 
         });
-//        mRxManage.add(Api.getDefault(HostType.NETEASE_NEWS_VIDEO)
-//                .getNewsList("headline", gate, pageIndex)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread()).subscribe( new SubscriberCallBack<>(new ApiCallback<Map<String, List<NewsSummary>>>() {
-//                    @Override
-//                    public void onSuccess(Map<String, List<NewsSummary>> model) {
-//                        try {
-//                            List<NewsSummary> wgat = model.get(gate);
-//                            Log.i("NewsSummary", wgat.get(0).getEname());
-//                            mvpView.loadComplete();
-//                            mvpView.loadingSuccess(wgat,gate);
-//
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int code, String msg) {
-////                mvpView.loadingError(msg);
-//                    }
-//
-//                    @Override
-//                    public void onCompleted() {
-//                    }
-//                })));
     }
 
 }

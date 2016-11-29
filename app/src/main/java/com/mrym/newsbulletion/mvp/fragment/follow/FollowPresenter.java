@@ -1,35 +1,10 @@
 package com.mrym.newsbulletion.mvp.fragment.follow;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.constans.HostType;
-import com.mrym.newsbulletion.domain.modle.GirlData;
-import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.rxjava.Api;
-import com.mrym.newsbulletion.rxjava.ApiCallback;
-import com.mrym.newsbulletion.rxjava.SubscriberCallBack;
-import com.mrym.newsbulletion.rxjava.baserx.RxManager;
-import com.mrym.newsbulletion.rxjava.baserx.RxSchedulers;
-import com.mrym.newsbulletion.rxjava.baserx.RxSubscriber;
-import com.mrym.newsbulletion.utils.net.BaseCallBack;
-import com.mrym.newsbulletion.utils.net.NetUtils;
-
-import org.xutils.http.RequestParams;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Jian on 2016/8/30.

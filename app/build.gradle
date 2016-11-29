@@ -45,6 +45,7 @@ dependencies {
     compile 'com.commit451:PhotoView:1.2.4'//图片缩放
     compile 'com.youth.banner:banner:1.4.2'//广告
     compile 'com.shuyu:gsyVideoPlayer:1.2.4'
+    compile 'com.allen.supertextview:supertextview:1.0.1'
     compile project(':jcvideoplayer')
     compile project(':xrecyclerviewlibrary')
     compile project(':baserecyclerviewadapterhelper')

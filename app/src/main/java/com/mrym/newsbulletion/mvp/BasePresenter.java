@@ -3,7 +3,6 @@ package com.mrym.newsbulletion.mvp;
 
 import com.mrym.newsbulletion.retrofit.ApiStores;
 import com.mrym.newsbulletion.retrofit.AppClient;
-import com.mrym.newsbulletion.rxjava.baserx.RxManager;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -18,14 +17,10 @@ public class BasePresenter<V> implements Presenter<V> {
     public V mvpView;
     public ApiStores apiStores = AppClient.retrofit().create(ApiStores.class);
     private CompositeSubscription mCompositeSubscription;
-    public RxManager mRxManage = new RxManager();
 
     @Override
     public void attachView(V mvpView) {
         this.mvpView = mvpView;
-    }
-    public void onDestroy() {
-        mRxManage.clear();
     }
     @Override
     public void detachView() {

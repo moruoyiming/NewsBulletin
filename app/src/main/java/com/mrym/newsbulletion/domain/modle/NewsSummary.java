@@ -308,8 +308,6 @@ public class NewsSummary implements Parcelable {
                 "postid='" + postid + '\'' +
                 ", title='" + title + '\'' +
                 ", imgsrc='" + imgsrc + '\'' +
-                ", ads=" + ads.toString() +
-                ", imgextra=" + imgextra.toString() +
                 '}';
     }
 

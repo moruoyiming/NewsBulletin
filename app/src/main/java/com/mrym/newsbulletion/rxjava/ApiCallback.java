@@ -1,7 +1,6 @@
 package com.mrym.newsbulletion.rxjava;
 
 
-import org.json.JSONException;
 
 /**
  * Created by oliver on 16/5/7.

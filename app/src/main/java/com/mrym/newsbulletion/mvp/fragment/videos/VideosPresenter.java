@@ -11,9 +11,6 @@ import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryModel;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
 import com.mrym.newsbulletion.retrofit.ApiStores;
-import com.mrym.newsbulletion.rxjava.Api;
-import com.mrym.newsbulletion.rxjava.ApiCallback;
-import com.mrym.newsbulletion.rxjava.SubscriberCallBack;
 import com.mrym.newsbulletion.utils.net.BaseCallBack;
 import com.mrym.newsbulletion.utils.net.NetUtils;
 
@@ -23,8 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Jian on 2016/10/19.

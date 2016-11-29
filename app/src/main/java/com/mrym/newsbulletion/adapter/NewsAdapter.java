@@ -117,7 +117,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
 //                    }
                     break;
                 case GlobalVariable.ITEM_OTHER:
-                    Glide.with(mContext).load(newsEntity.getAds().get(0).getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
+//                    Glide.with(mContext).load(newsEntity.getAds().get(0).getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
                     break;
             }
         } catch (Exception e) {
