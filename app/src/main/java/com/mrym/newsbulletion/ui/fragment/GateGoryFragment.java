@@ -115,36 +115,26 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
                 try {
-//                    ToastUtils.show(values.toString());
-                    if(values.getAds()!=null&&values.getAds().size()>0){
-//                        for(int i=0;i<values.getAds().size();i++){
-//                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
-//                            picture.setImgSrc(values.getAds().get(i).getImgsrc());
-//                            picture.setTitle(values.getAds().get(i).getTitle());
-//                            list.add(picture);
-//                        }
-                        NewsDetailActivity.startAction(getActivity(),values.getPostid(),values.getAds().get(0).getImgsrc());
-                    }
 
-//                    NewsPhotoDetail newsPhotoDetail=new NewsPhotoDetail();
-//                    List<NewsPhotoDetail.Picture> list=new ArrayList<>();
-//                    if(values.getAds()!=null&&values.getAds().size()>0){
-//                        for(int i=0;i<values.getAds().size();i++){
-//                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
-//                            picture.setImgSrc(values.getAds().get(i).getImgsrc());
-//                            picture.setTitle(values.getAds().get(i).getTitle());
-//                            list.add(picture);
-//                        }
-//                    }else if(values.getImgextra()!=null&&values.getImgextra().size()>0){
-//                        for(int i=0;i<values.getImgextra().size();i++){
-//                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
-//                            picture.setImgSrc(values.getImgextra().get(i).getImgsrc());
-//                            list.add(picture);
-//                        }
-//                    }
-//                    newsPhotoDetail.setTitle(values.getTitle());
-//                    newsPhotoDetail.setPictures(list);
-//                    ViewPagerActivity.startAction(getActivity(),newsPhotoDetail);
+                    NewsPhotoDetail newsPhotoDetail=new NewsPhotoDetail();
+                    List<NewsPhotoDetail.Picture> list=new ArrayList<>();
+                    if(values.getAds()!=null&&values.getAds().size()>0){
+                        for(int i=0;i<values.getAds().size();i++){
+                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
+                            picture.setImgSrc(values.getAds().get(i).getImgsrc());
+                            picture.setTitle(values.getAds().get(i).getTitle());
+                            list.add(picture);
+                        }
+                    }else if(values.getImgextra()!=null&&values.getImgextra().size()>0){
+                        for(int i=0;i<values.getImgextra().size();i++){
+                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
+                            picture.setImgSrc(values.getImgextra().get(i).getImgsrc());
+                            list.add(picture);
+                        }
+                    }
+                    newsPhotoDetail.setTitle(values.getTitle());
+                    newsPhotoDetail.setPictures(list);
+                    ViewPagerActivity.startAction(getActivity(),newsPhotoDetail);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

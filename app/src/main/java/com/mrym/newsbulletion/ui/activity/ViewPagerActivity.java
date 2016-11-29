@@ -19,6 +19,7 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsPhotoDetail;
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.utils.GlideUtils;
+import com.mrym.newsbulletion.utils.ImageLoaderUtils;
 import com.mrym.newsbulletion.utils.ImmersedStatusbarUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 
@@ -46,7 +47,7 @@ public class ViewPagerActivity extends Activity {
             full(isfullTag);
             setContentView(R.layout.activity_view_pager);
             Intent intent = getIntent();
-            newsPhotoDetail = (NewsPhotoDetail) intent.getSerializableExtra(GlobalVariable.PHOTO_DETAIL);
+            newsPhotoDetail=(NewsPhotoDetail)intent.getSerializableExtra(GlobalVariable.PHOTO_DETAIL);
             mPager = (ViewPager) findViewById(R.id.pager);
             mPager.setPageMargin((int) (getResources().getDisplayMetrics().density * 15));
             mPager.setAdapter(new PagerAdapter() {
@@ -65,7 +66,7 @@ public class ViewPagerActivity extends Activity {
                     PhotoView view = new PhotoView(ViewPagerActivity.this);
                     view.enable();
                     view.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                    GlideUtils.getInstance().LoadContextBitmap(ViewPagerActivity.this, newsPhotoDetail.getPictures().get(position).getImgSrc(), view, R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
+                    ImageLoaderUtils.display(ViewPagerActivity.this,view,newsPhotoDetail.getPictures().get(position).getImgSrc(),R.mipmap.shouyetu, R.mipmap.shouyetu);
                     container.addView(view);
                     return view;
                 }
@@ -100,7 +101,9 @@ public class ViewPagerActivity extends Activity {
      */
     public static void startAction(Context context, NewsPhotoDetail mNewsPhotoDetail) {
         Intent intent = new Intent(context, ViewPagerActivity.class);
-        intent.putExtra(GlobalVariable.PHOTO_DETAIL, mNewsPhotoDetail);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(GlobalVariable.PHOTO_DETAIL, mNewsPhotoDetail);
+        intent.putExtras(bundle);
         context.startActivity(intent);
     }
     private void full(boolean enable) {

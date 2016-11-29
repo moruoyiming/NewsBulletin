@@ -19,10 +19,11 @@ package com.mrym.newsbulletion.domain.modle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsPhotoDetail implements Parcelable {
+public class NewsPhotoDetail implements Serializable {
     private String title;
     private List<Picture> pictures;
 
@@ -42,7 +43,7 @@ public class NewsPhotoDetail implements Parcelable {
         this.pictures = pictures;
     }
 
-    public static class Picture implements Parcelable {
+    public static class Picture implements Serializable {
         private String title;
 
         public String getImgSrc() {
@@ -63,67 +64,67 @@ public class NewsPhotoDetail implements Parcelable {
 
         private String imgSrc;
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(this.title);
-            dest.writeString(this.imgSrc);
-        }
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel dest, int flags) {
+//            dest.writeString(this.title);
+//            dest.writeString(this.imgSrc);
+//        }
 
         public Picture() {
         }
 
-        protected Picture(Parcel in) {
-            this.title = in.readString();
-            this.imgSrc = in.readString();
-        }
-
-        public static final Creator<Picture> CREATOR = new Creator<Picture>() {
-            @Override
-            public Picture createFromParcel(Parcel source) {
-                return new Picture(source);
-            }
-
-            @Override
-            public Picture[] newArray(int size) {
-                return new Picture[size];
-            }
-        };
+//        protected Picture(Parcel in) {
+//            this.title = in.readString();
+//            this.imgSrc = in.readString();
+//        }
+//
+//        public static final Creator<Picture> CREATOR = new Creator<Picture>() {
+//            @Override
+//            public Picture createFromParcel(Parcel source) {
+//                return new Picture(source);
+//            }
+//
+//            @Override
+//            public Picture[] newArray(int size) {
+//                return new Picture[size];
+//            }
+//        };
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.title);
-        dest.writeList(this.pictures);
-    }
-
-    public NewsPhotoDetail() {
-    }
-
-    protected NewsPhotoDetail(Parcel in) {
-        this.title = in.readString();
-        this.pictures = new ArrayList<>();
-        in.readList(this.pictures, Picture.class.getClassLoader());
-    }
-
-    public static final Creator<NewsPhotoDetail> CREATOR = new Creator<NewsPhotoDetail>() {
-        @Override
-        public NewsPhotoDetail createFromParcel(Parcel source) {
-            return new NewsPhotoDetail(source);
-        }
-
-        @Override
-        public NewsPhotoDetail[] newArray(int size) {
-            return new NewsPhotoDetail[size];
-        }
-    };
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(this.title);
+//        dest.writeList(this.pictures);
+//    }
+//
+//    public NewsPhotoDetail() {
+//    }
+//
+//    protected NewsPhotoDetail(Parcel in) {
+//        this.title = in.readString();
+//        this.pictures = new ArrayList<>();
+//        in.readList(this.pictures, Picture.class.getClassLoader());
+//    }
+//
+//    public static final Creator<NewsPhotoDetail> CREATOR = new Creator<NewsPhotoDetail>() {
+//        @Override
+//        public NewsPhotoDetail createFromParcel(Parcel source) {
+//            return new NewsPhotoDetail(source);
+//        }
+//
+//        @Override
+//        public NewsPhotoDetail[] newArray(int size) {
+//            return new NewsPhotoDetail[size];
+//        }
+//    };
 }
