@@ -32,8 +32,6 @@ import com.mrym.newsbulletion.mvp.activity.details.DetailsPresenter;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsView;
 import com.mrym.newsbulletion.retrofit.ApiStores;
 import com.mrym.newsbulletion.retrofit.AppClient;
-import com.mrym.newsbulletion.rxjava.baserx.RxManager;
-import com.mrym.newsbulletion.rxjava.baserx.RxSchedulers;
 import com.mrym.newsbulletion.utils.common.DateUtils;
 
 import java.util.List;
@@ -187,25 +185,9 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
 
 
     private void setNewsDetailBodyTv(final NewsDetail newsDetail, final String newsBody) {
-        new RxManager().add(Observable.timer(500, TimeUnit.MILLISECONDS)
-                .compose(RxSchedulers.<Long>io_main())
-                .subscribe(new Subscriber<Long>() {
-                    @Override
-                    public void onCompleted() {
                         progressBar.setVisibility(View.GONE);
                         fab.setVisibility(View.VISIBLE);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        progressBar.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onNext(Long aLong) {
                         setBody(newsDetail, newsBody);
-                    }
-                }));
     }
 
     private void setBody(NewsDetail newsDetail, String newsBody) {

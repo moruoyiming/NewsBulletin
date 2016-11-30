@@ -1,8 +1,12 @@
 package com.mrym.newsbulletion.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -34,6 +38,8 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
     TextView mTitle;
     @Bind(R.id.leftback_toobar_l1)
     RelativeLayout back;
+    @Bind(R.id.header)
+    LinearLayout header;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 0;
     private int ccount = 10;
@@ -50,6 +56,14 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pushmsg);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            // Translucent status bar
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+        dynamicAddView(header, "background", R.color.primary_dark);
         mTitle.setText("消息推送");
         back.setOnClickListener(new View.OnClickListener() {
             @Override
