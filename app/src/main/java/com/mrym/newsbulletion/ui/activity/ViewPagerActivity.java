@@ -71,7 +71,7 @@ public class ViewPagerActivity extends Activity {
                     if(view != null) {
                         PhotoView imageView = (PhotoView) view.findViewById(R.id.image);
                         imageView.enable();
-                        ImageLoaderUtils.display(ViewPagerActivity.this,imageView,newsPhotoDetail.getPictures().get(position).getImgSrc(),R.mipmap.shouyetu, R.mipmap.shouyetu,true);
+                        ImageLoaderUtils.display(ViewPagerActivity.this,imageView,newsPhotoDetail.getPictures().get(position).getImgSrc(),R.color.alpha_50_white, R.color.alpha_50_white,true);
                         container.addView(view);
                     }
                     return view;

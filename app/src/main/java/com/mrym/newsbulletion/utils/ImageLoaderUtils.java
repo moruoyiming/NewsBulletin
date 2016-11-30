@@ -96,8 +96,7 @@ public class ImageLoaderUtils {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
-        Glide.with(context).load(url).placeholder(placeholder)
-               .error(error).crossFade().into(imageView);
+        Glide.with(context).load(url).fitCenter().crossFade().into(imageView);
     }
 
 }

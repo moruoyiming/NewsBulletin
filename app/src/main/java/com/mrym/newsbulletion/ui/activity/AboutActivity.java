@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,8 +38,8 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
     ImageView newsDetailPhotoIv;
     @Bind(R.id.mask_view)
     View maskView;
-//    @Bind(R.id.toolbar)
-//    Toolbar toolbar;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
     @Bind(R.id.toolbar_layout)
     CollapsingToolbarLayout toolbarLayout;
     @Bind(R.id.app_bar)
@@ -64,6 +65,7 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             // Translucent status bar
@@ -71,7 +73,7 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-        setContentView(R.layout.activity_about);
+//        dynamicAddView(toolbar, "background", R.color.primary_dark);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
