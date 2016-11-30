@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,18 +38,21 @@ public class ViewPagerActivity extends Activity {
 
     private ViewPager mPager;
     private NewsPhotoDetail newsPhotoDetail;
-    private boolean isfullTag = true;
+    private boolean isfullTag = false;
     @Bind(R.id.rl)
     RelativeLayout r1;
+    private LayoutInflater inflater;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
             full(isfullTag);
             setContentView(R.layout.activity_view_pager);
+            inflater = LayoutInflater.from(ViewPagerActivity.this);
             Intent intent = getIntent();
             newsPhotoDetail=(NewsPhotoDetail)intent.getSerializableExtra(GlobalVariable.PHOTO_DETAIL);
             mPager = (ViewPager) findViewById(R.id.pager);
+
             mPager.setPageMargin((int) (getResources().getDisplayMetrics().density * 15));
             mPager.setAdapter(new PagerAdapter() {
                 @Override
@@ -63,11 +67,13 @@ public class ViewPagerActivity extends Activity {
 
                 @Override
                 public Object instantiateItem(ViewGroup container, int position) {
-                    PhotoView view = new PhotoView(ViewPagerActivity.this);
-                    view.enable();
-                    view.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                    ImageLoaderUtils.display(ViewPagerActivity.this,view,newsPhotoDetail.getPictures().get(position).getImgSrc(),R.mipmap.shouyetu, R.mipmap.shouyetu);
-                    container.addView(view);
+                    View view = inflater.inflate(R.layout.item_pager_image, container, false);
+                    if(view != null) {
+                        PhotoView imageView = (PhotoView) view.findViewById(R.id.image);
+                        imageView.enable();
+                        ImageLoaderUtils.display(ViewPagerActivity.this,imageView,newsPhotoDetail.getPictures().get(position).getImgSrc(),R.mipmap.shouyetu, R.mipmap.shouyetu,true);
+                        container.addView(view);
+                    }
                     return view;
                 }
 
@@ -76,19 +82,19 @@ public class ViewPagerActivity extends Activity {
                     container.removeView((View) object);
                 }
             });
-            r1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (isfullTag) {
-                        ToastUtils.show("显示状态栏");
-                        full(false);
-                    } else {
-                        ToastUtils.show("隐藏状态栏");
-                        full(true);
-                    }
-
-                }
-            });
+//            r1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (isfullTag) {
+//                        ToastUtils.show("显示状态栏");
+//                        full(false);
+//                    } else {
+//                        ToastUtils.show("隐藏状态栏");
+//                        full(true);
+//                    }
+//
+//                }
+//            });
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -92,5 +92,12 @@ public class ImageLoaderUtils {
                 .error(R.mipmap.shouyetu)
                 .centerCrop().transform(new GlideRoundTransformUtil(context)).into(imageView);
     }
+    public static void display(Context context, ImageView imageView, String url, int placeholder, int error,boolean fag) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(context).load(url).placeholder(placeholder)
+               .error(error).crossFade().into(imageView);
+    }
 
 }

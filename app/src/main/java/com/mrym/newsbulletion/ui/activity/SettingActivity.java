@@ -16,7 +16,11 @@ import com.mrym.newsbulletion.mvp.activity.setting.SettingPresenter;
 import com.mrym.newsbulletion.mvp.activity.setting.SettingView;
 
 import butterknife.Bind;
-
+/**
+ * Created by Jian on 2016/8/25.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
+ */
 public class SettingActivity extends MvpActivity<SettingPresenter> implements SettingView {
     @Bind(R.id.leftback_toobar_l1)
     RelativeLayout back;
