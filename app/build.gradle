@@ -47,6 +47,7 @@ dependencies {
     compile 'com.shuyu:gsyVideoPlayer:1.2.4'
     compile project(':supertextviewlib')
     compile project(':jcvideoplayer')
+    compile project(':cordovalib')
     compile project(':xrecyclerviewlibrary')
     compile project(':baserecyclerviewadapterhelper')
 }

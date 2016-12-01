@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/NewsBulletin.iml" filepath="$PROJECT_DIR$/NewsBulletin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baserecyclerviewadapterhelper/baserecyclerviewadapterhelper.iml" filepath="$PROJECT_DIR$/baserecyclerviewadapterhelper/baserecyclerviewadapterhelper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cordovalib/cordovalib.iml" filepath="$PROJECT_DIR$/cordovalib/cordovalib.iml" />
       <module fileurl="file://$PROJECT_DIR$/ijkplayerdemo/ijkplayerdemo.iml" filepath="$PROJECT_DIR$/ijkplayerdemo/ijkplayerdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" filepath="$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-iamge-selector/multi-iamge-selector.iml" filepath="$PROJECT_DIR$/multi-iamge-selector/multi-iamge-selector.iml" />
