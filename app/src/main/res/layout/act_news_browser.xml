@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:clipToPadding="true"
-              android:fitsSystemWindows="true"
               android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        style="@style/action_bar"
-        app:navigationIcon="@drawable/left_back"
-        app:title="@string/news"/>
 
+    <include
+        layout="@layout/leftback_toobar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></include>
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleHorizontal"

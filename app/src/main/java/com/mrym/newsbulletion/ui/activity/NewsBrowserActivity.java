@@ -14,7 +14,10 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 import com.mrym.newsbulletion.R;
@@ -32,8 +35,12 @@ import butterknife.Bind;
 public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> implements NewsbrowserView {
 
 
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
+    @Bind(R.id.leftback_toobar_l1)
+    RelativeLayout back;
+    @Bind(R.id.left_back_title)
+    TextView mTitle;
+    @Bind(R.id.header)
+    LinearLayout header;
     @Bind(R.id.progress_bar)
     ProgressBar progressBar;
     @Bind(R.id.web_view)
@@ -49,6 +56,14 @@ public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> impl
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+        dynamicAddView(header, "background", R.color.primary_dark);
+        mTitle.setText("新闻");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         initWebView();
     }
     public static void startAction(Context context ,String link,String title){

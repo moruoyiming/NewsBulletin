@@ -124,6 +124,7 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
                 switch (item.getItemId()) {
                     case R.id.action_web_view:
                         NewsBrowserActivity.startAction(NewsDetailActivity.this, mShareLink, mNewsTitle);
+//                        CordovaPageActivity.startAction(NewsDetailActivity.this, mShareLink, mNewsTitle);
                         break;
                     case R.id.action_browser:
                         Intent intent = new Intent();

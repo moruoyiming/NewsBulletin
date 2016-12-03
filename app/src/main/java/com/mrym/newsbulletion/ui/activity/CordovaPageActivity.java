@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.ui.activity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 
 import org.apache.cordova.CordovaActivity;
 
@@ -31,6 +33,12 @@ public class CordovaPageActivity extends CordovaActivity {
     public final static String INTENT_URL_KEY = "url_key";
     private LinearLayout linearLayout;
 
+    public static void startAction(Context context , String link, String title){
+        Intent intent = new Intent(context, NewsBrowserActivity.class);
+        intent.putExtra(INTENT_URL_KEY,link);
+        intent.putExtra(GlobalVariable.NEWS_TITLE,title);
+        context.startActivity(intent);
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
