@@ -109,7 +109,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
         Log.i("initUserData", userBean.toString());
         profileName.setText(userBean.getNickName());
         GlideUtils.getInstance().LoadCircleImageViewBitmap(getActivity(), userBean.getHeadImg(), profileImage, R.mipmap.touxiang, R.mipmap.touxiang);
-        GlideUtils.getInstance().LoadCircleImageViewBitmap(getActivity(), userBean.getBackgroudImg(), mainIvPlaceholder, R.mipmap.shouyetu, R.mipmap.shouyetu);
+//        GlideUtils.getInstance().LoadCircleImageViewBitmap(getActivity(), userBean.getBackgroudImg(), mainIvPlaceholder, R.mipmap.shouyetu, R.mipmap.shouyetu);
     }
 
     @Override
