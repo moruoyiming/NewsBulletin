@@ -162,7 +162,7 @@
                     <TextView
                         android:id="@+id/mine_tv_offline"
                         style="@style/mine_info_tv_left"
-                        android:text="离线" />
+                        android:text="频道" />
 
                     <ImageView
                         android:id="@+id/mine_iv_offline_img"

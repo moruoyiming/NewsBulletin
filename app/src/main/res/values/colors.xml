@@ -32,13 +32,26 @@
     <color name="accent">#40C4FF</color>
     <color name="item_bg">#e0e4e7</color>
     <color name="txt_color">#1d1e1e</color>
+    <color name="subscribe_tip_text">#ff2e2e2e</color>
+    <color name="subscribe_seperate_line">#ffcdcdcd</color>
     <!--87%white-->
+    <color name="subscribe_bg">#fff5f5f5</color>
     <color name="progress_bar_unfinished">#D4D4D4</color>
     <color name="item_tv_title_color">#050505</color>
     <color name="item_tv_content_color">#FF4081</color>
     <color name="item_tv_date_color">#FFCD01</color>
-
-
+    <color name="subscribe_item_selected_bg">#ffffffff</color>
+    <color name="subscribe_item_selected_stroke">#ffcc3131</color>
+    <color name="subscribe_item_disabled_bg">#ffefefef</color>
+    <color name="subscribe_item_disabled_stroke">#ffd9d9d9</color>
+    <color name="subscribe_item_pressed_bg">#fff9f9f9</color>
+    <color name="subscribe_item_pressed_stroke">#ffcdcdcd</color>
+    <color name="subscribe_item_normal_bg">#fff5f5f5</color>
+    <color name="subscribe_item_normal_stroke">#ffcdcdcd</color>
+    <color name="subscribe_item_drag_stroke">#ffd2d2d2</color>
+    <color name="subscribe_item_drag_bg">#fff5f5f5</color>
+    <color name="subscribe_item_drag_stroke_night">#ff464646</color>
+    <color name="subscribe_item_drag_bg_night">#ff252525</color>
     <color name="alpha_05_white">#0DFFFFFF</color>
     <color name="alpha_10_white">#1AFFFFFF</color>
     <color name="alpha_15_white">#26FFFFFF</color>

@@ -17,6 +17,7 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
 import com.mrym.newsbulletion.db.entity.HomeCateGory;
 import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
+import com.mrym.newsbulletion.db.utils.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
@@ -30,6 +31,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,17 +71,16 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        StatusBarCompat.translucentStatusBar(getActivity(), true);
-//        StatusBarCompat.setStatusBarColor(getActivity(), R.color.primary_dark,255);
         dynamicAddView(header, "background", R.color.primary_dark);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
-        ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
+//        ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
         List<String> channelNames = new ArrayList<>();
         List<Fragment> mNewsFragmentList = new ArrayList<>();
-        for (int i = 0; i < homeCateGories.size(); i++) {
-            channelNames.add(homeCateGories.get(i).getCategory());
-            mNewsFragmentList.add(createListFragments(homeCateGories.get(i)));
+        List<NewsChannelTable> newsChannelTables= NewsChannelTableManager.loadNewsChannelsStatic();
+        for (int i = 0; i < newsChannelTables.size(); i++) {
+            channelNames.add(newsChannelTables.get(i).getNewsChannelName());
+            mNewsFragmentList.add(createListFragments(newsChannelTables.get(i)));
         }
         fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelNames);
 
@@ -87,11 +88,11 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         viewpager.setAdapter(fragmentAdapter);
         viewPagerTab.setViewPager(viewpager);
     }
-    private GateGoryFragment createListFragments(HomeCateGory homeCateGory) {
+    private GateGoryFragment createListFragments(NewsChannelTable homeCateGory) {
         GateGoryFragment fragment = new GateGoryFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(GlobalVariable.NEWS_ID, homeCateGory.getCategory());
-        bundle.putString(GlobalVariable.NEWS_TYPE, homeCateGory.getField());
+        bundle.putString(GlobalVariable.NEWS_ID, homeCateGory.getNewsChannelName());
+        bundle.putString(GlobalVariable.NEWS_TYPE, homeCateGory.getNewsChannelId());
         fragment.setArguments(bundle);
         return fragment;
     }

@@ -64,6 +64,7 @@
         <activity android:name=".ui.activity.NewsDetailActivity"/>
         <activity android:name=".ui.activity.NewsBrowserActivity" />
         <activity android:name=".ui.activity.SettingActivity" />
+        <activity android:name=".ui.activity.ChannelActivity" />
     </application>
 
 </manifest>
