@@ -2,6 +2,8 @@ package com.mrym.newsbulletion.ui.activity;
 
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -99,7 +101,15 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	    otherGridView.setOnItemClickListener(this);
 	    userGridView.setOnItemClickListener(this);
 	}
-
+	/**
+	 * 入口
+	 *
+	 * @param mContext
+	 */
+	public static void startAction(Context mContext) {
+		Intent intent = new Intent(mContext, ChannelActivity.class);
+		mContext.startActivity(intent);
+	}
 	/** 初始化布局*/
 	private void initView() {
 		userGridView = (DragGrid) findViewById(R.id.userGridView);

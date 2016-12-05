@@ -1,5 +1,7 @@
 package com.mrym.newsbulletion.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -76,7 +78,15 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
         });
 
     }
-
+    /**
+     * 入口
+     *
+     * @param mContext
+     */
+    public static void startAction(Context mContext) {
+        Intent intent = new Intent(mContext, SkinChangeActivity.class);
+        mContext.startActivity(intent);
+    }
     @Override
     protected ChageSkinPresenter createPresenter() {
         return new ChageSkinPresenter(this);

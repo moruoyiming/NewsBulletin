@@ -63,7 +63,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = View.inflate(getActivity(), R.layout.fragment_home, null);
-//        initToolBar(root, R.string.app_name);
         ButterKnife.bind(this, root);
         return root;
     }
@@ -74,7 +73,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         dynamicAddView(header, "background", R.color.primary_dark);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
-//        ArrayList<HomeCateGory> homeCateGories = HomeCateGoryUtils.getInstance(getContext()).getHomeCateGory();
         List<String> channelNames = new ArrayList<>();
         List<Fragment> mNewsFragmentList = new ArrayList<>();
         List<NewsChannelTable> newsChannelTables= NewsChannelTableManager.loadNewsChannelsStatic();

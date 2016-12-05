@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.UserBean;
 import com.mrym.newsbulletion.listener.WifiStateReceiver;
@@ -27,6 +28,7 @@ import com.mrym.newsbulletion.ui.activity.SkinChangeActivity;
 import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
 import com.mrym.newsbulletion.utils.GlideUtils;
+import com.mrym.newsbulletion.utils.ImageLoaderUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DialogView;
@@ -109,6 +111,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
         profileName.setText(userBean.getNickName());
+//        ImageLoaderUtils.display(getActivity(), profileImage, userBean.getHeadImg(),R.mipmap.touxiang,R.mipmap.touxiang);
+//        ImageLoaderUtils.display(getActivity(), mainIvPlaceholder, userBean.getHeadImg(),R.mipmap.shouyetu,R.mipmap.shouyetu);
         GlideUtils.getInstance().LoadCircleImageViewBitmap(getActivity(), userBean.getHeadImg(), profileImage, R.mipmap.touxiang, R.mipmap.touxiang);
 //        GlideUtils.getInstance().LoadCircleImageViewBitmap(getActivity(), userBean.getBackgroudImg(), mainIvPlaceholder, R.mipmap.shouyetu, R.mipmap.shouyetu);
     }
@@ -148,21 +152,16 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 ToastUtils.show("评论");
                 break;
             case R.id.fragment_mine_setting_r1:
-                Intent inten = new Intent(getActivity(), SettingActivity.class);
-                getActivity().startActivity(inten);
+                SettingActivity.startAction(getActivity());
                 break;
             case R.id.mine_rl_message:
-//                ToastUtils.show("消息");
-                Intent inten2t = new Intent(getActivity(), PushMsgActivity.class);
-                getActivity().startActivity(inten2t);
+                PushMsgActivity.startAction(getActivity());
                 break;
             case R.id.mine_rl_offline:
-                Intent inten3t = new Intent(getActivity(), ChannelActivity.class);
-                getActivity().startActivity(inten3t);
+                ChannelActivity.startAction(getActivity());
                 break;
             case R.id.mine_rl_skin:
-                Intent intent = new Intent(getActivity(), SkinChangeActivity.class);
-                getActivity().startActivity(intent);
+                SkinChangeActivity.startAction(getActivity());
                 break;
             case R.id.mine_rl_about:
                 AboutActivity.startAction(getActivity());

@@ -1,5 +1,7 @@
 package com.mrym.newsbulletion.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -53,7 +55,15 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
     protected SettingPresenter createPresenter() {
         return new SettingPresenter(this);
     }
-
+    /**
+     * 入口
+     *
+     * @param mContext
+     */
+    public static void startAction(Context mContext) {
+        Intent intent = new Intent(mContext, SkinChangeActivity.class);
+        mContext.startActivity(intent);
+    }
     @Override
     public void showLoading(String message) {
 

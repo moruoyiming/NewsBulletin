@@ -68,14 +68,12 @@ public class MainPresenter extends BasePresenter<MainView> {
                     setCurrentItem(FRAGMENT_TAG_HOME);
                     break;
                 case R.id.rb_video:
-//                    StatusBarCompat.setStatusBarColor(activity, R.color.primary_dark, 255);
                     setCurrentItem(FRAGMENT_TAG_VIDEO);
                     break;
                 case R.id.rb_follow:
                     setCurrentItem(FRAGMENT_TAG_FOLLOW);
                     break;
                 case R.id.rb_mine:
-
                     setCurrentItem(FRAGMENT_TAG_MINE);
                     break;
             }

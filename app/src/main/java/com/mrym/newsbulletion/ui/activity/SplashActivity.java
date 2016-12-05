@@ -25,7 +25,7 @@ import butterknife.OnClick;
  * Github: https://github.com/moruoyiming
  */
 public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
-    public static final String TAG = SplashActivity.class.getCanonicalName();
+    public String TAG = SplashActivity.class.getCanonicalName();
     @Bind(R.id.login_skip)
     Button loginSkip;
     @Bind(R.id.login_splash)
@@ -72,7 +72,6 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mvpPresenter = null;
         NewsApplication.removeActivity(TAG);
     }
 

@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
+import com.mrym.newsbulletion.utils.ImageLoaderUtils;
 
 import java.util.List;
 
@@ -73,23 +74,30 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             hd.getmTiltle().setText(newsEntity.getTitle());
             hd.getmCommontNumber().setText(newsEntity.getReplyCount() + "评论");
             hd.getmPublicdate().setText(newsEntity.getPtime());
-            Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
+            ImageLoaderUtils.display(mContext, hd.getmAutherHead(), newsEntity.getImgsrc(),R.mipmap.touxiang,R.mipmap.touxiang);
+//            Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.touxiang).error(R.mipmap.touxiang).into(hd.getmAutherHead());
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_TEXT:
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
-                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
+                    ImageLoaderUtils.display(mContext, hd.getmToppic(), newsEntity.getImgsrc(),true);
+//                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
                     break;
                 case GlobalVariable.ITEM_ONE_PIC:
-                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
+                    ImageLoaderUtils.display(mContext, hd.getmRightpic(), newsEntity.getImgsrc(),true);
+//                    Glide.with(mContext).load(newsEntity.getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmRightpic());
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
                     if (newsEntity.getAds() != null && newsEntity.getAds().size() > 0) {
-                        Glide.with(mContext).load(newsEntity.getAds().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t1());
-                        Glide.with(mContext).load(newsEntity.getAds().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t2());
+                        ImageLoaderUtils.display(mContext, hd.getmBottom_t1(),newsEntity.getAds().get(0).getImgsrc() + "",true);
+                        ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getAds().get(1).getImgsrc() + "",true);
+//                        Glide.with(mContext).load(newsEntity.getAds().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t1());
+//                        Glide.with(mContext).load(newsEntity.getAds().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t2());
                     } else {
-                        Glide.with(mContext).load(newsEntity.getImgextra().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t1());
-                        Glide.with(mContext).load(newsEntity.getImgextra().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t2());
+                        ImageLoaderUtils.display(mContext, hd.getmBottom_t1(),newsEntity.getImgextra().get(0).getImgsrc() + "",true);
+                        ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getImgextra().get(1).getImgsrc() + "",true);
+//                        Glide.with(mContext).load(newsEntity.getImgextra().get(0).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t1());
+//                        Glide.with(mContext).load(newsEntity.getImgextra().get(1).getImgsrc() + "").dontAnimate().centerCrop().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmBottom_t2());
                     }
                     break;
                 case GlobalVariable.ITEM_THREE_PIC:

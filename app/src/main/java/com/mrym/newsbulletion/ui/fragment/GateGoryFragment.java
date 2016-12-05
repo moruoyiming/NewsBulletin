@@ -50,7 +50,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     protected int mCurrentPageIndex = 0;
     private NewsAdapter ma;
     private List<NewsSummary> mNews;
-    private String mCurrentCate = null;
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
     private String mNewsId;
     private String mNewsType;
@@ -77,7 +76,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             mNewsId = getArguments().getString(GlobalVariable.NEWS_ID);
             mNewsType = getArguments().getString(GlobalVariable.NEWS_TYPE);
         }
-//        mNewsType="T1348647909107";
         categoryList.setLayoutManager(new LinearLayoutManager(getActivity()));
         categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
