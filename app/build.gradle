@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao'//greendao插件
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -11,14 +11,35 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+    }
+}
+    greendao {
+        //数据库schema版本，也可以理解为数据库版本号
+        schemaVersion 2
+        //设置DaoMaster 、DaoSession、Dao包名
+        daoPackage 'com.qhn.bhne.footprinting.db'
+        //设置DaoMaster 、DaoSession、Dao目录
+        targetGenDir 'src/main/java'
+        //设置生成单元测试目录
+        //    targetGenDirTest
+        //设置自动生成单元测试用例
+        //    generateTests
+    }
 dependencies {
     compile fileTree(dir: 'libs', exclude: 'android.support-v4.jar', include: '*.jar')
     testCompile 'junit:junit:4.12'
@@ -45,9 +66,11 @@ dependencies {
     compile 'com.commit451:PhotoView:1.2.4'//图片缩放
     compile 'com.youth.banner:banner:1.4.2'//广告
     compile 'com.shuyu:gsyVideoPlayer:1.2.4'
+    compile 'org.greenrobot:greendao:3.2.0'
     compile project(':supertextviewlib')
     compile project(':jcvideoplayer')
     compile project(':cordovalib')
     compile project(':xrecyclerviewlibrary')
     compile project(':baserecyclerviewadapterhelper')
+
 }

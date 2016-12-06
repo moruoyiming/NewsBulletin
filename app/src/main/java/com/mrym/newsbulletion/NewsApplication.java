@@ -1,12 +1,12 @@
 package com.mrym.newsbulletion;
 
 import android.app.Activity;
-import android.app.Application;
 
 import android.content.Context;
 
-import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
-import com.mrym.newsbulletion.service.InitializeService;
+
+import com.mrym.newsbulletion.db.AbstractDatabaseManager;
+
 
 import org.xutils.x;
 
@@ -33,8 +33,7 @@ public class NewsApplication extends SkinBaseApplication {
         CONTEXT = this;
         x.Ext.init(NewsApplication.this);
         x.Ext.setDebug(true);
-        HomeCateGoryUtils.getInstance(getApplicationContext()).initData();
-        InitializeService.start(this);
+        AbstractDatabaseManager.initOpenHelper(getApplicationContext());//初始化数据库
     }
 
     public static Context getContext() {
@@ -49,16 +48,6 @@ public class NewsApplication extends SkinBaseApplication {
     public static Map<String, Activity> getActivitys() {
         return activities;
     }
-
-//    /**
-//     * 根据键值取对应的Activity
-//     *
-//     * @param key 键值
-//     * @return 键值对应的Activity
-//     */
-//    public static Activity getActivity(String key) {
-//        return activities.get(key) == null ? (activities.get(SplashActivity.TAG) == null ? activities.get(MainActivity.TAG) : activities.get(SplashActivity.TAG)) : activities.get(key);
-//    }
 
     /**
      * 注册Activity

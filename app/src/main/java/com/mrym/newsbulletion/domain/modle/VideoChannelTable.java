@@ -1,9 +1,9 @@
 package com.mrym.newsbulletion.domain.modle;
-
 /**
- * des:视频分类
- * Created by xsf
- * on 2016.09.14:57
+ * 视频分类
+ * Created by Jian on 2016/9/14.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class VideoChannelTable {
     private String channelId;

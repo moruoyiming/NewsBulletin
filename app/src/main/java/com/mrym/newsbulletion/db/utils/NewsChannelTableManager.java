@@ -26,7 +26,12 @@ import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * 首页管理
+ * Created by Jian on 2016/9/14.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
+ */
 public class NewsChannelTableManager {
 
     /**
