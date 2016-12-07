@@ -1,4 +1,4 @@
-package com.mrym.newsbulletion.db;
+package com.mrym.newsbulletion.db.other;
 
 import android.content.Context;
 import android.database.Cursor;

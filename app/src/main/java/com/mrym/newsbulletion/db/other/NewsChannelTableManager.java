@@ -14,12 +14,15 @@
  * limitations under the License.
  *
  */
-package com.mrym.newsbulletion.db.utils;
+package com.mrym.newsbulletion.db.other;
 
 
+
+import android.util.Log;
 
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 
@@ -34,6 +37,7 @@ import java.util.List;
  */
 public class NewsChannelTableManager {
 
+
     /**
      * 加载新闻类型
      * @return
@@ -42,11 +46,23 @@ public class NewsChannelTableManager {
         List<String> channelName = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_name));
         List<String> channelId = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_id));
         ArrayList<NewsChannelTable>newsChannelTables=new ArrayList<>();
+        ArrayList<NewsChannelTableDB> newsChannelTablesdb=new ArrayList<>();
         for (int i = 0; i < channelName.size(); i++) {
             NewsChannelTable entity = new NewsChannelTable(channelName.get(i), channelId.get(i)
                     , GlobalVariable.getType(channelId.get(i)), i <= 5, i, false);
             newsChannelTables.add(entity);
+            NewsChannelTableDB db=new NewsChannelTableDB();
+            db.setNewsChannelName(channelName.get(i));
+            db.setNewsChannelId(channelId.get(i));
+            db.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));
+            db.setNewsChannelSelect(i <= 5);
+            db.setNewsChannelIndex(i);
+            db.setNewsChannelFixed(false);
+            newsChannelTablesdb.add(db);
+            Log.i("what","  "+db.toString());
         }
+        StudentManager studentManager = new StudentManager(NewsApplication.getContext());
+        studentManager.insertMultObject(newsChannelTablesdb);
         return newsChannelTables;
     }
     /**

@@ -1,7 +1,5 @@
 package com.mrym.newsbulletion.ui.fragment;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,21 +13,14 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
 import com.mrym.newsbulletion.adapter.NewsAdapter;
-import com.mrym.newsbulletion.db.entity.HomeCateGory;
-import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.NewsPhotoDetail;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
-import com.mrym.newsbulletion.ui.activity.NewsBrowserActivity;
 import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
-import com.mrym.newsbulletion.ui.activity.PhotosDetailActivity;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
-import com.mrym.newsbulletion.utils.common.ToastUtils;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import java.util.ArrayList;
 import java.util.List;

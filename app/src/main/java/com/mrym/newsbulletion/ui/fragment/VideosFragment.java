@@ -1,34 +1,24 @@
 package com.mrym.newsbulletion.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
-import com.mrym.newsbulletion.adapter.NewsAdapter;
 import com.mrym.newsbulletion.adapter.VideosAdapter;
-import com.mrym.newsbulletion.db.entity.HomeCateGory;
-import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.MvpFragment;
-import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
 import com.mrym.newsbulletion.mvp.fragment.videos.VideosPresenter;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 
 import java.util.ArrayList;
 import java.util.List;

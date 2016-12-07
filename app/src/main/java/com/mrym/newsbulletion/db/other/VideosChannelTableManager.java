@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package com.mrym.newsbulletion.db;
+package com.mrym.newsbulletion.db.other;
 
 
 

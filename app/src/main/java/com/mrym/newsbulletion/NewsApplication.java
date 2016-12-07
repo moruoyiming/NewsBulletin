@@ -5,9 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 
 
-import com.mrym.newsbulletion.db.AbstractDatabaseManager;
-
-
 import org.xutils.x;
 
 import java.util.HashMap;
@@ -33,7 +30,7 @@ public class NewsApplication extends SkinBaseApplication {
         CONTEXT = this;
         x.Ext.init(NewsApplication.this);
         x.Ext.setDebug(true);
-        AbstractDatabaseManager.initOpenHelper(getApplicationContext());//初始化数据库
+
     }
 
     public static Context getContext() {

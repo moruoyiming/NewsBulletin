@@ -28,7 +28,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.db.utils.NewsChannelTableManager;
+import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.widget.DragAdapter;

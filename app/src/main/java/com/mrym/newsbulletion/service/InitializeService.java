@@ -4,11 +4,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
-import com.mrym.newsbulletion.NewsApplication;
-import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
 import com.mrym.newsbulletion.utils.file.FileOperate;
-
-import org.xutils.x;
 
 /**
  * Created by Jian on 2016/8/31.

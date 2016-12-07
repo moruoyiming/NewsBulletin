@@ -10,28 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
-import com.mrym.newsbulletion.db.entity.HomeCateGory;
-import com.mrym.newsbulletion.db.utils.HomeCateGoryUtils;
-import com.mrym.newsbulletion.db.utils.NewsChannelTableManager;
+import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
-import com.mrym.newsbulletion.ui.activity.MainActivity;
-import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
