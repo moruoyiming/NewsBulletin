@@ -22,7 +22,9 @@ import android.util.Log;
 
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.db.GreenDaoManager;
 import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
+import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 
@@ -61,8 +63,6 @@ public class NewsChannelTableManager {
             newsChannelTablesdb.add(db);
             Log.i("what","  "+db.toString());
         }
-        StudentManager studentManager = new StudentManager(NewsApplication.getContext());
-        studentManager.insertMultObject(newsChannelTablesdb);
         return newsChannelTables;
     }
     /**
@@ -73,11 +73,23 @@ public class NewsChannelTableManager {
         List<String> channelName = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_name_static));
         List<String> channelId = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_id_static));
         ArrayList<NewsChannelTable>newsChannelTables=new ArrayList<>();
+        NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
         for (int i = 0; i < channelName.size(); i++) {
             NewsChannelTable entity = new NewsChannelTable(channelName.get(i), channelId.get(i)
                     , GlobalVariable.getType(channelId.get(i)), i <= 5, i, true);
             newsChannelTables.add(entity);
+//            NewsChannelTableDB newsChannelTableDB = new NewsChannelTableDB();
+//            newsChannelTableDB.setNewsChannelName(channelName.get(i));
+//            newsChannelTableDB.setNewsChannelId(channelId.get(i));
+//            newsChannelTableDB.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));
+//            newsChannelTableDB.setNewsChannelSelect(i <= 5);
+//            newsChannelTableDB.setNewsChannelIndex(i);
+//            newsChannelTableDB.setNewsChannelFixed(true);
+//            newsChannelTableDBDao.insert(newsChannelTableDB);
+//            List<NewsChannelTableDB> list=GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao().queryBuilder().build().list();
+//            Log.i("fuck you ",list.toString()+"    wo coa ");
         }
         return newsChannelTables;
     }
+
 }

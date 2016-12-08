@@ -61,7 +61,7 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
      * @param mContext
      */
     public static void startAction(Context mContext) {
-        Intent intent = new Intent(mContext, SkinChangeActivity.class);
+        Intent intent = new Intent(mContext, SettingActivity.class);
         mContext.startActivity(intent);
     }
     @Override

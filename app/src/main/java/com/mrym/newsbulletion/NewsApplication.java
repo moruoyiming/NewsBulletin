@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 
 
+import com.mrym.newsbulletion.db.GreenDaoManager;
+
 import org.xutils.x;
 
 import java.util.HashMap;
@@ -30,7 +32,7 @@ public class NewsApplication extends SkinBaseApplication {
         CONTEXT = this;
         x.Ext.init(NewsApplication.this);
         x.Ext.setDebug(true);
-
+        GreenDaoManager.getInstance();
     }
 
     public static Context getContext() {
