@@ -153,6 +153,10 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 								otherGridView.getChildAt(otherGridView.getLastVisiblePosition()).getLocationInWindow(endLocation);
 								MoveAnim(moveImageView, startLocation , endLocation, channel,userGridView);
 								userAdapter.setRemove(position);
+								NewsChannelTableDB newsChannelTableDB=	userChannelList.get(position);
+								newsChannelTableDB.setNewsChannelSelect(false);
+								NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
+								newsChannelTableDBDao.update(newsChannelTableDB);
 							} catch (Exception localException) {
 							}
 						}

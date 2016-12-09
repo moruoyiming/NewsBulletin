@@ -51,6 +51,7 @@ public class NewsApplication extends SkinBaseApplication {
      */
     public void initDb(){
         if(PrefUtils.getBoolean(NewsApplication.getContext(),"first",true)){
+            PrefUtils.putBoolean(NewsApplication.getContext(),"first",false);
             GreenDaoManager.getInstance().initDB();
             GreenDaoManager.getInstance().initDB2();
         }else{
