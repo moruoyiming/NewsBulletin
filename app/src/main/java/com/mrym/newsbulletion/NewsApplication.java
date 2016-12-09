@@ -3,14 +3,23 @@ package com.mrym.newsbulletion;
 import android.app.Activity;
 
 import android.content.Context;
+import android.util.Log;
 
 
 import com.mrym.newsbulletion.db.GreenDaoManager;
+import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
+import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
+import com.mrym.newsbulletion.utils.common.PrefUtils;
 
 import org.xutils.x;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import solid.ren.skinlibrary.base.SkinBaseApplication;
@@ -33,7 +42,22 @@ public class NewsApplication extends SkinBaseApplication {
         x.Ext.init(NewsApplication.this);
         x.Ext.setDebug(true);
         GreenDaoManager.getInstance();
+        initDb();
+
     }
+
+    /**
+     * 初始化新闻分类
+     */
+    public void initDb(){
+        if(PrefUtils.getBoolean(NewsApplication.getContext(),"first",true)){
+            GreenDaoManager.getInstance().initDB();
+            GreenDaoManager.getInstance().initDB2();
+        }else{
+
+        }
+    }
+
 
     public static Context getContext() {
         return CONTEXT;

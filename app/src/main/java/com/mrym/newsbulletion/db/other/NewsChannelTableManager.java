@@ -44,52 +44,28 @@ public class NewsChannelTableManager {
      * 加载新闻类型
      * @return
      */
-    public static List<NewsChannelTable> loadNewsChannelsMine() {
-        List<String> channelName = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_name));
-        List<String> channelId = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_id));
-        ArrayList<NewsChannelTable>newsChannelTables=new ArrayList<>();
-        ArrayList<NewsChannelTableDB> newsChannelTablesdb=new ArrayList<>();
-        for (int i = 0; i < channelName.size(); i++) {
-            NewsChannelTable entity = new NewsChannelTable(channelName.get(i), channelId.get(i)
-                    , GlobalVariable.getType(channelId.get(i)), i <= 5, i, false);
-            newsChannelTables.add(entity);
-            NewsChannelTableDB db=new NewsChannelTableDB();
-            db.setNewsChannelName(channelName.get(i));
-            db.setNewsChannelId(channelId.get(i));
-            db.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));
-            db.setNewsChannelSelect(i <= 5);
-            db.setNewsChannelIndex(i);
-            db.setNewsChannelFixed(false);
-            newsChannelTablesdb.add(db);
-            Log.i("what","  "+db.toString());
+    public static List<NewsChannelTableDB> loadNewsChannelsMine() {
+        List<NewsChannelTableDB> list= null;
+        try {
+            list = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao().queryBuilder().where(NewsChannelTableDBDao.Properties.NewsChannelSelect.eq(false)).build().list();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return newsChannelTables;
+        return list;
     }
     /**
      * 加载固定新闻类型
      * @return
      */
-    public static List<NewsChannelTable> loadNewsChannelsStatic() {
-        List<String> channelName = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_name_static));
-        List<String> channelId = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_id_static));
-        ArrayList<NewsChannelTable>newsChannelTables=new ArrayList<>();
-        NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
-        for (int i = 0; i < channelName.size(); i++) {
-            NewsChannelTable entity = new NewsChannelTable(channelName.get(i), channelId.get(i)
-                    , GlobalVariable.getType(channelId.get(i)), i <= 5, i, true);
-            newsChannelTables.add(entity);
-//            NewsChannelTableDB newsChannelTableDB = new NewsChannelTableDB();
-//            newsChannelTableDB.setNewsChannelName(channelName.get(i));
-//            newsChannelTableDB.setNewsChannelId(channelId.get(i));
-//            newsChannelTableDB.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));
-//            newsChannelTableDB.setNewsChannelSelect(i <= 5);
-//            newsChannelTableDB.setNewsChannelIndex(i);
-//            newsChannelTableDB.setNewsChannelFixed(true);
-//            newsChannelTableDBDao.insert(newsChannelTableDB);
-//            List<NewsChannelTableDB> list=GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao().queryBuilder().build().list();
-//            Log.i("fuck you ",list.toString()+"    wo coa ");
+    public static List<NewsChannelTableDB> loadNewsChannelsStatic() {
+
+        List<NewsChannelTableDB> list= null;
+        try {
+            list = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao().queryBuilder().where(NewsChannelTableDBDao.Properties.NewsChannelSelect.eq(true)).build().list();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return newsChannelTables;
+        return list;
     }
 
 }

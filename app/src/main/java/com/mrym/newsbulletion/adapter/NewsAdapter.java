@@ -87,10 +87,15 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                 case GlobalVariable.ITEM_TWO_PIC:
                     if (newsEntity.getAds() != null && newsEntity.getAds().size() > 0) {
                         ImageLoaderUtils.display(mContext, hd.getmBottom_t1(),newsEntity.getAds().get(0).getImgsrc() + "",true);
-                        ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getAds().get(1).getImgsrc() + "",true);
+                        if(newsEntity.getAds().size() >= 2){
+                            ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getAds().get(1).getImgsrc() + "",true);
+                        }
                     } else {
                         ImageLoaderUtils.display(mContext, hd.getmBottom_t1(),newsEntity.getImgextra().get(0).getImgsrc() + "",true);
-                        ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getImgextra().get(1).getImgsrc() + "",true);
+                        if(newsEntity.getAds().size() >= 2){
+                            ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getImgextra().get(1).getImgsrc() + "",true);
+                        }
+
                     }
                     break;
                 case GlobalVariable.ITEM_THREE_PIC:

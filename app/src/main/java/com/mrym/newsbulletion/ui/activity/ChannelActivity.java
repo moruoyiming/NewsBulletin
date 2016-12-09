@@ -28,6 +28,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.db.GreenDaoManager;
+import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
+import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.ui.BaseActivity;
@@ -55,9 +58,9 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	/** 其它栏目对应的适配器 */
 	OtherAdapter otherAdapter;
 	/** 其它栏目列表 */
-	List<NewsChannelTable> otherChannelList = new ArrayList<NewsChannelTable>();
+	List<NewsChannelTableDB> otherChannelList = new ArrayList<NewsChannelTableDB>();
 	/** 用户栏目列表 */
-	List<NewsChannelTable> userChannelList = new ArrayList<NewsChannelTable>();
+	List<NewsChannelTableDB> userChannelList = new ArrayList<NewsChannelTableDB>();
 	/** 是否在移动，由于这边是动画结束后才进行的数据更替，设置这个限制为了避免操作太频繁造成的数据错乱。 */
 	boolean isMove = false;
 	@Bind(R.id.leftback_toobar_l1)
@@ -138,7 +141,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 					TextView newTextView = (TextView) view.findViewById(R.id.text_item);
 					final int[] startLocation = new int[2];
 					newTextView.getLocationInWindow(startLocation);
-					final NewsChannelTable channel = ((DragAdapter) parent.getAdapter()).getItem(position);//获取点击的频道内容
+					final NewsChannelTableDB channel = ((DragAdapter) parent.getAdapter()).getItem(position);//获取点击的频道内容
 					otherAdapter.setVisible(false);
 					//添加到最后一个
 					otherAdapter.addItem(channel);
@@ -163,7 +166,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 				TextView newTextView = (TextView) view.findViewById(R.id.text_item);
 				final int[] startLocation = new int[2];
 				newTextView.getLocationInWindow(startLocation);
-				final NewsChannelTable channel = ((OtherAdapter) parent.getAdapter()).getItem(position);
+				final NewsChannelTableDB channel = ((OtherAdapter) parent.getAdapter()).getItem(position);
 				userAdapter.setVisible(false);
 				//添加到最后一个
 				userAdapter.addItem(channel);
@@ -175,6 +178,10 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 							userGridView.getChildAt(userGridView.getLastVisiblePosition()).getLocationInWindow(endLocation);
 							MoveAnim(moveImageView, startLocation , endLocation, channel,otherGridView);
 							otherAdapter.setRemove(position);
+							NewsChannelTableDB newsChannelTableDB=	otherChannelList.get(position);
+							newsChannelTableDB.setNewsChannelSelect(true);
+							NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
+							newsChannelTableDBDao.update(newsChannelTableDB);
 						} catch (Exception localException) {
 						}
 					}
@@ -193,7 +200,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	 * @param moveChannel
 	 * @param clickGridView
 	 */
-	private void MoveAnim(View moveView, int[] startLocation,int[] endLocation, final NewsChannelTable moveChannel,
+	private void MoveAnim(View moveView, int[] startLocation,int[] endLocation, final NewsChannelTableDB moveChannel,
 			final GridView clickGridView) {
 		int[] initLocation = new int[2];
 		//获取传递过来的VIEW的坐标
@@ -286,15 +293,14 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 
 	/** 退出时候保存选择后数据库的设置  */
 	private void saveChannel() {
-//		ChannelManage.getManage(AppApplication.getApp().getSQLHelper()).deleteAllChannel();
-//		ChannelManage.getManage(AppApplication.getApp().getSQLHelper()).saveUserChannel(userAdapter.getChannnelLst());
-//		ChannelManage.getManage(AppApplication.getApp().getSQLHelper()).saveOtherChannel(otherAdapter.getChannnelLst());
+//		NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
+//		newsChannelTableDBDao.insertInTx(userAdapter.getChannnelLst());
 	}
 
 	@Override
 	public void onBackPressed() {
-		saveChannel();
 		if(userAdapter.isListChanged()){
+			saveChannel();
 			finish();
 			Log.d(TAG, "数据发生改变");
 		}else{

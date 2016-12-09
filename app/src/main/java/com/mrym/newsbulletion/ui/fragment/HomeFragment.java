@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
+import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
@@ -65,7 +66,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
         List<String> channelNames = new ArrayList<>();
         List<Fragment> mNewsFragmentList = new ArrayList<>();
-        List<NewsChannelTable> newsChannelTables= NewsChannelTableManager.loadNewsChannelsStatic();
+        List<NewsChannelTableDB> newsChannelTables= NewsChannelTableManager.loadNewsChannelsStatic();
         for (int i = 0; i < newsChannelTables.size(); i++) {
             channelNames.add(newsChannelTables.get(i).getNewsChannelName());
             mNewsFragmentList.add(createListFragments(newsChannelTables.get(i)));
@@ -76,7 +77,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         viewpager.setAdapter(fragmentAdapter);
         viewPagerTab.setViewPager(viewpager);
     }
-    private GateGoryFragment createListFragments(NewsChannelTable homeCateGory) {
+    private GateGoryFragment createListFragments(NewsChannelTableDB homeCateGory) {
         GateGoryFragment fragment = new GateGoryFragment();
         Bundle bundle = new Bundle();
         bundle.putString(GlobalVariable.NEWS_ID, homeCateGory.getNewsChannelName());
