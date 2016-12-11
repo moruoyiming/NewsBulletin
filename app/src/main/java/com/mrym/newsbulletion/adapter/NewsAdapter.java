@@ -2,6 +2,7 @@ package com.mrym.newsbulletion.adapter;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.utils.ImageLoaderUtils;
+import com.mrym.newsbulletion.utils.PicassoUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -74,28 +77,65 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             hd.getmTiltle().setText(newsEntity.getTitle());
             hd.getmCommontNumber().setText(newsEntity.getReplyCount() + "评论");
             hd.getmPublicdate().setText(newsEntity.getPtime());
-            ImageLoaderUtils.display(mContext, hd.getmAutherHead(), newsEntity.getImgsrc(),true);
+//            PicassoUtils.display(mContext,hd.getmAutherHead(),newsEntity.getImgsrc());
+            Picasso.with(mContext)
+                    .load(newsEntity.getImgsrc())
+                    .placeholder(R.mipmap.shouyetu)
+                    .error(R.mipmap.shouyetu)
+                    .config(Bitmap.Config.RGB_565)
+                    .into(hd.getmAutherHead());
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_TEXT:
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
-                    ImageLoaderUtils.display(mContext, hd.getmToppic(), newsEntity.getImgsrc(),true);
+//                    PicassoUtils.display(mContext,hd.getmToppic(),newsEntity.getImgsrc());
+                    Picasso.with(mContext)
+                            .load(newsEntity.getImgsrc())
+                            .placeholder(R.mipmap.shouyetu)
+                            .error(R.mipmap.shouyetu)
+                            .config(Bitmap.Config.RGB_565)
+                            .into(hd.getmToppic());
                     break;
                 case GlobalVariable.ITEM_ONE_PIC:
-                    ImageLoaderUtils.display(mContext, hd.getmRightpic(), newsEntity.getImgsrc(),true);
+//                    PicassoUtils.display(mContext,hd.getmRightpic(),newsEntity.getImgsrc());
+                    Picasso.with(mContext)
+                            .load(newsEntity.getImgsrc())
+                            .placeholder(R.mipmap.shouyetu)
+                            .error(R.mipmap.shouyetu)
+                            .config(Bitmap.Config.RGB_565)
+                            .into(hd.getmRightpic());
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
                     if (newsEntity.getAds() != null && newsEntity.getAds().size() > 0) {
-                        ImageLoaderUtils.display(mContext, hd.getmBottom_t1(),newsEntity.getAds().get(0).getImgsrc() + "",true);
-                        if(newsEntity.getAds().size() >= 2){
-                            ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getAds().get(1).getImgsrc() + "",true);
-                        }
-                    } else {
-                        ImageLoaderUtils.display(mContext, hd.getmBottom_t1(),newsEntity.getImgextra().get(0).getImgsrc() + "",true);
-                        if(newsEntity.getAds().size() >= 2){
-                            ImageLoaderUtils.display(mContext, hd.getmBottom_t2(),newsEntity.getImgextra().get(1).getImgsrc() + "",true);
-                        }
-
+//                        PicassoUtils.display(mContext,hd.getmBottom_t1(),newsEntity.getAds().get(0).getImgsrc());
+//                            PicassoUtils.display(mContext,hd.getmBottom_t2(),newsEntity.getAds().get(1).getImgsrc());
+                        Picasso.with(mContext)
+                                .load(newsEntity.getAds().get(0).getImgsrc())
+                                .placeholder(R.mipmap.shouyetu)
+                                .error(R.mipmap.shouyetu)
+                                .config(Bitmap.Config.RGB_565)
+                                .into(hd.getmBottom_t1());
+                        Picasso.with(mContext)
+                                .load(newsEntity.getAds().get(1).getImgsrc())
+                                .placeholder(R.mipmap.shouyetu)
+                                .error(R.mipmap.shouyetu)
+                                .config(Bitmap.Config.RGB_565)
+                                .into(hd.getmBottom_t2());
+                    } else if(newsEntity.getImgextra()!=null&&newsEntity.getImgextra().size()>0) {
+//                        PicassoUtils.display(mContext,hd.getmBottom_t1(),newsEntity.getImgextra().get(0).getImgsrc());
+//                        PicassoUtils.display(mContext,hd.getmBottom_t2(),newsEntity.getImgextra().get(1).getImgsrc());
+                        Picasso.with(mContext)
+                                .load(newsEntity.getImgextra().get(0).getImgsrc())
+                                .placeholder(R.mipmap.shouyetu)
+                                .error(R.mipmap.shouyetu)
+                                .config(Bitmap.Config.RGB_565)
+                                .into(hd.getmBottom_t1());
+                        Picasso.with(mContext)
+                                .load(newsEntity.getImgextra().get(1).getImgsrc())
+                                .placeholder(R.mipmap.shouyetu)
+                                .error(R.mipmap.shouyetu)
+                                .config(Bitmap.Config.RGB_565)
+                                .into(hd.getmBottom_t2());
                     }
                     break;
                 case GlobalVariable.ITEM_THREE_PIC:
@@ -123,7 +163,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
 //                    }
                     break;
                 case GlobalVariable.ITEM_OTHER:
-//                    Glide.with(mContext).load(newsEntity.getAds().get(0).getImgsrc()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getmToppic());
                     break;
             }
         } catch (Exception e) {
