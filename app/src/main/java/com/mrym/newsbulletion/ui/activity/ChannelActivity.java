@@ -2,6 +2,7 @@ package com.mrym.newsbulletion.ui.activity;
 
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -104,9 +105,9 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	 *
 	 * @param mContext
 	 */
-	public static void startAction(Context mContext) {
+	public static void startAction(Activity mContext) {
 		Intent intent = new Intent(mContext, ChannelActivity.class);
-		mContext.startActivity(intent);
+		mContext.startActivityForResult(intent,5);
 	}
 	/** 初始化布局*/
 	private void initView() {
@@ -299,7 +300,8 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	@Override
 	public void onBackPressed() {
 		if(userAdapter.isListChanged()){
-			saveChannel();
+//			saveChannel();
+			setResult(5);
 			finish();
 			Log.d(TAG, "数据发生改变");
 		}else{

@@ -1,10 +1,12 @@
 package com.mrym.newsbulletion.ui.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -16,6 +18,7 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.main.MainPresenter;
 import com.mrym.newsbulletion.mvp.activity.main.MainView;
+import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.Bind;
@@ -57,6 +60,22 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
         mvpPresenter.createFragments(getSupportFragmentManager());
         rgMain.setOnCheckedChangeListener(mvpPresenter.new RadioChangedListener());
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+            case 5:
+                Log.i("onActivityResult","jiemian fanhui");
+                ToastUtils.show("界面返回");
+                Intent intent=new Intent();
+                intent.setAction(GlobalVariable.CHANELCHANGERECEIVER);
+                sendBroadcast(intent);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

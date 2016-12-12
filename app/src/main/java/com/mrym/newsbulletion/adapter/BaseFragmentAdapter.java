@@ -15,15 +15,26 @@ public class BaseFragmentAdapter extends FragmentPagerAdapter {
     List<Fragment> fragmentList = new ArrayList<Fragment>();
     private List<String> mTitles;
 
-    public BaseFragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
+
+    public BaseFragmentAdapter(FragmentManager fm) {
         super(fm);
-        this.fragmentList = fragmentList;
     }
 
-    public BaseFragmentAdapter(FragmentManager fm, List<Fragment> fragmentList, List<String> mTitles) {
-        super(fm);
-        this.fragmentList = fragmentList;
+    public List<String> getmTitles() {
+        return mTitles;
+    }
+
+    public void setmTitles(List<String> mTitles) {
         this.mTitles = mTitles;
+    }
+
+    public List<Fragment> getFragmentList() {
+        return fragmentList;
+    }
+
+    public void setFragmentList(List<Fragment> fragmentList) {
+        this.fragmentList = fragmentList;
+        this.notifyDataSetChanged();
     }
 
     @Override

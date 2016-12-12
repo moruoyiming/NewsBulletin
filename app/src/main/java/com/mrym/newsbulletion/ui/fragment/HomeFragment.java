@@ -1,5 +1,9 @@
 package com.mrym.newsbulletion.ui.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,7 +21,6 @@ import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
-import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
@@ -46,6 +49,10 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Bind(R.id.viewpager)
     ViewPager viewpager;
     private BaseFragmentAdapter fragmentAdapter;
+    private List<String> channelNames;
+    private List<Fragment> mNewsFragmentList;
+    private ChanelChangeReceiver chanelChangeReceiver;
+    private  SmartTabLayout viewPagerTab;
     @Override
     protected HomePresenter createPresenter() {
         return new HomePresenter(this);
@@ -63,20 +70,26 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         super.onViewCreated(view, savedInstanceState);
         dynamicAddView(header, "background", R.color.primary_dark);
         tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
-        SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
-        List<String> channelNames = new ArrayList<>();
-        List<Fragment> mNewsFragmentList = new ArrayList<>();
-        List<NewsChannelTableDB> newsChannelTables= NewsChannelTableManager.loadNewsChannelsStatic();
+        viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
+        channelNames = new ArrayList<>();
+        mNewsFragmentList = new ArrayList<>();
+        List<NewsChannelTableDB> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();
         for (int i = 0; i < newsChannelTables.size(); i++) {
             channelNames.add(newsChannelTables.get(i).getNewsChannelName());
             mNewsFragmentList.add(createListFragments(newsChannelTables.get(i)));
         }
-        fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelNames);
-
+        fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager());
+        fragmentAdapter.setFragmentList(mNewsFragmentList);
+        fragmentAdapter.setmTitles(channelNames);
         viewpager.setOffscreenPageLimit(1);
         viewpager.setAdapter(fragmentAdapter);
         viewPagerTab.setViewPager(viewpager);
+        chanelChangeReceiver=new ChanelChangeReceiver(getActivity());
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(GlobalVariable.CHANELCHANGERECEIVER);
+        getActivity().registerReceiver(chanelChangeReceiver, filter);
     }
+
     private GateGoryFragment createListFragments(NewsChannelTableDB homeCateGory) {
         GateGoryFragment fragment = new GateGoryFragment();
         Bundle bundle = new Bundle();
@@ -85,6 +98,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         fragment.setArguments(bundle);
         return fragment;
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -95,6 +109,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        getActivity().unregisterReceiver(chanelChangeReceiver);
         ButterKnife.unbind(this);
     }
 
@@ -107,5 +122,32 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void getFailure(int code, String msg) {
 
+    }
+    class ChanelChangeReceiver extends BroadcastReceiver {
+
+        Context context;
+        public ChanelChangeReceiver(Context context) {
+            this.context = context;
+
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            System.out.println(intent.getAction());
+            if (intent.getAction().equals(GlobalVariable.CHANELCHANGERECEIVER)) {
+                System.out.println("ChanelChangeReceiver 频道发生变化");
+                channelNames.clear();
+                mNewsFragmentList.clear();
+                List<NewsChannelTableDB> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();
+                for (int i = 0; i < newsChannelTables.size(); i++) {
+                    channelNames.add(newsChannelTables.get(i).getNewsChannelName());
+                    mNewsFragmentList.add(createListFragments(newsChannelTables.get(i)));
+                }
+                fragmentAdapter.setFragmentList(mNewsFragmentList);
+                fragmentAdapter.setmTitles(channelNames);
+                viewPagerTab.setViewPager(viewpager);
+            }
+
+        }
     }
 }

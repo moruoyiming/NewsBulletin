@@ -66,7 +66,9 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
             channelNames.add(videoChannelTableList.get(i).getChannelName());
             mNewsFragmentList.add(createListFragments(videoChannelTableList.get(i)));
         }
-        fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager(), mNewsFragmentList, channelNames);
+        fragmentAdapter = new BaseFragmentAdapter(getChildFragmentManager());
+        fragmentAdapter.setFragmentList(mNewsFragmentList);
+        fragmentAdapter.setmTitles(channelNames);
         viewpager2.setAdapter(fragmentAdapter);
         viewPagerTab.setViewPager(viewpager2);
     }

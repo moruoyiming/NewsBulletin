@@ -167,4 +167,17 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 break;
         }
     }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//        switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
+//            case 5:
+//                Log.i("onActivityResult","jiemian fanhui");
+//                ToastUtils.show("界面返回");
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 }
