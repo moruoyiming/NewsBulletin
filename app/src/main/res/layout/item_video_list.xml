@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/item_video_center"
         android:layout_width="match_parent"
-        android:layout_height="200dip"
+        android:layout_height="230dip"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
@@ -26,12 +26,12 @@
         <RelativeLayout
             android:id="@+id/rl_root"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="230dp">
 
             <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
                 android:id="@+id/videoplayer"
                 android:layout_width="match_parent"
-                android:layout_height="160dp" />
+                android:layout_height="220dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_logo"

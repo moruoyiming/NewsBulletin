@@ -86,7 +86,7 @@ public class SplashPresenter extends BasePresenter<SplashView> {
                         mvpView.startMain();
                     }
                 }
-            }, 4000);
+            }, 2000);
         }
     }
 

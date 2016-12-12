@@ -70,7 +70,7 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     @Override
     public void showAdvertisement(String url) {
 //        Glide.with(this).load(url).crossFade().into(loginSplash);
-        PicassoUtils.display(this,loginSplash, url);
+//        PicassoUtils.display(this,loginSplash, url);
     }
 
     @Override
