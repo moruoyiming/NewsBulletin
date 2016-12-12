@@ -22,7 +22,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import cn.sharesdk.framework.ShareSDK;
 import solid.ren.skinlibrary.base.SkinBaseApplication;
 
 

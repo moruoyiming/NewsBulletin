@@ -15,6 +15,7 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.VideoData;
+import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 
 import java.util.Date;
@@ -56,20 +57,12 @@ public class VideosAdapter extends BaseRecyclerViewAdapter<VideoData> {
             hd.getTv_play_time().setText(videoData.getTopicName());
             hd.getTv_from().setText(videoData.getVideosource());
             JCVideoPlayerStandard jcVideoPlayerStandard = hd.getJcVideoPlayerStandard();
-            Glide.with(mContext).load(videoData.getTopicImg())
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
-                    .error(R.mipmap.ic_launcher)
-                    .crossFade().into(hd.getVideologo());
+            PicassoUtils.display(mContext,hd.getVideologo(),videoData.getTopicImg());
             boolean setUp =  jcVideoPlayerStandard.setUp(
                     videoData.getMp4_url(), JCVideoPlayer.SCREEN_LAYOUT_LIST,
                     TextUtils.isEmpty(videoData.getDescription())?videoData.getTitle()+"":videoData.getDescription());
             if (setUp) {
-                Glide.with(mContext).load(videoData.getCover())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .centerCrop()
-                        .error(R.mipmap.ic_launcher)
-                        .crossFade().into(jcVideoPlayerStandard.thumbImageView);
+                PicassoUtils.display(mContext,jcVideoPlayerStandard.thumbImageView,videoData.getCover());
             }
 
         } catch (Exception e) {
