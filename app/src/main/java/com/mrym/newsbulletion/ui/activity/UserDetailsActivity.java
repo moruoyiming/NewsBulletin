@@ -11,9 +11,15 @@ import com.mrym.newsbulletion.mvp.activity.details.DetailsView;
  * Github: https://github.com/moruoyiming
  */
 public class UserDetailsActivity extends MvpActivity<DetailsPresenter> implements DetailsView {
+    public static final String TAG = UserDetailsActivity.class.getCanonicalName();
     @Override
     protected DetailsPresenter createPresenter() {
         return new DetailsPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
     }
 
     @Override

@@ -39,6 +39,11 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     }
 
     @Override
+    protected String getTag() {
+        return TAG;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        StatusBarCompat.translucentStatusBar(SplashActivity.this,true);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

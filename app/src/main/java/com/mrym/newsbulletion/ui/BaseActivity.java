@@ -106,6 +106,7 @@ public class BaseActivity extends SkinBaseActivity {
         return toolbar;
     }
 
+
     public Toolbar initToolBar(int title) {
         Toolbar toolbar = initToolBar();
         TextView toolbar_title = (TextView) toolbar.findViewById(R.id.toolbar_title);

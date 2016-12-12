@@ -28,6 +28,7 @@ import butterknife.Bind;
  * Github: https://github.com/moruoyiming
  */
 public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implements SkinView {
+    public static final String TAG = SkinChangeActivity.class.getCanonicalName();
     private MaterialDialog dialog;
     @Bind(R.id.btn_from_not)
     Button btnnot;
@@ -85,6 +86,11 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     @Override
     protected ChageSkinPresenter createPresenter() {
         return new ChageSkinPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
     }
 
     @Override

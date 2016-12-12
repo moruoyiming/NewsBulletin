@@ -35,7 +35,7 @@ public class GlobalVariable {
     public static final String VIDEO_TYPE = "VIDEO_TYPE";
     public static final String CHANNEL_POSITION = "channel_position";
     public static final int CONNECT_TIMEOUT = 5000;
-
+    public static final long KEY_DOWN_TIME = 2000;
     public static final String CHANELCHANGERECEIVER = "android.chanelchange.receiver";
     @SuppressLint("NewApi")
     public static String getLogSavePath() {

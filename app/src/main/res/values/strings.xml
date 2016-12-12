@@ -47,6 +47,7 @@
     <string name="input_pwd">输入密码</string>
     <string name="forgot_pwd">忘记密码</string>
     <string name="obtain_again">重新获取</string>
+    <string name="twopress_finish">再按一次退出程序</string>
     <string name="please_not_input_the_same_password">请不要输入初始密码</string>
     <string name="no_devices">没有匹配的设备</string>
     <string name="network_catch">当前网络不可用，请检查网络是否连接</string>

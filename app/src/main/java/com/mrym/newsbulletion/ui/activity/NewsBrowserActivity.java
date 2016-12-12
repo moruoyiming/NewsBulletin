@@ -34,8 +34,7 @@ import butterknife.Bind;
  * Github: https://github.com/moruoyiming
  */
 public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> implements NewsbrowserView {
-
-
+    public static final String TAG = NewsBrowserActivity.class.getCanonicalName();
     @Bind(R.id.leftback_toobar_l1)
     RelativeLayout back;
     @Bind(R.id.left_back_title)
@@ -112,6 +111,11 @@ public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> impl
     @Override
     protected NewsbrowserPresenter createPresenter() {
         return new NewsbrowserPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
     }
 
     @Override

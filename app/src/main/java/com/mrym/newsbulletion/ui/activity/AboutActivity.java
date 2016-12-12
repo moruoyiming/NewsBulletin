@@ -32,8 +32,7 @@ import butterknife.Bind;
  * Github: https://github.com/moruoyiming
  */
 public class AboutActivity  extends MvpActivity<AboutPresenter> implements AboutView {
-
-
+    public static String TAG = AboutActivity.class.getCanonicalName();
     @Bind(R.id.news_detail_photo_iv)
     ImageView newsDetailPhotoIv;
     @Bind(R.id.mask_view)
@@ -99,6 +98,11 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
     @Override
     protected AboutPresenter createPresenter() {
         return new AboutPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
     }
 
 }

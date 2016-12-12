@@ -35,6 +35,7 @@ import butterknife.Bind;
  */
 
 public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushView {
+    public static final String TAG = PushMsgActivity.class.getCanonicalName();
     @Bind(R.id.activity_pushmsg_rc)
     XRecyclerView mPushXRecyclerView;
     @Bind(R.id.left_back_title)
@@ -53,6 +54,11 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
     @Override
     protected PushPresenter createPresenter() {
         return new PushPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
     }
 
     @Override

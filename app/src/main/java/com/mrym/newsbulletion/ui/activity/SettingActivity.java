@@ -25,6 +25,7 @@ import butterknife.Bind;
  * Github: https://github.com/moruoyiming
  */
 public class SettingActivity extends MvpActivity<SettingPresenter> implements SettingView {
+    public static final String TAG = SettingActivity.class.getCanonicalName();
     @Bind(R.id.leftback_toobar_l1)
     RelativeLayout back;
     @Bind(R.id.left_back_title)
@@ -50,6 +51,12 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
     protected SettingPresenter createPresenter() {
         return new SettingPresenter(this);
     }
+
+    @Override
+    protected String getTag() {
+        return TAG;
+    }
+
     /**
      * 入口
      *

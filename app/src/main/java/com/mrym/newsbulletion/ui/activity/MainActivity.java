@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -44,10 +45,15 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     RadioButton rbMine;
     @Bind(R.id.rg_main)
     RadioGroup rgMain;
-
+    private long exitTime = 0;
     @Override
     protected MainPresenter createPresenter() {
         return new MainPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
     }
 
     @Override
@@ -67,8 +73,6 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
         switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
             case 5:
-                Log.i("onActivityResult","jiemian fanhui");
-                ToastUtils.show("界面返回");
                 Intent intent=new Intent();
                 intent.setAction(GlobalVariable.CHANELCHANGERECEIVER);
                 sendBroadcast(intent);
@@ -85,6 +89,18 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         sp.edit().putLong(GlobalVariable.LAST_LOGIN_TIME, SystemClock.currentThreadTimeMillis()).apply();
     }
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > GlobalVariable.KEY_DOWN_TIME) {
+                ToastUtils.show(getString(R.string.twopress_finish));
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 }
