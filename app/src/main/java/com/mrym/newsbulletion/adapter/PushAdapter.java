@@ -14,6 +14,7 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
 import com.mrym.newsbulletion.utils.ImageLoaderUtils;
+import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.common.DateUtils;
 
 import java.util.List;
@@ -78,15 +79,18 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
-                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+//                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    PicassoUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc());
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
                     hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
                     if( newsSummary.getAds()!=null&&newsSummary.getAds().size()>0){
-                        ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                        PicassoUtils.display(mContext,hd.getmMultipushImage(),newsSummary.getAds().get(0).getImgsrc());
+//                        ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
                     }else{
-                        ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                        PicassoUtils.display(mContext,hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
+//                        ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
                     }
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
                     PushMsgAdapter adapter = new PushMsgAdapter(mContext, newsSummary.getAds());
@@ -96,7 +100,8 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                 case GlobalVariable.ITEM_BIGPIC:
                     hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
-                    ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    PicassoUtils.display(mContext,hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
+//                    ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
                     PushMsgAdapter adapter2 = new PushMsgAdapter(mContext, newsSummary.getAds());
                     hd.getmMultiRecycleview().setAdapter(adapter2);
@@ -107,7 +112,8 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
-                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getAds().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    PicassoUtils.display(mContext,hd.getmSinglePushImage(), newsSummary.getAds().get(0).getImgsrc());
+//                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getAds().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
                     break;
             }
         } catch (Exception e) {

@@ -18,6 +18,7 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.skin.ChageSkinPresenter;
 import com.mrym.newsbulletion.mvp.activity.skin.SkinView;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.Bind;
 
@@ -44,13 +45,7 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_changeskin);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            // Translucent status bar
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+        StatusBarCompat.translucentStatusBar(SkinChangeActivity.this,true);
         dynamicAddView(header, "background", R.color.primary_dark);
         dialog = new MaterialDialog.Builder(SkinChangeActivity.this)
                 .title("换肤中")

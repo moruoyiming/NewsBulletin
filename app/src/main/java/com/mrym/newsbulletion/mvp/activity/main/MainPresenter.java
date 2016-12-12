@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.mvp.activity.main;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.mvp.activity.login.LoginView;
+import com.mrym.newsbulletion.ui.activity.MainActivity;
 import com.mrym.newsbulletion.ui.fragment.FollowFragment;
 import com.mrym.newsbulletion.ui.fragment.HomeFragment;
 import com.mrym.newsbulletion.ui.fragment.MineFragment;

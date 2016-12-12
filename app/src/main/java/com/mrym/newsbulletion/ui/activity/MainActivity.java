@@ -50,11 +50,13 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        StatusBarCompat.translucentStatusBar(MainActivity.this,false);
         StatusBarCompat.setStatusBarColor(MainActivity.this, R.color.black, 255);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mvpPresenter.createFragments(getSupportFragmentManager());
         rgMain.setOnCheckedChangeListener(mvpPresenter.new RadioChangedListener());
+
     }
 
     @Override

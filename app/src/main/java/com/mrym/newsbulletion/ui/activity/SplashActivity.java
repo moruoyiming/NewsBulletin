@@ -14,6 +14,8 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.splash.SplashPresenter;
 import com.mrym.newsbulletion.mvp.activity.splash.SplashView;
+import com.mrym.newsbulletion.utils.PicassoUtils;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,6 +40,7 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        StatusBarCompat.translucentStatusBar(SplashActivity.this,true);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
@@ -66,7 +69,8 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
 
     @Override
     public void showAdvertisement(String url) {
-        Glide.with(this).load(url).crossFade().into(loginSplash);
+//        Glide.with(this).load(url).crossFade().into(loginSplash);
+        PicassoUtils.display(this,loginSplash, url);
     }
 
     @Override

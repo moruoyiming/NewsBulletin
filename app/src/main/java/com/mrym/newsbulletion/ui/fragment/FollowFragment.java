@@ -69,7 +69,6 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        StatusBarCompat.setStatusBarColor(getActivity(), R.color.black,255);
         mPhotogirls = new ArrayList<>();
         mPhotoAdapter = new PhotoGirlsAdapter(mPhotogirls, getActivity());
         girlsList.setAdapter(mPhotoAdapter);

@@ -34,6 +34,7 @@ import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.ui.BaseActivity;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DragAdapter;
 import com.mrym.newsbulletion.widget.DragGrid;
 import com.mrym.newsbulletion.widget.OtherAdapter;
@@ -73,13 +74,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_channel);
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			Window window = getWindow();
-			// Translucent status bar
-			window.setFlags(
-					WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-					WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-		}
+		StatusBarCompat.translucentStatusBar(ChannelActivity.this,true);
 		dynamicAddView(header, "background", R.color.primary_dark);
 		mTitle.setText("频道设置");
 		back.setOnClickListener(new View.OnClickListener() {

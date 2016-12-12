@@ -16,6 +16,7 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.setting.SettingPresenter;
 import com.mrym.newsbulletion.mvp.activity.setting.SettingView;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.Bind;
 /**
@@ -34,13 +35,7 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
     	super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_setting);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            // Translucent status bar
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+        StatusBarCompat.translucentStatusBar(SettingActivity.this,true);
         dynamicAddView(header, "background", R.color.primary_dark);
         mTitle.setText("设置");
         back.setOnClickListener(new View.OnClickListener() {

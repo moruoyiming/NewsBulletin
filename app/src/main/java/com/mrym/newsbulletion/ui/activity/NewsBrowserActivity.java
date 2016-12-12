@@ -25,6 +25,7 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.newsbrowser.NewsbrowserPresenter;
 import com.mrym.newsbulletion.mvp.activity.newsbrowser.NewsbrowserView;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.Bind;
 /**
@@ -49,13 +50,7 @@ public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> impl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_news_browser);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            // Translucent status bar
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+        StatusBarCompat.translucentStatusBar(NewsBrowserActivity.this,true);
         dynamicAddView(header, "background", R.color.primary_dark);
         mTitle.setText("新闻");
         back.setOnClickListener(new View.OnClickListener() {

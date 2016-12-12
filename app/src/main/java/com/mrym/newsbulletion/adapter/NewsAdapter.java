@@ -123,7 +123,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                                 .into(hd.getmBottom_t2());
                     } else if(newsEntity.getImgextra()!=null&&newsEntity.getImgextra().size()>0) {
 //                        PicassoUtils.display(mContext,hd.getmBottom_t1(),newsEntity.getImgextra().get(0).getImgsrc());
-//                        PicassoUtils.display(mContext,hd.getmBottom_t2(),newsEntity.getImgextra().get(1).getImgsrc());
+
                         Picasso.with(mContext)
                                 .load(newsEntity.getImgextra().get(0).getImgsrc())
                                 .placeholder(R.mipmap.shouyetu)

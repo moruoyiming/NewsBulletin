@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 
 /**
- * Description : 图片加载工具类 使用glide框架封装
+ * Description : 图片加载工具类 使用Picasso框架封装
  */
 public class PicassoUtils {
 

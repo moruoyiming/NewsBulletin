@@ -14,6 +14,7 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
+import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.common.MsgDateUtils;
 
 import java.util.Date;
@@ -52,13 +53,14 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
         try {
             GirlsViewHolder hd = (GirlsViewHolder) holder;
             PhotoGirl photoGirl = list.get(position);
+            PicassoUtils.display(mContext,hd.getGirlsimage(),photoGirl.getUrl());
 //            Glide.with(mContext).load(photoGirl.getUrl()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getGirlsimage());
-            Glide.with(mContext).load(photoGirl.getUrl())
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                    .placeholder(R.mipmap.shouyetu)
-                    .error(R.mipmap.shouyetu)
-                    .centerCrop().override(1090, 1090*3/4)
-                    .crossFade().into(hd.getGirlsimage());
+//            Glide.with(mContext).load(photoGirl.getUrl())
+//                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+//                    .placeholder(R.mipmap.shouyetu)
+//                    .error(R.mipmap.shouyetu)
+//                    .centerCrop().override(1090, 1090*3/4)
+//                    .crossFade().into(hd.getGirlsimage());
         } catch (Exception e) {
             e.printStackTrace();
         }

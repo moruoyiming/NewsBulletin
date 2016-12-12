@@ -29,6 +29,7 @@ import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
 import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.ImageLoaderUtils;
+import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DialogView;
@@ -111,10 +112,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
         profileName.setText(userBean.getNickName());
-//        ImageLoaderUtils.display(getActivity(), profileImage, userBean.getHeadImg(),R.mipmap.touxiang,R.mipmap.touxiang);
-//        ImageLoaderUtils.display(getActivity(), mainIvPlaceholder, userBean.getHeadImg(),R.mipmap.shouyetu,R.mipmap.shouyetu);
-        GlideUtils.getInstance().LoadCircleImageViewBitmap(getActivity(), userBean.getHeadImg(), profileImage, R.mipmap.touxiang, R.mipmap.touxiang);
-//        GlideUtils.getInstance().LoadCircleImageViewBitmap(getActivity(), userBean.getBackgroudImg(), mainIvPlaceholder, R.mipmap.shouyetu, R.mipmap.shouyetu);
+        PicassoUtils.display(getActivity() ,profileImage,  userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
     }
 
     @Override

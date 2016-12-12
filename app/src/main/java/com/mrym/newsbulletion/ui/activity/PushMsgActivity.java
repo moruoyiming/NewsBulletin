@@ -23,6 +23,7 @@ import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.push.PushPresenter;
 import com.mrym.newsbulletion.mvp.activity.push.PushView;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,13 +59,7 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pushmsg);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            // Translucent status bar
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
+        StatusBarCompat.translucentStatusBar(PushMsgActivity.this,true);
         dynamicAddView(header, "background", R.color.primary_dark);
         mTitle.setText("消息推送");
         back.setOnClickListener(new View.OnClickListener() {
