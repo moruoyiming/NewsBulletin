@@ -3,12 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/login_splash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
-
     <Button
         android:id="@+id/login_skip"
         android:layout_width="wrap_content"
@@ -16,4 +10,22 @@
         android:layout_alignParentRight="true"
         android:text="@string/login_skip" />
 
+
+    <ImageView
+        android:id="@+id/login_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/splash_banner"
+        android:scaleType="centerCrop" />
 </RelativeLayout>

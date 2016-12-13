@@ -39,7 +39,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     XRecyclerView categoryList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 0;
-    private NewsAdapter ma;
+    private NewsAdapter newsAdapter;
     private List<NewsSummary> mNews;
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
     private String mNewsId;
@@ -61,8 +61,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mNews = new ArrayList<>();
-        ma = new NewsAdapter(mNews, getActivity());
-        categoryList.setAdapter(ma);
+        newsAdapter = new NewsAdapter(mNews, getActivity());
+        categoryList.setAdapter(newsAdapter);
         if (getArguments() != null) {
             mNewsId = getArguments().getString(GlobalVariable.NEWS_ID);
             mNewsType = getArguments().getString(GlobalVariable.NEWS_TYPE);
@@ -136,11 +136,11 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 
             }
         };
-//        ma.setOnInViewClickListener(R.id.item_video_center, onInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_smallpic_center, onInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_bigpic_center, onInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_two_center, picOnInternalClickListener);
-        ma.setOnInViewClickListener(R.id.item_three_center, onInternalClickListener);
+//        newsAdapter.setOnInViewClickListener(R.id.item_video_center, onInternalClickListener);
+        newsAdapter.setOnInViewClickListener(R.id.item_smallpic_center, onInternalClickListener);
+        newsAdapter.setOnInViewClickListener(R.id.item_bigpic_center, onInternalClickListener);
+        newsAdapter.setOnInViewClickListener(R.id.item_two_center, picOnInternalClickListener);
+        newsAdapter.setOnInViewClickListener(R.id.item_three_center, onInternalClickListener);
     }
 
     @Override
@@ -186,7 +186,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 
     @Override
     public void loadingSuccess(List<NewsSummary> news,String mtag) {
-        ma.addAll(news);
+        newsAdapter.addAll(news);
     }
 
 

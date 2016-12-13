@@ -38,4 +38,15 @@ public class PicassoUtils {
                 .config(Bitmap.Config.RGB_565)
                 .into(imageView);
     }
+    public static void display(Context context, ImageView imageView, int url) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Picasso.with(context)
+                .load(url)
+                .placeholder(R.mipmap.shouyetu)
+                .error(R.mipmap.shouyetu)
+                .config(Bitmap.Config.RGB_565)
+                .into(imageView);
+    }
 }

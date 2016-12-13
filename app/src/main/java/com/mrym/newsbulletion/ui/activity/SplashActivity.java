@@ -1,6 +1,7 @@
 package com.mrym.newsbulletion.ui.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
@@ -16,6 +17,7 @@ import com.mrym.newsbulletion.mvp.activity.splash.SplashPresenter;
 import com.mrym.newsbulletion.mvp.activity.splash.SplashView;
 import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,11 +30,9 @@ import butterknife.OnClick;
  */
 public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
     public String TAG = SplashActivity.class.getCanonicalName();
-    @Bind(R.id.login_skip)
     Button loginSkip;
-    @Bind(R.id.login_splash)
     ImageView loginSplash;
-
+    ImageView logo;
     @Override
     protected SplashPresenter createPresenter() {
         return new SplashPresenter(this);
@@ -49,8 +49,10 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        ButterKnife.bind(this);
         NewsApplication.addActivity(this, TAG);
+        loginSkip= (Button) findViewById(R.id.login_skip);
+        loginSplash= (ImageView) findViewById(R.id.login_splash);
+        logo= (ImageView) findViewById(R.id.login_logo);
         mvpPresenter.showAdvertisement();
         mvpPresenter.gotoNext();
     }
@@ -74,8 +76,12 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
 
     @Override
     public void showAdvertisement(String url) {
-//        Glide.with(this).load(url).crossFade().into(loginSplash);
-//        PicassoUtils.display(this,loginSplash, url);
+        Picasso.with(SplashActivity.this)
+                .load( R.mipmap.background_splash)
+                .placeholder(R.mipmap.shouyetu)
+                .error(R.mipmap.shouyetu)
+                .config(Bitmap.Config.RGB_565)
+                .into(loginSplash);
     }
 
     @Override
