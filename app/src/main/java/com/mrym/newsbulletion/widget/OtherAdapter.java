@@ -11,19 +11,19 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.db.entity.ChannelunSelected;
 import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
-import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 
 public class OtherAdapter extends BaseAdapter {
 	private Context context;
-	public List<NewsChannelTableDB> channelList;
+	public List<ChannelunSelected> channelList;
 	private TextView item_text;
 	/** 是否可见 */
 	boolean isVisible = true;
 	/** 要删除的position */
 	public int remove_position = -1;
 
-	public OtherAdapter(Context context, List<NewsChannelTableDB> channelList) {
+	public OtherAdapter(Context context, List<ChannelunSelected> channelList) {
 		this.context = context;
 		this.channelList = channelList;
 	}
@@ -34,7 +34,7 @@ public class OtherAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public NewsChannelTableDB getItem(int position) {
+	public ChannelunSelected getItem(int position) {
 		if (channelList != null && channelList.size() != 0) {
 			return channelList.get(position);
 		}
@@ -50,7 +50,7 @@ public class OtherAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = LayoutInflater.from(context).inflate(R.layout.channel_item, null);
 		item_text = (TextView) view.findViewById(R.id.text_item);
-		NewsChannelTableDB channel = getItem(position);
+		ChannelunSelected channel = getItem(position);
 		item_text.setText(channel.getNewsChannelName());
 		if (!isVisible && (position == -1 + channelList.size())){
 			item_text.setText("");
@@ -62,12 +62,12 @@ public class OtherAdapter extends BaseAdapter {
 	}
 	
 	/** 获取频道列表 */
-	public List<NewsChannelTableDB> getChannnelLst() {
+	public List<ChannelunSelected> getChannnelLst() {
 		return channelList;
 	}
 	
 	/** 添加频道列表 */
-	public void addItem(NewsChannelTableDB channel) {
+	public void addItem(ChannelunSelected channel) {
 		channelList.add(channel);
 		notifyDataSetChanged();
 	}
@@ -86,7 +86,7 @@ public class OtherAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 	/** 设置频道列表 */
-	public void setListDate(List<NewsChannelTableDB> list) {
+	public void setListDate(List<ChannelunSelected> list) {
 		channelList = list;
 	}
 

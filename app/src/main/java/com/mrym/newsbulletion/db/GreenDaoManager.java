@@ -1,16 +1,16 @@
 package com.mrym.newsbulletion.db;
 
 
-import android.util.Log;
-
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.db.entity.ChannelSelected;
+import com.mrym.newsbulletion.db.entity.ChannelunSelected;
 import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
+import com.mrym.newsbulletion.db.gen.ChannelSelectedDao;
+import com.mrym.newsbulletion.db.gen.ChannelunSelectedDao;
 import com.mrym.newsbulletion.db.gen.DaoMaster;
 import com.mrym.newsbulletion.db.gen.DaoSession;
-import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.utils.common.PrefUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,9 +54,9 @@ public class GreenDaoManager {
     public void initDB() {
         List<String> channelName = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_name_static));
         List<String> channelId = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_id_static));
-        NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
+        ChannelSelectedDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getChannelSelectedDao();
         for (int i = 0; i < channelName.size(); i++) {
-            NewsChannelTableDB newsChannelTableDB = new NewsChannelTableDB();
+            ChannelSelected newsChannelTableDB = new ChannelSelected();
             newsChannelTableDB.setNewsChannelName(channelName.get(i));
             newsChannelTableDB.setNewsChannelId(channelId.get(i));
             newsChannelTableDB.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));
@@ -69,10 +69,10 @@ public class GreenDaoManager {
     public void initDB2() {
         List<String> channelName = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_name));
         List<String> channelId = Arrays.asList(NewsApplication.getContext().getResources().getStringArray(R.array.news_channel_id));
-        NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
-        List<NewsChannelTableDB> list=new ArrayList<>();
+        ChannelunSelectedDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getChannelunSelectedDao();
+        List<ChannelunSelected> list=new ArrayList<>();
         for (int i = 0; i < channelName.size(); i++) {
-            NewsChannelTableDB newsChannelTableDB = new NewsChannelTableDB();
+            ChannelunSelected newsChannelTableDB = new ChannelunSelected();
             newsChannelTableDB.setNewsChannelName(channelName.get(i));
             newsChannelTableDB.setNewsChannelId(channelId.get(i));
             newsChannelTableDB.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));

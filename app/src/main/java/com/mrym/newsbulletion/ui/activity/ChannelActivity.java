@@ -3,9 +3,7 @@ package com.mrym.newsbulletion.ui.activity;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.graphics.Bitmap;
@@ -14,8 +12,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
@@ -30,10 +26,11 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.db.GreenDaoManager;
+import com.mrym.newsbulletion.db.entity.ChannelSelected;
+import com.mrym.newsbulletion.db.entity.ChannelunSelected;
 import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
-import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DragAdapter;
@@ -60,9 +57,9 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	/** 其它栏目对应的适配器 */
 	OtherAdapter otherAdapter;
 	/** 其它栏目列表 */
-	List<NewsChannelTableDB> otherChannelList = new ArrayList<NewsChannelTableDB>();
+	List<ChannelunSelected> otherChannelList = new ArrayList<>();
 	/** 用户栏目列表 */
-	List<NewsChannelTableDB> userChannelList = new ArrayList<NewsChannelTableDB>();
+	List<ChannelSelected> userChannelList = new ArrayList<>();
 	/** 是否在移动，由于这边是动画结束后才进行的数据更替，设置这个限制为了避免操作太频繁造成的数据错乱。 */
 	boolean isMove = false;
 	@Bind(R.id.leftback_toobar_l1)
@@ -137,22 +134,23 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 					TextView newTextView = (TextView) view.findViewById(R.id.text_item);
 					final int[] startLocation = new int[2];
 					newTextView.getLocationInWindow(startLocation);
-					final NewsChannelTableDB channel = ((DragAdapter) parent.getAdapter()).getItem(position);//获取点击的频道内容
+					final ChannelSelected channel = ((DragAdapter) parent.getAdapter()).getItem(position);//获取点击的频道内容
+					ChannelunSelected channelSelected=new ChannelunSelected();
+					channelSelected.setNewsChannelId(channel.getNewsChannelId());
+					channelSelected.setNewsChannelName(channel.getNewsChannelName());
+					channelSelected.setNewsChannelType(channel.getNewsChannelType());
+					channelSelected.setNewsChannelSelect(true);
 					otherAdapter.setVisible(false);
 					//添加到最后一个
-					otherAdapter.addItem(channel);
+					otherAdapter.addItem(channelSelected);
 					new Handler().postDelayed(new Runnable() {
 						public void run() {
 							try {
 								int[] endLocation = new int[2];
 								//获取终点的坐标
 								otherGridView.getChildAt(otherGridView.getLastVisiblePosition()).getLocationInWindow(endLocation);
-								MoveAnim(moveImageView, startLocation , endLocation, channel,userGridView);
+								MoveAnim(moveImageView, startLocation , endLocation,userGridView);
 								userAdapter.setRemove(position);
-								NewsChannelTableDB newsChannelTableDB=	userChannelList.get(position);
-								newsChannelTableDB.setNewsChannelSelect(false);
-								NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
-								newsChannelTableDBDao.update(newsChannelTableDB);
 							} catch (Exception localException) {
 							}
 						}
@@ -166,22 +164,23 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 				TextView newTextView = (TextView) view.findViewById(R.id.text_item);
 				final int[] startLocation = new int[2];
 				newTextView.getLocationInWindow(startLocation);
-				final NewsChannelTableDB channel = ((OtherAdapter) parent.getAdapter()).getItem(position);
+				final ChannelunSelected channel = ((OtherAdapter) parent.getAdapter()).getItem(position);
 				userAdapter.setVisible(false);
 				//添加到最后一个
-				userAdapter.addItem(channel);
+				ChannelSelected channelSelected=new ChannelSelected();
+				channelSelected.setNewsChannelId(channel.getNewsChannelId());
+				channelSelected.setNewsChannelName(channel.getNewsChannelName());
+				channelSelected.setNewsChannelType(channel.getNewsChannelType());
+				channelSelected.setNewsChannelSelect(true);
+				userAdapter.addItem(channelSelected);
 				new Handler().postDelayed(new Runnable() {
 					public void run() {
 						try {
 							int[] endLocation = new int[2];
 							//获取终点的坐标
 							userGridView.getChildAt(userGridView.getLastVisiblePosition()).getLocationInWindow(endLocation);
-							MoveAnim(moveImageView, startLocation , endLocation, channel,otherGridView);
+							MoveAnim(moveImageView, startLocation , endLocation, otherGridView);
 							otherAdapter.setRemove(position);
-							NewsChannelTableDB newsChannelTableDB=	otherChannelList.get(position);
-							newsChannelTableDB.setNewsChannelSelect(true);
-							NewsChannelTableDBDao newsChannelTableDBDao = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao();
-							newsChannelTableDBDao.update(newsChannelTableDB);
 						} catch (Exception localException) {
 						}
 					}
@@ -200,7 +199,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	 * @param moveChannel
 	 * @param clickGridView
 	 */
-	private void MoveAnim(View moveView, int[] startLocation,int[] endLocation, final NewsChannelTableDB moveChannel,
+	private void MoveAnim(View moveView, int[] startLocation,int[] endLocation,
 			final GridView clickGridView) {
 		int[] initLocation = new int[2];
 		//获取传递过来的VIEW的坐标

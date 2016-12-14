@@ -11,8 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.db.entity.ChannelSelected;
 import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
-import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 
 import java.util.List;
 
@@ -31,13 +31,13 @@ public class DragAdapter extends BaseAdapter {
 	/** 是否可见 */
 	boolean isVisible = true;
 	/** 可以拖动的列表（即用户选择的频道列表） */
-	public List<NewsChannelTableDB> channelList;
+	public List<ChannelSelected> channelList;
 	/** TextView 频道内容 */
 	private TextView item_text;
 	/** 要删除的position */
 	public int remove_position = -1;
 
-	public DragAdapter(Context context, List<NewsChannelTableDB> channelList) {
+	public DragAdapter(Context context, List<ChannelSelected> channelList) {
 		this.context = context;
 		this.channelList = channelList;
 	}
@@ -49,7 +49,7 @@ public class DragAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public NewsChannelTableDB getItem(int position) {
+	public ChannelSelected getItem(int position) {
 		// TODO Auto-generated method stub
 		if (channelList != null && channelList.size() != 0) {
 			return channelList.get(position);
@@ -67,7 +67,7 @@ public class DragAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view = LayoutInflater.from(context).inflate(R.layout.channel_item, null);
 		item_text = (TextView) view.findViewById(R.id.text_item);
-		NewsChannelTableDB channel = getItem(position);
+		ChannelSelected channel = getItem(position);
 		item_text.setText(channel.getNewsChannelName());
 		if ((position == 0) || (position == 1)){
 //			item_text.setTextColor(context.getResources().getColor(R.color.black));
@@ -91,7 +91,7 @@ public class DragAdapter extends BaseAdapter {
 	}
 
 	/** 添加频道列表 */
-	public void addItem(NewsChannelTableDB channel) {
+	public void addItem(ChannelSelected channel) {
 		channelList.add(channel);
 		isListChanged = true;
 		notifyDataSetChanged();
@@ -100,7 +100,7 @@ public class DragAdapter extends BaseAdapter {
 	/** 拖动变更频道排序 */
 	public void exchange(int dragPostion, int dropPostion) {
 		holdPosition = dropPostion;
-		NewsChannelTableDB dragItem = getItem(dragPostion);
+		ChannelSelected dragItem = getItem(dragPostion);
 		Log.d(TAG, "startPostion=" + dragPostion + ";endPosition=" + dropPostion);
 		if (dragPostion < dropPostion) {
 			channelList.add(dropPostion + 1, dragItem);
@@ -115,7 +115,7 @@ public class DragAdapter extends BaseAdapter {
 	}
 	
 	/** 获取频道列表 */
-	public List<NewsChannelTableDB> getChannnelLst() {
+	public List<ChannelSelected> getChannnelLst() {
 		return channelList;
 	}
 
@@ -134,7 +134,7 @@ public class DragAdapter extends BaseAdapter {
 	}
 	
 	/** 设置频道列表 */
-	public void setListDate(List<NewsChannelTableDB> list) {
+	public void setListDate(List<ChannelSelected> list) {
 		channelList = list;
 	}
 	

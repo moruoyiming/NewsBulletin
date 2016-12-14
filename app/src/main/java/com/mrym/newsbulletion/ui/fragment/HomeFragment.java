@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
+import com.mrym.newsbulletion.db.entity.ChannelSelected;
 import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
@@ -73,7 +74,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
         channelNames = new ArrayList<>();
         mNewsFragmentList = new ArrayList<>();
-        List<NewsChannelTableDB> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();
+        List<ChannelSelected> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();
         for (int i = 0; i < newsChannelTables.size(); i++) {
             channelNames.add(newsChannelTables.get(i).getNewsChannelName());
             mNewsFragmentList.add(createListFragments(newsChannelTables.get(i)));
@@ -90,7 +91,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         getActivity().registerReceiver(chanelChangeReceiver, filter);
     }
 
-    private GateGoryFragment createListFragments(NewsChannelTableDB homeCateGory) {
+    private GateGoryFragment createListFragments(ChannelSelected homeCateGory) {
         GateGoryFragment fragment = new GateGoryFragment();
         Bundle bundle = new Bundle();
         bundle.putString(GlobalVariable.NEWS_ID, homeCateGory.getNewsChannelName());
@@ -136,7 +137,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
                 System.out.println("ChanelChangeReceiver 频道发生变化");
                 channelNames.clear();
                 mNewsFragmentList.clear();
-                List<NewsChannelTableDB> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();
+                List<ChannelSelected> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();
                 for (int i = 0; i < newsChannelTables.size(); i++) {
                     channelNames.add(newsChannelTables.get(i).getNewsChannelName());
                     mNewsFragmentList.add(createListFragments(newsChannelTables.get(i)));

@@ -18,18 +18,11 @@ package com.mrym.newsbulletion.db.other;
 
 
 
-import android.util.Log;
-
-import com.mrym.newsbulletion.NewsApplication;
-import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.db.GreenDaoManager;
+import com.mrym.newsbulletion.db.entity.ChannelSelected;
+import com.mrym.newsbulletion.db.entity.ChannelunSelected;
 import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
-import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
-import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 /**
  * 首页管理
@@ -44,10 +37,10 @@ public class NewsChannelTableManager {
      * 加载新闻类型
      * @return
      */
-    public static List<NewsChannelTableDB> loadNewsChannelsMine() {
-        List<NewsChannelTableDB> list= null;
+    public static List<ChannelunSelected> loadNewsChannelsMine() {
+        List<ChannelunSelected> list= null;
         try {
-            list = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao().queryBuilder().where(NewsChannelTableDBDao.Properties.NewsChannelSelect.eq(false)).build().list();
+            list = GreenDaoManager.getInstance().getSession().getChannelunSelectedDao().queryBuilder().build().list();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -57,11 +50,11 @@ public class NewsChannelTableManager {
      * 加载固定新闻类型
      * @return
      */
-    public static List<NewsChannelTableDB> loadNewsChannelsStatic() {
+    public static List<ChannelSelected> loadNewsChannelsStatic() {
 
-        List<NewsChannelTableDB> list= null;
+        List<ChannelSelected> list= null;
         try {
-            list = GreenDaoManager.getInstance().getSession().getNewsChannelTableDBDao().queryBuilder().where(NewsChannelTableDBDao.Properties.NewsChannelSelect.eq(true)).build().list();
+            list = GreenDaoManager.getInstance().getSession().getChannelSelectedDao().queryBuilder().build().list();
         } catch (Exception e) {
             e.printStackTrace();
         }
