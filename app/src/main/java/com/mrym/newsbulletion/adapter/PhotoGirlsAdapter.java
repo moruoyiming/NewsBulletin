@@ -33,11 +33,9 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
 
     private final String TAG = "PhotoGirlsAdapter";
     private LayoutInflater mInflater;
-    private Context mContext;
 
     public PhotoGirlsAdapter(List<PhotoGirl> list, Context context) {
         super(list, context);
-        this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
     }
 
@@ -54,13 +52,6 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
             GirlsViewHolder hd = (GirlsViewHolder) holder;
             PhotoGirl photoGirl = list.get(position);
             PicassoUtils.display(mContext,hd.getGirlsimage(),photoGirl.getUrl());
-//            Glide.with(mContext).load(photoGirl.getUrl()).dontAnimate().placeholder(R.mipmap.shouyetu).error(R.mipmap.shouyetu).into(hd.getGirlsimage());
-//            Glide.with(mContext).load(photoGirl.getUrl())
-//                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-//                    .placeholder(R.mipmap.shouyetu)
-//                    .error(R.mipmap.shouyetu)
-//                    .centerCrop().override(1090, 1090*3/4)
-//                    .crossFade().into(hd.getGirlsimage());
         } catch (Exception e) {
             e.printStackTrace();
         }

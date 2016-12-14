@@ -298,6 +298,11 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
 	}
 
 	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
+	@Override
 	public void onBackPressed() {
 		if(userAdapter.isListChanged()){
 //			saveChannel();

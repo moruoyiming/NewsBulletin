@@ -14,9 +14,11 @@ import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.utils.MyUtils;
+import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.SystemUiVisibilityUtil;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.PullBackLayout;
@@ -81,13 +83,6 @@ public class PhotosDetailActivity extends AppCompatActivity implements PullBackL
     }
 
     private void initToolbar() {
-//        toolbar.setTitle(getString(R.string.photo_details));
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,10 +97,7 @@ public class PhotosDetailActivity extends AppCompatActivity implements PullBackL
 
     private void loadPhotoIv() {
         String url = getIntent().getStringExtra(GlobalVariable.PHOTO_DETAIL);
-        Glide.with(this).load(url)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.mipmap.shouyetu)
-                .crossFade().into(photoTouchIv);
+        PicassoUtils.display(NewsApplication.getContext(),photoTouchIv,url);
     }
 
     private void setPhotoViewClickEvent() {

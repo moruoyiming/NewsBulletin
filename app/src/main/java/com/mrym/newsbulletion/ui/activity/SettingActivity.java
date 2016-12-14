@@ -34,7 +34,6 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
     LinearLayout header;
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_setting);
         StatusBarCompat.translucentStatusBar(SettingActivity.this,true);
         dynamicAddView(header, "background", R.color.primary_dark);
