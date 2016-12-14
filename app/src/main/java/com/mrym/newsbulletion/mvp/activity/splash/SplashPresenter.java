@@ -40,57 +40,19 @@ import java.util.List;
  */
 public class SplashPresenter extends BasePresenter<SplashView> {
 
-    public static final String TAG = SplashPresenter.class.getCanonicalName();
-
-    public Handler handler;
-
     public SplashPresenter(SplashView splashView) {
         attachView(splashView);
-        handler = new Handler();
+
     }
 
     public void showAdvertisement() {
         mvpView.showAdvertisement("http://p3.image.hiapk.com/uploads/allimg/150513/7730-150513155P8-52.jpg");
-//        addSubscription(apiStores.startImage(), new SubscriberCallBack<>(new ApiCallback<SplashModel>() {
-//
-//            @Override
-//            public void onSuccess(SplashModel model) {
-//                Log.i(TAG,model.toString());
-//                mvpView.showAdvertisement(model.getImg());
-//            }
-//
-//            @Override
-//            public void onFailure(int code, String msg) {
-//
-//            }
-//
-//            @Override
-//            public void onCompleted() {
-//
-//            }
-//        }));
-
     }
 
     public void gotoNext() {
-        if (handler != null) {
-            handler.postDelayed(new Runnable() {
-                public void run() {
-//                    AccountTool tool = mvpView.getAccountTool();
-//                    if (tool.checkAccountIfExits()) {
-//                        mvpView.startMain();
-//                    } else {
-//                        mvpView.startLogin();
-//                    }
-                    if (handler != null) {
-                        mvpView.startMain();
-                    }
-                }
-            }, 2000);
-        }
+        mvpView.startMain();
     }
 
     public void close() {
-        handler = null;
     }
 }

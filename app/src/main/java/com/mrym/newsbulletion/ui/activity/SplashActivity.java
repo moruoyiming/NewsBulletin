@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -30,9 +31,9 @@ import butterknife.OnClick;
  */
 public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
     public String TAG = SplashActivity.class.getCanonicalName();
-    Button loginSkip;
-    ImageView loginSplash;
-    ImageView logo;
+    private ImageView loginSplash;
+    private Handler handler;
+
     @Override
     protected SplashPresenter createPresenter() {
         return new SplashPresenter(this);
@@ -49,18 +50,23 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        NewsApplication.addActivity(this, TAG);
-        loginSkip= (Button) findViewById(R.id.login_skip);
-        loginSplash= (ImageView) findViewById(R.id.login_splash);
-        logo= (ImageView) findViewById(R.id.login_logo);
+        handler = new Handler();
+        loginSplash = (ImageView) findViewById(R.id.login_splash);
         mvpPresenter.showAdvertisement();
         mvpPresenter.gotoNext();
     }
 
     @Override
     public void startMain() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+
+        if (handler != null) {
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    finish();
+                }
+            }, 2000);
+        }
     }
 
     @Override
@@ -77,7 +83,7 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     @Override
     public void showAdvertisement(String url) {
         Picasso.with(SplashActivity.this)
-                .load( R.mipmap.background_splash)
+                .load(R.mipmap.background_splash)
                 .placeholder(R.mipmap.shouyetu)
                 .error(R.mipmap.shouyetu)
                 .config(Bitmap.Config.RGB_565)
@@ -87,12 +93,9 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // 避免Handler导致内存泄漏
+        handler.removeCallbacksAndMessages(null);
+        handler = null;
         NewsApplication.removeActivity(TAG);
-    }
-
-    @OnClick(R.id.login_skip)
-    public void onClick() {
-        mvpPresenter.close();
-        startMain();
     }
 }

@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.mvp.MvpActivity;
@@ -97,6 +98,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
                 ToastUtils.show(getString(R.string.twopress_finish));
                 exitTime = System.currentTimeMillis();
             } else {
+                NewsApplication.removeAllActivity();
                 finish();
                 System.exit(0);
             }
