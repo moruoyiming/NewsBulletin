@@ -1,7 +1,9 @@
 package com.mrym.newsbulletion.adapter;
 
 import android.animation.Animator;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -28,16 +30,19 @@ import java.util.List;
 public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
     private final String TAG = "PushAdapter";
     private LayoutInflater mInflater;
-    private Context mContext;
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener;
+
     public PushAdapter(List<NewsSummary> list, Context context) {
         super(list, context);
-        this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
         onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary.AdsBean>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary.AdsBean values) {
-                NewsDetailActivity.startAction(mContext,values.getUrl(),values.getImgsrc());
+                Intent intent = new Intent(mContext, NewsDetailActivity.class);
+                intent.putExtra(GlobalVariable.NEWS_POST_ID, values.getUrl());
+                intent.putExtra(GlobalVariable.NEWS_IMG_RES, values.getImgsrc());
+                mContext.startActivity(intent);
+//                NewsDetailActivity.startAction(mContext, values.getUrl(), values.getImgsrc());
             }
 
             @Override
@@ -80,40 +85,36 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
 //                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
-                    PicassoUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc());
+                    PicassoUtils.display(mContext, hd.getmSinglePushImage(), newsSummary.getImgsrc());
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
                     hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
-                    if( newsSummary.getAds()!=null&&newsSummary.getAds().size()>0){
-                        PicassoUtils.display(mContext,hd.getmMultipushImage(),newsSummary.getAds().get(0).getImgsrc());
-//                        ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
-                    }else{
-                        PicassoUtils.display(mContext,hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
-//                        ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    if (newsSummary.getAds() != null && newsSummary.getAds().size() > 0) {
+                        PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc());
+                    } else {
+                        PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
                     }
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
                     PushMsgAdapter adapter = new PushMsgAdapter(mContext, newsSummary.getAds());
                     hd.getmMultiRecycleview().setAdapter(adapter);
-                    adapter.setOnInViewClickListener(R.id.layout_item_pushmsg_l1,onInternalClickListener);
+                    adapter.setOnInViewClickListener(R.id.layout_item_pushmsg_l1, onInternalClickListener);
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
                     hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
-                    PicassoUtils.display(mContext,hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
-//                    ImageLoaderUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
                     PushMsgAdapter adapter2 = new PushMsgAdapter(mContext, newsSummary.getAds());
                     hd.getmMultiRecycleview().setAdapter(adapter2);
-                    adapter2.setOnInViewClickListener(R.id.layout_item_pushmsg_l1,onInternalClickListener);
+                    adapter2.setOnInViewClickListener(R.id.layout_item_pushmsg_l1, onInternalClickListener);
                     break;
                 case GlobalVariable.ITEM_OTHER:
                     hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
-                    PicassoUtils.display(mContext,hd.getmSinglePushImage(), newsSummary.getAds().get(0).getImgsrc());
-//                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getAds().get(0).getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
+                    PicassoUtils.display(mContext, hd.getmSinglePushImage(), newsSummary.getAds().get(0).getImgsrc());
                     break;
             }
         } catch (Exception e) {
@@ -134,9 +135,9 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
         NewsSummary msgContent = list.get(position);
         if ("photoset".equals(msgContent.getSkipType())) {
             if (msgContent.getImgextra() != null && msgContent.getImgextra().size() > 0) {
-                   return GlobalVariable.ITEM_TWO_PIC;
+                return GlobalVariable.ITEM_TWO_PIC;
             } else if (msgContent.getAds() != null && msgContent.getAds().size() > 0) {
-                    return GlobalVariable.ITEM_TWO_PIC;
+                return GlobalVariable.ITEM_TWO_PIC;
             } else {
                 return GlobalVariable.ITEM_ONE_PIC;
             }
@@ -148,6 +149,7 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             return GlobalVariable.ITEM_ONE_PIC;
         }
     }
+
     @Override
     protected Animator[] getAnimators(View view) {
         return new Animator[0];

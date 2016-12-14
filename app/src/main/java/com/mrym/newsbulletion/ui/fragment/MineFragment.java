@@ -100,7 +100,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
 
     @Override
     public void showLoading(String msg) {
-        loadingDialog = DialogView.createLoadingDialog(mActivity, msg, false);
+        loadingDialog = DialogView.createLoadingDialog(NewsApplication.getContext(), msg, false);
         loadingDialog.show();
     }
 
@@ -113,7 +113,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
         profileName.setText(userBean.getNickName());
-        PicassoUtils.display(getActivity() ,profileImage,  userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
+        PicassoUtils.display(NewsApplication.getContext() ,profileImage,  userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
     }
 
     @Override
@@ -167,17 +167,4 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 break;
         }
     }
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
-//            case 5:
-//                Log.i("onActivityResult","jiemian fanhui");
-//                ToastUtils.show("界面返回");
-//                break;
-//            default:
-//                break;
-//        }
-//    }
 }

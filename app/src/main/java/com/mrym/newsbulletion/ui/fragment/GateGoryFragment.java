@@ -173,7 +173,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
                 mvpPresenter.getGategoryData(mNewsType, mCurrentPageIndex);
                 break;
             case GlobalVariable.ACTION_LOAD_MORE:
-                mCurrentPageIndex+=20;
+                mCurrentPageIndex+=GlobalVariable.SIZE;
                 mvpPresenter.getGategoryData(mNewsType, mCurrentPageIndex);
                 break;
         }
@@ -215,6 +215,9 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         mNews = null;
         mvpPresenter = null;
         categoryList = null;
+        onInternalClickListener=null;
+        newsAdapter=null;
+        picOnInternalClickListener=null;
         ButterKnife.unbind(this);
     }
 }

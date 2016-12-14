@@ -29,11 +29,9 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
 
     private final String TAG = "NewsAdapter";
     private LayoutInflater mInflater;
-    private Context mContext;
 
     public NewsAdapter(List<NewsSummary> list, Context context) {
         super(list, context);
-        this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
     }
 
@@ -77,7 +75,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             hd.getmTiltle().setText(newsEntity.getTitle());
             hd.getmCommontNumber().setText(newsEntity.getReplyCount() + "评论");
             hd.getmPublicdate().setText(newsEntity.getPtime());
-//            PicassoUtils.display(mContext,hd.getmAutherHead(),newsEntity.getImgsrc());
             Picasso.with(mContext)
                     .load(newsEntity.getImgsrc())
                     .placeholder(R.mipmap.shouyetu)
@@ -88,7 +85,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                 case GlobalVariable.ITEM_TEXT:
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
-//                    PicassoUtils.display(mContext,hd.getmToppic(),newsEntity.getImgsrc());
                     Picasso.with(mContext)
                             .load(newsEntity.getImgsrc())
                             .placeholder(R.mipmap.shouyetu)
@@ -97,7 +93,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                             .into(hd.getmToppic());
                     break;
                 case GlobalVariable.ITEM_ONE_PIC:
-//                    PicassoUtils.display(mContext,hd.getmRightpic(),newsEntity.getImgsrc());
                     Picasso.with(mContext)
                             .load(newsEntity.getImgsrc())
                             .placeholder(R.mipmap.shouyetu)
@@ -107,8 +102,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
                     if (newsEntity.getAds() != null && newsEntity.getAds().size() > 0) {
-//                        PicassoUtils.display(mContext,hd.getmBottom_t1(),newsEntity.getAds().get(0).getImgsrc());
-//                            PicassoUtils.display(mContext,hd.getmBottom_t2(),newsEntity.getAds().get(1).getImgsrc());
                         Picasso.with(mContext)
                                 .load(newsEntity.getAds().get(0).getImgsrc())
                                 .placeholder(R.mipmap.shouyetu)
@@ -121,9 +114,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                                 .error(R.mipmap.shouyetu)
                                 .config(Bitmap.Config.RGB_565)
                                 .into(hd.getmBottom_t2());
-                    } else if(newsEntity.getImgextra()!=null&&newsEntity.getImgextra().size()>0) {
-//                        PicassoUtils.display(mContext,hd.getmBottom_t1(),newsEntity.getImgextra().get(0).getImgsrc());
-
+                    } else if (newsEntity.getImgextra() != null && newsEntity.getImgextra().size() > 0) {
                         Picasso.with(mContext)
                                 .load(newsEntity.getImgextra().get(0).getImgsrc())
                                 .placeholder(R.mipmap.shouyetu)
@@ -189,7 +180,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     return GlobalVariable.ITEM_TWO_PIC;
                 } else if (msgContent.getImgextra().size() == 1) {
                     return GlobalVariable.ITEM_BIGPIC;
-                }else{
+                } else {
                     return GlobalVariable.ITEM_BIGPIC;
                 }
             } else if (msgContent.getAds() != null && msgContent.getAds().size() > 0) {
@@ -199,7 +190,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     return GlobalVariable.ITEM_TWO_PIC;
                 } else if (msgContent.getAds().size() == 1) {
                     return GlobalVariable.ITEM_BIGPIC;
-                }else{
+                } else {
                     return GlobalVariable.ITEM_BIGPIC;
                 }
             } else {

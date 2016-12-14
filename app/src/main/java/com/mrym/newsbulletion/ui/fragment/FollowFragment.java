@@ -47,7 +47,6 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     XRecyclerView girlsList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
-    private static int SIZE = 20;
     private List<PhotoGirl> mPhotogirls;
     private PhotoGirlsAdapter mPhotoAdapter;
     private BaseRecyclerViewAdapter.onInternalClickListener onPhotoGirlsClick;
@@ -134,11 +133,11 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
             case GlobalVariable.ACTION_REFRESH:
                 mPhotogirls.clear();
                 mCurrentPageIndex = 1;
-                mvpPresenter.getPhotoGrils(SIZE, mCurrentPageIndex);
+                mvpPresenter.getPhotoGrils(GlobalVariable.SIZE, mCurrentPageIndex);
                 break;
             case GlobalVariable.ACTION_LOAD_MORE:
                 mCurrentPageIndex++;
-                mvpPresenter.getPhotoGrils(SIZE, mCurrentPageIndex);
+                mvpPresenter.getPhotoGrils(GlobalVariable.SIZE, mCurrentPageIndex);
                 break;
         }
     }

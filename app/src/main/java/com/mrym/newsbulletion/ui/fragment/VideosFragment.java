@@ -37,12 +37,9 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
     XRecyclerView categoryList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
-    private VideosAdapter ma;
+    private VideosAdapter videosAdapter;
     private List<VideoData> mViedeos;
     private String mVideoType = null;
-    private int i = 0;
-    private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
-
     @Override
     protected VideosPresenter createPresenter() {
         return new VideosPresenter(this);
@@ -60,8 +57,8 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViedeos = new ArrayList<>();
-        ma = new VideosAdapter(mViedeos, getActivity());
-        categoryList.setAdapter(ma);
+        videosAdapter = new VideosAdapter(mViedeos, getActivity());
+        categoryList.setAdapter(videosAdapter);
         if (getArguments() != null) {
             mVideoType = getArguments().getString(GlobalVariable.VIDEO_TYPE);
         }
@@ -82,17 +79,14 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
             }
         });
         categoryList.setRefreshing(true);
-        Log.i("onActivityCreated", "界面被创建" + i++);
-        onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsEntity>() {
-            @Override
-            public void OnClickListener(View parentV, View v, Integer position, NewsEntity values) {
-            }
+    }
 
-            @Override
-            public void OnLongClickListener(View parentV, View v, Integer position, NewsEntity values) {
-
-            }
-        };
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mViedeos.clear();
+        mViedeos=null;
+        categoryList=null;
     }
 
     @Override
@@ -121,7 +115,7 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
 
     @Override
     public void loadingSuccess(List<VideoData> videoDatas) {
-        ma.addAll(videoDatas);
+        videosAdapter.addAll(videoDatas);
     }
 
     @Override

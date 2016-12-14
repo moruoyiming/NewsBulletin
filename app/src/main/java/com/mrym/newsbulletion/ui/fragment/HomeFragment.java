@@ -84,7 +84,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         viewpager.setOffscreenPageLimit(1);
         viewpager.setAdapter(fragmentAdapter);
         viewPagerTab.setViewPager(viewpager);
-        chanelChangeReceiver=new ChanelChangeReceiver(getActivity());
+        chanelChangeReceiver=new ChanelChangeReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(GlobalVariable.CHANELCHANGERECEIVER);
         getActivity().registerReceiver(chanelChangeReceiver, filter);
@@ -109,6 +109,10 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        channelNames.clear();
+        mNewsFragmentList.clear();
+        channelNames=null;
+        mNewsFragmentList=null;
         getActivity().unregisterReceiver(chanelChangeReceiver);
         ButterKnife.unbind(this);
     }
@@ -124,12 +128,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
 
     }
     class ChanelChangeReceiver extends BroadcastReceiver {
-
-        Context context;
-        public ChanelChangeReceiver(Context context) {
-            this.context = context;
-
-        }
 
         @Override
         public void onReceive(Context context, Intent intent) {
