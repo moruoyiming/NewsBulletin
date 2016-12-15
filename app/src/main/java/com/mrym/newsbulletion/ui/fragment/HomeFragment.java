@@ -19,7 +19,6 @@ import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
 import com.mrym.newsbulletion.db.entity.ChannelSelected;
-import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.HomeOrderBean;

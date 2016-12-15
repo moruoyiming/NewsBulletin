@@ -21,7 +21,6 @@ package com.mrym.newsbulletion.db.other;
 import com.mrym.newsbulletion.db.GreenDaoManager;
 import com.mrym.newsbulletion.db.entity.ChannelSelected;
 import com.mrym.newsbulletion.db.entity.ChannelunSelected;
-import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 
 import java.util.List;
 /**

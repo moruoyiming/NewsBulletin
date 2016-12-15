@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.db.entity.ChannelSelected;
-import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 
 import java.util.List;
 

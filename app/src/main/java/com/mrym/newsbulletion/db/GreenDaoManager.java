@@ -5,7 +5,6 @@ import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.db.entity.ChannelSelected;
 import com.mrym.newsbulletion.db.entity.ChannelunSelected;
-import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.db.gen.ChannelSelectedDao;
 import com.mrym.newsbulletion.db.gen.ChannelunSelectedDao;
 import com.mrym.newsbulletion.db.gen.DaoMaster;

@@ -1,7 +1,16 @@
 package com.mrym.newsbulletion.mvp.fragment.follow;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.domain.constans.HostType;
+import com.mrym.newsbulletion.domain.modle.GirlData;
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.mvp.BasePresenter;
+import com.mrym.newsbulletion.utils.net.BaseCallBack;
+import com.mrym.newsbulletion.utils.net.NetUtils;
+
+import org.xutils.http.RequestParams;
 
 import java.util.ArrayList;
 import java.util.List;

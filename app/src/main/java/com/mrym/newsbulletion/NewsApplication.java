@@ -7,10 +7,6 @@ import android.util.Log;
 
 
 import com.mrym.newsbulletion.db.GreenDaoManager;
-import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
-import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
-import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.utils.common.PrefUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;

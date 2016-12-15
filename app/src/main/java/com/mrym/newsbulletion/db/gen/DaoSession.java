@@ -8,12 +8,10 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
-import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 import com.mrym.newsbulletion.db.entity.VideoChannelTableDB;
 import com.mrym.newsbulletion.db.entity.ChannelSelected;
 import com.mrym.newsbulletion.db.entity.ChannelunSelected;
 
-import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
 import com.mrym.newsbulletion.db.gen.VideoChannelTableDBDao;
 import com.mrym.newsbulletion.db.gen.ChannelSelectedDao;
 import com.mrym.newsbulletion.db.gen.ChannelunSelectedDao;
@@ -27,12 +25,10 @@ import com.mrym.newsbulletion.db.gen.ChannelunSelectedDao;
  */
 public class DaoSession extends AbstractDaoSession {
 
-    private final DaoConfig newsChannelTableDBDaoConfig;
     private final DaoConfig videoChannelTableDBDaoConfig;
     private final DaoConfig channelSelectedDaoConfig;
     private final DaoConfig channelunSelectedDaoConfig;
 
-    private final NewsChannelTableDBDao newsChannelTableDBDao;
     private final VideoChannelTableDBDao videoChannelTableDBDao;
     private final ChannelSelectedDao channelSelectedDao;
     private final ChannelunSelectedDao channelunSelectedDao;
@@ -40,9 +36,6 @@ public class DaoSession extends AbstractDaoSession {
     public DaoSession(Database db, IdentityScopeType type, Map<Class<? extends AbstractDao<?, ?>>, DaoConfig>
             daoConfigMap) {
         super(db);
-
-        newsChannelTableDBDaoConfig = daoConfigMap.get(NewsChannelTableDBDao.class).clone();
-        newsChannelTableDBDaoConfig.initIdentityScope(type);
 
         videoChannelTableDBDaoConfig = daoConfigMap.get(VideoChannelTableDBDao.class).clone();
         videoChannelTableDBDaoConfig.initIdentityScope(type);
@@ -53,26 +46,19 @@ public class DaoSession extends AbstractDaoSession {
         channelunSelectedDaoConfig = daoConfigMap.get(ChannelunSelectedDao.class).clone();
         channelunSelectedDaoConfig.initIdentityScope(type);
 
-        newsChannelTableDBDao = new NewsChannelTableDBDao(newsChannelTableDBDaoConfig, this);
         videoChannelTableDBDao = new VideoChannelTableDBDao(videoChannelTableDBDaoConfig, this);
         channelSelectedDao = new ChannelSelectedDao(channelSelectedDaoConfig, this);
         channelunSelectedDao = new ChannelunSelectedDao(channelunSelectedDaoConfig, this);
 
-        registerDao(NewsChannelTableDB.class, newsChannelTableDBDao);
         registerDao(VideoChannelTableDB.class, videoChannelTableDBDao);
         registerDao(ChannelSelected.class, channelSelectedDao);
         registerDao(ChannelunSelected.class, channelunSelectedDao);
     }
     
     public void clear() {
-        newsChannelTableDBDaoConfig.clearIdentityScope();
         videoChannelTableDBDaoConfig.clearIdentityScope();
         channelSelectedDaoConfig.clearIdentityScope();
         channelunSelectedDaoConfig.clearIdentityScope();
-    }
-
-    public NewsChannelTableDBDao getNewsChannelTableDBDao() {
-        return newsChannelTableDBDao;
     }
 
     public VideoChannelTableDBDao getVideoChannelTableDBDao() {

@@ -79,7 +79,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     .load(newsEntity.getImgsrc())
                     .placeholder(R.mipmap.shouyetu)
                     .error(R.mipmap.shouyetu)
-                    .config(Bitmap.Config.RGB_565)
+                    .config(Bitmap.Config.ALPHA_8)
                     .into(hd.getmAutherHead());
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_TEXT:
@@ -89,7 +89,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                             .load(newsEntity.getImgsrc())
                             .placeholder(R.mipmap.shouyetu)
                             .error(R.mipmap.shouyetu)
-                            .config(Bitmap.Config.RGB_565)
+                            .config(Bitmap.Config.ALPHA_8)
                             .into(hd.getmToppic());
                     break;
                 case GlobalVariable.ITEM_ONE_PIC:
@@ -97,7 +97,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                             .load(newsEntity.getImgsrc())
                             .placeholder(R.mipmap.shouyetu)
                             .error(R.mipmap.shouyetu)
-                            .config(Bitmap.Config.RGB_565)
+                            .config(Bitmap.Config.ALPHA_8)
                             .into(hd.getmRightpic());
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
@@ -106,14 +106,14 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                                 .load(newsEntity.getAds().get(0).getImgsrc())
                                 .placeholder(R.mipmap.shouyetu)
                                 .error(R.mipmap.shouyetu)
-                                .config(Bitmap.Config.RGB_565)
+                                .config(Bitmap.Config.ALPHA_8)
                                 .into(hd.getmBottom_t1());
                         if (newsEntity.getImgextra().size() > 1) {
                             Picasso.with(mContext)
                                     .load(newsEntity.getAds().get(1).getImgsrc())
                                     .placeholder(R.mipmap.shouyetu)
                                     .error(R.mipmap.shouyetu)
-                                    .config(Bitmap.Config.RGB_565)
+                                    .config(Bitmap.Config.ALPHA_8)
                                     .into(hd.getmBottom_t2());
                         }
                     } else if (newsEntity.getImgextra() != null && newsEntity.getImgextra().size() > 0) {
@@ -121,14 +121,14 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                                 .load(newsEntity.getImgextra().get(0).getImgsrc())
                                 .placeholder(R.mipmap.shouyetu)
                                 .error(R.mipmap.shouyetu)
-                                .config(Bitmap.Config.RGB_565)
+                                .config(Bitmap.Config.ALPHA_8)
                                 .into(hd.getmBottom_t1());
                         if (newsEntity.getImgextra().size() > 1) {
                             Picasso.with(mContext)
                                     .load(newsEntity.getImgextra().get(1).getImgsrc())
                                     .placeholder(R.mipmap.shouyetu)
                                     .error(R.mipmap.shouyetu)
-                                    .config(Bitmap.Config.RGB_565)
+                                    .config(Bitmap.Config.ALPHA_8)
                                     .into(hd.getmBottom_t2());
                         }
 

@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.db.entity.ChannelunSelected;
-import com.mrym.newsbulletion.db.entity.NewsChannelTableDB;
 
 public class OtherAdapter extends BaseAdapter {
 	private Context context;
