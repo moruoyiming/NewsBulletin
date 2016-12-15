@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.about.AboutPresenter;
@@ -33,34 +34,11 @@ import butterknife.Bind;
  */
 public class AboutActivity  extends MvpActivity<AboutPresenter> implements AboutView {
     public static String TAG = AboutActivity.class.getCanonicalName();
-    @Bind(R.id.news_detail_photo_iv)
-    ImageView newsDetailPhotoIv;
-    @Bind(R.id.mask_view)
-    View maskView;
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-    @Bind(R.id.toolbar_layout)
-    CollapsingToolbarLayout toolbarLayout;
-    @Bind(R.id.app_bar)
-    AppBarLayout appBar;
-    @Bind(R.id.news_detail_from_tv)
-    TextView newsDetailFromTv;
-    @Bind(R.id.tv_code_des)
-    TextView tvCodeDes;
     @Bind(R.id.fab)
     FloatingActionButton fab;
-    private String mShareLink;
     @Bind(R.id.leftback_toobar_l1)
     RelativeLayout back;
-    /**
-     * 入口
-     *
-     * @param mContext
-     */
-    public static void startAction(Context mContext) {
-        Intent intent = new Intent(mContext, AboutActivity.class);
-        mContext.startActivity(intent);
-    }
+    private String mShareLink;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +50,6 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                     WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
-//        dynamicAddView(toolbar, "background", R.color.primary_dark);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +66,7 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
                 intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share));
-                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_contents, getString(R.string.app_name), mShareLink));
+                intent.putExtra(Intent.EXTRA_TEXT, NewsApplication.getContext().getString(R.string.share_contents, getString(R.string.app_name), mShareLink));
                 startActivity(Intent.createChooser(intent, getTitle()));
             }
         });
@@ -105,4 +82,11 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
         return TAG;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mActivity=null;
+        mvpPresenter=null;
+        back=null;
+    }
 }

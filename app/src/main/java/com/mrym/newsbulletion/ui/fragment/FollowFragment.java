@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
 import com.mrym.newsbulletion.adapter.PhotoGirlsAdapter;
@@ -25,6 +26,7 @@ import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import com.mrym.newsbulletion.utils.GlideImageLoader;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
+import com.squareup.leakcanary.RefWatcher;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -145,6 +147,14 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mPhotogirls.clear();
+        mPhotogirls=null;
+        mPhotoAdapter=null;
+        mvpPresenter=null;
+        onPhotoGirlsClick=null;
+        girlsList=null;
+        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 

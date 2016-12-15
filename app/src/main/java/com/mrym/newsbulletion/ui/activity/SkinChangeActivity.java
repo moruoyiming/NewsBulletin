@@ -74,15 +74,6 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
         });
 
     }
-    /**
-     * 入口
-     *
-     * @param mContext
-     */
-    public static void startAction(Context mContext) {
-        Intent intent = new Intent(mContext, SkinChangeActivity.class);
-        mContext.startActivity(intent);
-    }
     @Override
     protected ChageSkinPresenter createPresenter() {
         return new ChageSkinPresenter(this);
@@ -97,6 +88,14 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     public void showLoading(String message) {
         dialog.setContent(message);
         dialog.show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mvpPresenter=null;
+        dialog.dismiss();
+        dialog=null;
     }
 
     @Override

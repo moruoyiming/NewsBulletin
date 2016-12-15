@@ -12,6 +12,8 @@ import com.mrym.newsbulletion.db.gen.NewsChannelTableDBDao;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsChannelTable;
 import com.mrym.newsbulletion.utils.common.PrefUtils;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import org.xutils.x;
 
@@ -34,13 +36,14 @@ public class NewsApplication extends SkinBaseApplication {
 
     private static Context CONTEXT;
     private static Map<String, Activity> activities = new HashMap<String, Activity>();
-
+    private RefWatcher refWatcher;
     @Override
     public void onCreate() {
         super.onCreate();
         CONTEXT = this;
         x.Ext.init(NewsApplication.this);
         x.Ext.setDebug(true);
+        refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
     }
@@ -58,6 +61,10 @@ public class NewsApplication extends SkinBaseApplication {
         }
     }
 
+    public static RefWatcher getRefWatcher(Context context) {
+        NewsApplication application = (NewsApplication) context.getApplicationContext();
+        return application.refWatcher;
+    }
 
     public static Context getContext() {
         return CONTEXT;

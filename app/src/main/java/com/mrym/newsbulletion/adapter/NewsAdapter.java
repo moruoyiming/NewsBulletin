@@ -108,12 +108,14 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                                 .error(R.mipmap.shouyetu)
                                 .config(Bitmap.Config.RGB_565)
                                 .into(hd.getmBottom_t1());
-                        Picasso.with(mContext)
-                                .load(newsEntity.getAds().get(1).getImgsrc())
-                                .placeholder(R.mipmap.shouyetu)
-                                .error(R.mipmap.shouyetu)
-                                .config(Bitmap.Config.RGB_565)
-                                .into(hd.getmBottom_t2());
+                        if (newsEntity.getImgextra().size() > 1) {
+                            Picasso.with(mContext)
+                                    .load(newsEntity.getAds().get(1).getImgsrc())
+                                    .placeholder(R.mipmap.shouyetu)
+                                    .error(R.mipmap.shouyetu)
+                                    .config(Bitmap.Config.RGB_565)
+                                    .into(hd.getmBottom_t2());
+                        }
                     } else if (newsEntity.getImgextra() != null && newsEntity.getImgextra().size() > 0) {
                         Picasso.with(mContext)
                                 .load(newsEntity.getImgextra().get(0).getImgsrc())
@@ -121,12 +123,15 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                                 .error(R.mipmap.shouyetu)
                                 .config(Bitmap.Config.RGB_565)
                                 .into(hd.getmBottom_t1());
-                        Picasso.with(mContext)
-                                .load(newsEntity.getImgextra().get(1).getImgsrc())
-                                .placeholder(R.mipmap.shouyetu)
-                                .error(R.mipmap.shouyetu)
-                                .config(Bitmap.Config.RGB_565)
-                                .into(hd.getmBottom_t2());
+                        if (newsEntity.getImgextra().size() > 1) {
+                            Picasso.with(mContext)
+                                    .load(newsEntity.getImgextra().get(1).getImgsrc())
+                                    .placeholder(R.mipmap.shouyetu)
+                                    .error(R.mipmap.shouyetu)
+                                    .config(Bitmap.Config.RGB_565)
+                                    .into(hd.getmBottom_t2());
+                        }
+
                     }
                     break;
                 case GlobalVariable.ITEM_THREE_PIC:

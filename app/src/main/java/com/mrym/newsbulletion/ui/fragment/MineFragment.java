@@ -33,6 +33,7 @@ import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DialogView;
+import com.squareup.leakcanary.RefWatcher;
 import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
@@ -131,6 +132,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
         getActivity().unregisterReceiver(wifiReceiver);
         ButterKnife.unbind(this);
     }
@@ -151,19 +154,24 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 ToastUtils.show("评论");
                 break;
             case R.id.fragment_mine_setting_r1:
-                SettingActivity.startAction(getActivity());
+                Intent intent5= new Intent(getActivity(), SettingActivity.class);
+                getActivity().startActivity(intent5);
                 break;
             case R.id.mine_rl_message:
-                PushMsgActivity.startAction(getActivity());
+                Intent intent4 = new Intent(getActivity(), PushMsgActivity.class);
+                getActivity().startActivity(intent4);
                 break;
             case R.id.mine_rl_offline:
-                ChannelActivity.startAction(getActivity());
+                Intent intent3 = new Intent(getActivity(), ChannelActivity.class);
+                getActivity().startActivityForResult(intent3,2);
                 break;
             case R.id.mine_rl_skin:
-                SkinChangeActivity.startAction(getActivity());
+                Intent intent2 = new Intent(getActivity(), SkinChangeActivity.class);
+                getActivity().startActivity(intent2);
                 break;
             case R.id.mine_rl_about:
-                AboutActivity.startAction(getActivity());
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
+                getActivity().startActivity(intent);
                 break;
         }
     }

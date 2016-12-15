@@ -123,15 +123,6 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
                 break;
         }
     }
-    /**
-     * 入口
-     *
-     * @param mContext
-     */
-    public static void startAction(Context mContext) {
-        Intent intent = new Intent(mContext, PushMsgActivity.class);
-        mContext.startActivity(intent);
-    }
     @Override
     public void loadingError(String errormsg) {
 

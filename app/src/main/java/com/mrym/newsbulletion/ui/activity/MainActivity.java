@@ -87,9 +87,9 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     @Override
     protected void onResume() {
         super.onResume();
-        // 保存最后登录时间  --  7天未登录自动退出登录
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        sp.edit().putLong(GlobalVariable.LAST_LOGIN_TIME, SystemClock.currentThreadTimeMillis()).apply();
+//        // 保存最后登录时间  --  7天未登录自动退出登录
+//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+//        sp.edit().putLong(GlobalVariable.LAST_LOGIN_TIME, SystemClock.currentThreadTimeMillis()).apply();
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

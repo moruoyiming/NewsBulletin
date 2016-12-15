@@ -134,6 +134,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
         otherGridView = (OtherGridView) findViewById(R.id.otherGridView);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -335,6 +336,15 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mActivity=null;
+        userGridView=null;
+        otherGridView=null;
+        userChannelList.clear();
+        userChannelList=null;
+        otherChannelList.clear();;
+        otherChannelList=null;
+        otherAdapter=null;
+        userAdapter=null;
     }
 
     @Override

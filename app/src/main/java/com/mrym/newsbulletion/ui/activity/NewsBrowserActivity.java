@@ -60,12 +60,12 @@ public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> impl
         });
         initWebView();
     }
-    public static void startAction(Context context ,String link,String title){
-        Intent intent = new Intent(context, NewsBrowserActivity.class);
-        intent.putExtra(GlobalVariable.NEWS_LINK,link);
-        intent.putExtra(GlobalVariable.NEWS_TITLE,title);
-        context.startActivity(intent);
-    }
+//    public static void startAction(Context context ,String link,String title){
+//        Intent intent = new Intent(context, NewsBrowserActivity.class);
+//        intent.putExtra(GlobalVariable.NEWS_LINK,link);
+//        intent.putExtra(GlobalVariable.NEWS_TITLE,title);
+//        context.startActivity(intent);
+//    }
     private void initWebView() {
         setWebViewSettings();
         setWebView();
@@ -123,6 +123,10 @@ public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> impl
         super.onDestroy();
         webView.removeAllViews();
         webView.destroy();
+        webView=null;
+        back=null;
+        progressBar=null;
+        mvpPresenter=null;
     }
 
     @Override

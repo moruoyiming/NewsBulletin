@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
 import com.mrym.newsbulletion.db.entity.ChannelSelected;
@@ -26,6 +27,7 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,6 +117,10 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         channelNames=null;
         mNewsFragmentList=null;
         getActivity().unregisterReceiver(chanelChangeReceiver);
+        chanelChangeReceiver=null;
+        mvpPresenter=null;
+        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 
@@ -134,7 +140,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         public void onReceive(Context context, Intent intent) {
             System.out.println(intent.getAction());
             if (intent.getAction().equals(GlobalVariable.CHANELCHANGERECEIVER)) {
-                System.out.println("ChanelChangeReceiver 频道发生变化");
+                Log.d("ChanelChangeReceiver","ChanelChangeReceiver 频道发生变化");
                 channelNames.clear();
                 mNewsFragmentList.clear();
                 List<ChannelSelected> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();

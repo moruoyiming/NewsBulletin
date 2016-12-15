@@ -156,7 +156,6 @@ public class PhotosDetailActivity extends AppCompatActivity implements PullBackL
         progress = Math.min(1f, progress * 3f);
         mBackground.setAlpha((int) (0xff/*255*/ * (1f - progress)));
     }
-
     @Override
     public void onPullCancel() {
         toolBarFadeIn();

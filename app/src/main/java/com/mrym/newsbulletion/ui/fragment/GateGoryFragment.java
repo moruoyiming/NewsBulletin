@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
 import com.mrym.newsbulletion.adapter.NewsAdapter;
@@ -21,6 +22,7 @@ import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
 import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -212,12 +214,15 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        mNews.clear();
         mNews = null;
         mvpPresenter = null;
         categoryList = null;
         onInternalClickListener=null;
         newsAdapter=null;
         picOnInternalClickListener=null;
+        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
 import com.mrym.newsbulletion.db.other.VideosChannelTableManager;
@@ -19,6 +20,7 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoPresenter;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +57,6 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        StatusBarCompat.setStatusBarColor(getActivity(), R.color.primary_dark);
-
         dynamicAddView(l1, "background", R.color.primary_dark);
         tab2.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator2, tab2, false));
         SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab2);
@@ -98,6 +99,12 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        tab2=null;
+        viewpager2=null;
+        fragmentAdapter=null;
+        mvpPresenter=null;
+        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 }

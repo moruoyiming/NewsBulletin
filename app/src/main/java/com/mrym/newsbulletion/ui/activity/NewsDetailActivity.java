@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsDetail;
@@ -31,6 +33,8 @@ import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsPresenter;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsView;
 import com.mrym.newsbulletion.utils.common.DateUtils;
+import com.squareup.leakcanary.RefWatcher;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -76,7 +80,6 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
         Intent intent = new Intent(mContext, NewsDetailActivity.class);
         intent.putExtra(GlobalVariable.NEWS_POST_ID, postId);
         intent.putExtra(GlobalVariable.NEWS_IMG_RES, imgUrl);
-
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            ActivityOptions options = ActivityOptions
 //                    .makeSceneTransitionAnimation((Activity) mContext, view, GlobalVariable.TRANSITION_ANIMATION_NEWS_PHOTOS);
@@ -118,16 +121,18 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.action_web_view:
-                        NewsBrowserActivity.startAction(NewsDetailActivity.this, mShareLink, mNewsTitle);
-//                        CordovaPageActivity.startAction(NewsDetailActivity.this, mShareLink, mNewsTitle);
+                        Intent intent = new Intent(NewsDetailActivity.this, NewsBrowserActivity.class);
+                        intent.putExtra(GlobalVariable.NEWS_LINK,mShareLink);
+                        intent.putExtra(GlobalVariable.NEWS_TITLE,mNewsTitle);
+                       startActivity(intent);
                         break;
                     case R.id.action_browser:
-                        Intent intent = new Intent();
-                        intent.setAction("android.intent.action.VIEW");
-                        if (canBrowse(intent)) {
+                        Intent intent2 = new Intent();
+                        intent2.setAction("android.intent.action.VIEW");
+                        if (canBrowse(intent2)) {
                             Uri uri = Uri.parse(mShareLink);
-                            intent.setData(uri);
-                            startActivity(intent);
+                            intent2.setData(uri);
+                            startActivity(intent2);
                         }
                         break;
                 }
@@ -151,6 +156,19 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mvpPresenter=null;
+        mShareLink=null;
+        maskView=null;
+        mActivity=null;
+        mNewsTitle=null;
+        toolbar=null;
+        RefWatcher refWatcher = NewsApplication.getRefWatcher(NewsDetailActivity.this);
+        refWatcher.watch(this);
+    }
+
+    @Override
     public void returnOneNewsData(NewsDetail newsDetail) {
         mShareLink = newsDetail.getShareLink();
         mNewsTitle = newsDetail.getTitle();
@@ -161,7 +179,7 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
 
         setToolBarLayout(mNewsTitle);
         //mNewsDetailTitleTv.setText(newsTitle);
-        newsDetailFromTv.setText(getString(R.string.news_from, newsSource, newsTime));
+        newsDetailFromTv.setText(NewsApplication.getContext().getString(R.string.news_from, newsSource, newsTime));
         setNewsDetailPhotoIv(NewsImgSrc);
         setNewsDetailBodyTv(newsDetail, newsBody);
     }
@@ -173,10 +191,12 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
     }
 
     private void setNewsDetailPhotoIv(String imgSrc) {
-        Glide.with(this).load(imgSrc)
-                .fitCenter()
+        Picasso.with(NewsDetailActivity.this)
+                .load(imgSrc)
+                .placeholder(R.mipmap.shouyetu)
                 .error(R.mipmap.shouyetu)
-                .crossFade().into(newsDetailPhotoIv);
+                .config(Bitmap.Config.RGB_565)
+                .into(newsDetailPhotoIv);
     }
 
 

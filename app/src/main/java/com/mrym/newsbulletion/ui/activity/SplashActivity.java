@@ -96,6 +96,8 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
         // 避免Handler导致内存泄漏
         handler.removeCallbacksAndMessages(null);
         handler = null;
+        mvpPresenter=null;
+        mActivity=null;
         NewsApplication.removeActivity(TAG);
     }
 }
