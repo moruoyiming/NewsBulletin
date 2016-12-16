@@ -7,9 +7,9 @@ import com.mrym.newsbulletion.utils.json.JsonConvert;
 import rx.functions.Func1;
 
 /**
- * Created by _SOLID
- * Date:2016/7/28
- * Time:11:04
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class ResultFunc<T> implements Func1<String, HttpResult<T>> {
     @Override

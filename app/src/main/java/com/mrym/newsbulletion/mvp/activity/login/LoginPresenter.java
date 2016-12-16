@@ -1,16 +1,20 @@
 package com.mrym.newsbulletion.mvp.activity.login;
 
 import android.content.Context;
+import android.util.Log;
 
-import com.mrym.newsbulletion.authenticator.account.AccountTool;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.rxjava.ApiCallback;
-import com.mrym.newsbulletion.rxjava.SubscriberCallBack;
+import com.mrym.newsbulletion.rx.ServiceFactory;
+import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
+import com.mrym.newsbulletion.rx.retrofit.service.NewsService;
 import com.mrym.newsbulletion.utils.TimeCount;
 import com.mrym.newsbulletion.utils.common.Validator;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
+
+
+import rx.Subscriber;
 
 /**
  * Created by Jian on 2016/8/30.
@@ -35,24 +39,25 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         mvpView.showLoading();
         TimeCount time = new TimeCount(mvpView, 60000, 1000);
         time.start();
-        addSubscription(apiStores.sendVerification(telNumber),
-                new SubscriberCallBack<>(new ApiCallback<DefaultInterfaceBean>() {
-                    @Override
-                    public void onSuccess(DefaultInterfaceBean model) {
-                        mvpView.showToast("获取验证码，请等待！");
-                        mvpView.hideLoading();
-                    }
+        ServiceFactory.getInstance().createService(NewsService.class)
+                .sendVerification(telNumber)
+                .compose(TransformUtils.<DefaultInterfaceBean>defaultSchedulers())
+                .subscribe(
+                        new Subscriber<DefaultInterfaceBean>() {
+                            @Override
+                            public void onCompleted() {
+                            }
 
-                    @Override
-                    public void onFailure(int code, String msg) {
-                        mvpView.hideLoading();
-                    }
+                            @Override
+                            public void onError(Throwable e) {
+                            }
 
-                    @Override
-                    public void onCompleted() {
-                        mvpView.hideLoading();
-                    }
-                }));
+                            @Override
+                            public void onNext(DefaultInterfaceBean model) {
+                                mvpView.showToast("获取验证码，请等待！");
+                                mvpView.hideLoading();
+                            }
+                        });
     }
 
     /**
@@ -63,27 +68,28 @@ public class LoginPresenter extends BasePresenter<LoginView> {
      */
     public void login(String username, String password) {
         mvpView.showLoading();
-        addSubscription(apiStores.login(password, username),
-                new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
-                    @Override
-                    public void onSuccess(LoginModel model) {
-                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
-                            mvpView.loginSuccess(model.getData());
-                        } else {
-                            ToastUtils.show(model.getMsg());
-                        }
-                    }
+        ServiceFactory.getInstance().createService(NewsService.class)
+                .login(password, username)
+                .compose(TransformUtils.<LoginModel>defaultSchedulers())
+                .subscribe(
+                        new Subscriber<LoginModel>() {
+                            @Override
+                            public void onCompleted() {
+                            }
 
-                    @Override
-                    public void onFailure(int code, String msg) {
-                        mvpView.loginFailure(code, msg);
-                    }
+                            @Override
+                            public void onError(Throwable e) {
+                            }
 
-                    @Override
-                    public void onCompleted() {
-                        mvpView.hideLoading();
-                    }
-                }));
+                            @Override
+                            public void onNext(LoginModel model) {
+                                if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
+                                    mvpView.loginSuccess(model.getData());
+                                } else {
+                                    ToastUtils.show(model.getMsg());
+                                }
+                            }
+                        });
     }
 
     /**
@@ -94,28 +100,29 @@ public class LoginPresenter extends BasePresenter<LoginView> {
      */
     public void phoneLogin(String telNumber, String verification) {
         mvpView.showLoading();
-        addSubscription(apiStores.phonelogin(telNumber, verification),
-                new SubscriberCallBack<>(new ApiCallback<LoginModel>() {
-                    @Override
-                    public void onSuccess(LoginModel model) {
-//                        if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
-//                            mvpView.loginSuccess(model.getData());
-//                        } else {
-//                            ToastUtils.show(model.getMsg());
-//                        }
-                        mvpView.showToast("登陆成功 保存数据");
-                    }
 
-                    @Override
-                    public void onFailure(int code, String msg) {
-                        mvpView.loginFailure(code, msg);
-                    }
+        ServiceFactory.getInstance().createService(NewsService.class)
+                .phonelogin(telNumber, verification)
+                .compose(TransformUtils.<LoginModel>defaultSchedulers())
+                .subscribe(
+                        new Subscriber<LoginModel>() {
+                            @Override
+                            public void onCompleted() {
+                            }
 
-                    @Override
-                    public void onCompleted() {
-                        mvpView.hideLoading();
-                    }
-                }));
+                            @Override
+                            public void onError(Throwable e) {
+                            }
+
+                            @Override
+                            public void onNext(LoginModel model) {
+                                if (GlobalVariable.SUCCESS_CODE == model.getCode()) {
+                                    mvpView.loginSuccess(model.getData());
+                                } else {
+                                    ToastUtils.show(model.getMsg());
+                                }
+                            }
+                        });
     }
 
     /**

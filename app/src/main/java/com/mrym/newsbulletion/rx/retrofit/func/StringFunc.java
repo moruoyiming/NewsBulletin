@@ -6,9 +6,9 @@ import okhttp3.ResponseBody;
 import rx.functions.Func1;
 
 /**
- * Created by _SOLID
- * Date:2016/7/27
- * Time:20:54
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class StringFunc implements Func1<ResponseBody, String> {
     @Override

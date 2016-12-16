@@ -1,4 +1,4 @@
-package com.mrym.newsbulletion.rx;
+package com.mrym.newsbulletion.rx.evenbus;
 
 import rx.Observable;
 import rx.subjects.PublishSubject;
@@ -6,9 +6,9 @@ import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
 
 /**
- * Created by _SOLID
- * Date:2016/6/1
- * Time:11:44
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class RxBus {
 

@@ -4,10 +4,10 @@ import android.util.Log;
 
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.retrofit.GankApi;
+import com.mrym.newsbulletion.rx.retrofit.service.GankService;
 import com.mrym.newsbulletion.rx.retrofit.HttpResult;
 import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
-import com.mrym.newsbulletion.rx.retrofit.factory.ServiceFactory;
+import com.mrym.newsbulletion.rx.ServiceFactory;
 import com.mrym.newsbulletion.rx.retrofit.subscriber.HttpResultSubscriber;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class FollowPresenter extends BasePresenter<FollowView> {
     }
 
     public void getPhotoGrils(int size, int page) {
-        ServiceFactory.getInstance().createService(GankApi.class)
+        ServiceFactory.getInstance().createService(GankService.class)
                 .getPhotoList(page)
                 .compose(TransformUtils.<HttpResult<List<PhotoGirl>>>defaultSchedulers())
                 .subscribe(new HttpResultSubscriber<List<PhotoGirl>>() {

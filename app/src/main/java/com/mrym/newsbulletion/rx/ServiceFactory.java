@@ -1,8 +1,8 @@
-package com.mrym.newsbulletion.rx.retrofit.factory;
+package com.mrym.newsbulletion.rx;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mrym.newsbulletion.rx.OkHttpProvider;
+import com.mrym.newsbulletion.rx.okhttp.OkHttpProvider;
 
 import java.lang.reflect.Field;
 
@@ -12,9 +12,9 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by _SOLID
- * Date:2016/7/27
- * Time:15:23
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class ServiceFactory {
 
@@ -34,10 +34,20 @@ public class ServiceFactory {
         private static final ServiceFactory INSTANCE = new ServiceFactory();
     }
 
+    /**
+     * 获取带有缓存实例
+     *
+     * @return
+     */
     public static ServiceFactory getInstance() {
         return SingletonHolder.INSTANCE;
     }
 
+    /**
+     * 获取无缓存实例
+     *
+     * @return
+     */
     public static ServiceFactory getNoCacheInstance() {
         ServiceFactory factory = SingletonHolder.INSTANCE;
         factory.mOkHttpClient = OkHttpProvider.getNoCacheOkHttpClient();

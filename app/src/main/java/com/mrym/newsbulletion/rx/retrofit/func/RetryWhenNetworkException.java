@@ -10,9 +10,9 @@ import rx.functions.Func1;
 import rx.functions.Func2;
 
 /**
- * Created by _SOLID
- * Date:2016/7/27
- * Time:21:38
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class RetryWhenNetworkException implements Func1<Observable<? extends Throwable>, Observable<?>> {
     private int count = 3;//retry count

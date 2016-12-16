@@ -1,4 +1,4 @@
-package com.mrym.newsbulletion.retrofit;
+package com.mrym.newsbulletion.rx.retrofit.service;
 
 
 import com.mrym.newsbulletion.domain.constans.UrlFactory;
@@ -28,7 +28,7 @@ import rx.Observable;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public interface GankApi {
+public interface GankService {
 
     String BASE_URL = "http://www.gank.io/api/";
 

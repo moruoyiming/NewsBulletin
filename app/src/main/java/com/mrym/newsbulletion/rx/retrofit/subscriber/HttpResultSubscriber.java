@@ -1,16 +1,13 @@
 package com.mrym.newsbulletion.rx.retrofit.subscriber;
 
-
-import android.util.Log;
-
 import com.mrym.newsbulletion.rx.retrofit.HttpResult;
 
 import rx.Subscriber;
 
 /**
- * Created by _SOLID
- * Date:2016/7/27
- * Time:21:27
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public abstract class HttpResultSubscriber<T> extends Subscriber<HttpResult<T>> {
 

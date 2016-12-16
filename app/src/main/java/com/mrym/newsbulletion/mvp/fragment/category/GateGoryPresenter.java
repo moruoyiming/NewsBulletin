@@ -2,9 +2,9 @@ package com.mrym.newsbulletion.mvp.fragment.category;
 
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.retrofit.NewsApi;
+import com.mrym.newsbulletion.rx.retrofit.service.NewsService;
 import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
-import com.mrym.newsbulletion.rx.retrofit.factory.ServiceFactory;
+import com.mrym.newsbulletion.rx.ServiceFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +24,7 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
     }
 
     public void getGategoryData(final String gateGory, int pageIndex) {
-        ServiceFactory.getInstance().createService(NewsApi.class)
+        ServiceFactory.getInstance().createService(NewsService.class)
                 .getNewsList("headline", gateGory, pageIndex)
                 .compose(TransformUtils.<HashMap<String, List<NewsSummary>>>defaultSchedulers())
                 .subscribe(new Subscriber<HashMap<String, List<NewsSummary>>>() {

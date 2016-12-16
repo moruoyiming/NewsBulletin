@@ -9,12 +9,12 @@ import retrofit2.http.Url;
 import rx.Observable;
 
 /**
- * Created by _SOLID
- * Date:2016/7/27
- * Time:14:53
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public interface CommonService {
-    String BASE_URL = "http://www.example.com/";//这个不重要，可以随便写，但是必须有
+    String BASE_URL = "http://www.example.com/";
 
     @GET
     Observable<ResponseBody> loadString(@Url String url);

@@ -17,9 +17,9 @@ import okhttp3.ResponseBody;
 import rx.Subscriber;
 
 /**
- * Created by _SOLID
- * Date:2016/8/1
- * Time:16:40
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public abstract class DownLoadSubscribe extends Subscriber<ResponseBody> {
 
@@ -64,6 +64,7 @@ public abstract class DownLoadSubscribe extends Subscriber<ResponseBody> {
     Handler handler = new Handler(Looper.getMainLooper());
     long fileSizeDownloaded = 0;
     long fileSize = 0;
+
     public boolean writeResponseBodyToDisk(ResponseBody body) {
         try {
             InputStream inputStream = null;

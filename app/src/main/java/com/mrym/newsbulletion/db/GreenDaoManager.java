@@ -16,7 +16,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by wyk on 2016/7/12.
+ * Created by Jian on 2016/9/1.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class GreenDaoManager {
     private static GreenDaoManager mInstance;

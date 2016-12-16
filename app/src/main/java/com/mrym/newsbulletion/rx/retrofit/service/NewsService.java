@@ -1,4 +1,4 @@
-package com.mrym.newsbulletion.retrofit;
+package com.mrym.newsbulletion.rx.retrofit.service;
 
 
 import com.mrym.newsbulletion.domain.constans.UrlFactory;
@@ -24,7 +24,7 @@ import rx.Observable;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public interface NewsApi {
+public interface NewsService {
 
     String BASE_URL = "http://c.m.163.com/";
     //启动页广告

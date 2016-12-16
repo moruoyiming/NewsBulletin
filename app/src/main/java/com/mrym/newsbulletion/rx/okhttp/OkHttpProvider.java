@@ -1,4 +1,4 @@
-package com.mrym.newsbulletion.rx;
+package com.mrym.newsbulletion.rx.okhttp;
 
 import com.jakewharton.rxbinding.internal.Preconditions;
 import com.mrym.newsbulletion.NewsApplication;
@@ -19,11 +19,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by _SOLID
- * Date:2016/12/3
- * Time:13:44
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
-
 public class OkHttpProvider {
 
     private final static long DEFAULT_TIMEOUT = 10;
@@ -53,6 +52,9 @@ public class OkHttpProvider {
         return httpClientBuilder.build();
     }
 
+    /**
+     * 缓存过滤器
+     */
     private static class CacheControlInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {
@@ -115,6 +117,9 @@ public class OkHttpProvider {
         }
     }
 
+    /**
+     * Log信息拦截器
+     */
     private static class LoggingInterceptor implements Interceptor {
         @Override
         public Response intercept(Chain chain) throws IOException {

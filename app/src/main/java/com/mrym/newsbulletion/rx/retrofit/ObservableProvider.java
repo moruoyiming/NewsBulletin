@@ -1,7 +1,7 @@
 
 package com.mrym.newsbulletion.rx.retrofit;
 
-import com.mrym.newsbulletion.rx.retrofit.factory.ServiceFactory;
+import com.mrym.newsbulletion.rx.ServiceFactory;
 import com.mrym.newsbulletion.rx.retrofit.func.ResultFunc;
 import com.mrym.newsbulletion.rx.retrofit.func.RetryWhenNetworkException;
 import com.mrym.newsbulletion.rx.retrofit.func.StringFunc;
@@ -15,9 +15,9 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 /**
- * Created by _SOLID
- * Date:2016/7/28
- * Time:9:22
+ * Created by Jian on 2016/12/16.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class ObservableProvider {
 
