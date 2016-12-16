@@ -103,8 +103,8 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
         viewpager2=null;
         fragmentAdapter=null;
         mvpPresenter=null;
-        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 }

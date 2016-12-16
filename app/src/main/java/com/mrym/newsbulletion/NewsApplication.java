@@ -23,23 +23,20 @@ import java.util.Map;
 import solid.ren.skinlibrary.base.SkinBaseApplication;
 
 
-/**
- * Created by Jian on 2016/8/25.
- * Email: 798774875@qq.com
- * Github: https://github.com/moruoyiming
- */
+
+
 public class NewsApplication extends SkinBaseApplication {
 
     private static Context CONTEXT;
     private static Map<String, Activity> activities = new HashMap<String, Activity>();
-    private RefWatcher refWatcher;
+//    private RefWatcher refWatcher;
     @Override
     public void onCreate() {
         super.onCreate();
         CONTEXT = this;
         x.Ext.init(NewsApplication.this);
         x.Ext.setDebug(true);
-        refWatcher = LeakCanary.install(this);
+//        refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
     }
@@ -57,10 +54,10 @@ public class NewsApplication extends SkinBaseApplication {
         }
     }
 
-    public static RefWatcher getRefWatcher(Context context) {
-        NewsApplication application = (NewsApplication) context.getApplicationContext();
-        return application.refWatcher;
-    }
+//    public static RefWatcher getRefWatcher(Context context) {
+//        NewsApplication application = (NewsApplication) context.getApplicationContext();
+//        return application.refWatcher;
+//    }
 
     public static Context getContext() {
         return CONTEXT;

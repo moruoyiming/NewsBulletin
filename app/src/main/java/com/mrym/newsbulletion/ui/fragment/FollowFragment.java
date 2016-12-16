@@ -153,8 +153,8 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
         mvpPresenter=null;
         onPhotoGirlsClick=null;
         girlsList=null;
-        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 

@@ -118,8 +118,8 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         getActivity().unregisterReceiver(chanelChangeReceiver);
         chanelChangeReceiver=null;
         mvpPresenter=null;
-        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 

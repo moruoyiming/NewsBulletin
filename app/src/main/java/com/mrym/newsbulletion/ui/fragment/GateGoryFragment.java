@@ -221,8 +221,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         onInternalClickListener=null;
         newsAdapter=null;
         picOnInternalClickListener=null;
-        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 }

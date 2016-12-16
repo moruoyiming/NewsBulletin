@@ -90,8 +90,8 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
         mViedeos=null;
         categoryList=null;
         mvpPresenter=null;
-        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
         JCVideoPlayer.releaseAllVideos();
     }
 

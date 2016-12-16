@@ -164,8 +164,8 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
         mActivity=null;
         mNewsTitle=null;
         toolbar=null;
-        RefWatcher refWatcher = NewsApplication.getRefWatcher(NewsDetailActivity.this);
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = NewsApplication.getRefWatcher(NewsDetailActivity.this);
+//        refWatcher.watch(this);
     }
 
     @Override

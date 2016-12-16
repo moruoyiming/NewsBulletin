@@ -132,8 +132,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
         getActivity().unregisterReceiver(wifiReceiver);
         ButterKnife.unbind(this);
     }
