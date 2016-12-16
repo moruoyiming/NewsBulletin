@@ -31,7 +31,6 @@ public class FollowPresenter extends BasePresenter<FollowView> {
                 .subscribe(new HttpResultSubscriber<List<PhotoGirl>>() {
                     @Override
                     public void onSuccess(List<PhotoGirl> girlData) {
-                        Log.i("wagt", girlData.toString());
                         mvpView.loadComplete();
                         mvpView.loadingSuccess(girlData);
                     }

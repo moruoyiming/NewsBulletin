@@ -104,7 +104,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     @Override
     public void onResume() {
         super.onResume();
-        Log.e(TAG, "onResume");
 //        mvpPresenter.getOrderPriceSum(tool.getAccountId());
     }
 

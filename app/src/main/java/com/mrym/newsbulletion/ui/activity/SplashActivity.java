@@ -98,6 +98,5 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
         handler = null;
         mvpPresenter=null;
         mActivity=null;
-        NewsApplication.removeActivity(TAG);
     }
 }

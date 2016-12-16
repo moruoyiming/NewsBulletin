@@ -29,14 +29,14 @@ public class NewsApplication extends SkinBaseApplication {
 
     private static Context CONTEXT;
     private static Map<String, Activity> activities = new HashMap<String, Activity>();
-//    private RefWatcher refWatcher;
+    private RefWatcher refWatcher;
     @Override
     public void onCreate() {
         super.onCreate();
         CONTEXT = this;
         x.Ext.init(NewsApplication.this);
         x.Ext.setDebug(true);
-//        refWatcher = LeakCanary.install(this);
+        refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
     }

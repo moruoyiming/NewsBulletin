@@ -55,7 +55,7 @@ public interface NewsService {
             @Path("startPage") int startPage);
     //获取视频新闻
     @GET(UrlFactory.GET_GATEGORY_VIDEOS)
-    Observable<Map<String, List<VideoData>>> getVideoList(
+    Observable<HashMap<String, List<VideoData>>> getVideoList(
             @Path("type") String type,
             @Path("startPage") int startPage);
 
