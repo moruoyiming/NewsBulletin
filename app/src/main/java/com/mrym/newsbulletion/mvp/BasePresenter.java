@@ -1,8 +1,9 @@
 package com.mrym.newsbulletion.mvp;
 
 
-import com.mrym.newsbulletion.retrofit.ApiStores;
+import com.mrym.newsbulletion.retrofit.GankApi;
 import com.mrym.newsbulletion.retrofit.AppClient;
+import com.mrym.newsbulletion.retrofit.NewsApi;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -15,7 +16,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class BasePresenter<V> implements Presenter<V> {
     public V mvpView;
-    public ApiStores apiStores = AppClient.retrofit().create(ApiStores.class);
+    public NewsApi apiStores = AppClient.retrofit().create(NewsApi.class);
     private CompositeSubscription mCompositeSubscription;
 
     @Override

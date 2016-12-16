@@ -1,19 +1,15 @@
 package com.mrym.newsbulletion.mvp.fragment.category;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.retrofit.ApiStores;
-import com.mrym.newsbulletion.utils.net.BaseCallBack;
-import com.mrym.newsbulletion.utils.net.NetUtils;
+import com.mrym.newsbulletion.retrofit.NewsApi;
+import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
+import com.mrym.newsbulletion.rx.retrofit.factory.ServiceFactory;
 
-import org.xutils.http.RequestParams;
-
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import rx.Subscriber;
 
 
 /**
@@ -28,36 +24,29 @@ public class GateGoryPresenter extends BasePresenter<GateGoryView> {
     }
 
     public void getGategoryData(final String gateGory, int pageIndex) {
-        RequestParams paramsData = new RequestParams(ApiStores.BASE_PATH+"nc/article/headline/"+gateGory+"/"+pageIndex+"-20.html");
-        NetUtils.get(paramsData, new BaseCallBack<String>() {
-            @Override
-            public boolean onCache(String result) {
-                return false;
-            }
+        ServiceFactory.getInstance().createService(NewsApi.class)
+                .getNewsList("headline", gateGory, pageIndex)
+                .compose(TransformUtils.<HashMap<String, List<NewsSummary>>>defaultSchedulers())
+                .subscribe(new Subscriber<HashMap<String, List<NewsSummary>>>() {
+                               @Override
+                               public void onCompleted() {
+                                   mvpView.loadComplete();
+                               }
 
-            @Override
-            public void onSuccess(String result) {
-                try {
-                    Map<String, List<NewsSummary>>  customerBean = new Gson().fromJson(result, new TypeToken<Map<String, List<NewsSummary>> >() {
-                    }.getType());
-                    List<NewsSummary> news = customerBean.get(gateGory);
-                    mvpView.loadComplete();
-                    mvpView.loadingSuccess(news,gateGory);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+                               @Override
+                               public void onError(Throwable e) {
+                                   mvpView.loadComplete();
+                               }
 
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-            }
+                               @Override
+                               public void onNext(HashMap<String, List<NewsSummary>> stringListHashMap) {
+                                   List<NewsSummary> news = stringListHashMap.get(gateGory);
+                                   mvpView.loadComplete();
+                                   mvpView.loadingSuccess(news, gateGory);
+                               }
+                           }
 
-            @Override
-            public void onFinished() {
-            }
-
-
-        });
+                );
     }
 
 }

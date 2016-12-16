@@ -1,22 +1,17 @@
 package com.mrym.newsbulletion.mvp.fragment.videos;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mrym.newsbulletion.domain.constans.HostType;
-import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.mvp.fragment.category.GateGoryModel;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
-import com.mrym.newsbulletion.retrofit.ApiStores;
+import com.mrym.newsbulletion.retrofit.GankApi;
+import com.mrym.newsbulletion.retrofit.NewsApi;
 import com.mrym.newsbulletion.utils.net.BaseCallBack;
 import com.mrym.newsbulletion.utils.net.NetUtils;
 
 import org.xutils.http.RequestParams;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -88,7 +83,7 @@ public class VideosPresenter extends BasePresenter<VideoView> {
 //                    public void onCompleted() {
 //                    }
 //                })));//nc/video/list/{type}/n/{startPage}-10.html
-        RequestParams paramsData = new RequestParams(ApiStores.BASE_PATH+"nc/video/list/"+gateGory+"/n/"+pageIndex+"-10.html");
+        RequestParams paramsData = new RequestParams(NewsApi.BASE_URL+"nc/video/list/"+gateGory+"/n/"+pageIndex+"-10.html");
         NetUtils.get(paramsData, new BaseCallBack<String>() {
             @Override
             public boolean onCache(String result) {

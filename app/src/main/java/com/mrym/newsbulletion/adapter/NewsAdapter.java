@@ -58,9 +58,6 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             case GlobalVariable.ITEM_VIDEO:
                 view = mInflater.inflate(R.layout.item_video_view, parent, false);
                 break;
-            case GlobalVariable.ITEM_OTHER:
-                view = mInflater.inflate(R.layout.item_bigpic_view, parent, false);
-                break;
         }
         return new NewsViewHolder(view);
     }
@@ -108,7 +105,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                                 .error(R.mipmap.shouyetu)
                                 .config(Bitmap.Config.ALPHA_8)
                                 .into(hd.getmBottom_t1());
-                        if (newsEntity.getImgextra().size() > 1) {
+                        if (newsEntity.getAds().size() > 1) {
                             Picasso.with(mContext)
                                     .load(newsEntity.getAds().get(1).getImgsrc())
                                     .placeholder(R.mipmap.shouyetu)
@@ -179,24 +176,24 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
         NewsSummary msgContent = list.get(position);
         if ("photoset".equals(msgContent.getSkipType())) {
             if (msgContent.getImgextra() != null && msgContent.getImgextra().size() > 0) {
-                if (msgContent.getImgextra().size() >= 3) {
-                    return GlobalVariable.ITEM_THREE_PIC;
+                if (msgContent.getImgextra().size() == 1) {
+                    return GlobalVariable.ITEM_BIGPIC;
                 } else if (msgContent.getImgextra().size() == 2) {
                     return GlobalVariable.ITEM_TWO_PIC;
-                } else if (msgContent.getImgextra().size() == 1) {
-                    return GlobalVariable.ITEM_BIGPIC;
+                } else if (msgContent.getImgextra().size() >= 3) {
+                    return GlobalVariable.ITEM_THREE_PIC;
                 } else {
-                    return GlobalVariable.ITEM_BIGPIC;
+                    return GlobalVariable.ITEM_TEXT;
                 }
             } else if (msgContent.getAds() != null && msgContent.getAds().size() > 0) {
-                if (msgContent.getAds().size() >= 3) {
-                    return GlobalVariable.ITEM_THREE_PIC;
+                if (msgContent.getAds().size() == 1) {
+                    return GlobalVariable.ITEM_BIGPIC;
                 } else if (msgContent.getAds().size() == 2) {
                     return GlobalVariable.ITEM_TWO_PIC;
-                } else if (msgContent.getAds().size() == 1) {
-                    return GlobalVariable.ITEM_BIGPIC;
+                } else if (msgContent.getAds().size() >= 3) {
+                    return GlobalVariable.ITEM_THREE_PIC;
                 } else {
-                    return GlobalVariable.ITEM_BIGPIC;
+                    return GlobalVariable.ITEM_TEXT;
                 }
             } else {
                 return GlobalVariable.ITEM_ONE_PIC;
@@ -204,7 +201,7 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
         } else if ("special".equals(msgContent.getSkipType())) {
             return GlobalVariable.ITEM_BIGPIC;
         } else if (1 == msgContent.getHasImg()) {
-            return GlobalVariable.ITEM_OTHER;
+            return GlobalVariable.ITEM_BIGPIC;
         } else {
             return GlobalVariable.ITEM_ONE_PIC;
         }

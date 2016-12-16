@@ -3,20 +3,18 @@ package com.mrym.newsbulletion.retrofit;
 
 import com.mrym.newsbulletion.domain.constans.UrlFactory;
 import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
-import com.mrym.newsbulletion.domain.modle.GirlData;
 import com.mrym.newsbulletion.domain.modle.NewsDetail;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
+import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.activity.login.LoginModel;
-import com.mrym.newsbulletion.mvp.fragment.category.GateGoryModel;
-import com.mrym.newsbulletion.mvp.fragment.home.HomeModel;
+import com.mrym.newsbulletion.rx.retrofit.HttpResult;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -26,10 +24,9 @@ import rx.Observable;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public interface ApiStores {
+public interface NewsApi {
 
-    String BASE_PATH = "http://c.m.163.com/";
-
+    String BASE_URL = "http://c.m.163.com/";
     //启动页广告
     @GET(UrlFactory.START_IMAGE)
     Observable<LoginModel> startImage();
@@ -56,12 +53,6 @@ public interface ApiStores {
     Observable<HashMap<String, List<NewsSummary>>> getNewsList(
             @Path("type") String type, @Path("id") String id,
             @Path("startPage") int startPage);
-    //获取美女图片
-    @GET("data/福利/{size}/{page}")
-    Observable<GirlData> getPhotoList(
-            @Path("size") int size,
-            @Path("page") int page);
-
     //获取视频新闻
     @GET(UrlFactory.GET_GATEGORY_VIDEOS)
     Observable<Map<String, List<VideoData>>> getVideoList(

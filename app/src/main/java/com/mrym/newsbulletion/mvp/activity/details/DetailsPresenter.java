@@ -1,10 +1,7 @@
 package com.mrym.newsbulletion.mvp.activity.details;
 
-import android.util.Log;
 
-import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.NewsDetail;
-import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.rxjava.ApiCallback;
 import com.mrym.newsbulletion.rxjava.SubscriberCallBack;

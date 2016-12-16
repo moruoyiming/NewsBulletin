@@ -78,6 +78,9 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
         try {
             PushViewHolder hd = (PushViewHolder) holder;
             NewsSummary newsSummary = list.get(position);
+            if(newsSummary==null){
+                return;
+            }
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_ONE_PIC:
                     hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
