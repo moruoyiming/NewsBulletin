@@ -1,5 +1,6 @@
 package com.mrym.newsbulletion.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
 import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
+import com.mrym.newsbulletion.ui.activity.PushMsgActivity;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -91,7 +93,10 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
 
                 try {
-                    NewsDetailActivity.startAction(getActivity(),values.getPostid(),values.getImgsrc());
+                    Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+                    intent.putExtra(GlobalVariable.NEWS_POST_ID, values.getPostid());
+                    intent.putExtra(GlobalVariable.NEWS_IMG_RES, values.getImgsrc());
+                    startActivity(intent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -70,29 +70,7 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
     private String mNewsTitle;
     private String mShareLink;
 
-    /**
-     * 入口
-     *
-     * @param mContext
-     * @param postId
-     */
-    public static void startAction(Context mContext,  String postId, String imgUrl) {
-        Intent intent = new Intent(mContext, NewsDetailActivity.class);
-        intent.putExtra(GlobalVariable.NEWS_POST_ID, postId);
-        intent.putExtra(GlobalVariable.NEWS_IMG_RES, imgUrl);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            ActivityOptions options = ActivityOptions
-//                    .makeSceneTransitionAnimation((Activity) mContext, view, GlobalVariable.TRANSITION_ANIMATION_NEWS_PHOTOS);
-//            mContext.startActivity(intent, options.toBundle());
-//        } else {
 
-            //让新的Activity从一个小的范围扩大到全屏
-//            ActivityOptionsCompat options = ActivityOptionsCompat
-//                    .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
-            ActivityCompat.startActivity((Activity) mContext, intent, null);
-//        }
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

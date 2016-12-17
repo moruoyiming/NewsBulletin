@@ -32,6 +32,16 @@ import butterknife.Bind;
 
 /**
  * Created by Jian on 2016/11/28.
+ * //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+ //            ActivityOptions options = ActivityOptions
+ //                    .makeSceneTransitionAnimation((Activity) mContext, view, GlobalVariable.TRANSITION_ANIMATION_NEWS_PHOTOS);
+ //            mContext.startActivity(intent, options.toBundle());
+ //        } else {
+
+ //让新的Activity从一个小的范围扩大到全屏
+ //            ActivityOptionsCompat options = ActivityOptionsCompat
+ //                    .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
+ //         ｝
  */
 
 public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushView {
@@ -97,7 +107,10 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
         onSinglepushClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
-                NewsDetailActivity.startAction(PushMsgActivity.this,values.getPostid(),values.getImgsrc());
+                Intent intent = new Intent(PushMsgActivity.this, NewsDetailActivity.class);
+                intent.putExtra(GlobalVariable.NEWS_POST_ID, values.getPostid());
+                intent.putExtra(GlobalVariable.NEWS_IMG_RES, values.getImgsrc());
+                startActivity(intent);
             }
 
             @Override
