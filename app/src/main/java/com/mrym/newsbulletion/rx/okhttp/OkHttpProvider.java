@@ -4,7 +4,6 @@ import com.jakewharton.rxbinding.internal.Preconditions;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.utils.Logger;
 import com.mrym.newsbulletion.utils.common.NetWorkUtils;
-import com.mrym.newsbulletion.utils.net.NetUtils;
 
 import java.io.File;
 import java.io.IOException;

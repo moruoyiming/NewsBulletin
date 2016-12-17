@@ -1,18 +1,14 @@
 package com.mrym.newsbulletion.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
 import com.mrym.newsbulletion.adapter.PhotoGirlsAdapter;
@@ -22,21 +18,13 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.follow.FollowPresenter;
 import com.mrym.newsbulletion.mvp.fragment.follow.FollowView;
 import com.mrym.newsbulletion.ui.activity.PhotosDetailActivity;
-import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
-import com.mrym.newsbulletion.utils.GlideImageLoader;
-import com.mrym.newsbulletion.utils.common.ToastUtils;
-import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
-import com.squareup.leakcanary.RefWatcher;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 /**
  * Created by Jian on 2016/8/30.
@@ -72,7 +60,7 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
         super.onActivityCreated(savedInstanceState);
         mPhotogirls = new ArrayList<>();
         mPhotoAdapter = new PhotoGirlsAdapter(mPhotogirls, getActivity());
-        girlsList.setAdapter(mPhotoAdapter);
+        girlsList.setAdapter(new ScaleInAnimationAdapter(mPhotoAdapter));
 //        images = new ArrayList<>();
 //        images.add("http://f.hiphotos.baidu.com/news/q%3D100/sign=c0c87a1c7af082022b92953f7bfafb8a/4d086e061d950a7b6f8bd0fb03d162d9f2d3c957.jpg");
 //        images.add("http://d.hiphotos.baidu.com/news/q%3D100/sign=ca91accda844ad3428bf8387e0a30c08/35a85edf8db1cb1312e63233d454564e92584b06.jpg");

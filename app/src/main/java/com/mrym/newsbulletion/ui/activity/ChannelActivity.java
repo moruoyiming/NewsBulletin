@@ -339,7 +339,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
         otherGridView=null;
         userChannelList.clear();
         userChannelList=null;
-        otherChannelList.clear();;
+        otherChannelList.clear();
         otherChannelList=null;
         otherAdapter=null;
         userAdapter=null;

@@ -32,6 +32,10 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+import jp.wasabeef.recyclerview.animators.FadeInAnimator;
+import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
 /**
  * Created by Jian on 2016/9/14.
@@ -75,6 +79,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
         categoryList.setLoadingMoreProgressStyle(ProgressStyle.BallBeat);
+        categoryList.setItemAnimator(new ScaleInAnimator());
         categoryList.setLoadingMoreEnabled(true);
         categoryList.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override

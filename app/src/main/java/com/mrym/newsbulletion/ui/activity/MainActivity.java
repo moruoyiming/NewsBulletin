@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.jaeger.library.StatusBarUtil;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
@@ -23,10 +24,11 @@ import com.mrym.newsbulletion.mvp.activity.main.MainPresenter;
 import com.mrym.newsbulletion.mvp.activity.main.MainView;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
+import com.squareup.haha.perflib.Main;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import solid.ren.skinlibrary.loader.SkinManager;
 
 /**
  * Created by Jian on 2016/8/25.
@@ -62,10 +64,11 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         StatusBarCompat.translucentStatusBar(MainActivity.this,false);
-        StatusBarCompat.setStatusBarColor(MainActivity.this, R.color.black, 255);
+        StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mvpPresenter.createFragments(getSupportFragmentManager());
+        mvpPresenter.setActivity(MainActivity.this);
         rgMain.setOnCheckedChangeListener(mvpPresenter.new RadioChangedListener());
 
     }
