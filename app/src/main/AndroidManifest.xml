@@ -45,19 +45,12 @@
         </activity>
         <activity android:name=".ui.activity.LoginActivity"></activity>
         <activity android:name=".ui.activity.MainActivity"></activity>
-        <activity
-            android:name=".ui.activity.SkinChangeActivity"
-            android:label="换肤" />
-        <activity
-            android:name=".ui.activity.PushMsgActivity"
-            android:label="换肤" />
+        <activity android:name=".ui.activity.SkinChangeActivity"/>
+        <activity android:name=".ui.activity.PushMsgActivity" />
         <activity
             android:name=".ui.activity.ViewPagerActivity"
-            android:label="图片"
             android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name=".ui.activity.AboutActivity"
-            android:label="图片" />
+        <activity android:name=".ui.activity.AboutActivity"/>
         <activity
             android:name=".ui.activity.PhotosDetailActivity"
             android:theme="@style/Trans" />

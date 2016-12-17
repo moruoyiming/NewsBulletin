@@ -5,7 +5,7 @@ import com.mrym.newsbulletion.rx.ServiceFactory;
 import com.mrym.newsbulletion.rx.retrofit.func.ResultFunc;
 import com.mrym.newsbulletion.rx.retrofit.func.RetryWhenNetworkException;
 import com.mrym.newsbulletion.rx.retrofit.func.StringFunc;
-import com.mrym.newsbulletion.rx.retrofit.service.CommonService;
+import com.mrym.newsbulletion.rx.service.CommonService;
 import com.mrym.newsbulletion.rx.retrofit.subscriber.DownLoadSubscribe;
 
 import okhttp3.ResponseBody;

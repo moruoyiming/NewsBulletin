@@ -1,14 +1,12 @@
-package com.mrym.newsbulletion.rx.retrofit.service;
+package com.mrym.newsbulletion.rx.service;
 
 
 import com.mrym.newsbulletion.domain.constans.UrlFactory;
 import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
 import com.mrym.newsbulletion.domain.modle.NewsDetail;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
-import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.activity.login.LoginModel;
-import com.mrym.newsbulletion.rx.retrofit.HttpResult;
 
 import java.util.HashMap;
 import java.util.List;

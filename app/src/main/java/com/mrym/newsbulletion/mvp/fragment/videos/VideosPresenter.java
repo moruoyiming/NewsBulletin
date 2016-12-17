@@ -1,22 +1,14 @@
 package com.mrym.newsbulletion.mvp.fragment.videos;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
 import com.mrym.newsbulletion.rx.ServiceFactory;
 import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
-import com.mrym.newsbulletion.rx.retrofit.service.NewsService;
-import com.mrym.newsbulletion.utils.net.BaseCallBack;
-import com.mrym.newsbulletion.utils.net.NetUtils;
-
-import org.xutils.http.RequestParams;
+import com.mrym.newsbulletion.rx.service.NewsService;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import rx.Subscriber;
 

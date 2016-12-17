@@ -1,12 +1,11 @@
 package com.mrym.newsbulletion.mvp.activity.details;
 
 
-import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
 import com.mrym.newsbulletion.domain.modle.NewsDetail;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.rx.ServiceFactory;
 import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
-import com.mrym.newsbulletion.rx.retrofit.service.NewsService;
+import com.mrym.newsbulletion.rx.service.NewsService;
 
 import java.util.Map;
 

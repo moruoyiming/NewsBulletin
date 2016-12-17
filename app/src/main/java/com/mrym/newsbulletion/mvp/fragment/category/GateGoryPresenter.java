@@ -2,7 +2,7 @@ package com.mrym.newsbulletion.mvp.fragment.category;
 
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.rx.retrofit.service.NewsService;
+import com.mrym.newsbulletion.rx.service.NewsService;
 import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
 import com.mrym.newsbulletion.rx.ServiceFactory;
 

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.rx.retrofit.service.NewsService;
+import com.mrym.newsbulletion.rx.service.NewsService;
 import com.mrym.newsbulletion.utils.net.BaseCallBack;
 import com.mrym.newsbulletion.utils.net.NetUtils;
 

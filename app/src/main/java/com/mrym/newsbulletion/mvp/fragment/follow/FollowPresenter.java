@@ -1,10 +1,8 @@
 package com.mrym.newsbulletion.mvp.fragment.follow;
 
-import android.util.Log;
-
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
 import com.mrym.newsbulletion.mvp.BasePresenter;
-import com.mrym.newsbulletion.rx.retrofit.service.GankService;
+import com.mrym.newsbulletion.rx.service.GankService;
 import com.mrym.newsbulletion.rx.retrofit.HttpResult;
 import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
 import com.mrym.newsbulletion.rx.ServiceFactory;
