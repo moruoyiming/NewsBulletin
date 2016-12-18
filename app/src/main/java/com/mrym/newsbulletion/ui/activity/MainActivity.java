@@ -1,5 +1,7 @@
 package com.mrym.newsbulletion.ui.activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -7,9 +9,13 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
@@ -22,6 +28,11 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.main.MainPresenter;
 import com.mrym.newsbulletion.mvp.activity.main.MainView;
+import com.mrym.newsbulletion.ui.BaseActivity;
+import com.mrym.newsbulletion.ui.fragment.FollowFragment;
+import com.mrym.newsbulletion.ui.fragment.HomeFragment;
+import com.mrym.newsbulletion.ui.fragment.MineFragment;
+import com.mrym.newsbulletion.ui.fragment.VideoFragment;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.squareup.haha.perflib.Main;
@@ -35,7 +46,7 @@ import solid.ren.skinlibrary.loader.SkinManager;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
+public class MainActivity extends BaseActivity {
     public static String TAG = MainActivity.class.getCanonicalName();
     @Bind(R.id.fl_content)
     FrameLayout flContent;
@@ -50,27 +61,104 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     @Bind(R.id.rg_main)
     RadioGroup rgMain;
     private long exitTime = 0;
-    @Override
-    protected MainPresenter createPresenter() {
-        return new MainPresenter(this);
-    }
-
-    @Override
-    protected String getTag() {
-        return TAG;
-    }
-
+    public static final String FRAGMENT_TAG_HOME = "FRAGMENT_TAG_HOME";
+    public static final String FRAGMENT_TAG_VIDEO = "FRAGMENT_TAG_VIDEO";
+    public static final String FRAGMENT_TAG_FOLLOW = "FRAGMENT_TAG_FOLLOW";
+    public static final String FRAGMENT_TAG_MINE = "FRAGMENT_TAG_MINE";
+    private Fragment preFragment;
+    private FragmentManager fm;
+    private boolean isFullScreen = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBarCompat.translucentStatusBar(MainActivity.this,false);
+        StatusBarCompat.translucentStatusBar(MainActivity.this, false);
         StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mvpPresenter.createFragments(getSupportFragmentManager());
-        mvpPresenter.setActivity(MainActivity.this);
-        rgMain.setOnCheckedChangeListener(mvpPresenter.new RadioChangedListener());
+        createFragments(getSupportFragmentManager());
+        rgMain.setOnCheckedChangeListener(new RadioChangedListener());
+    }
 
+    public void createFragments(FragmentManager fragmentManager) {
+        this.fm = fragmentManager;
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        preFragment = new HomeFragment();
+        Fragment video = new VideoFragment();
+        Fragment follow = new FollowFragment();
+        Fragment mine = new MineFragment();
+        fragmentTransaction.add(R.id.fl_content, preFragment, FRAGMENT_TAG_HOME)
+                .add(R.id.fl_content, video, FRAGMENT_TAG_VIDEO)
+                .add(R.id.fl_content, follow, FRAGMENT_TAG_FOLLOW)
+                .add(R.id.fl_content, mine, FRAGMENT_TAG_MINE)
+                .hide(video)
+                .hide(follow)
+                .hide(mine).show(preFragment);
+        fragmentTransaction.commit();
+    }
+
+    public void setCurrentItem(String tag,boolean needreset) {
+        Fragment currentFragment = fm.findFragmentByTag(tag);
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.hide(preFragment);
+        fragmentTransaction.show(currentFragment);
+        fragmentTransaction.commitAllowingStateLoss();
+        if(needreset){
+            if (isFullScreen) {
+                resetFragmentView(currentFragment);
+            }
+        }
+        preFragment = currentFragment;
+
+    }
+    public void resetFragmentView(Fragment fragment) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            View contentView = findViewById(android.R.id.content);
+            if (contentView != null) {
+                ViewGroup rootView;
+                rootView = (ViewGroup) ((ViewGroup) contentView).getChildAt(0);
+                if (rootView.getPaddingTop() != 0) {
+                    rootView.setPadding(0, 0, 0, 0);
+                }
+            }
+            if (fragment.getView() != null) fragment.getView().setPadding(0, getStatusBarHeight(this), 0, 0);
+        }
+    }
+    protected void setStatusBar() {
+        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
+    }
+    private static int getStatusBarHeight(Context context) {
+        // 获得状态栏高度
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        return context.getResources().getDimensionPixelSize(resourceId);
+    }
+    public class RadioChangedListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            switch (checkedId) {
+                case R.id.rb_home:
+                    isFullScreen = false;
+                    StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
+                    setCurrentItem(FRAGMENT_TAG_HOME,true);
+                    break;
+                case R.id.rb_video:
+                    isFullScreen = false;
+                    StatusBarUtil.setColor(MainActivity.this,SkinManager.getInstance().getColor(R.color.primary_dark), 100);
+                    setCurrentItem(FRAGMENT_TAG_VIDEO,true);
+                    break;
+                case R.id.rb_follow:
+                    isFullScreen = false;
+                    StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.black), 100);
+                    setCurrentItem(FRAGMENT_TAG_FOLLOW,true);
+                    break;
+                case R.id.rb_mine:
+                    isFullScreen = true;
+//                    StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
+                    StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.black), 100);
+                    setCurrentItem(FRAGMENT_TAG_MINE,false);
+                    break;
+            }
+        }
     }
 
     @Override
@@ -78,7 +166,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
         switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
             case 5:
-                Intent intent=new Intent();
+                Intent intent = new Intent();
                 intent.setAction(GlobalVariable.CHANELCHANGERECEIVER);
                 sendBroadcast(intent);
                 break;
@@ -94,6 +182,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 //        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 //        sp.edit().putLong(GlobalVariable.LAST_LOGIN_TIME, SystemClock.currentThreadTimeMillis()).apply();
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {

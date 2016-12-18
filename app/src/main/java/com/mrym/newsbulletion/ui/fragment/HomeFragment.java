@@ -42,8 +42,6 @@ import butterknife.ButterKnife;
 public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView {
 
     private static final String TAG = "HomeFragment";
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
     @Bind(R.id.tab)
     FrameLayout tab;
     @Bind(R.id.header)

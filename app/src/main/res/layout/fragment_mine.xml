@@ -8,16 +8,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="true"
-        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/fragment_mine_head"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clipToPadding="true"
-            android:fitsSystemWindows="true">
+           >
 
             <ImageView
                 android:id="@+id/main_iv_placeholder"
