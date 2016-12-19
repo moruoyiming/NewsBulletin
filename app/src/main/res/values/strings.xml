@@ -56,17 +56,8 @@
     <string name="collect">收藏</string>
     <string name="comment">动态</string>
     <string name="setting">设置</string>
-
-    <string name="demo_tab_1">推荐</string>
-    <string name="demo_tab_2">精选</string>
-    <string name="demo_tab_3">娱乐</string>
-    <string name="demo_tab_4">体育</string>
-    <string name="demo_tab_5">电影</string>
-    <string name="demo_tab_6">汽车</string>
-    <string name="demo_tab_7">时尚</string>
-    <string name="demo_tab_8">Jelly Bean</string>
-    <string name="demo_tab_9">KitKat</string>
-    <string name="demo_tab_10">Lollipop</string>
+    <string name="progress_dialog">Progress Dialog</string>
+    <string name="please_wait">加载中..</string>
     <string name="photo_details">图片详情</string>
     <string name="photo">图片</string>
     <!-- 共享过度动画 -->

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.NewsApplication;
@@ -52,6 +53,8 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
     private String mNewsId;
     private String mNewsType;
+
+
     @Override
     protected GateGoryPresenter createPresenter() {
         return new GateGoryPresenter(this);
@@ -75,6 +78,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             mNewsId = getArguments().getString(GlobalVariable.NEWS_ID);
             mNewsType = getArguments().getString(GlobalVariable.NEWS_TYPE);
         }
+
         categoryList.setLayoutManager(new LinearLayoutManager(getActivity()));
         categoryList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         categoryList.setRefreshProgressStyle(ProgressStyle.BallBeat);
@@ -117,25 +121,25 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {
                 try {
 
-                    NewsPhotoDetail newsPhotoDetail=new NewsPhotoDetail();
-                    List<NewsPhotoDetail.Picture> list=new ArrayList<>();
-                    if(values.getAds()!=null&&values.getAds().size()>0){
-                        for(int i=0;i<values.getAds().size();i++){
-                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
+                    NewsPhotoDetail newsPhotoDetail = new NewsPhotoDetail();
+                    List<NewsPhotoDetail.Picture> list = new ArrayList<>();
+                    if (values.getAds() != null && values.getAds().size() > 0) {
+                        for (int i = 0; i < values.getAds().size(); i++) {
+                            NewsPhotoDetail.Picture picture = new NewsPhotoDetail.Picture();
                             picture.setImgSrc(values.getAds().get(i).getImgsrc());
                             picture.setTitle(values.getAds().get(i).getTitle());
                             list.add(picture);
                         }
-                    }else if(values.getImgextra()!=null&&values.getImgextra().size()>0){
-                        for(int i=0;i<values.getImgextra().size();i++){
-                            NewsPhotoDetail.Picture picture=new NewsPhotoDetail.Picture();
+                    } else if (values.getImgextra() != null && values.getImgextra().size() > 0) {
+                        for (int i = 0; i < values.getImgextra().size(); i++) {
+                            NewsPhotoDetail.Picture picture = new NewsPhotoDetail.Picture();
                             picture.setImgSrc(values.getImgextra().get(i).getImgsrc());
                             list.add(picture);
                         }
                     }
                     newsPhotoDetail.setTitle(values.getTitle());
                     newsPhotoDetail.setPictures(list);
-                    ViewPagerActivity.startAction(getActivity(),newsPhotoDetail);
+                    ViewPagerActivity.startAction(getActivity(), newsPhotoDetail);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -166,15 +170,14 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         super.onHiddenChanged(hidden);
         if (hidden) {
             //TODO now visible to user
-            Log.i("onHiddenChanged","  "+hidden);
+            Log.i("onHiddenChanged", "  " + hidden);
 
         } else {
             //TODO now invisible to user
-            Log.i("onHiddenChanged"," WHAT "+hidden);
+            Log.i("onHiddenChanged", " WHAT " + hidden);
             JCVideoPlayer.releaseAllVideos();
         }
     }
-
 
     public void switchActionAndLoadData(int action) {
         mCurrentAction = action;
@@ -185,7 +188,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
                 mvpPresenter.getGategoryData(mNewsType, mCurrentPageIndex);
                 break;
             case GlobalVariable.ACTION_LOAD_MORE:
-                mCurrentPageIndex+=GlobalVariable.SIZE;
+                mCurrentPageIndex += GlobalVariable.SIZE;
                 mvpPresenter.getGategoryData(mNewsType, mCurrentPageIndex);
                 break;
         }
@@ -197,7 +200,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     }
 
     @Override
-    public void loadingSuccess(List<NewsSummary> news,String mtag) {
+    public void loadingSuccess(List<NewsSummary> news, String mtag) {
         newsAdapter.addAll(news);
     }
 
@@ -221,6 +224,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -228,9 +232,9 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         mNews = null;
         mvpPresenter = null;
         categoryList = null;
-        onInternalClickListener=null;
-        newsAdapter=null;
-        picOnInternalClickListener=null;
+        onInternalClickListener = null;
+        newsAdapter = null;
+        picOnInternalClickListener = null;
 //        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
 //        refWatcher.watch(this);
         ButterKnife.unbind(this);

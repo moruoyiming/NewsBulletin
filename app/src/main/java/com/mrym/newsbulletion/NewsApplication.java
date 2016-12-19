@@ -7,6 +7,7 @@ import android.util.Log;
 
 
 import com.mrym.newsbulletion.db.GreenDaoManager;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.utils.common.PrefUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -45,8 +46,8 @@ public class NewsApplication extends SkinBaseApplication {
      * 初始化新闻分类
      */
     public void initDb(){
-        if(PrefUtils.getBoolean(NewsApplication.getContext(),"first",true)){
-            PrefUtils.putBoolean(NewsApplication.getContext(),"first",false);
+        if(PrefUtils.getBoolean(NewsApplication.getContext(), GlobalVariable.FIRST_LOGIN_STATE,true)){
+            PrefUtils.putBoolean(NewsApplication.getContext(),GlobalVariable.FIRST_LOGIN_STATE,false);
             GreenDaoManager.getInstance().initDB();
             GreenDaoManager.getInstance().initDB2();
         }else{

@@ -60,7 +60,7 @@ public class GreenDaoManager {
             ChannelSelected newsChannelTableDB = new ChannelSelected();
             newsChannelTableDB.setNewsChannelName(channelName.get(i));
             newsChannelTableDB.setNewsChannelId(channelId.get(i));
-            newsChannelTableDB.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));
+            newsChannelTableDB.setNewsChannelType(GlobalVariable.HEADLINE_TYPE);
             newsChannelTableDB.setNewsChannelSelect(true);
             newsChannelTableDB.setNewsChannelIndex(i);
             newsChannelTableDB.setNewsChannelFixed(true);
@@ -76,7 +76,7 @@ public class GreenDaoManager {
             ChannelunSelected newsChannelTableDB = new ChannelunSelected();
             newsChannelTableDB.setNewsChannelName(channelName.get(i));
             newsChannelTableDB.setNewsChannelId(channelId.get(i));
-            newsChannelTableDB.setNewsChannelType(GlobalVariable.getType(channelId.get(i)));
+            newsChannelTableDB.setNewsChannelType(GlobalVariable.HEADLINE_TYPE);
             newsChannelTableDB.setNewsChannelSelect(false);
             newsChannelTableDB.setNewsChannelIndex(i);
             newsChannelTableDB.setNewsChannelFixed(true);
