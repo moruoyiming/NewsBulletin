@@ -1,22 +1,15 @@
 package com.mrym.newsbulletion.ui.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,9 +18,6 @@ import com.jaeger.library.StatusBarUtil;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.mvp.MvpActivity;
-import com.mrym.newsbulletion.mvp.activity.main.MainPresenter;
-import com.mrym.newsbulletion.mvp.activity.main.MainView;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.ui.fragment.FollowFragment;
 import com.mrym.newsbulletion.ui.fragment.HomeFragment;
@@ -35,7 +25,6 @@ import com.mrym.newsbulletion.ui.fragment.MineFragment;
 import com.mrym.newsbulletion.ui.fragment.VideoFragment;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
-import com.squareup.haha.perflib.Main;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -68,6 +57,7 @@ public class MainActivity extends BaseActivity {
     private Fragment preFragment;
     private FragmentManager fm;
     private boolean isFullScreen = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +67,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         createFragments(getSupportFragmentManager());
         rgMain.setOnCheckedChangeListener(new RadioChangedListener());
+
     }
 
     public void createFragments(FragmentManager fragmentManager) {
@@ -96,13 +87,13 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction.commit();
     }
 
-    public void setCurrentItem(String tag,boolean needreset) {
+    public void setCurrentItem(String tag, boolean needreset) {
         Fragment currentFragment = fm.findFragmentByTag(tag);
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.hide(preFragment);
         fragmentTransaction.show(currentFragment);
         fragmentTransaction.commitAllowingStateLoss();
-        if(needreset){
+        if (needreset) {
             if (isFullScreen) {
                 resetFragmentView(currentFragment);
             }
@@ -110,6 +101,7 @@ public class MainActivity extends BaseActivity {
         preFragment = currentFragment;
 
     }
+
     public void resetFragmentView(Fragment fragment) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             View contentView = findViewById(android.R.id.content);
@@ -120,17 +112,21 @@ public class MainActivity extends BaseActivity {
                     rootView.setPadding(0, 0, 0, 0);
                 }
             }
-            if (fragment.getView() != null) fragment.getView().setPadding(0, getStatusBarHeight(this), 0, 0);
+            if (fragment.getView() != null)
+                fragment.getView().setPadding(0, getStatusBarHeight(this), 0, 0);
         }
     }
+
     protected void setStatusBar() {
         StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
     }
+
     private static int getStatusBarHeight(Context context) {
         // 获得状态栏高度
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         return context.getResources().getDimensionPixelSize(resourceId);
     }
+
     public class RadioChangedListener implements RadioGroup.OnCheckedChangeListener {
 
         @Override
@@ -139,23 +135,23 @@ public class MainActivity extends BaseActivity {
                 case R.id.rb_home:
                     isFullScreen = false;
                     StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
-                    setCurrentItem(FRAGMENT_TAG_HOME,true);
+                    setCurrentItem(FRAGMENT_TAG_HOME, true);
                     break;
                 case R.id.rb_video:
                     isFullScreen = false;
-                    StatusBarUtil.setColor(MainActivity.this,SkinManager.getInstance().getColor(R.color.primary_dark), 100);
-                    setCurrentItem(FRAGMENT_TAG_VIDEO,true);
+                    StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
+                    setCurrentItem(FRAGMENT_TAG_VIDEO, true);
                     break;
                 case R.id.rb_follow:
                     isFullScreen = false;
                     StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.black), 100);
-                    setCurrentItem(FRAGMENT_TAG_FOLLOW,true);
+                    setCurrentItem(FRAGMENT_TAG_FOLLOW, true);
                     break;
                 case R.id.rb_mine:
                     isFullScreen = true;
 //                    StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
                     StatusBarUtil.setColor(MainActivity.this, getResources().getColor(R.color.black), 100);
-                    setCurrentItem(FRAGMENT_TAG_MINE,false);
+                    setCurrentItem(FRAGMENT_TAG_MINE, false);
                     break;
             }
         }

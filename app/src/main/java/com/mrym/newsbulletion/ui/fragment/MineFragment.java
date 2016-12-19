@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
+import com.mrym.newsbulletion.domain.modle.Weather;
 import com.mrym.newsbulletion.domain.modle.UserBean;
 import com.mrym.newsbulletion.listener.WifiStateReceiver;
 import com.mrym.newsbulletion.mvp.MvpFragment;
@@ -27,14 +28,9 @@ import com.mrym.newsbulletion.ui.activity.SettingActivity;
 import com.mrym.newsbulletion.ui.activity.SkinChangeActivity;
 import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
-import com.mrym.newsbulletion.utils.GlideUtils;
-import com.mrym.newsbulletion.utils.ImageLoaderUtils;
 import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
-import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DialogView;
-import com.squareup.leakcanary.RefWatcher;
-import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -72,6 +68,16 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     TextView profileName;
     private Dialog loadingDialog;
     private WifiStateReceiver wifiReceiver;
+    @Bind(R.id.weather_icon)
+    ImageView weathericon;
+    @Bind(R.id.weather)
+    TextView mweather;
+    @Bind(R.id.city)
+    TextView city;
+    @Bind(R.id.week)
+    TextView week;
+    @Bind(R.id.temperature)
+    TextView temperature;
 
     @Override
     protected MinePresenter createPresenter() {
@@ -88,8 +94,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         mvpPresenter.initUserData();
+        mvpPresenter.getWeather("朝阳", "北京");
         //WIFI状态接收器
         wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
         IntentFilter filter = new IntentFilter();
@@ -114,7 +120,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
         profileName.setText(userBean.getNickName());
-        PicassoUtils.display(NewsApplication.getContext() ,profileImage,  userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
+        PicassoUtils.display(NewsApplication.getContext(), profileImage, userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
     }
 
     @Override
@@ -127,6 +133,14 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void startUserDetilsActivity() {
         Intent intent = new Intent(getActivity(), UserDetailsActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void showWeather(Weather weather) {
+        city.setText( weather.getCity());
+        mweather.setText(weather.getWeather());
+        week.setText(weather.getWeek());
+        temperature.setText(weather.getTemperature());
     }
 
     @Override
@@ -154,7 +168,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 ToastUtils.show("评论");
                 break;
             case R.id.fragment_mine_setting_r1:
-                Intent intent5= new Intent(getActivity(), SettingActivity.class);
+                Intent intent5 = new Intent(getActivity(), SettingActivity.class);
                 getActivity().startActivity(intent5);
                 break;
             case R.id.mine_rl_message:
@@ -163,7 +177,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
                 break;
             case R.id.mine_rl_offline:
                 Intent intent3 = new Intent(getActivity(), ChannelActivity.class);
-                getActivity().startActivityForResult(intent3,2);
+                getActivity().startActivityForResult(intent3, 2);
                 break;
             case R.id.mine_rl_skin:
                 Intent intent2 = new Intent(getActivity(), SkinChangeActivity.class);

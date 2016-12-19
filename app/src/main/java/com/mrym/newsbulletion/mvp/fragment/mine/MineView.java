@@ -1,5 +1,6 @@
 package com.mrym.newsbulletion.mvp.fragment.mine;
 
+import com.mrym.newsbulletion.domain.modle.Weather;
 import com.mrym.newsbulletion.domain.modle.UserBean;
 
 /**
@@ -19,4 +20,5 @@ public interface MineView {
 
     void startUserDetilsActivity();
 
+    void showWeather(Weather weather);
 }

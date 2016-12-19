@@ -13,13 +13,14 @@
         <RelativeLayout
             android:id="@+id/fragment_mine_head"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-           >
+            android:layout_height="200dp">
 
             <ImageView
                 android:id="@+id/main_iv_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:background="@mipmap/logo"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="none" />
@@ -46,6 +47,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/base15dp" />
             </LinearLayout>
+
+
 
 
         </RelativeLayout>
@@ -193,6 +196,92 @@
                 <ImageView
                     android:id="@+id/mine_iv_about_img"
                     style="@style/mine_info_iv" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/mine_rl_weather"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_height="@dimen/base50dp">
+                <!-- 今日天气-->
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/weather_icon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="3dp"
+                        android:background="@mipmap/w0"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/weather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="3dp"
+                        android:textColor="@color/black"
+                        android:textSize="28dp" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+
+                        <LinearLayout
+                            android:id="@+id/mine_rl_weather_l1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/city"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="3dp"
+                                android:textColor="@color/black"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/week"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="3dp"
+                                android:layout_toRightOf="@id/city"
+                                android:textColor="@color/black"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mine_rl_weather_l2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/mine_rl_weather_l1"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/temperature"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="3dp"
+                                android:textColor="@color/black"
+                                android:textSize="18dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
             </RelativeLayout>
 
         </LinearLayout>
