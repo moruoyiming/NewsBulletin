@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_height="@dimen/base50dp">
+                android:layout_height="@dimen/base80dp">
                 <!-- 今日天气-->
                 <LinearLayout
 
@@ -275,6 +275,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_margin="3dp"
+                                android:text="3'c"
                                 android:textColor="@color/black"
                                 android:textSize="18dp" />
 
