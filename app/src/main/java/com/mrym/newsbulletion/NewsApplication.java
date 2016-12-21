@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.Log;
 
 
+import com.baidu.mapapi.SDKInitializer;
 import com.mrym.newsbulletion.db.GreenDaoManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.utils.common.PrefUtils;
@@ -40,6 +41,8 @@ public class NewsApplication extends SkinBaseApplication {
         refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
+        // 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+        SDKInitializer.initialize(this);
     }
 
     /**

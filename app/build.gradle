@@ -98,4 +98,6 @@ dependencies {
     compile files('libs/ShareSDK-Wechat-2.7.10.jar')
     compile files('libs/ShareSDK-Wechat-Core-2.7.10.jar')
     compile files('libs/ShareSDK-Wechat-Moments-2.7.10.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/httpmime-4.1.2.jar')
 }
