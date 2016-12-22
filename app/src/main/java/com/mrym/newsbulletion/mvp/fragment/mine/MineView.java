@@ -20,5 +20,5 @@ public interface MineView {
 
     void startUserDetilsActivity();
 
-    void showWeather(Weather weather);
+    void showWeather(Weather weather,String addres);
 }

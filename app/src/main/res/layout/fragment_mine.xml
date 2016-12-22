@@ -202,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_height="@dimen/base80dp">
+                android:layout_height="wrap_content">
                 <!-- 今日天气-->
                 <LinearLayout
 
@@ -273,18 +273,23 @@
                                 android:id="@+id/temperature"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
                                 android:layout_margin="3dp"
-                                android:text="3'c"
                                 android:textColor="@color/black"
                                 android:textSize="18dp" />
 
                         </LinearLayout>
+
                     </RelativeLayout>
 
                 </LinearLayout>
             </RelativeLayout>
-
+            <TextView
+                android:id="@+id/district"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"
+                android:textSize="14dp" />
         </LinearLayout>
     </LinearLayout>
 

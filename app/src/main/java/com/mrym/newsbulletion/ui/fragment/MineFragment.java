@@ -74,10 +74,13 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     TextView mweather;
     @Bind(R.id.city)
     TextView city;
+    @Bind(R.id.district)
+    TextView district;
     @Bind(R.id.week)
     TextView week;
     @Bind(R.id.temperature)
     TextView temperature;
+
 
     @Override
     protected MinePresenter createPresenter() {
@@ -95,7 +98,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mvpPresenter.initUserData();
-        mvpPresenter.getWeather("朝阳", "北京");
+        mvpPresenter.initMap();
         //WIFI状态接收器
         wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
         IntentFilter filter = new IntentFilter();
@@ -136,10 +139,11 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     }
 
     @Override
-    public void showWeather(Weather weather) {
+    public void showWeather(Weather weather,String addres) {
         city.setText( weather.getCity());
         mweather.setText(weather.getWeather());
         week.setText(weather.getWeek());
+        district.setText(addres);
         temperature.setText(weather.getTemperature());
     }
 

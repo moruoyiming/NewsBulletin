@@ -3,10 +3,8 @@ package com.mrym.newsbulletion;
 import android.app.Activity;
 
 import android.content.Context;
-import android.util.Log;
 
 
-import com.baidu.mapapi.SDKInitializer;
 import com.mrym.newsbulletion.db.GreenDaoManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.utils.common.PrefUtils;
@@ -15,11 +13,8 @@ import com.squareup.leakcanary.RefWatcher;
 
 import org.xutils.x;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import solid.ren.skinlibrary.base.SkinBaseApplication;
@@ -32,6 +27,7 @@ public class NewsApplication extends SkinBaseApplication {
     private static Context CONTEXT;
     private static Map<String, Activity> activities = new HashMap<String, Activity>();
     private RefWatcher refWatcher;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -41,9 +37,8 @@ public class NewsApplication extends SkinBaseApplication {
         refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
-        // 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
-        SDKInitializer.initialize(this);
     }
+
 
     /**
      * 初始化新闻分类

@@ -19,8 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    // 百度地图
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
+
 buildscript {
     repositories {
         mavenCentral()
@@ -30,18 +36,19 @@ buildscript {
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
     }
 }
- greendao {
-        //数据库schema版本，也可以理解为数据库版本号
-        schemaVersion 2
-        //设置DaoMaster 、DaoSession、Dao包名
-        daoPackage 'com.mrym.newsbulletion.db.gen'
-        //设置DaoMaster 、DaoSession、Dao目录
-        targetGenDir 'src/main/java'
-        //设置生成单元测试目录
-        //    targetGenDirTest
-        //设置自动生成单元测试用例
-        //    generateTests
+greendao {
+    //数据库schema版本，也可以理解为数据库版本号
+    schemaVersion 2
+    //设置DaoMaster 、DaoSession、Dao包名
+    daoPackage 'com.mrym.newsbulletion.db.gen'
+    //设置DaoMaster 、DaoSession、Dao目录
+    targetGenDir 'src/main/java'
+    //设置生成单元测试目录
+    //    targetGenDirTest
+    //设置自动生成单元测试用例
+    //    generateTests
 }
+
 dependencies {
     compile fileTree(include: '*.jar', exclude: 'android.support-v4.jar', dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -90,14 +97,4 @@ dependencies {
     compile project(':cordovalib')
     compile project(':xrecyclerviewlibrary')
     compile project(':baserecyclerviewadapterhelper')
-    compile files('libs/MobCommons-2016.1107.1809.jar')
-    compile files('libs/MobTools-2016.1107.1809.jar')
-    compile files('libs/ShareSDK-Core-2.7.10.jar')
-    compile files('libs/ShareSDK-QQ-2.7.10.jar')
-    compile files('libs/ShareSDK-SinaWeibo-2.7.10.jar')
-    compile files('libs/ShareSDK-Wechat-2.7.10.jar')
-    compile files('libs/ShareSDK-Wechat-Core-2.7.10.jar')
-    compile files('libs/ShareSDK-Wechat-Moments-2.7.10.jar')
-    compile files('libs/BaiduLBS_Android.jar')
-    compile files('libs/httpmime-4.1.2.jar')
 }
