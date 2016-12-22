@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/txt_color"
-            android:textSize="@dimen/sp_16"
+            android:textSize="@dimen/font_normal2"
             android:textStyle="bold" />
 
         <LinearLayout

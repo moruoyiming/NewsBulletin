@@ -1,1 +1,1 @@
-include ':app', ':multi-iamge-selector', ':xrecyclerviewlibrary', ':baserecyclerviewadapterhelper', ':videolib', ':ijkplayerdemo', ':videoexo', ':jcvideoplayer', ':supertextviewlib', ':cordovalib'
+include ':app',  ':xrecyclerviewlibrary', ':jcvideoplayer', ':supertextviewlib', ':cordovalib'

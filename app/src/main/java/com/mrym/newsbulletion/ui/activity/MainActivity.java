@@ -18,6 +18,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.ui.AppManager;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.ui.fragment.FollowFragment;
 import com.mrym.newsbulletion.ui.fragment.HomeFragment;
@@ -186,7 +187,7 @@ public class MainActivity extends BaseActivity {
                 ToastUtils.show(getString(R.string.twopress_finish));
                 exitTime = System.currentTimeMillis();
             } else {
-                NewsApplication.removeAllActivity();
+                AppManager.getAppManager().AppExit(MainActivity.this,false);
                 finish();
                 System.exit(0);
             }

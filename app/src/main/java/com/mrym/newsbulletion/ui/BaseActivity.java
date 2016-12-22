@@ -30,6 +30,7 @@ public class BaseActivity extends SkinBaseActivity {
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
+        AppManager.getAppManager().addActivity(this);
         mActivity = this;
         tool = AccountTool.getInstance();
     }
@@ -39,6 +40,7 @@ public class BaseActivity extends SkinBaseActivity {
     public void setContentView(View view) {
         super.setContentView(view);
         ButterKnife.bind(this);
+        AppManager.getAppManager().addActivity(this);
         mActivity = this;
         tool = AccountTool.getInstance();
     }
@@ -47,6 +49,7 @@ public class BaseActivity extends SkinBaseActivity {
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
         ButterKnife.bind(this);
+        AppManager.getAppManager().addActivity(this);
         mActivity = this;
         tool = AccountTool.getInstance();
     }
@@ -64,6 +67,8 @@ public class BaseActivity extends SkinBaseActivity {
     @Override
     protected void onDestroy() {
         onUnsubscribe();
+        AppManager.getAppManager().removeActivity(this);
+        ButterKnife.unbind(this);
         super.onDestroy();
     }
     /**
