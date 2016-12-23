@@ -3,8 +3,9 @@ apply plugin: 'org.greenrobot.greendao'//greendao插件
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
+    //默认配置,所有 productFlavors 都会继承 defaultConfig 中配置的属性
     defaultConfig {
+        //默认的 applicationId,一般与 AndroidManifest.xml 文件 package属性相同
         applicationId "com.mrym.newsbulletin"
         minSdkVersion 17
         targetSdkVersion 23
@@ -23,6 +24,17 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    //多渠道打包配置
+    signingConfigs {
+        release {
+            // 满足下面两个条件时需要此配置
+            // 1. Gradle版本 >= 2.14.1
+            // 2. Android Gradle Plugin 版本 >= 2.2.0
+            // 作用是只使用旧版签名，禁用V2版签名模式
+            v2SigningEnabled false
         }
     }
 }
@@ -94,4 +106,9 @@ dependencies {
     compile project(':jcvideoplayer')
     compile project(':cordovalib')
     compile project(':xrecyclerviewlibrary')
+    //多渠道打包 参考 https://github.com/mcxiaoke/packer-ng-plugin
+    compile 'com.mcxiaoke.gradle:packer-helper:1.0.8'
+    compile files('libs/packer-ng-1.0.8-sources.jar')
+    compile files('libs/packer-ng-1.0.8-javadoc.jar')
+    compile files('libs/packer-ng-1.0.8.jar')
 }
