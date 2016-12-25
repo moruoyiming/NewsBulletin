@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.authenticator.account.AccountTool;
+import com.mrym.newsbulletion.utils.Logger;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
+import com.mrym.newsbulletion.widget.LoadingDialog;
 
 import butterknife.ButterKnife;
 import rx.Subscription;
@@ -66,7 +68,6 @@ public class BaseActivity extends SkinBaseActivity {
 
     @Override
     protected void onDestroy() {
-        onUnsubscribe();
         AppManager.getAppManager().removeActivity(this);
         ButterKnife.unbind(this);
         super.onDestroy();
@@ -83,21 +84,36 @@ public class BaseActivity extends SkinBaseActivity {
     protected void SetTranslanteBar(){
         StatusBarCompat.translucentStatusBar(this);
     }
-    private CompositeSubscription mCompositeSubscription;
 
-    public void onUnsubscribe() {
-        if (mCompositeSubscription != null) {
-            mCompositeSubscription.unsubscribe();//取消注册，以避免内存泄露
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Logger.d("---------onStart");
     }
 
-    public void addSubscription(Subscription subscription) {
-//        if (mCompositeSubscription == null) {
-        mCompositeSubscription = new CompositeSubscription();
-//        }
-        mCompositeSubscription.add(subscription);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Logger.d("---------onResume");
     }
 
+    @Override
+    protected void onStop() {
+        super.onResume();
+        Logger.d("---------onStop");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Logger.d("---------onPause");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Logger.d("---------onRestart");
+    }
     public Toolbar initToolBar(String title) {
 
         Toolbar toolbar = initToolBar();
@@ -144,12 +160,55 @@ public class BaseActivity extends SkinBaseActivity {
 
     }
 
-    public void toastShow(int resId) {
+    /**
+     * 开启浮动加载进度条
+     */
+    public void startProgressDialog() {
+        LoadingDialog.showDialogForLoading(this);
+    }
+
+    /**
+     * 开启浮动加载进度条
+     *
+     * @param msg
+     */
+    public void startProgressDialog(String msg) {
+        LoadingDialog.showDialogForLoading(this, msg, true);
+    }
+
+    /**
+     * 停止浮动加载进度条
+     */
+    public void stopProgressDialog() {
+        LoadingDialog.cancelDialogForLoading();
+    }
+
+    /**
+     * 短暂显示Toast提示(来自String)
+     **/
+    public void showShortToast(String text) {
+        ToastUtils.show(text);
+    }
+
+    /**
+     * 短暂显示Toast提示(id)
+     **/
+    public void showShortToast(int resId) {
         ToastUtils.show(resId);
     }
 
-    public void toastShow(String msg) {
-        ToastUtils.show(msg);
+    /**
+     * 长时间显示Toast提示(来自res)
+     **/
+    public void showLongToast(int resId) {
+        ToastUtils.show(resId);
+    }
+
+    /**
+     * 长时间显示Toast提示(来自String)
+     **/
+    public void showLongToast(String text) {
+        ToastUtils.show(text);
     }
 
 

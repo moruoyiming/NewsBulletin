@@ -5,9 +5,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Created by _SOLID
- * Date:2016/5/10
- * Time:10:15
+ *
+ * Created by Jian on 2016/12/19.
+ * Email: 798774875@qq.com
+ * Github: https://github.com/moruoyiming
  */
 public class Logger {
 
@@ -28,6 +29,16 @@ public class Logger {
         String tagName = getTagName(object);
         if (mDebug) {
             Log.i(tagName, msg);
+        }
+    }
+    /**
+     * 打印debug级别的log
+     *
+     * @param msg
+     */
+    public static void d(String msg) {
+        if (mDebug) {
+            Log.d("LogInfo", msg);
         }
     }
 

@@ -13,7 +13,6 @@ public abstract class MvpActivity<P extends BasePresenter> extends BaseActivity 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mvpPresenter = createPresenter();
-//        NewsApplication.addActivity(this, getTag());
         super.onCreate(savedInstanceState);
     }
 
@@ -33,7 +32,6 @@ public abstract class MvpActivity<P extends BasePresenter> extends BaseActivity 
         if (mvpPresenter != null) {
             mvpPresenter.detachView();
         }
-//        NewsApplication.removeActivity(getTag());
         Log.d(getTag(), "onDestroy()");
     }
 }
