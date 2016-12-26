@@ -1,7 +1,10 @@
 package com.mrym.newsbulletion.mvp.activity.login;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
 
+import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.DefaultInterfaceBean;
 import com.mrym.newsbulletion.mvp.BasePresenter;
@@ -11,8 +14,18 @@ import com.mrym.newsbulletion.rx.service.NewsService;
 import com.mrym.newsbulletion.utils.TimeCount;
 import com.mrym.newsbulletion.utils.common.Validator;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
+import com.mrym.newsbulletion.utils.sharesdk.LoginApi;
 
 
+import java.util.HashMap;
+import java.util.Set;
+
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformDb;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
 import rx.Subscriber;
 
 /**
@@ -132,5 +145,58 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 //        Intent intent = new Intent(context, CordovaPageActivity.class);
 //        intent.putExtra(CordovaPageActivity.INTENT_URL_KEY, UrlFactory.PROVISION_PRIVACY);
 //        mActivity.startActivity(intent);
+    }
+    /**
+     * 第三方登录
+     */
+    public  void thirdLogin(String platformName){
+        ShareSDK.initSDK(NewsApplication.getContext());
+        QQ qq;
+        Log.d("thirdLogin", "name ----> " + platformName);
+        LoginApi api = new LoginApi();
+        //设置登陆的平台后执行登陆的方法
+        api.setPlatform(platformName);
+        api.setOnLoginListener();
+
+        api.login();
+    }
+    /**
+     * 执行第三方登录
+     *
+     * @param platformName 执行登录的平台名称，如：SinaWeibo.NAME
+     */
+    private boolean thirdLoginOperate(String platformName, HashMap<String, Object> res) {
+
+        Set<String> strings = res.keySet();
+        for (String key : strings) {
+            String value = res.get(key).toString();
+            Log.d("thirdLoginOperate", "key:" + key + ";---------value:" + value);
+        }
+
+        Platform platform = ShareSDK.getPlatform(NewsApplication.getContext(), platformName);
+        PlatformDb platDB = platform.getDb();//获取数平台数据DB
+        String token = platDB.getToken();
+        String userIcon = platDB.getUserIcon();
+        String userGender = platDB.getUserGender();
+        String userName = platDB.getUserName();
+        String userId = platDB.getUserId();
+        String sex, logoType = null;
+        Log.e("thirdLoginOperate", "token --> " + token + "\nuserIcon --> " + userIcon + "\nuserGender --> " + userGender + "\nuserName --> " + userName + "\nuserId --> " + userId);
+        if (!TextUtils.isEmpty(userGender) && userGender.equals("m")) {
+            sex = "1";
+        } else if (!TextUtils.isEmpty(userGender) && userGender.equals("f")) {
+            sex = "0";
+        } else {
+            sex = ""; // 平台未返回性别数据
+        }
+        if (platformName.equals(Wechat.NAME)) {
+            logoType = "weixin";
+        } else if (platformName.equals(QQ.NAME)) {
+            logoType = "qq";
+        } else if (platformName.equals(SinaWeibo.NAME)) {
+            logoType = "sina";
+        }
+
+        return true;
     }
 }

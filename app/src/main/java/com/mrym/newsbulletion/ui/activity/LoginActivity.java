@@ -22,10 +22,12 @@ import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.login.LoginPresenter;
 import com.mrym.newsbulletion.mvp.activity.login.LoginView;
 import com.mrym.newsbulletion.widget.DialogView;
+import com.tencent.tauth.Tencent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.sharesdk.wechat.friends.Wechat;
 
 /**
  * Created by Jian on 2016/8/30.
@@ -57,7 +59,6 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        NewsApplication.addActivity(this, TAG);
 
     }
 
@@ -79,12 +80,10 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
                 startActivity(intent);
                 break;
             case R.id.tv_wx_login:
-//                Log.d(TAG, "click----->tv_wx_login");
-//                mLoginPresenter.thirdLogin(Wechat.NAME);
+
                 break;
             case R.id.tv_qq_login:
-//                Log.d(TAG, "click----->tv_qq_login");
-//                mLoginPresenter.thirdLogin(QQ.NAME);
+                mvpPresenter.thirdLogin(Wechat.NAME);
                 break;
             case R.id.tv_weibo_login:
 //                Log.d(TAG, "click----->tv_weibo_login");

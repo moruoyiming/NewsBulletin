@@ -9,6 +9,7 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.utils.common.PrefUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
+import com.tencent.tauth.Tencent;
 
 
 import solid.ren.skinlibrary.base.SkinBaseApplication;
@@ -26,6 +27,7 @@ public class NewsApplication extends SkinBaseApplication {
         refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
+
     }
 
 
