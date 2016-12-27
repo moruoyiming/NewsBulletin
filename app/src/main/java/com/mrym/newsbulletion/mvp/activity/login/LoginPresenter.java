@@ -156,7 +156,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         LoginApi api = new LoginApi();
         //设置登陆的平台后执行登陆的方法
         api.setPlatform(platformName);
-        api.setOnLoginListener();
+        api.setOnLoginListener(new );
 
         api.login();
     }

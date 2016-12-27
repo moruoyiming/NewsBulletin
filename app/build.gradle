@@ -65,6 +65,7 @@ dependencies {
     compile fileTree(include: '*.jar', exclude: 'android.support-v4.jar', dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'net.lingala.zip4j:zip4j:1.3.2'
+    compile 'org.xutils:xutils:3.3.22'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:cardview-v7:23.2.1'
     compile 'com.afollestad.material-dialogs:core:0.8.6.1'

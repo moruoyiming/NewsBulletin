@@ -2,7 +2,8 @@ package com.mrym.newsbulletion.utils.sharesdk;
 
 import android.app.Activity;
 
-import com.zhangkong.letsgo.R;
+
+import com.mrym.newsbulletion.R;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;

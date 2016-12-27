@@ -8,7 +8,6 @@ import com.mrym.newsbulletion.rx.ServiceFactory;
 import com.mrym.newsbulletion.rx.retrofit.TransformUtils;
 import com.mrym.newsbulletion.rx.service.NewsService;
 
-import org.xutils.http.RequestParams;
 
 import java.util.HashMap;
 import java.util.List;
