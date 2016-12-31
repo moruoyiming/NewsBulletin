@@ -17,6 +17,8 @@ import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.sharesdk.LoginApi;
 
 
+import org.xutils.common.Callback;
+
 import java.util.HashMap;
 import java.util.Set;
 
@@ -156,7 +158,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         LoginApi api = new LoginApi();
         //设置登陆的平台后执行登陆的方法
         api.setPlatform(platformName);
-        api.setOnLoginListener(new );
+
 
         api.login();
     }

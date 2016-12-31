@@ -9,17 +9,19 @@ import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-
 import com.mrym.newsbulletion.utils.ViewHelper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Jian on 2016/9/19.
- * Email: 798774875@qq.com
- * Github: https://github.com/moruoyiming
+ * 项目名称：SigmaClassBoard
+ * 类描述：
+ * 创建人：jianruilin
+ * 创建时间：12/26/2016 11:31 AM
+ * 修改备注：
  */
 public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -33,32 +35,44 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
 
     private boolean isFirstOnly = true;
 
-    protected List<E> list;
+    protected List<E> mList = new ArrayList<>();
+
     private Map<Integer, onInternalClickListener<E>> canClickItem;
 
-    public BaseRecyclerViewAdapter(List<E> list) {
-        this(list, null);
-    }
+    public BaseRecyclerViewAdapter(Context context) {
 
-    public BaseRecyclerViewAdapter(List<E> list, Context context) {
-        this.list = list;
         this.mContext = context;
     }
 
-    public void add(E e) {
-        this.list.add(0, e);
-        Log.d("BaseRecycler", "list:" + list.size());
+    public List<E> getmList() {
+        return mList;
+    }
+
+    public void setmList(List<E> list) throws Exception {
+        if (list == null) {
+            return;
+        }
+        if (list.size() > 0) {
+            this.mList.clear();
+            this.mList.addAll(list);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void add(E e) throws Exception {
+        this.mList.add(0, e);
+        Log.d("BaseRecycler", "mList:" + mList.size());
         notifyItemInserted(0);
     }
 
-    public void addLast(E e) {
-        this.list.add(e);
-        notifyItemInserted(list.size() - 1);
+    public void addLast(E e) throws Exception {
+        this.mList.add(e);
+        notifyItemInserted(mList.size() - 1);
     }
 
-    public void update(E e, int fromPosition, int toPosition) {
-        this.list.remove(fromPosition);
-        this.list.add(toPosition, e);
+    public void update(E e, int fromPosition, int toPosition) throws Exception {
+        this.mList.remove(fromPosition);
+        this.mList.add(toPosition, e);
         if (fromPosition == toPosition) {
             notifyItemChanged(fromPosition);
         } else {
@@ -68,50 +82,47 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
         //notifyItemRangeChanged(fromPosition, toPosition);
     }
 
-    public void update(E e, int fromPosition) {
+    public void update(E e, int fromPosition) throws Exception {
         update(e, fromPosition, fromPosition);
     }
 
-    public void update(E e) {
-        Log.d("tag", "列表：" + list.toString());
-        int fromPosition = this.list.indexOf(e);
+    public void update(E e) throws Exception {
+        Log.d("tag", "列表：" + mList.toString());
+        int fromPosition = this.mList.indexOf(e);
         update(e, fromPosition);
     }
 
-    public void updateLast(E e) {
-//        int fromPosition = this.list.indexOf(e);
-        int num = list.size() - 1;
+    public void updateLast(E e) throws Exception {
+//        int fromPosition = this.mList.indexOf(e);
+        int num = mList.size() - 1;
         update(e, num, num);
     }
 
-    public void remove(E e) {
-        int position = list.indexOf(e);
+    public void remove(E e) throws Exception {
+        int position = mList.indexOf(e);
         remove(position);
     }
 
-    public void remove(int position) {
-        this.list.remove(position);
+    public void remove(int position) throws Exception {
+        this.mList.remove(position);
         notifyItemRemoved(position);
     }
 
-    public void setList(List<E> list) {
-        this.list.clear();
-        this.list.addAll(list);
-        //notifyDataSetChanged();
-    }
 
-    public void addAll(List<E> list) {
-        this.list.addAll(list);
+    public void addAll(List<E> list) throws Exception {
+        if (list == null) {
+            return;
+        }
+        if (list.size() > 0) {
+            this.mList.clear();
+            this.mList.addAll(list);
+        }
         notifyDataSetChanged();
-    }
-
-    public List<E> getList() {
-        return list;
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mList == null ? 0 : mList.size();
     }
 
     @Override
@@ -121,10 +132,13 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder != null) {
-            Log.d("BaseRecyclerView", "position---------->" + position + "list length:" + list.size());
-
-            addInternalClickListener(holder.itemView, position, list.get(position));
+        try {
+            if (holder != null) {
+                Log.d("BaseRecyclerView", "position---------->" + position + "mList length:" + mList.size());
+                addInternalClickListener(holder.itemView, position, mList.get(position));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -134,35 +148,43 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
     }
 
     private void addInternalClickListener(final View itemV, final Integer position, final E valuesMap) {
-        if (canClickItem != null) {
-            for (Integer key : canClickItem.keySet()) {
-                View inView = itemV.findViewById(key);
-                final onInternalClickListener<E> listener = canClickItem.get(key);
-                if (inView != null && listener != null) {
-                    inView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            listener.OnClickListener(itemV, v, position, valuesMap);
-                        }
-                    });
+        try {
+            if (canClickItem != null) {
+                for (Integer key : canClickItem.keySet()) {
+                    View inView = itemV.findViewById(key);
+                    final onInternalClickListener<E> listener = canClickItem.get(key);
+                    if (inView != null && listener != null) {
+                        inView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                listener.OnClickListener(itemV, v, position, valuesMap);
+                            }
+                        });
 
-                    inView.setOnLongClickListener(new View.OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View v) {
-                            listener.OnLongClickListener(itemV, v, position,
-                                    valuesMap);
-                            return true;
-                        }
-                    });
+                        inView.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View v) {
+                                listener.OnLongClickListener(itemV, v, position,
+                                        valuesMap);
+                                return true;
+                            }
+                        });
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     public void setOnInViewClickListener(Integer key, onInternalClickListener<E> onClickListener) {
-        if (canClickItem == null)
-            canClickItem = new HashMap<>();
-        canClickItem.put(key, onClickListener);
+        try {
+            if (canClickItem == null)
+                canClickItem = new HashMap<>();
+            canClickItem.put(key, onClickListener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public interface onInternalClickListener<T> {
@@ -202,15 +224,19 @@ public abstract class BaseRecyclerViewAdapter<E> extends RecyclerView.Adapter<Re
     }
 
     protected void animate(RecyclerView.ViewHolder holder, int position) {
-        if (!isFirstOnly || position > mLastPosition) {
-            for (Animator anim : getAnimators(holder.itemView)) {
-                anim.setDuration(mDuration).start();
-                anim.setInterpolator(mInterpolator);
+        try {
+            if (!isFirstOnly || position > mLastPosition) {
+                for (Animator anim : getAnimators(holder.itemView)) {
+                    anim.setDuration(mDuration).start();
+                    anim.setInterpolator(mInterpolator);
 
+                }
+                mLastPosition = position;
+            } else {
+                ViewHelper.clear(holder.itemView);
             }
-            mLastPosition = position;
-        } else {
-            ViewHelper.clear(holder.itemView);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
