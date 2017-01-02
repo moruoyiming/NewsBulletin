@@ -46,8 +46,6 @@ public class GuideActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
-        NewsApplication.addActivity(this, TAG);
-
         ButterKnife.bind(this);
         initData();
         mPager.setAdapter(new GuidePagerAdapter());
@@ -159,7 +157,6 @@ public class GuideActivity extends Activity {
         super.onDestroy();
         imageViews.clear();
         imageViews = null;
-        NewsApplication.removeActivity(TAG);
     }
 
     protected void onPause() {

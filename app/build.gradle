@@ -109,9 +109,4 @@ dependencies {
     compile project(':xrecyclerviewlibrary')
     //多渠道打包 参考 https://github.com/mcxiaoke/packer-ng-plugin
     compile 'com.mcxiaoke.gradle:packer-helper:1.0.8'
-    compile files('libs/packer-ng-1.0.8-sources.jar')
-    compile files('libs/packer-ng-1.0.8-javadoc.jar')
-    compile files('libs/packer-ng-1.0.8.jar')
-    compile files('libs/open_sdk_r5756.jar')
-    compile files('libs/mta-sdk-1.6.2.jar')
 }

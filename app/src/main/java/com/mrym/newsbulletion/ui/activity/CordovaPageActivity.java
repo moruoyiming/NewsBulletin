@@ -42,7 +42,6 @@ public class CordovaPageActivity extends CordovaActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        NewsApplication.addActivity(this, TAG);
         String url = getIntent().getStringExtra(INTENT_URL_KEY);
         loadUrl(url);
 
@@ -76,7 +75,6 @@ public class CordovaPageActivity extends CordovaActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        NewsApplication.removeActivity(TAG);
         View webView = appView.getView();
         // 解除WebView与父控件的依附关系
         ((ViewGroup)webView.getParent()).removeView(webView);

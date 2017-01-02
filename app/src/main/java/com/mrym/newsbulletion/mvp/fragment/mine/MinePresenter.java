@@ -71,6 +71,9 @@ public class MinePresenter extends BasePresenter<MineView> {
     public void getWeather(String city, String province, final String addre) {
 
         try {
+            if(city==null||province==null||addre==null){
+                return;
+            }
             ServiceFactory.getInstance().createService(WeatherService.class)
                     .getWeather("19d1e70ae8ee0", city, province)
                     .compose(TransformUtils.<WeatherBean>defaultSchedulers())
