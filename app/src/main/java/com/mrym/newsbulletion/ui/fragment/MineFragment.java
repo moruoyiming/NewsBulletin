@@ -98,7 +98,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mvpPresenter.initUserData();
-        mvpPresenter.initMap();
+//        mvpPresenter.initMap();
         //WIFI状态接收器
         wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
         IntentFilter filter = new IntentFilter();
