@@ -44,6 +44,7 @@ public class BaseActivity extends SkinBaseActivity {
         ButterKnife.bind(this);
         AppManager.getAppManager().addActivity(this);
         mActivity = this;
+
         tool = AccountTool.getInstance();
     }
 
