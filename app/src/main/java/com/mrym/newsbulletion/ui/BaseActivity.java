@@ -44,7 +44,6 @@ public class BaseActivity extends SkinBaseActivity {
         ButterKnife.bind(this);
         AppManager.getAppManager().addActivity(this);
         mActivity = this;
-
         tool = AccountTool.getInstance();
     }
 
@@ -69,9 +68,10 @@ public class BaseActivity extends SkinBaseActivity {
 
     @Override
     protected void onDestroy() {
-        AppManager.getAppManager().removeActivity(this);
-        ButterKnife.unbind(this);
         super.onDestroy();
+        ButterKnife.unbind(this);
+        AppManager.getAppManager().removeActivity(this);
+
     }
     /**
      * 着色状态栏（4.4以上系统有效）
