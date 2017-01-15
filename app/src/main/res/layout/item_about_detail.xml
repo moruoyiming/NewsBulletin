@@ -31,7 +31,7 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/icon"
+            android:src="@mipmap/icon1"
             android:layout_margin="10dp"
             android:layout_below="@+id/tv_code_des"
             android:layout_height="150dp" />

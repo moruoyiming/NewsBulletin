@@ -30,7 +30,7 @@
                 android:id="@+id/news_detail_photo_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@mipmap/logo"
+                android:background="@mipmap/google_log"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 android:transitionName="transition_animation_news_photos"

@@ -11,6 +11,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
@@ -65,7 +71,7 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
                     startActivity(new Intent(SplashActivity.this, MainActivity.class));
                     finish();
                 }
-            }, 2000);
+            }, 3000);
         }
     }
 
@@ -82,12 +88,13 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
 
     @Override
     public void showAdvertisement(String url) {
-        Picasso.with(SplashActivity.this)
-                .load(R.mipmap.background_splash)
-                .placeholder(R.mipmap.shouyetu)
-                .error(R.mipmap.shouyetu)
-                .config(Bitmap.Config.RGB_565)
-                .into(loginSplash);
+//        Picasso.with(SplashActivity.this)
+//                .load(R.mipmap.background_splash)
+//                .placeholder(R.mipmap.shouyetu)
+//                .error(R.mipmap.shouyetu)
+//                .config(Bitmap.Config.RGB_565)
+//                .into(loginSplash);
+        Glide.with(this).load(R.mipmap.google).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(new GlideDrawableImageViewTarget(loginSplash, 1));
     }
 
     @Override

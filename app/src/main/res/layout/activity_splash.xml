@@ -14,10 +14,11 @@
     <ImageView
         android:id="@+id/login_splash"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/google"
+       />
 
 
     <ImageView
@@ -26,6 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/splash_banner"
+        android:background="@mipmap/icon"
         android:scaleType="centerCrop" />
 </RelativeLayout>
