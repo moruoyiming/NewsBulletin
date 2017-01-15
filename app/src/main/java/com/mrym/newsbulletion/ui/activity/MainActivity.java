@@ -14,7 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.jaeger.library.StatusBarUtil;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
@@ -26,6 +25,7 @@ import com.mrym.newsbulletion.ui.fragment.MineFragment;
 import com.mrym.newsbulletion.ui.fragment.VideoFragment;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

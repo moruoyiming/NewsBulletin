@@ -47,22 +47,8 @@ public class BaseActivity extends SkinBaseActivity {
         tool = AccountTool.getInstance();
     }
 
-    @Override
-    public void setContentView(View view, ViewGroup.LayoutParams params) {
-        super.setContentView(view, params);
-        ButterKnife.bind(this);
-        AppManager.getAppManager().addActivity(this);
-        mActivity = this;
-        tool = AccountTool.getInstance();
-    }
-
     public AccountTool getAccountTool() {
         return tool;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
 
@@ -86,35 +72,8 @@ public class BaseActivity extends SkinBaseActivity {
         StatusBarCompat.translucentStatusBar(this);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Logger.d("---------onStart");
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Logger.d("---------onResume");
-    }
 
-    @Override
-    protected void onStop() {
-        super.onResume();
-        Logger.d("---------onStop");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Logger.d("---------onPause");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Logger.d("---------onRestart");
-    }
     public Toolbar initToolBar(String title) {
 
         Toolbar toolbar = initToolBar();

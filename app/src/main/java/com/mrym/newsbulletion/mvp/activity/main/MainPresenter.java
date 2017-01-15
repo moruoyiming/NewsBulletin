@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.widget.RadioGroup;
 
-import com.jaeger.library.StatusBarUtil;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.BasePresenter;
@@ -18,6 +17,7 @@ import com.mrym.newsbulletion.ui.fragment.HomeFragment;
 import com.mrym.newsbulletion.ui.fragment.MineFragment;
 import com.mrym.newsbulletion.ui.fragment.VideoFragment;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
+import com.mrym.newsbulletion.utils.statusbar.StatusBarUtil;
 
 import solid.ren.skinlibrary.loader.SkinManager;
 
