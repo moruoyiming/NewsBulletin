@@ -18,13 +18,13 @@ import solid.ren.skinlibrary.base.SkinBaseApplication;
 public class NewsApplication extends SkinBaseApplication {
 
     private static Context CONTEXT;
-    private RefWatcher refWatcher;
+//    private RefWatcher refWatcher;
 
     @Override
     public void onCreate() {
         super.onCreate();
         CONTEXT = this;
-        refWatcher = LeakCanary.install(this);
+//        refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
 

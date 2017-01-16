@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.Weather;
@@ -122,8 +123,9 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     @Override
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
-        profileName.setText(userBean.getNickName());
-        PicassoUtils.display(NewsApplication.getContext(), profileImage, userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
+        profileName.setText("游客");
+//        PicassoUtils.display(NewsApplication.getContext(), profileImage, , R.mipmap.touxiang, R.mipmap.touxiang);
+        Glide.with(getActivity()).load(R.mipmap.touxiang).crossFade().placeholder(R.mipmap.touxiang).into(profileImage);
     }
 
     @Override
