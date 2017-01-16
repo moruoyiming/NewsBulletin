@@ -99,7 +99,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mvpPresenter.initUserData();
-//        mvpPresenter.initMap();
+        mvpPresenter.initMap();
         //WIFI状态接收器
         wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
         IntentFilter filter = new IntentFilter();
@@ -162,16 +162,16 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.main_iv_placeholder:
-                ToastUtils.show("背景");
+//                ToastUtils.show("背景");
                 break;
             case R.id.profile_image:
-                ToastUtils.show("头像");
+//                ToastUtils.show("头像");
                 break;
             case R.id.fragment_mine_collect_r1:
-                ToastUtils.show("收藏");
+                ToastUtils.show("收藏功能正在玩命开发中！");
                 break;
             case R.id.fragment_mine_commont_r1:
-                ToastUtils.show("评论");
+                ToastUtils.show("评论功能正在玩命开发中！");
                 break;
             case R.id.fragment_mine_setting_r1:
                 Intent intent5 = new Intent(getActivity(), SettingActivity.class);
