@@ -7,25 +7,16 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bm.library.PhotoView;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsPhotoDetail;
-import com.mrym.newsbulletion.domain.modle.PhotoGirl;
-import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.ImageLoaderUtils;
-import com.mrym.newsbulletion.utils.ImmersedStatusbarUtils;
-import com.mrym.newsbulletion.utils.common.ToastUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 
