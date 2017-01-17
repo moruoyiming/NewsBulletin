@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="match_parent"     android:background="@mipmap/ai5852"
+
     android:layout_height="match_parent">
 
     <!--<Button-->
@@ -11,14 +12,14 @@
         <!--android:text="@string/login_skip" />-->
 
 
-    <ImageView
-        android:id="@+id/login_splash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitCenter"
-        android:layout_centerInParent="true"
-        android:background="@mipmap/google"
-       />
+    <!--<ImageView-->
+        <!--android:id="@+id/login_splash"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:layout_centerInParent="true"-->
+   <!---->
+       <!--/>-->
 
 
     <ImageView
@@ -27,6 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/icon"
+        android:background="@mipmap/icon1"
         android:scaleType="centerCrop" />
 </RelativeLayout>

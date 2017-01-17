@@ -99,7 +99,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mvpPresenter.initUserData();
-        mvpPresenter.initMap();
+//        mvpPresenter.initMap();
         //WIFI状态接收器
         wifiReceiver = new WifiStateReceiver(getActivity(), wifistate);
         IntentFilter filter = new IntentFilter();
@@ -124,8 +124,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
         profileName.setText("游客");
-//        PicassoUtils.display(NewsApplication.getContext(), profileImage, , R.mipmap.touxiang, R.mipmap.touxiang);
-        Glide.with(getActivity()).load(R.mipmap.touxiang).crossFade().placeholder(R.mipmap.touxiang).into(profileImage);
+        PicassoUtils.display(NewsApplication.getContext(), profileImage,userBean.getHeadImg() , R.mipmap.touxiang, R.mipmap.touxiang);
     }
 
     @Override

@@ -22,7 +22,7 @@ import com.mrym.newsbulletion.mvp.activity.splash.SplashView;
  */
 public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
     public String TAG = SplashActivity.class.getCanonicalName();
-    private ImageView loginSplash;
+//    private ImageView loginSplash;
     private Handler handler;
 
     @Override
@@ -42,7 +42,7 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         handler = new Handler();
-        loginSplash = (ImageView) findViewById(R.id.login_splash);
+//        loginSplash = (ImageView) findViewById(R.id.login_splash);
         mvpPresenter.showAdvertisement();
         mvpPresenter.gotoNext();
     }
@@ -79,7 +79,7 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
 //                .error(R.mipmap.shouyetu)
 //                .config(Bitmap.Config.RGB_565)
 //                .into(loginSplash);
-        Glide.with(this).load(R.mipmap.google).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(new GlideDrawableImageViewTarget(loginSplash, 1));
+//        Glide.with(this).load(R.mipmap.google).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(new GlideDrawableImageViewTarget(loginSplash, 1));
     }
 
     @Override
