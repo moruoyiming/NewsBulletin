@@ -111,5 +111,6 @@ dependencies {
     compile project(':xrecyclerviewlibrary')
     //多渠道打包 参考 https://github.com/mcxiaoke/packer-ng-plugin
     compile 'com.mcxiaoke.gradle:packer-helper:1.0.8'
+    compile 'com.github.hackware1993:MagicIndicator:1.5.0'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.7.6'
 }

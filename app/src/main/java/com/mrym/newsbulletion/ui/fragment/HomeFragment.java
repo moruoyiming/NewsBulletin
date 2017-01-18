@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -28,6 +29,17 @@ import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.squareup.leakcanary.RefWatcher;
 
+import net.lucode.hackware.magicindicator.MagicIndicator;
+import net.lucode.hackware.magicindicator.ViewPagerHelper;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPagerTitleView;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,17 +54,17 @@ import butterknife.ButterKnife;
 public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView {
 
     private static final String TAG = "HomeFragment";
-    @Bind(R.id.tab)
-    FrameLayout tab;
     @Bind(R.id.header)
     LinearLayout header;
     @Bind(R.id.viewpager)
     ViewPager viewpager;
+    @Bind(R.id.magic_indicator)
+    MagicIndicator magicIndicator;
     private BaseFragmentAdapter fragmentAdapter;
     private List<String> channelNames;
     private List<Fragment> mNewsFragmentList;
     private ChanelChangeReceiver chanelChangeReceiver;
-    private  SmartTabLayout viewPagerTab;
+    private CommonNavigatorAdapter commonNavigatorAdapter;
     @Override
     protected HomePresenter createPresenter() {
         return new HomePresenter(this);
@@ -69,8 +81,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         dynamicAddView(header, "background", R.color.primary_dark);
-        tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator, tab, false));
-        viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
         channelNames = new ArrayList<>();
         mNewsFragmentList = new ArrayList<>();
         List<ChannelSelected> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();
@@ -83,7 +93,37 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         fragmentAdapter.setmTitles(channelNames);
         viewpager.setOffscreenPageLimit(1);
         viewpager.setAdapter(fragmentAdapter);
-        viewPagerTab.setViewPager(viewpager);
+        CommonNavigator commonNavigator = new CommonNavigator(getActivity());
+        commonNavigatorAdapter=new CommonNavigatorAdapter() {
+
+            @Override
+            public int getCount() {
+                return channelNames == null ? 0 : channelNames.size();
+            }
+
+            @Override
+            public IPagerTitleView getTitleView(Context context, final int index) {
+                ClipPagerTitleView clipPagerTitleView = new ClipPagerTitleView(context);
+                clipPagerTitleView.setText(channelNames.get(index));
+                clipPagerTitleView.setTextColor(Color.parseColor("#f2c4c4"));
+                clipPagerTitleView.setClipColor(Color.WHITE);
+                clipPagerTitleView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        viewpager.setCurrentItem(index);
+                    }
+                });
+                return clipPagerTitleView;
+            }
+
+            @Override
+            public IPagerIndicator getIndicator(Context context) {
+                return null;
+            }
+        };
+        commonNavigator.setAdapter(commonNavigatorAdapter);
+        magicIndicator.setNavigator(commonNavigator);
+        ViewPagerHelper.bind(magicIndicator, viewpager);
         chanelChangeReceiver=new ChanelChangeReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(GlobalVariable.CHANELCHANGERECEIVER);
@@ -146,7 +186,8 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
                 }
                 fragmentAdapter.setFragmentList(mNewsFragmentList);
                 fragmentAdapter.setmTitles(channelNames);
-                viewPagerTab.setViewPager(viewpager);
+                commonNavigatorAdapter.notifyDataSetChanged();
+                ViewPagerHelper.bind(magicIndicator, viewpager);
             }
 
         }
