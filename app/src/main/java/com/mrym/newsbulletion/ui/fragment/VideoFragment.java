@@ -1,5 +1,7 @@
 package com.mrym.newsbulletion.ui.fragment;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -22,6 +24,14 @@ import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.squareup.leakcanary.RefWatcher;
 
+import net.lucode.hackware.magicindicator.MagicIndicator;
+import net.lucode.hackware.magicindicator.ViewPagerHelper;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPagerTitleView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,13 +44,15 @@ import butterknife.ButterKnife;
  * Github: https://github.com/moruoyiming
  */
 public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoView {
-    @Bind(R.id.tab2)
-    FrameLayout tab2;
+    @Bind(R.id.magic_indicator2)
+    MagicIndicator magicIndicator;
     @Bind(R.id.viewpager2)
     ViewPager viewpager2;
     @Bind(R.id.l1)
     LinearLayout l1;
     private BaseFragmentAdapter fragmentAdapter;
+    private CommonNavigatorAdapter commonNavigatorAdapter;
+    private List<String> channelNames;
     @Override
     protected VideoPresenter createPresenter() {
         return new VideoPresenter(this);
@@ -56,11 +68,8 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        StatusBarCompat.setStatusBarColor(getActivity(), R.color.primary_dark);
         dynamicAddView(l1, "background", R.color.primary_dark);
-        tab2.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_smart_indicator2, tab2, false));
-        SmartTabLayout viewPagerTab = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab2);
-        List<String> channelNames = new ArrayList<>();
+        channelNames = new ArrayList<>();
         List<VideoChannelTable> videoChannelTableList = VideosChannelTableManager.loadVideosChannelsMine();
         List<Fragment> mNewsFragmentList = new ArrayList<>();
         for (int i = 0; i < videoChannelTableList.size(); i++) {
@@ -71,7 +80,37 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
         fragmentAdapter.setFragmentList(mNewsFragmentList);
         fragmentAdapter.setmTitles(channelNames);
         viewpager2.setAdapter(fragmentAdapter);
-        viewPagerTab.setViewPager(viewpager2);
+        CommonNavigator commonNavigator = new CommonNavigator(getActivity());
+        commonNavigatorAdapter=new CommonNavigatorAdapter() {
+
+            @Override
+            public int getCount() {
+                return channelNames == null ? 0 : channelNames.size();
+            }
+
+            @Override
+            public IPagerTitleView getTitleView(Context context, final int index) {
+                ClipPagerTitleView clipPagerTitleView = new ClipPagerTitleView(context);
+                clipPagerTitleView.setText(channelNames.get(index));
+                clipPagerTitleView.setTextColor(Color.parseColor("#f2c4c4"));
+                clipPagerTitleView.setClipColor(Color.WHITE);
+                clipPagerTitleView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        viewpager2.setCurrentItem(index);
+                    }
+                });
+                return clipPagerTitleView;
+            }
+
+            @Override
+            public IPagerIndicator getIndicator(Context context) {
+                return null;
+            }
+        };
+        commonNavigator.setAdapter(commonNavigatorAdapter);
+        magicIndicator.setNavigator(commonNavigator);
+        ViewPagerHelper.bind(magicIndicator, viewpager2);
     }
 
     private VideosFragment createListFragments(VideoChannelTable videoChannelTable) {
@@ -99,7 +138,6 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        tab2=null;
         viewpager2=null;
         fragmentAdapter=null;
         mvpPresenter=null;

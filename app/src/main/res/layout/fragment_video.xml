@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/tab2"
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/magic_indicator2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="48dp" />
 
     </LinearLayout>
 
