@@ -60,22 +60,5 @@ public class BaseFragment extends SkinBaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        onUnsubscribe();
-    }
-
-    private CompositeSubscription mCompositeSubscription;
-
-    public void onUnsubscribe() {
-        //取消注册，以避免内存泄露
-        if (mCompositeSubscription != null) {
-            mCompositeSubscription.unsubscribe();
-        }
-    }
-
-    public void addSubscription(Subscription subscription) {
-//        if (mCompositeSubscription == null) {
-        mCompositeSubscription = new CompositeSubscription();
-//        }
-        mCompositeSubscription.add(subscription);
     }
 }

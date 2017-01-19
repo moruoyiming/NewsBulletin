@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.Weather;

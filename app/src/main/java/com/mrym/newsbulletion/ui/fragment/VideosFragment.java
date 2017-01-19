@@ -3,24 +3,19 @@ package com.mrym.newsbulletion.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
 import com.mrym.newsbulletion.adapter.VideosAdapter;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
 import com.mrym.newsbulletion.mvp.fragment.videos.VideosPresenter;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +85,6 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
         mViedeos=null;
         categoryList=null;
         mvpPresenter=null;
-//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-//        refWatcher.watch(this);
         JCVideoPlayer.releaseAllVideos();
     }
 

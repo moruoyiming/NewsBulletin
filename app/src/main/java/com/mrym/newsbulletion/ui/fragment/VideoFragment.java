@@ -8,10 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
 import com.mrym.newsbulletion.db.other.VideosChannelTableManager;
@@ -21,8 +19,6 @@ import com.mrym.newsbulletion.domain.modle.VideoData;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoPresenter;
 import com.mrym.newsbulletion.mvp.fragment.video.VideoView;
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.squareup.leakcanary.RefWatcher;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -141,8 +137,6 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
         viewpager2=null;
         fragmentAdapter=null;
         mvpPresenter=null;
-//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 }

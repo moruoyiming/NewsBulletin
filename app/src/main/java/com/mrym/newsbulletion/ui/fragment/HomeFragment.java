@@ -13,10 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
-import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseFragmentAdapter;
 import com.mrym.newsbulletion.db.entity.ChannelSelected;
@@ -26,8 +24,6 @@ import com.mrym.newsbulletion.domain.modle.HomeOrderBean;
 import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.home.HomePresenter;
 import com.mrym.newsbulletion.mvp.fragment.home.HomeView;
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.squareup.leakcanary.RefWatcher;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -35,10 +31,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigat
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPagerTitleView;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,8 +148,6 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         getActivity().unregisterReceiver(chanelChangeReceiver);
         chanelChangeReceiver=null;
         mvpPresenter=null;
-//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 

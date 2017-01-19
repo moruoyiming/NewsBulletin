@@ -9,10 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
-import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.adapter.BaseRecyclerViewAdapter;
 import com.mrym.newsbulletion.adapter.NewsAdapter;
@@ -23,9 +21,7 @@ import com.mrym.newsbulletion.mvp.MvpFragment;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryPresenter;
 import com.mrym.newsbulletion.mvp.fragment.category.GateGoryView;
 import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
-import com.mrym.newsbulletion.ui.activity.PushMsgActivity;
 import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +29,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
-import jp.wasabeef.recyclerview.animators.FadeInAnimator;
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
 /**
  * Created by Jian on 2016/9/14.
@@ -53,7 +46,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     private BaseRecyclerViewAdapter.onInternalClickListener onInternalClickListener, picOnInternalClickListener;
     private String mNewsId;
     private String mNewsType;
-
 
     @Override
     protected GateGoryPresenter createPresenter() {
@@ -152,7 +144,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
 
             }
         };
-//        newsAdapter.setOnInViewClickListener(R.id.item_video_center, onInternalClickListener);
         newsAdapter.setOnInViewClickListener(R.id.item_smallpic_center, onInternalClickListener);
         newsAdapter.setOnInViewClickListener(R.id.item_bigpic_center, onInternalClickListener);
         newsAdapter.setOnInViewClickListener(R.id.item_two_center, picOnInternalClickListener);
@@ -235,8 +226,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         onInternalClickListener = null;
         newsAdapter = null;
         picOnInternalClickListener = null;
-//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 }

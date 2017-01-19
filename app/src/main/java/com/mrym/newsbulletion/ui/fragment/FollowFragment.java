@@ -40,9 +40,6 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     private List<PhotoGirl> mPhotogirls;
     private PhotoGirlsAdapter mPhotoAdapter;
     private BaseRecyclerViewAdapter.onInternalClickListener onPhotoGirlsClick;
-//    private ArrayList<String> images;
-//    private String[] titles;
-
     @Override
     protected FollowPresenter createPresenter() {
         return new FollowPresenter(this);
@@ -61,31 +58,6 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
         mPhotogirls = new ArrayList<>();
         mPhotoAdapter = new PhotoGirlsAdapter(mPhotogirls, getActivity());
         girlsList.setAdapter(new ScaleInAnimationAdapter(mPhotoAdapter));
-//        images = new ArrayList<>();
-//        images.add("http://f.hiphotos.baidu.com/news/q%3D100/sign=c0c87a1c7af082022b92953f7bfafb8a/4d086e061d950a7b6f8bd0fb03d162d9f2d3c957.jpg");
-//        images.add("http://d.hiphotos.baidu.com/news/q%3D100/sign=ca91accda844ad3428bf8387e0a30c08/35a85edf8db1cb1312e63233d454564e92584b06.jpg");
-//        titles = new String[]{"习近平出席亚太峰会并发表主旨演讲", "习近平出席亚太咨询理事会代表对话会"};
-//        View view = View.inflate(getActivity(), R.layout.fragment_banner, null);
-//        Banner banner = (Banner) view.findViewById(R.id.banner);
-//        //设置banner样式
-//        banner.setBannerStyle(BannerConfig.NUM_INDICATOR_TITLE);
-//        //设置图片加载器
-//        banner.setImageLoader(new GlideImageLoader());
-//        //设置图片集合
-//        banner.setImages(images);
-//        //设置banner动画效果
-//        banner.setBannerAnimation(Transformer.DepthPage);
-//        //设置标题集合（当banner样式有显示title时）
-//        banner.setBannerTitles(Arrays.asList(titles));
-//        //设置自动轮播，默认为true
-//        banner.isAutoPlay(true);
-//        //设置轮播时间
-//        banner.setDelayTime(3500);
-//        //设置指示器位置（当banner模式中有指示器时）
-//        banner.setIndicatorGravity(BannerConfig.CENTER);
-//        //banner设置方法全部调用完毕时最后调用
-//        banner.start();
-//        girlsList.addHeaderView(view);
         girlsList.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         girlsList.setEmptyView(View.inflate(getContext(), R.layout.item_empty_view, null));
         girlsList.setRefreshProgressStyle(ProgressStyle.BallBeat);
@@ -141,8 +113,6 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
         mvpPresenter=null;
         onPhotoGirlsClick=null;
         girlsList=null;
-//        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
-//        refWatcher.watch(this);
         ButterKnife.unbind(this);
     }
 
