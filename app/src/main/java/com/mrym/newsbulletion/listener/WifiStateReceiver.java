@@ -8,8 +8,6 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.widget.ImageView;
 
-import com.mrym.newsbulletion.utils.common.ToastUtils;
-
 /**
  * Created by Jian on 2016/10/09.
  * Email: 798774875@qq.com
