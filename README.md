@@ -17,7 +17,7 @@
 ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-17-13-33-18-815_com.mrym.newsb.jpg)
 
 
-!应用下载地址[download] (https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk?raw=true)
+应用下载地址![download] (https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk?raw=true)
 
 
 ### License
@@ -25,9 +25,10 @@
 * 感谢 [MeiZhi](https://github.com/drakeet/Meizhi)
 * 感谢 [ThemeSkinning](https://github.com/burgessjp/ThemeSkinning)
 * 感谢 [GankWithZhihu](https://github.com/Werb/GankWithZhihu) 部分Readme copy GankWithZhihu 的  因为我比较懒.哈哈哈~~
-* 项目中用到的 api 所有权归 知乎，gank.io，好奇心日报所有.
+* 项目中用到的 api 所有权归gank.io , 163 所有.
 * 同时也感谢其他开源控件,开源工具的作者.在这小弟就不一一列举了.感谢他们无私的奉献.(掌声!!!)
 
 ### Contact Me
-* Email: 798774875@qq.com
+* QQ: 798774875
+* Email: moruoyiming123@gmail.com
 * GitHub: [moruoyiming](https://github.com/moruoyiming)
