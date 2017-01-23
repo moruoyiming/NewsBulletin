@@ -10,7 +10,6 @@
 * 使用 开源jcvideoplayer 视频播放项目
 
 * GitHub 项目地址 : [https://github.com/moruoyiming/NewsBulletin](https://github.com/moruoyiming/NewsBulletin)
-
 ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-23-22-07-26-795_com.mrym.newsb.png)
 
 ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-23-22-08-20-762_com.mrym.newsb.png)
