@@ -17,13 +17,13 @@
 ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-17-13-33-18-815_com.mrym.newsb.jpg)
 
 
-应用下载地址![download] (https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk?raw=true)
+下载地址1:[download](https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk?raw=true)
 
 
 ### License
 * 感谢 [gank.io](http://gank.io/api)
 * 感谢 [MeiZhi](https://github.com/drakeet/Meizhi)
-* 感谢 [ThemeSkinning](https://github.com/burgessjp/ThemeSkinning)
+* 感谢 [GanHuoIO](https://github.com/burgessjp/GanHuoIO) (部分功能,及换肤参考这里 )
 * 感谢 [GankWithZhihu](https://github.com/Werb/GankWithZhihu) 部分Readme copy GankWithZhihu 的  因为我比较懒.哈哈哈~~
 * 项目中用到的 api 所有权归gank.io , 163 所有.
 * 同时也感谢其他开源控件,开源工具的作者.在这小弟就不一一列举了.感谢他们无私的奉献.(掌声!!!)
