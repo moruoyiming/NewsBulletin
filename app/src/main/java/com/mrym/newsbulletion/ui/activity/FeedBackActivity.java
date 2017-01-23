@@ -60,6 +60,7 @@ public class FeedBackActivity extends MvpActivity<FeedBackPresenter> implements 
         setContentView(R.layout.activity_feedback);
         ButterKnife.bind(this);
         initView();
+//        what the  fuck
     }
     public void initView(){
         dynamicAddView(header, "background", R.color.primary_dark);
