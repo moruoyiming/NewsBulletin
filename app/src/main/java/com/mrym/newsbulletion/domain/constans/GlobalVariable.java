@@ -69,8 +69,4 @@ public class GlobalVariable {
     public static final int ACTION_LOAD_MORE = 2;
     // 头条TYPE
     public static final String HEADLINE_TYPE = "headline";
-    // 房产TYPE
-    public static final String HOUSE_TYPE = "house";
-    // 其他TYPE
-    public static final String OTHER_TYPE = "list";
 }

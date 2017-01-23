@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/leftback_toobar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></include>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dip"
+            android:background="@color/md_divider_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <EditText
+                android:id="@+id/et_feedback_mag"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="@null"
+                android:gravity="left|top"
+                android:hint="@string/input_text"
+                android:inputType="textMultiLine"
+                android:lineSpacingMultiplier="1.2"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/edit_text"
+                android:textColorHint="@color/edit_hint"
+                android:textSize="14sp" />
+
+            <HorizontalScrollView
+                android:id="@+id/img_horizscroll"
+                android:layout_width="match_parent"
+                android:layout_height="100dip"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <GridView
+                        android:id="@+id/img_grid"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:numColumns="auto_fit"
+                        android:stretchMode="spacingWidthUniform"></GridView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/release_num_tx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/surplus_count"
+                    android:textColor="@color/edit_hint"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
+            android:background="@mipmap/btn_bg"
+            android:gravity="center"
+            android:text="@string/my_feedback_btn"
+            android:textColor="@color/btn_tx"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</ScrollView>

@@ -52,6 +52,11 @@
     <color name="subscribe_item_drag_bg">#fff5f5f5</color>
     <color name="subscribe_item_drag_stroke_night">#ff464646</color>
     <color name="subscribe_item_drag_bg_night">#ff252525</color>
+
+    <color name="edit_text">#666666</color>
+    <color name="edit_hint">#a2a2a2</color>
+    <color name="btn_tx">#fe7ad3</color>
+
     <color name="alpha_05_white">#0DFFFFFF</color>
     <color name="alpha_10_white">#1AFFFFFF</color>
     <color name="alpha_15_white">#26FFFFFF</color>

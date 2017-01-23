@@ -69,6 +69,10 @@
     <string name="net_error">网络访问错误，请稍后再试</string>
     <string name="empty">还没有数据哦</string>
     <string name="no_net">网络不可用,请检查你的网络</string>
+    <string name="feedback">反馈</string>
+    <string name="input_text">请输入文本</string>
+    <string name="surplus_count">0/500字</string>
+    <string name="my_feedback_btn">提交反馈</string>
     <string name="news">新闻</string>
     <string name="web_view">WebView</string>
     <string name="browser">用浏览器打开</string>
