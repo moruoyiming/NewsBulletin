@@ -22,7 +22,7 @@
 ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-17-13-33-18-815_com.mrym.newsb.jpg)
 
 
-![file] (https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk)
+![file] (https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk?raw=true)
 
 
 ### License
