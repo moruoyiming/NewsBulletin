@@ -3,11 +3,12 @@
 本项目纯属技术练习,如涉及版权及侵权行为,请及时联系我.
 本项目部分功能参考其他开源项目.
 
-* 项目基于 MVP + RxJava + Retrofit
-* 基于 MVP 模式构建应用
-* 运用 RecyclerView 加载了多种复杂布局
-* 使用 XRecyclerview 实现下拉上推功能
-* 使用 开源jcvideoplayer 视频播放项目
+* 基于 MVP + RxJava + Retrofit
+* MVP模式构建应用
+* RecyclerView 加载复杂布局
+* 实现下拉上推功能
+* 视频播放功能
+* 更换皮肤功能
 
 * GitHub 项目地址 : [https://github.com/moruoyiming/NewsBulletin](https://github.com/moruoyiming/NewsBulletin)
 
@@ -22,6 +23,7 @@
 ### License
 * 感谢 [gank.io](http://gank.io/api)
 * 感谢 [MeiZhi](https://github.com/drakeet/Meizhi)
+* 感谢 [ThemeSkinning](https://github.com/burgessjp/ThemeSkinning)
 * 感谢 [GankWithZhihu](https://github.com/Werb/GankWithZhihu) 部分Readme copy GankWithZhihu 的  因为我比较懒.哈哈哈~~
 * 项目中用到的 api 所有权归 知乎，gank.io，好奇心日报所有.
 * 同时也感谢其他开源控件,开源工具的作者.在这小弟就不一一列举了.感谢他们无私的奉献.(掌声!!!)
