@@ -27,13 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/base5dp"
+        android:layout_below="@+id/item_singlepush_pushtime"
         card_view:cardCornerRadius="4dp">
 
         <LinearLayout
             android:id="@+id/item_singlepush_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/item_singlepush_pushtime"
             android:orientation="vertical"
             android:padding="10dp">
 

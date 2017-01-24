@@ -114,6 +114,7 @@ public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> impl
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         if(webView!=null){
             webView.removeAllViews();
             webView.destroy();

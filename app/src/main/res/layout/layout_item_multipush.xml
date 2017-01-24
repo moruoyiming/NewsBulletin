@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_below="@+id/item_multipush_pushtime"
         android:layout_margin="@dimen/base5dp"
         card_view:cardCornerRadius="4dp">
 
@@ -33,7 +34,6 @@
             android:id="@+id/item_multipush_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/item_multipush_pushtime"
             android:orientation="vertical"
             android:padding="10dp">
 

@@ -154,4 +154,9 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
