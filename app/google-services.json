@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "834139978413",
+    "firebase_url": "https://newsbulletin-ecca4.firebaseio.com",
+    "project_id": "newsbulletin-ecca4",
+    "storage_bucket": "newsbulletin-ecca4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834139978413:android:b913d75da95c3183",
+        "android_client_info": {
+          "package_name": "com.mrym.newsbulletin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834139978413-hem0o4q6f842g16s38c1arijb7k861ve.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtBNYtnw34_qOuiBg57wQjiC0WFYPJ6Jw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

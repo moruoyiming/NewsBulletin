@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.ui.AppManager;
@@ -61,6 +62,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
         StatusBarCompat.translucentStatusBar(MainActivity.this, false);
         StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
         setContentView(R.layout.activity_main);
