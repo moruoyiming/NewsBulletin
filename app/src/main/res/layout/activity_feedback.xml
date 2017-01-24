@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp">
 
             <EditText
                 android:id="@+id/et_feedback_mag"
@@ -36,7 +36,7 @@
                 android:hint="@string/input_text"
                 android:inputType="textMultiLine"
                 android:lineSpacingMultiplier="1.2"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:scrollbars="vertical"
                 android:textColor="@color/edit_text"
                 android:textColorHint="@color/edit_hint"
@@ -84,7 +84,7 @@
         <Button
             android:id="@+id/bt_feedback"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/base100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
             android:background="@mipmap/btn_bg"

@@ -2,6 +2,9 @@ package com.mrym.newsbulletion.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +51,10 @@ public class FeedBackActivity extends MvpActivity<FeedBackPresenter> implements 
     TextView releaseNumTx;
     @Bind(R.id.bt_feedback)
     Button btFeedback;
-
+    private CharSequence temp;
+    private int selectionStart;
+    private int selectionEnd;
+    private int num = 500;
     @Override
     protected FeedBackPresenter createPresenter() {
         return new FeedBackPresenter();
@@ -60,8 +66,9 @@ public class FeedBackActivity extends MvpActivity<FeedBackPresenter> implements 
         setContentView(R.layout.activity_feedback);
         ButterKnife.bind(this);
         initView();
-//        what the  fuck
     }
+
+
     public void initView(){
         dynamicAddView(header, "background", R.color.primary_dark);
         leftBackTitle.setText("反馈");
@@ -71,8 +78,37 @@ public class FeedBackActivity extends MvpActivity<FeedBackPresenter> implements 
                 finish();
             }
         });
+        etFeedbackMag.addTextChangedListener(textWatcher.get());
     }
+    private final ThreadLocal<TextWatcher> textWatcher = new ThreadLocal<TextWatcher>() {
+        @Override
+        protected TextWatcher initialValue() {
+            return new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    temp = s;
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    releaseNumTx.setText(temp.length() + "/500");
+                    selectionStart = etFeedbackMag.getSelectionStart();
+                    selectionEnd = etFeedbackMag.getSelectionEnd();
+                    if (temp.length() > num) {
+                        editable.delete(selectionStart - 1, selectionEnd);
+                        int tempSelection = selectionEnd;
+                        etFeedbackMag.setText(editable);
+                        etFeedbackMag.setSelection(tempSelection);// 设置光标在最后
+                    }
+                }
+            };
+        }
+    };
     @Override
     protected String getTag() {
         return null;
