@@ -17,7 +17,7 @@
 ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-56-39-663_com.mrym.newsb.png)  ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-56-26-524_com.mrym.newsb.png)
 
 
-下载地址1:[download](https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk?raw=true)
+下载地址:[download](https://github.com/moruoyiming/NewsBulletin/blob/master/app/app-release.apk?raw=true)
 
 
 ### License
