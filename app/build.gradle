@@ -9,7 +9,7 @@ android {
     defaultConfig {
         //默认的 applicationId,一般与 AndroidManifest.xml 文件 package属性相同
         applicationId "com.mrym.newsbulletin"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -116,7 +116,7 @@ dependencies {
     compile 'com.android.support:support-v4:+'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
-    compile 'com.android.support:multidex:'
+//    compile 'com.android.support:multidex:'
     compile project(':supertextviewlib')
     compile project(':jcvideoplayer')
     compile project(':cordovalib')
