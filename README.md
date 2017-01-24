@@ -12,9 +12,9 @@
 
 * GitHub 项目地址 : [https://github.com/moruoyiming/NewsBulletin](https://github.com/moruoyiming/NewsBulletin)
 
-![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-23-22-07-26-795_com.mrym.newsb.png)  ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-23-22-08-20-762_com.mrym.newsb.png)
-![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-17-13-01-48-820_com.mrym.newsb.jpg)  ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-17-13-00-11-722_com.mrym.newsb.jpg)
-![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-17-13-33-18-815_com.mrym.newsb.jpg)
+![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-55-48-516_com.mrym.newsb.png)  ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-56-10-356_com.mrym.newsb.png)
+![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-56-21-049_com.mrym.newsb.png)  ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-56-53-260_com.mrym.newsb.png)
+![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-56-39-663_com.mrym.newsb.png)  ![image](https://github.com/moruoyiming/NewsBulletin/blob/master/pics/Screenshot_2017-01-24-14-56-26-524_com.mrym.newsb.png)
 
 
 下载地址1:[download](https://github.com/moruoyiming/NewsBulletin/blob/master/apps/app-release.apk?raw=true)
