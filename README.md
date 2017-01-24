@@ -3,12 +3,12 @@
 本项目纯属技术练习,如涉及版权及侵权行为,请及时联系我.
 本项目部分功能参考其他开源项目.
 
-* 基于 MVP + RxJava + Retrofit
-* MVP模式构建应用
-* RecyclerView 加载复杂布局
-* 实现下拉上推功能
-* 视频播放功能
-* 更换皮肤功能
+# 主要功能:
+ * 基于 MVP + RxJava + Retrofit
+ * RecyclerView 加载复杂布局
+ * 实现下拉上推功能
+ * 视频播放功能
+ * 更换皮肤功能
 
 * GitHub 项目地址 : [https://github.com/moruoyiming/NewsBulletin](https://github.com/moruoyiming/NewsBulletin)
 
