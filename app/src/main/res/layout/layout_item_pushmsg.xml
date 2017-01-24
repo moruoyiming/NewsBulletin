@@ -1,8 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
+
 
     <LinearLayout
         android:id="@+id/layout_item_pushmsg_l1"
@@ -28,8 +29,8 @@
             android:id="@+id/layout_item_pushmsg_pic"
             android:layout_width="60.0dip"
             android:layout_height="60.0dip"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
     </LinearLayout>
+
 
 </RelativeLayout>
