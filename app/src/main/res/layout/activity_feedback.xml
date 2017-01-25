@@ -84,10 +84,9 @@
         <Button
             android:id="@+id/bt_feedback"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/base100dp"
+            android:layout_height="@dimen/base60dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
-            android:background="@mipmap/btn_bg"
             android:gravity="center"
             android:text="@string/my_feedback_btn"
             android:textColor="@color/btn_tx"
