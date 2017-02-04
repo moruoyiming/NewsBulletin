@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.allen.library.SuperTextView;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.setting.SettingPresenter;
@@ -15,6 +16,8 @@ import com.mrym.newsbulletion.mvp.activity.setting.SettingView;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.Bind;
+import butterknife.OnClick;
+
 /**
  * Created by Jian on 2016/8/25.
  * Email: 798774875@qq.com
@@ -28,10 +31,13 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
     TextView mTitle;
     @Bind(R.id.header)
     LinearLayout header;
+    @Bind(R.id.activity_setting_feedback)
+    SuperTextView feddback;
+
     protected void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_setting);
-        StatusBarCompat.translucentStatusBar(SettingActivity.this,true);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setting);
+        StatusBarCompat.translucentStatusBar(SettingActivity.this, true);
         dynamicAddView(header, "background", R.color.primary_dark);
         mTitle.setText("设置");
         back.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +46,17 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
                 finish();
             }
         });
+    }
+
+    @OnClick({R.id.activity_setting_feedback})
+    public void onClick(View view) {
+        switch (view.getId()) {
+           case R.id.activity_setting_feedback:
+               Intent feedback = new Intent(this, FeedBackActivity.class);
+              startActivity(feedback);
+            break;
+
+        }
     }
 
     @Override
@@ -61,6 +78,7 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
         Intent intent = new Intent(mContext, SettingActivity.class);
         mContext.startActivity(intent);
     }
+
     @Override
     public void showLoading(String message) {
 

@@ -60,6 +60,7 @@
                 stv:cUseRipple="true" />
 
             <com.allen.library.SuperTextView
+                android:id="@+id/activity_setting_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"

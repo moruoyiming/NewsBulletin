@@ -167,11 +167,11 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
 //                ToastUtils.show("头像");
                 break;
             case R.id.fragment_mine_collect_r1:
-                ToastUtils.show("收藏功能正在玩命开发中！");
+                ToastUtils.show("功能正在玩命开发中！");
                 break;
             case R.id.fragment_mine_commont_r1:
-                Intent feedback = new Intent(getActivity(), FeedBackActivity.class);
-                getActivity().startActivity(feedback);
+                ToastUtils.show("功能正在玩命开发中！");
+
                 break;
             case R.id.fragment_mine_setting_r1:
                 Intent intent5 = new Intent(getActivity(), SettingActivity.class);
