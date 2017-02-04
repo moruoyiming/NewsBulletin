@@ -83,7 +83,7 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             }
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_ONE_PIC:
-                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
@@ -91,12 +91,14 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     PicassoUtils.display(mContext, hd.getmSinglePushImage(), newsSummary.getImgsrc());
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
-                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
-                    if (newsSummary.getAds() != null && newsSummary.getAds().size() > 0) {
-                        PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc());
-                    } else {
-                        PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
+                    if (newsSummary.getAds() != null && newsSummary.getImgextra() != null) {
+                        if (newsSummary.getAds().size() > 0) {
+                            PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc());
+                        } else if (newsSummary.getImgextra().size() > 0) {
+                            PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
+                        }
                     }
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
                     PushMsgAdapter adapter = new PushMsgAdapter(mContext, newsSummary.getAds());
@@ -104,7 +106,7 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     adapter.setOnInViewClickListener(R.id.layout_item_pushmsg_l1, onInternalClickListener);
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
-                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
                     PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
@@ -113,7 +115,7 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     adapter2.setOnInViewClickListener(R.id.layout_item_pushmsg_l1, onInternalClickListener);
                     break;
                 case GlobalVariable.ITEM_OTHER:
-                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
+                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));

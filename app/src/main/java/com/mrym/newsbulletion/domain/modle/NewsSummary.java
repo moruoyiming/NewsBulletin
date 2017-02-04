@@ -19,6 +19,9 @@ package com.mrym.newsbulletion.domain.modle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +30,7 @@ import java.util.List;
  * Created by xsf
  * on 2016.06.13:05
  */
-public class NewsSummary implements Parcelable {
+public class NewsSummary  implements MultiItemEntity {
     private String postid;
     private boolean hasCover;
     private int hasHead;
@@ -311,6 +314,25 @@ public class NewsSummary implements Parcelable {
                 '}';
     }
 
+    @Override
+    public int getItemType() {
+        if ("photoset".equals(getSkipType())) {
+            if (getImgextra() != null && getImgextra().size() > 0) {
+                return GlobalVariable.ITEM_TWO_PIC;
+            } else if (getAds() != null && getAds().size() > 0) {
+                return GlobalVariable.ITEM_TWO_PIC;
+            } else {
+                return GlobalVariable.ITEM_ONE_PIC;
+            }
+        } else if ("special".equals(getSkipType())) {
+            return GlobalVariable.ITEM_BIGPIC;
+        } else if (1 == getHasImg()) {
+            return GlobalVariable.ITEM_OTHER;
+        } else {
+            return GlobalVariable.ITEM_ONE_PIC;
+        }
+    }
+
     public static class AdsBean {
         private String title;
         private String tag;
@@ -389,44 +411,6 @@ public class NewsSummary implements Parcelable {
         }
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.postid);
-        dest.writeByte(hasCover ? (byte) 1 : (byte) 0);
-        dest.writeInt(this.hasHead);
-        dest.writeInt(this.replyCount);
-        dest.writeInt(this.hasImg);
-        dest.writeString(this.digest);
-        dest.writeByte(hasIcon ? (byte) 1 : (byte) 0);
-        dest.writeString(this.docid);
-        dest.writeString(this.title);
-        dest.writeString(this.ltitle);
-        dest.writeInt(this.order);
-        dest.writeInt(this.priority);
-        dest.writeString(this.lmodify);
-        dest.writeString(this.boardid);
-        dest.writeString(this.photosetID);
-        dest.writeString(this.template);
-        dest.writeInt(this.votecount);
-        dest.writeString(this.skipID);
-        dest.writeString(this.alias);
-        dest.writeString(this.skipType);
-        dest.writeString(this.cid);
-        dest.writeInt(this.hasAD);
-        dest.writeString(this.source);
-        dest.writeString(this.ename);
-        dest.writeString(this.imgsrc);
-        dest.writeString(this.tname);
-        dest.writeString(this.ptime);
-        dest.writeList(this.ads);
-        dest.writeList(this.imgextra);
-    }
-
     public NewsSummary() {
     }
 
@@ -464,15 +448,4 @@ public class NewsSummary implements Parcelable {
         in.readList(this.imgextra, ImgextraBean.class.getClassLoader());
     }
 
-    public static final Creator<NewsSummary> CREATOR = new Creator<NewsSummary>() {
-        @Override
-        public NewsSummary createFromParcel(Parcel source) {
-            return new NewsSummary(source);
-        }
-
-        @Override
-        public NewsSummary[] newArray(int size) {
-            return new NewsSummary[size];
-        }
-    };
 }
