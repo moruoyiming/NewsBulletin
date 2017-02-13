@@ -58,8 +58,7 @@ buildscript {
     dependencies {
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
         classpath 'com.droidtitan:lint-cleaner-plugin:0.3.0'
-        // Add this line
-        classpath 'com.google.gms:google-services:3.0.0'
+
     }
 }
 greendao {
@@ -126,6 +125,5 @@ dependencies {
     compile 'com.github.hackware1993:MagicIndicator:1.5.0'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.7.6'
     compile 'com.google.firebase:firebase-core:9.6.1'
-    compile 'com.google.firebase:firebase-crash:9.6.1'
 
 }

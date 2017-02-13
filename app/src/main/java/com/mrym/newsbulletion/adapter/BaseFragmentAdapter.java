@@ -3,6 +3,7 @@ package com.mrym.newsbulletion.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 
 import com.mrym.newsbulletion.utils.common.CollectionUtils;
@@ -10,7 +11,7 @@ import com.mrym.newsbulletion.utils.common.CollectionUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseFragmentAdapter extends FragmentPagerAdapter {
+public class BaseFragmentAdapter extends FragmentStatePagerAdapter {
 
     List<Fragment> fragmentList = new ArrayList<Fragment>();
     private List<String> mTitles;
