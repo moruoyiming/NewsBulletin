@@ -75,7 +75,7 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
                 switchActionAndLoadData(GlobalVariable.ACTION_LOAD_MORE);
             }
         });
-        categoryList.setRefreshing(true);
+        categoryList.refresh();
     }
 
     @Override

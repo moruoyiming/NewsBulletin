@@ -74,7 +74,7 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
                 switchActionAndLoadData(GlobalVariable.ACTION_LOAD_MORE);
             }
         });
-        girlsList.setRefreshing(true);
+        girlsList.refresh();
         onPhotoGirlsClick = new BaseRecyclerViewAdapter.onInternalClickListener<PhotoGirl>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, PhotoGirl values) {

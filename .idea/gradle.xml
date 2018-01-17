@@ -10,10 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/cordovalib" />
             <option value="$PROJECT_DIR$/jcvideoplayer" />
+            <option value="$PROJECT_DIR$/jsbridge" />
             <option value="$PROJECT_DIR$/supertextviewlib" />
-            <option value="$PROJECT_DIR$/xrecyclerviewlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -88,7 +88,7 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
                 switchActionAndLoadData(GlobalVariable.ACTION_LOAD_MORE);
             }
         });
-        categoryList.setRefreshing(true);
+        categoryList.refresh();
         onInternalClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {

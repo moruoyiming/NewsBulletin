@@ -98,7 +98,7 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
                 switchActionAndLoadData(GlobalVariable.ACTION_LOAD_MORE);
             }
         });
-        mPushXRecyclerView.setRefreshing(true);
+        mPushXRecyclerView.refresh();
         onSinglepushClickListener = new BaseRecyclerViewAdapter.onInternalClickListener<NewsSummary>() {
             @Override
             public void OnClickListener(View parentV, View v, Integer position, NewsSummary values) {

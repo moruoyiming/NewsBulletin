@@ -3,14 +3,14 @@ apply plugin: 'org.greenrobot.greendao'//greendao插件
 apply plugin: 'com.droidtitan.lintcleaner'
 apply plugin: 'com.google.gms.google-services'
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
     //默认配置,所有 productFlavors 都会继承 defaultConfig 中配置的属性
     defaultConfig {
         //默认的 applicationId,一般与 AndroidManifest.xml 文件 package属性相同
         applicationId "com.mrym.newsbulletin"
-        minSdkVersion 21
-        targetSdkVersion 23
+        minSdkVersion 17
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -115,15 +115,13 @@ dependencies {
     compile 'com.android.support:support-v4:+'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
-//    compile 'com.android.support:multidex:'
+    //    compile 'com.android.support:multidex:'
     compile project(':supertextviewlib')
     compile project(':jcvideoplayer')
-    compile project(':cordovalib')
-    compile project(':xrecyclerviewlibrary')
     //多渠道打包 参考 https://github.com/mcxiaoke/packer-ng-plugin
     compile 'com.mcxiaoke.gradle:packer-helper:1.0.8'
     compile 'com.github.hackware1993:MagicIndicator:1.5.0'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.7.6'
     compile 'com.google.firebase:firebase-core:9.6.1'
-
+    compile 'com.jcodecraeer:xrecyclerview:1.5.8'
 }
