@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/base5dp"
+    android:layout_margin="@dimen/base10pt"
     card_view:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/base10dp"
+        android:layout_margin="@dimen/base20pt"
         android:foreground="?android:attr/selectableItemBackground">
 
         <RelativeLayout
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="110dip"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/base2dp">
+            android:layout_margin="@dimen/base4pt">
 
             <TextView
                 android:id="@+id/item_basic_title"
@@ -38,17 +38,17 @@
                 <ImageView
                     android:id="@+id/item_two_im1"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/base100dp"
-                    android:layout_margin="@dimen/base1dp"
+                    android:layout_height="@dimen/base200pt"
+                    android:layout_margin="@dimen/base2pt"
                     android:layout_weight="1"
                     android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/item_two_im2"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/base100dp"
+                    android:layout_height="@dimen/base200pt"
                     android:layout_weight="1"
-                    android:layout_margin="@dimen/base1dp"
+                    android:layout_margin="@dimen/base2pt"
                     android:scaleType="centerCrop" />
 
 
@@ -60,13 +60,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/item_two_center"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/base2dp"
+            android:layout_marginTop="@dimen/base2pt"
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/item_basic_autherhead"
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base20dp"
+                android:layout_width="@dimen/base40pt"
+                android:layout_height="@dimen/base40pt"
                 android:layout_gravity="center_vertical" />
 
             <TextView
@@ -74,8 +74,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/base5dp"
-                android:layout_marginRight="@dimen/base5dp"
+                android:layout_marginLeft="@dimen/base10pt"
+                android:layout_marginRight="@dimen/base10pt"
                 android:textSize="10sp" />
 
             <TextView
@@ -83,8 +83,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/base5dp"
-                android:layout_marginRight="@dimen/base5dp"
+                android:layout_marginLeft="@dimen/base10pt"
+                android:layout_marginRight="@dimen/base10pt"
                 android:textSize="10sp" />
 
             <TextView
@@ -92,8 +92,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/base5dp"
-                android:layout_marginRight="@dimen/base5dp"
+                android:layout_marginLeft="@dimen/base10pt"
+                android:layout_marginRight="@dimen/base10pt"
                 android:textSize="10sp" />
         </LinearLayout>
 

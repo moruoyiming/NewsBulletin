@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/base5dp"
+    android:layout_margin="@dimen/base10pt"
     card_view:cardCornerRadius="4dp">
 
     <RelativeLayout
@@ -19,12 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/base2dp">
+            android:layout_margin="@dimen/base2pt">
 
             <ImageView
                 android:id="@+id/item_smallpic_rightpic"
-                android:layout_width="@dimen/base130dp"
-                android:layout_height="@dimen/base100dp"
+                android:layout_width="@dimen/base260pt"
+                android:layout_height="@dimen/base180pt"
                 android:layout_alignParentRight="true"
                 android:scaleType="centerCrop" />
 
@@ -44,15 +44,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/base2dp"
+            android:layout_marginTop="@dimen/base4pt"
             android:layout_below="@id/item_smallpic_center"
             android:layout_gravity="center"
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/item_basic_autherhead"
-                android:layout_width="@dimen/base20dp"
-                android:layout_height="@dimen/base20dp"
+                android:layout_width="@dimen/base40pt"
+                android:layout_height="@dimen/base40pt"
                 android:layout_gravity="center_vertical" />
 
             <TextView
@@ -60,8 +60,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/base5dp"
-                android:layout_marginRight="@dimen/base5dp"
+                android:layout_marginLeft="@dimen/base5pt"
+                android:layout_marginRight="@dimen/base5pt"
                 android:textSize="10sp" />
 
             <TextView
@@ -69,8 +69,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/base5dp"
-                android:layout_marginRight="@dimen/base5dp"
+                android:layout_marginLeft="@dimen/base10pt"
+                android:layout_marginRight="@dimen/base10pt"
                 android:textSize="10sp" />
 
             <TextView
@@ -78,8 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/base5dp"
-                android:layout_marginRight="@dimen/base5dp"
+                android:layout_marginLeft="@dimen/base10pt"
+                android:layout_marginRight="@dimen/base10pt"
                 android:textSize="10sp" />
         </LinearLayout>
 

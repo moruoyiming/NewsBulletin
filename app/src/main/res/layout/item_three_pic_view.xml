@@ -9,8 +9,8 @@
     <RelativeLayout
         android:id="@+id/item_three_center"
         android:layout_width="match_parent"
-        android:layout_height="110dip"
-        android:layout_margin="@dimen/base2dp"
+        android:layout_height="@dimen/base220pt"
+        android:layout_margin="@dimen/base4pt"
         android:layout_gravity="center">
 
         <TextView
@@ -30,26 +30,26 @@
             <ImageView
                 android:id="@+id/item_three_im1"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/base100dp"
+                android:layout_height="@dimen/base200pt"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
-                android:layout_margin="@dimen/base2dp"
+                android:layout_margin="@dimen/base4pt"
                 />
 
             <ImageView
                 android:id="@+id/item_three_im2"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/base100dp"
+                android:layout_height="@dimen/base200pt"
                 android:scaleType="centerCrop"
-                android:layout_margin="@dimen/base2dp"
+                android:layout_margin="@dimen/base4pt"
                 android:layout_weight="1"
                 />
 
             <ImageView
                 android:id="@+id/item_three_im3"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/base100dp"
-                android:layout_margin="@dimen/base2dp"
+                android:layout_height="@dimen/base200pt"
+                android:layout_margin="@dimen/base4pt"
                 android:scaleType="centerCrop"
                 android:layout_weight="1"
                />
@@ -65,8 +65,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_basic_autherhead"
-            android:layout_width="@dimen/base20dp"
-            android:layout_height="@dimen/base20dp"
+            android:layout_width="@dimen/base40pt"
+            android:layout_height="@dimen/base40pt"
             android:layout_gravity="center_vertical" />
 
         <TextView
@@ -74,8 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base5dp"
-            android:layout_marginRight="@dimen/base5dp"
+            android:layout_marginLeft="@dimen/base10pt"
+            android:layout_marginRight="@dimen/base10pt"
             android:textSize="10sp" />
 
         <TextView
@@ -83,8 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base5dp"
-            android:layout_marginRight="@dimen/base5dp"
+            android:layout_marginLeft="@dimen/base10pt"
+            android:layout_marginRight="@dimen/base10pt"
             android:textSize="10sp" />
 
         <TextView
@@ -92,8 +92,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/base5dp"
-            android:layout_marginRight="@dimen/base5dp"
+            android:layout_marginLeft="@dimen/base10pt"
+            android:layout_marginRight="@dimen/base10pt"
             android:textSize="10sp" />
     </LinearLayout>
 
