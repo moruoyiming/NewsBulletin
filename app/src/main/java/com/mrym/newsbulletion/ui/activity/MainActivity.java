@@ -61,7 +61,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
         StatusBarCompat.translucentStatusBar(MainActivity.this, false);
         StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
         setContentView(R.layout.activity_main);

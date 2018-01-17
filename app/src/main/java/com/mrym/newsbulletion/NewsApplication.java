@@ -6,6 +6,7 @@ import android.content.Context;
 import com.mcxiaoke.packer.helper.PackerNg;
 import com.mrym.newsbulletion.db.GreenDaoManager;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.utils.RudenessScreenHelper;
 import com.mrym.newsbulletion.utils.common.PrefUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -27,7 +28,7 @@ public class NewsApplication extends SkinBaseApplication {
 //        refWatcher = LeakCanary.install(this);
         GreenDaoManager.getInstance();
         initDb();
-
+        new RudenessScreenHelper(this, 750).activate();
     }
 
 
