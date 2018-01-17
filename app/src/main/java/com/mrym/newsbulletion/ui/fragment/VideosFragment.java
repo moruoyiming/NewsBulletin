@@ -20,7 +20,7 @@ import com.mrym.newsbulletion.mvp.fragment.videos.VideosPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
@@ -29,30 +29,27 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class VideosFragment extends MvpFragment<VideosPresenter> implements VideoView{
-    @Bind(R.id.category_list)
+public class VideosFragment extends MvpFragment<VideosPresenter> implements VideoView {
+    @BindView(R.id.category_list)
     XRecyclerView categoryList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
     private VideosAdapter videosAdapter;
     private List<VideoData> mViedeos;
     private String mVideoType = null;
+
     @Override
     protected VideosPresenter createPresenter() {
         return new VideosPresenter(this);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = View.inflate(getActivity(), R.layout.fragment_category, null);
-        ButterKnife.bind(this, root);
-        return root;
+    protected int getLayoutId() {
+        return R.layout.fragment_category;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void initView() {
         mViedeos = new ArrayList<>();
         videosAdapter = new VideosAdapter(mViedeos, getActivity());
         categoryList.setAdapter(videosAdapter);
@@ -78,13 +75,14 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
         categoryList.refresh();
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         mViedeos.clear();
-        mViedeos=null;
-        categoryList=null;
-        mvpPresenter=null;
+        mViedeos = null;
+        categoryList = null;
+        mvpPresenter = null;
         JCVideoPlayer.releaseAllVideos();
     }
 
@@ -93,6 +91,7 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
     }
+
     public void switchActionAndLoadData(int action) {
         mCurrentAction = action;
         switch (mCurrentAction) {
@@ -107,6 +106,7 @@ public class VideosFragment extends MvpFragment<VideosPresenter> implements Vide
                 break;
         }
     }
+
     @Override
     public void loadingError(String errormsg) {
 

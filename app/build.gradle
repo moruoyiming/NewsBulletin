@@ -83,8 +83,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'net.lingala.zip4j:zip4j:1.3.2'
     compile 'org.xutils:xutils:3.3.22'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:cardview-v7:23.2.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.android.support:cardview-v7:27.0.2'
     compile 'com.afollestad.material-dialogs:core:0.8.6.1'
     //Retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -92,14 +92,14 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     //RxAndroid
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.8'
+    compile 'io.reactivex:rxjava:1.2.1'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-    compile 'com.google.code.gson:gson:2.7'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     //imageloader
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.bumptech.glide:glide:3.8.0'
     //customview
     compile 'com.solid.skin:skinlibrary:1.3.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
@@ -121,7 +121,7 @@ dependencies {
     //多渠道打包 参考 https://github.com/mcxiaoke/packer-ng-plugin
     compile 'com.mcxiaoke.gradle:packer-helper:1.0.8'
     compile 'com.github.hackware1993:MagicIndicator:1.5.0'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.7.6'
-    compile 'com.google.firebase:firebase-core:9.6.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.jcodecraeer:xrecyclerview:1.5.8'
 }

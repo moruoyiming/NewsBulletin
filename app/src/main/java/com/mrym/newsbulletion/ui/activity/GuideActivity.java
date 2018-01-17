@@ -16,7 +16,7 @@ import com.mrym.newsbulletion.utils.common.UIUtils;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -27,11 +27,11 @@ import butterknife.OnClick;
  */
 public class GuideActivity extends Activity {
     private static final String TAG = GuideActivity.class.getCanonicalName();
-    @Bind(R.id.guide_vp_pager)
+    @BindView(R.id.guide_vp_pager)
     ViewPager mPager;
-    @Bind(R.id.guide_ll_points)
+    @BindView(R.id.guide_ll_points)
     LinearLayout llPoints;
-    @Bind(R.id.guide_v_point_red)
+    @BindView(R.id.guide_v_point_red)
     View pointRed;
     ArrayList<ImageView> imageViews;
     int[] guideIds;
@@ -40,7 +40,6 @@ public class GuideActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
-        ButterKnife.bind(this);
         initData();
         mPager.setAdapter(new GuidePagerAdapter());
         mPager.setOnPageChangeListener(new GuidePagerChangeListener());

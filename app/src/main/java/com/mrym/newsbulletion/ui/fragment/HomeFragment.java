@@ -36,7 +36,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPa
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -47,32 +47,30 @@ import butterknife.ButterKnife;
 public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView {
 
     private static final String TAG = "HomeFragment";
-    @Bind(R.id.header)
+    @BindView(R.id.header)
     LinearLayout header;
-    @Bind(R.id.viewpager)
+    @BindView(R.id.viewpager)
     ViewPager viewpager;
-    @Bind(R.id.magic_indicator)
+    @BindView(R.id.magic_indicator)
     MagicIndicator magicIndicator;
     private BaseFragmentAdapter fragmentAdapter;
     private List<String> channelNames;
     private List<Fragment> mNewsFragmentList;
     private ChanelChangeReceiver chanelChangeReceiver;
     private CommonNavigatorAdapter commonNavigatorAdapter;
+
     @Override
     protected HomePresenter createPresenter() {
         return new HomePresenter(this);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = View.inflate(getActivity(), R.layout.fragment_home, null);
-        ButterKnife.bind(this, root);
-        return root;
+    protected int getLayoutId() {
+        return R.layout.fragment_home;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void initView() {
         dynamicAddView(header, "background", R.color.primary_dark);
         channelNames = new ArrayList<>();
         mNewsFragmentList = new ArrayList<>();
@@ -87,7 +85,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         viewpager.setOffscreenPageLimit(1);
         viewpager.setAdapter(fragmentAdapter);
         CommonNavigator commonNavigator = new CommonNavigator(getActivity());
-        commonNavigatorAdapter=new CommonNavigatorAdapter() {
+        commonNavigatorAdapter = new CommonNavigatorAdapter() {
 
             @Override
             public int getCount() {
@@ -117,11 +115,12 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         commonNavigator.setAdapter(commonNavigatorAdapter);
         magicIndicator.setNavigator(commonNavigator);
         ViewPagerHelper.bind(magicIndicator, viewpager);
-        chanelChangeReceiver=new ChanelChangeReceiver();
+        chanelChangeReceiver = new ChanelChangeReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(GlobalVariable.CHANELCHANGERECEIVER);
         getActivity().registerReceiver(chanelChangeReceiver, filter);
     }
+
 
     private GateGoryFragment createListFragments(ChannelSelected homeCateGory) {
         GateGoryFragment fragment = new GateGoryFragment();
@@ -143,12 +142,11 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
         super.onDestroyView();
         channelNames.clear();
         mNewsFragmentList.clear();
-        channelNames=null;
-        mNewsFragmentList=null;
+        channelNames = null;
+        mNewsFragmentList = null;
         getActivity().unregisterReceiver(chanelChangeReceiver);
-        chanelChangeReceiver=null;
-        mvpPresenter=null;
-        ButterKnife.unbind(this);
+        chanelChangeReceiver = null;
+        mvpPresenter = null;
     }
 
 
@@ -161,13 +159,14 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
     public void getFailure(int code, String msg) {
 
     }
+
     class ChanelChangeReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
             System.out.println(intent.getAction());
             if (intent.getAction().equals(GlobalVariable.CHANELCHANGERECEIVER)) {
-                Log.d("ChanelChangeReceiver","ChanelChangeReceiver 频道发生变化");
+                Log.d("ChanelChangeReceiver", "ChanelChangeReceiver 频道发生变化");
                 channelNames.clear();
                 mNewsFragmentList.clear();
                 List<ChannelSelected> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();

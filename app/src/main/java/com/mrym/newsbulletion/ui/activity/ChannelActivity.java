@@ -40,7 +40,8 @@ import com.mrym.newsbulletion.widget.OtherGridView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
+
 
 /**
  * 频道管理
@@ -75,28 +76,17 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
      * 是否在移动，由于这边是动画结束后才进行的数据更替，设置这个限制为了避免操作太频繁造成的数据错乱。
      */
     boolean isMove = false;
-    @Bind(R.id.leftback_toobar_l1)
+    @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
-    @Bind(R.id.left_back_title)
+    @BindView(R.id.left_back_title)
     TextView mTitle;
-    @Bind(R.id.header)
+    @BindView(R.id.header)
     LinearLayout header;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_channel);
-        StatusBarCompat.translucentStatusBar(ChannelActivity.this, true);
-        dynamicAddView(header, "background", R.color.primary_dark);
-        mTitle.setText("频道设置");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        initView();
-        initData();
+    protected int getLayoutId() {
+        return R.layout.activity_channel;
     }
 
     /**
@@ -124,12 +114,21 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
         mContext.startActivityForResult(intent, 5);
     }
 
-    /**
-     * 初始化布局
-     */
-    private void initView() {
+
+    @Override
+    public void initView() {
         userGridView = (DragGrid) findViewById(R.id.userGridView);
         otherGridView = (OtherGridView) findViewById(R.id.otherGridView);
+        StatusBarCompat.translucentStatusBar(ChannelActivity.this, true);
+        dynamicAddView(header, "background", R.color.primary_dark);
+        mTitle.setText("频道设置");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        initData();
     }
 
 
@@ -172,7 +171,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
                             ChannelunSelectedDao channelunSelectedDao = GreenDaoManager.getInstance().getSession().getChannelunSelectedDao();
                             channelunSelectedDao.insert(channelunSelected);
                         } catch (Exception e) {
-                            Log.i(TAG,"数据库操作失败");
+                            Log.i(TAG, "数据库操作失败");
                         }
                         new Handler().postDelayed(new Runnable() {
                             public void run() {
@@ -209,7 +208,7 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
                         ChannelunSelectedDao channelunSelectedDao = GreenDaoManager.getInstance().getSession().getChannelunSelectedDao();
                         channelunSelectedDao.delete(channelunSelected);
                     } catch (Exception e) {
-                        Log.i(TAG,"数据库操作失败");
+                        Log.i(TAG, "数据库操作失败");
                     }
                     userAdapter.addItem(channelSelected);
                     new Handler().postDelayed(new Runnable() {
@@ -331,18 +330,19 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
         iv.setImageBitmap(cache);
         return iv;
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mActivity=null;
-        userGridView=null;
-        otherGridView=null;
+        mActivity = null;
+        userGridView = null;
+        otherGridView = null;
         userChannelList.clear();
-        userChannelList=null;
+        userChannelList = null;
         otherChannelList.clear();
-        otherChannelList=null;
-        otherAdapter=null;
-        userAdapter=null;
+        otherChannelList = null;
+        otherAdapter = null;
+        userAdapter = null;
     }
 
     @Override

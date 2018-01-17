@@ -15,7 +15,7 @@ import com.mrym.newsbulletion.mvp.activity.skin.ChageSkinPresenter;
 import com.mrym.newsbulletion.mvp.activity.skin.SkinView;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by Jian on 2016/10/10.
@@ -25,23 +25,37 @@ import butterknife.Bind;
 public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implements SkinView {
     public static final String TAG = SkinChangeActivity.class.getCanonicalName();
     private MaterialDialog dialog;
-    @Bind(R.id.btn_from_not)
+    @BindView(R.id.btn_from_not)
     Button btnnot;
-    @Bind(R.id.btn_from_net)
+    @BindView(R.id.btn_from_net)
     Button skin;
-    @Bind(R.id.activity_changeskin_rc)
+    @BindView(R.id.activity_changeskin_rc)
     XRecyclerView mSkinGrid;
-    @Bind(R.id.header)
+    @BindView(R.id.header)
     LinearLayout header;
-    @Bind(R.id.leftback_toobar_l1)
+    @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
-    @Bind(R.id.left_back_title)
+    @BindView(R.id.left_back_title)
     TextView mTitle;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_changeskin);
-        StatusBarCompat.translucentStatusBar(SkinChangeActivity.this,true);
+    protected ChageSkinPresenter createPresenter() {
+        return new ChageSkinPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_changeskin;
+    }
+
+    @Override
+    protected void initView() {
+        StatusBarCompat.translucentStatusBar(SkinChangeActivity.this, true);
         dynamicAddView(header, "background", R.color.primary_dark);
         dialog = new MaterialDialog.Builder(SkinChangeActivity.this)
                 .title("换肤中")
@@ -58,7 +72,7 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        finish();
+                finish();
             }
         });
         skin.setOnClickListener(new View.OnClickListener() {
@@ -68,15 +82,6 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
             }
         });
 
-    }
-    @Override
-    protected ChageSkinPresenter createPresenter() {
-        return new ChageSkinPresenter(this);
-    }
-
-    @Override
-    protected String getTag() {
-        return TAG;
     }
 
     @Override
@@ -88,9 +93,9 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mvpPresenter=null;
+        mvpPresenter = null;
         dialog.dismiss();
-        dialog=null;
+        dialog = null;
     }
 
     @Override

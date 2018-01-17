@@ -15,7 +15,7 @@ import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.about.AboutPresenter;
 import com.mrym.newsbulletion.mvp.activity.about.AboutView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 
 /**
@@ -23,17 +23,31 @@ import butterknife.Bind;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class AboutActivity  extends MvpActivity<AboutPresenter> implements AboutView {
+public class AboutActivity extends MvpActivity<AboutPresenter> implements AboutView {
     public static String TAG = AboutActivity.class.getCanonicalName();
-    @Bind(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButton fab;
-    @Bind(R.id.leftback_toobar_l1)
+    @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
     private String mShareLink;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+    protected AboutPresenter createPresenter() {
+        return new AboutPresenter(this);
+    }
+
+    @Override
+    protected String getTag() {
+        return TAG;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_about;
+    }
+
+    @Override
+    protected void initView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             // Translucent status bar
@@ -64,20 +78,10 @@ public class AboutActivity  extends MvpActivity<AboutPresenter> implements About
     }
 
     @Override
-    protected AboutPresenter createPresenter() {
-        return new AboutPresenter(this);
-    }
-
-    @Override
-    protected String getTag() {
-        return TAG;
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
-        mActivity=null;
-        mvpPresenter=null;
-        back=null;
+        mActivity = null;
+        mvpPresenter = null;
+        back = null;
     }
 }

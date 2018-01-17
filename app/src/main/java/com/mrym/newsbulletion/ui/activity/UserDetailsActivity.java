@@ -23,6 +23,16 @@ public class UserDetailsActivity extends MvpActivity<DetailsPresenter> implement
     }
 
     @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
     public void returnOneNewsData(NewsDetail newsDetail) {
 
     }

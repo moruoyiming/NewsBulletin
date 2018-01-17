@@ -31,7 +31,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPa
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -40,30 +40,28 @@ import butterknife.ButterKnife;
  * Github: https://github.com/moruoyiming
  */
 public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoView {
-    @Bind(R.id.magic_indicator2)
+    @BindView(R.id.magic_indicator2)
     MagicIndicator magicIndicator;
-    @Bind(R.id.viewpager2)
+    @BindView(R.id.viewpager2)
     ViewPager viewpager2;
-    @Bind(R.id.l1)
+    @BindView(R.id.l1)
     LinearLayout l1;
     private BaseFragmentAdapter fragmentAdapter;
     private CommonNavigatorAdapter commonNavigatorAdapter;
     private List<String> channelNames;
+
     @Override
     protected VideoPresenter createPresenter() {
         return new VideoPresenter(this);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root =View.inflate(getActivity(), R.layout.fragment_video, null);
-        ButterKnife.bind(this, root);
-        return root;
+    protected int getLayoutId() {
+        return R.layout.fragment_video;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void initView() {
         dynamicAddView(l1, "background", R.color.primary_dark);
         channelNames = new ArrayList<>();
         List<VideoChannelTable> videoChannelTableList = VideosChannelTableManager.loadVideosChannelsMine();
@@ -77,7 +75,7 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
         fragmentAdapter.setmTitles(channelNames);
         viewpager2.setAdapter(fragmentAdapter);
         CommonNavigator commonNavigator = new CommonNavigator(getActivity());
-        commonNavigatorAdapter=new CommonNavigatorAdapter() {
+        commonNavigatorAdapter = new CommonNavigatorAdapter() {
 
             @Override
             public int getCount() {
@@ -131,12 +129,12 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
     public void loadComplete() {
 
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        viewpager2=null;
-        fragmentAdapter=null;
-        mvpPresenter=null;
-        ButterKnife.unbind(this);
+        viewpager2 = null;
+        fragmentAdapter = null;
+        mvpPresenter = null;
     }
 }

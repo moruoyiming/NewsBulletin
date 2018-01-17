@@ -22,7 +22,7 @@ import com.mrym.newsbulletion.ui.activity.PhotosDetailActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
@@ -33,28 +33,26 @@ import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
  */
 public class FollowFragment extends MvpFragment<FollowPresenter> implements FollowView {
 
-    @Bind(R.id.fragment_follow_r)
+    @BindView(R.id.fragment_follow_r)
     XRecyclerView girlsList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 1;
     private List<PhotoGirl> mPhotogirls;
     private PhotoGirlsAdapter mPhotoAdapter;
     private BaseRecyclerViewAdapter.onInternalClickListener onPhotoGirlsClick;
+
     @Override
     protected FollowPresenter createPresenter() {
         return new FollowPresenter(this);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_follow, null);
-        ButterKnife.bind(this, view);
-        return view;
+    protected int getLayoutId() {
+        return R.layout.fragment_follow;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void initView() {
         mPhotogirls = new ArrayList<>();
         mPhotoAdapter = new PhotoGirlsAdapter(mPhotogirls, getActivity());
         girlsList.setAdapter(new ScaleInAnimationAdapter(mPhotoAdapter));
@@ -89,6 +87,7 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
         mPhotoAdapter.setOnInViewClickListener(R.id.item_grils_im, onPhotoGirlsClick);
     }
 
+
     public void switchActionAndLoadData(int action) {
         mCurrentAction = action;
         switch (mCurrentAction) {
@@ -108,12 +107,11 @@ public class FollowFragment extends MvpFragment<FollowPresenter> implements Foll
     public void onDestroyView() {
         super.onDestroyView();
         mPhotogirls.clear();
-        mPhotogirls=null;
-        mPhotoAdapter=null;
-        mvpPresenter=null;
-        onPhotoGirlsClick=null;
-        girlsList=null;
-        ButterKnife.unbind(this);
+        mPhotogirls = null;
+        mPhotoAdapter = null;
+        mvpPresenter = null;
+        onPhotoGirlsClick = null;
+        girlsList = null;
     }
 
     @Override

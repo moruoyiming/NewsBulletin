@@ -26,7 +26,7 @@ import com.mrym.newsbulletion.ui.activity.ViewPagerActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
@@ -37,7 +37,7 @@ import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
  * Github: https://github.com/moruoyiming
  */
 public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements GateGoryView {
-    @Bind(R.id.category_list)
+    @BindView(R.id.category_list)
     XRecyclerView categoryList;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 0;
@@ -52,17 +52,13 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         return new GateGoryPresenter(this);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = View.inflate(getActivity(), R.layout.fragment_category, null);
-        ButterKnife.bind(this, root);
-        return root;
+    protected int getLayoutId() {
+        return R.layout.fragment_category;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void initView() {
         mNews = new ArrayList<>();
         newsAdapter = new NewsAdapter(mNews, getActivity());
         categoryList.setAdapter(newsAdapter);
@@ -151,12 +147,6 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (hidden) {
@@ -226,6 +216,5 @@ public class GateGoryFragment extends MvpFragment<GateGoryPresenter> implements 
         onInternalClickListener = null;
         newsAdapter = null;
         picOnInternalClickListener = null;
-        ButterKnife.unbind(this);
     }
 }

@@ -18,7 +18,7 @@ import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsPhotoDetail;
 import com.mrym.newsbulletion.utils.ImageLoaderUtils;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by Jian on 2016/10/07.
@@ -30,7 +30,7 @@ public class ViewPagerActivity extends Activity {
     private ViewPager mPager;
     private NewsPhotoDetail newsPhotoDetail;
     private boolean isfullTag = false;
-    @Bind(R.id.rl)
+    @BindView(R.id.rl)
     RelativeLayout r1;
     private LayoutInflater inflater;
     @Override

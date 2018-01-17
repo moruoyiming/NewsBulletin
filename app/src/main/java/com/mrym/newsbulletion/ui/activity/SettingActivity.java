@@ -15,7 +15,7 @@ import com.mrym.newsbulletion.mvp.activity.setting.SettingPresenter;
 import com.mrym.newsbulletion.mvp.activity.setting.SettingView;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -25,36 +25,22 @@ import butterknife.OnClick;
  */
 public class SettingActivity extends MvpActivity<SettingPresenter> implements SettingView {
     public static final String TAG = SettingActivity.class.getCanonicalName();
-    @Bind(R.id.leftback_toobar_l1)
+    @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
-    @Bind(R.id.left_back_title)
+    @BindView(R.id.left_back_title)
     TextView mTitle;
-    @Bind(R.id.header)
+    @BindView(R.id.header)
     LinearLayout header;
-    @Bind(R.id.activity_setting_feedback)
+    @BindView(R.id.activity_setting_feedback)
     SuperTextView feddback;
-
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting);
-        StatusBarCompat.translucentStatusBar(SettingActivity.this, true);
-        dynamicAddView(header, "background", R.color.primary_dark);
-        mTitle.setText("设置");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 
     @OnClick({R.id.activity_setting_feedback})
     public void onClick(View view) {
         switch (view.getId()) {
-           case R.id.activity_setting_feedback:
-               Intent feedback = new Intent(this, FeedBackActivity.class);
-              startActivity(feedback);
-            break;
+            case R.id.activity_setting_feedback:
+                Intent feedback = new Intent(this, FeedBackActivity.class);
+                startActivity(feedback);
+                break;
 
         }
     }
@@ -67,6 +53,24 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
     @Override
     protected String getTag() {
         return TAG;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_setting;
+    }
+
+    @Override
+    protected void initView() {
+        StatusBarCompat.translucentStatusBar(SettingActivity.this, true);
+        dynamicAddView(header, "background", R.color.primary_dark);
+        mTitle.setText("设置");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     /**

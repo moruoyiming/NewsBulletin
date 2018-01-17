@@ -21,40 +21,27 @@ import com.mrym.newsbulletion.mvp.activity.newsbrowser.NewsbrowserPresenter;
 import com.mrym.newsbulletion.mvp.activity.newsbrowser.NewsbrowserView;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
-import butterknife.Bind;
+import butterknife.BindView;
+
 /**
  * Created by Jian on 2016/8/25.
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> implements NewsbrowserView {
+public class NewsBrowserActivity extends MvpActivity<NewsbrowserPresenter> implements NewsbrowserView {
     public static final String TAG = NewsBrowserActivity.class.getCanonicalName();
-    @Bind(R.id.leftback_toobar_l1)
+    @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
-    @Bind(R.id.left_back_title)
+    @BindView(R.id.left_back_title)
     TextView mTitle;
-    @Bind(R.id.header)
+    @BindView(R.id.header)
     LinearLayout header;
-    @Bind(R.id.progress_bar)
+    @BindView(R.id.progress_bar)
     ProgressBar progressBar;
-    @Bind(R.id.web_view)
+    @BindView(R.id.web_view)
     WebView webView;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_news_browser);
-        StatusBarCompat.translucentStatusBar(NewsBrowserActivity.this,true);
-        dynamicAddView(header, "background", R.color.primary_dark);
-        mTitle.setText("新闻");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        initWebView();
-    }
-//    public static void startAction(Context context ,String link,String title){
+
+    //    public static void startAction(Context context ,String link,String title){
 //        Intent intent = new Intent(context, NewsBrowserActivity.class);
 //        intent.putExtra(GlobalVariable.NEWS_LINK,link);
 //        intent.putExtra(GlobalVariable.NEWS_TITLE,title);
@@ -113,15 +100,34 @@ public class NewsBrowserActivity  extends MvpActivity<NewsbrowserPresenter> impl
     }
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.act_news_browser;
+    }
+
+    @Override
+    protected void initView() {
+        StatusBarCompat.translucentStatusBar(NewsBrowserActivity.this, true);
+        dynamicAddView(header, "background", R.color.primary_dark);
+        mTitle.setText("新闻");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        initWebView();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(webView!=null){
+        if (webView != null) {
             webView.removeAllViews();
             webView.destroy();
         }
-        back=null;
-        progressBar=null;
-        mvpPresenter=null;
+        back = null;
+        progressBar = null;
+        mvpPresenter = null;
     }
 
     @Override

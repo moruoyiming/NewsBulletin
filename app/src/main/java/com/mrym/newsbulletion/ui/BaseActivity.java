@@ -2,7 +2,9 @@ package com.mrym.newsbulletion.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,32 +22,30 @@ import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.LoadingDialog;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 import solid.ren.skinlibrary.base.SkinBaseActivity;
 
-public class BaseActivity extends SkinBaseActivity {
+public abstract class BaseActivity extends SkinBaseActivity {
     public Activity mActivity;
     protected AccountTool tool;
+    private Unbinder mUnBinder;
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        super.setContentView(layoutResID);
-        ButterKnife.bind(this);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getLayoutId());
+        mUnBinder = ButterKnife.bind(this);
         AppManager.getAppManager().addActivity(this);
         mActivity = this;
         tool = AccountTool.getInstance();
+        initView();
     }
 
+    protected abstract int getLayoutId();
 
-    @Override
-    public void setContentView(View view) {
-        super.setContentView(view);
-        ButterKnife.bind(this);
-        AppManager.getAppManager().addActivity(this);
-        mActivity = this;
-        tool = AccountTool.getInstance();
-    }
+    protected abstract void initView();
 
     public AccountTool getAccountTool() {
         return tool;
@@ -55,23 +55,10 @@ public class BaseActivity extends SkinBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ButterKnife.unbind(this);
+        mUnBinder.unbind();
         AppManager.getAppManager().removeActivity(this);
 
     }
-    /**
-     * 着色状态栏（4.4以上系统有效）
-     */
-    protected void SetStatusBarColor(int color){
-        StatusBarCompat.setStatusBarColor(this,color);
-    }
-    /**
-     * 沉浸状态栏（4.4以上系统有效）
-     */
-    protected void SetTranslanteBar(){
-        StatusBarCompat.translucentStatusBar(this);
-    }
-
 
 
     public Toolbar initToolBar(String title) {

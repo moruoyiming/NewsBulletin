@@ -15,13 +15,14 @@ import android.widget.RelativeLayout;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.MyUtils;
 import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.SystemUiVisibilityUtil;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.PullBackLayout;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -31,45 +32,42 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class PhotosDetailActivity extends AppCompatActivity implements PullBackLayout.Callback {
+public class PhotosDetailActivity extends BaseActivity implements PullBackLayout.Callback {
 
 
-    @Bind(R.id.photo_touch_iv)
+    @BindView(R.id.photo_touch_iv)
     PhotoView photoTouchIv;
-    @Bind(R.id.pull_back_layout)
+    @BindView(R.id.pull_back_layout)
     PullBackLayout pullBackLayout;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.background)
+    @BindView(R.id.background)
     RelativeLayout background;
     private boolean mIsToolBarHidden;
     private boolean mIsStatusBarHidden;
     private ColorDrawable mBackground;
-    @Bind(R.id.leftback_toobar_l1)
+    @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
 
-    public static void startAction(Context context,String url){
+    public static void startAction(Context context, String url) {
         Intent intent = new Intent(context, PhotosDetailActivity.class);
-        intent.putExtra(GlobalVariable.PHOTO_DETAIL,url);
+        intent.putExtra(GlobalVariable.PHOTO_DETAIL, url);
         context.startActivity(intent);
     }
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected int getLayoutId() {
         StatusBarCompat.translucentStatusBar(this);
-        setContentView(R.layout.act_photo_detail);
-        ButterKnife.bind(this);
-        initView();
+        return R.layout.act_photo_detail;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ButterKnife.unbind(this);
     }
 
+    @Override
     public void initView() {
         pullBackLayout.setCallback(this);
         toolBarFadeIn();
@@ -95,7 +93,7 @@ public class PhotosDetailActivity extends AppCompatActivity implements PullBackL
 
     private void loadPhotoIv() {
         String url = getIntent().getStringExtra(GlobalVariable.PHOTO_DETAIL);
-        PicassoUtils.display(NewsApplication.getContext(),photoTouchIv,url);
+        PicassoUtils.display(NewsApplication.getContext(), photoTouchIv, url);
     }
 
     private void setPhotoViewClickEvent() {
@@ -154,6 +152,7 @@ public class PhotosDetailActivity extends AppCompatActivity implements PullBackL
         progress = Math.min(1f, progress * 3f);
         mBackground.setAlpha((int) (0xff/*255*/ * (1f - progress)));
     }
+
     @Override
     public void onPullCancel() {
         toolBarFadeIn();

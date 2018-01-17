@@ -23,38 +23,38 @@ import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by Jian on 2016/11/28.
  * //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
- //            ActivityOptions options = ActivityOptions
- //                    .makeSceneTransitionAnimation((Activity) mContext, view, GlobalVariable.TRANSITION_ANIMATION_NEWS_PHOTOS);
- //            mContext.startActivity(intent, options.toBundle());
- //        } else {
-
- //让新的Activity从一个小的范围扩大到全屏
- //            ActivityOptionsCompat options = ActivityOptionsCompat
- //                    .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
- //         ｝
+ * //            ActivityOptions options = ActivityOptions
+ * //                    .makeSceneTransitionAnimation((Activity) mContext, view, GlobalVariable.TRANSITION_ANIMATION_NEWS_PHOTOS);
+ * //            mContext.startActivity(intent, options.toBundle());
+ * //        } else {
+ * <p>
+ * //让新的Activity从一个小的范围扩大到全屏
+ * //            ActivityOptionsCompat options = ActivityOptionsCompat
+ * //                    .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
+ * //         ｝
  */
 
 public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushView {
     public static final String TAG = PushMsgActivity.class.getCanonicalName();
-    @Bind(R.id.activity_pushmsg_rc)
+    @BindView(R.id.activity_pushmsg_rc)
     XRecyclerView mPushXRecyclerView;
-    @Bind(R.id.left_back_title)
+    @BindView(R.id.left_back_title)
     TextView mTitle;
-    @Bind(R.id.leftback_toobar_l1)
+    @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
-    @Bind(R.id.header)
+    @BindView(R.id.header)
     LinearLayout header;
     protected int mCurrentAction = GlobalVariable.ACTION_REFRESH;
     protected int mCurrentPageIndex = 0;
     private int ccount = 10;
     private PushAdapter mPushAdapter;
     private List<NewsSummary> newsSummaries;
-    private BaseRecyclerViewAdapter.onInternalClickListener onSinglepushClickListener,onmultipushClickListener;
+    private BaseRecyclerViewAdapter.onInternalClickListener onSinglepushClickListener, onmultipushClickListener;
 
     @Override
     protected PushPresenter createPresenter() {
@@ -67,10 +67,13 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pushmsg);
-        StatusBarCompat.translucentStatusBar(PushMsgActivity.this,true);
+    protected int getLayoutId() {
+        return R.layout.activity_pushmsg;
+    }
+
+    @Override
+    protected void initView() {
+        StatusBarCompat.translucentStatusBar(PushMsgActivity.this, true);
         dynamicAddView(header, "background", R.color.primary_dark);
         mTitle.setText("消息推送");
         back.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +120,7 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
         mPushAdapter.setOnInViewClickListener(R.id.item_multipush_layout, onSinglepushClickListener);
     }
 
+
     public void switchActionAndLoadData(int action) {
         mCurrentAction = action;
         switch (mCurrentAction) {
@@ -131,6 +135,7 @@ public class PushMsgActivity extends MvpActivity<PushPresenter> implements PushV
                 break;
         }
     }
+
     @Override
     public void loadingError(String errormsg) {
 

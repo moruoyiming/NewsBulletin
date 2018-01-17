@@ -16,7 +16,7 @@ import com.mrym.newsbulletion.mvp.activity.login.LoginPresenter;
 import com.mrym.newsbulletion.mvp.activity.login.LoginView;
 import com.mrym.newsbulletion.widget.DialogView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.sharesdk.wechat.friends.Wechat;
@@ -28,11 +28,11 @@ import cn.sharesdk.wechat.friends.Wechat;
  */
 public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginView {
     public static final String TAG = LoginActivity.class.getCanonicalName();
-    @Bind(R.id.et_tel)
+    @BindView(R.id.et_tel)
     EditText etTel;
-    @Bind(R.id.bt_verification)
+    @BindView(R.id.bt_verification)
     Button btVerification;
-    @Bind(R.id.et_verification)
+    @BindView(R.id.et_verification)
     EditText etVerification;
     private Dialog loadingDialog;
 
@@ -47,10 +47,12 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+    protected int getLayoutId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected void initView() {
 
     }
 

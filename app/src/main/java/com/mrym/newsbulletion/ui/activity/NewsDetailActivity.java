@@ -1,8 +1,5 @@
 package com.mrym.newsbulletion.ui.activity;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,20 +8,15 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
@@ -33,12 +25,11 @@ import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsPresenter;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsView;
 import com.mrym.newsbulletion.utils.common.DateUtils;
-import com.squareup.leakcanary.RefWatcher;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
@@ -50,37 +41,30 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements DetailsView {
 
     public static final String TAG = NewsDetailActivity.class.getCanonicalName();
-    @Bind(R.id.news_detail_photo_iv)
+    @BindView(R.id.news_detail_photo_iv)
     ImageView newsDetailPhotoIv;
-    @Bind(R.id.mask_view)
+    @BindView(R.id.mask_view)
     View maskView;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.toolbar_layout)
+    @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout toolbarLayout;
-    @Bind(R.id.app_bar)
+    @BindView(R.id.app_bar)
     AppBarLayout appBar;
-    @Bind(R.id.news_detail_from_tv)
+    @BindView(R.id.news_detail_from_tv)
     TextView newsDetailFromTv;
-    @Bind(R.id.news_detail_body_tv)
+    @BindView(R.id.news_detail_body_tv)
     TextView newsDetailBodyTv;
-    @Bind(R.id.progress_bar)
+    @BindView(R.id.progress_bar)
     ProgressBar progressBar;
-    @Bind(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButton fab;
     private String postId;
     private String mNewsTitle;
     private String mShareLink;
 
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_news_detail);
-        initView();
-    }
-
     public void initView() {
         SetTranslanteBar();
         postId = getIntent().getStringExtra(GlobalVariable.NEWS_POST_ID);
@@ -102,9 +86,9 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
                 switch (item.getItemId()) {
                     case R.id.action_web_view:
                         Intent intent = new Intent(NewsDetailActivity.this, NewsBrowserActivity.class);
-                        intent.putExtra(GlobalVariable.NEWS_LINK,mShareLink);
-                        intent.putExtra(GlobalVariable.NEWS_TITLE,mNewsTitle);
-                       startActivity(intent);
+                        intent.putExtra(GlobalVariable.NEWS_LINK, mShareLink);
+                        intent.putExtra(GlobalVariable.NEWS_TITLE, mNewsTitle);
+                        startActivity(intent);
                         break;
                     case R.id.action_browser:
                         Intent intent2 = new Intent();
@@ -137,8 +121,6 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
     }
 
 
-
-
     private void showShare() {
         ShareSDK.initSDK(this);
         OnekeyShare oks = new OnekeyShare();
@@ -163,15 +145,16 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
         // 启动分享GUI
         oks.show(this);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mvpPresenter=null;
-        mShareLink=null;
-        maskView=null;
-        mActivity=null;
-        mNewsTitle=null;
-        toolbar=null;
+        mvpPresenter = null;
+        mShareLink = null;
+        maskView = null;
+        mActivity = null;
+        mNewsTitle = null;
+        toolbar = null;
 //        RefWatcher refWatcher = NewsApplication.getRefWatcher(NewsDetailActivity.this);
 //        refWatcher.watch(this);
     }
@@ -209,9 +192,9 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
 
 
     private void setNewsDetailBodyTv(final NewsDetail newsDetail, final String newsBody) {
-                        progressBar.setVisibility(View.GONE);
-                        fab.setVisibility(View.VISIBLE);
-                        setBody(newsDetail, newsBody);
+        progressBar.setVisibility(View.GONE);
+        fab.setVisibility(View.VISIBLE);
+        setBody(newsDetail, newsBody);
     }
 
     private void setBody(NewsDetail newsDetail, String newsBody) {
@@ -253,5 +236,10 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
     @Override
     protected String getTag() {
         return TAG;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.act_news_detail;
     }
 }
