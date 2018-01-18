@@ -4,11 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewsBulletin.iml" filepath="$PROJECT_DIR$/NewsBulletin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cordovalib/cordovalib.iml" filepath="$PROJECT_DIR$/cordovalib/cordovalib.iml" />
       <module fileurl="file://D:\Zhikang\3.Project\github2\NewsBulletin\cordovalib\cordovalib.iml" filepath="D:\Zhikang\3.Project\github2\NewsBulletin\cordovalib\cordovalib.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" filepath="$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jsbridge/jsbridge.iml" filepath="$PROJECT_DIR$/jsbridge/jsbridge.iml" />
       <module fileurl="file://$PROJECT_DIR$/supertextviewlib/supertextviewlib.iml" filepath="$PROJECT_DIR$/supertextviewlib/supertextviewlib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" filepath="$PROJECT_DIR$/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" />
       <module fileurl="file://D:\Zhikang\3.Project\github2\NewsBulletin\xrecyclerviewlibrary\xrecyclerviewlibrary.iml" filepath="D:\Zhikang\3.Project\github2\NewsBulletin\xrecyclerviewlibrary\xrecyclerviewlibrary.iml" />
     </modules>
   </component>
