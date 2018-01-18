@@ -1,1 +1,1 @@
-include ':app',  ':xrecyclerviewlibrary', ':jcvideoplayer', ':supertextviewlib', ':cordovalib'
+include ':app', ':jcvideoplayer', ':supertextviewlib', ':jsbridge'

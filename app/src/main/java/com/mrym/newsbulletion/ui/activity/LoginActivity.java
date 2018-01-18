@@ -2,7 +2,6 @@ package com.mrym.newsbulletion.ui.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,13 +10,12 @@ import android.widget.Toast;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.authenticator.account.AccountTool;
 import com.mrym.newsbulletion.domain.modle.UserBean;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.login.LoginPresenter;
 import com.mrym.newsbulletion.mvp.activity.login.LoginView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.widget.DialogView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import butterknife.BindView;
 import butterknife.OnClick;
 import cn.sharesdk.wechat.friends.Wechat;
 
@@ -26,13 +24,13 @@ import cn.sharesdk.wechat.friends.Wechat;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginView {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView {
     public static final String TAG = LoginActivity.class.getCanonicalName();
-    @Bind(R.id.et_tel)
+    @BindView(R.id.et_tel)
     EditText etTel;
-    @Bind(R.id.bt_verification)
+    @BindView(R.id.bt_verification)
     Button btVerification;
-    @Bind(R.id.et_verification)
+    @BindView(R.id.et_verification)
     EditText etVerification;
     private Dialog loadingDialog;
 
@@ -46,13 +44,6 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
         return TAG;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
-
-    }
 
     @OnClick({R.id.et_tel, R.id.bt_verification, R.id.et_verification, R.id.tv_agreement, R.id.bt_sure, R.id.tv_wx_login, R.id.tv_qq_login, R.id.tv_weibo_login})
     public void onClick(View view) {
@@ -86,7 +77,7 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
 
     @Override
     public void showLoading() {
-        loadingDialog = DialogView.createLoadingDialog(mActivity, "正在发送验证码，请稍候...", false);
+        loadingDialog = DialogView.createLoadingDialog(LoginActivity.this, "正在发送验证码，请稍候...", false);
         loadingDialog.show();
     }
 
@@ -97,7 +88,7 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
 
     @Override
     public void loginFailure(int code, String msg) {
-        Toast.makeText(mActivity.getApplicationContext(), "登陆失败!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, "登陆失败!", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -118,7 +109,7 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
 
     @Override
     public void showToast(String msg) {
-        Toast.makeText(mActivity.getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -133,6 +124,21 @@ public class LoginActivity extends MvpActivity<LoginPresenter> implements LoginV
         btVerification.setEnabled(true);
     }
 
+
+    @Override
+    protected int setLayoutResourceID() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    protected void setUpView() {
+
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
+    }
 
     @Override
     protected void onDestroy() {

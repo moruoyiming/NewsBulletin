@@ -3,7 +3,6 @@ package com.mrym.newsbulletion.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +15,7 @@ import android.widget.RadioGroup;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.ui.AppManager;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.ui.fragment.FollowFragment;
@@ -26,8 +26,7 @@ import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarUtil;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import butterknife.BindView;
 import solid.ren.skinlibrary.loader.SkinManager;
 
 /**
@@ -37,17 +36,7 @@ import solid.ren.skinlibrary.loader.SkinManager;
  */
 public class MainActivity extends BaseActivity {
     public static String TAG = MainActivity.class.getCanonicalName();
-    @Bind(R.id.fl_content)
-    FrameLayout flContent;
-    @Bind(R.id.rb_home)
-    RadioButton rbHome;
-    @Bind(R.id.rb_video)
-    RadioButton tabVideo;
-    @Bind(R.id.rb_follow)
-    RadioButton rbFollow;
-    @Bind(R.id.rb_mine)
-    RadioButton rbMine;
-    @Bind(R.id.rg_main)
+    @BindView(R.id.rg_main)
     RadioGroup rgMain;
     private long exitTime = 0;
     public static final String FRAGMENT_TAG_HOME = "FRAGMENT_TAG_HOME";
@@ -58,17 +47,6 @@ public class MainActivity extends BaseActivity {
     private FragmentManager fm;
     private boolean isFullScreen = false;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        StatusBarCompat.translucentStatusBar(MainActivity.this, false);
-        StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        createFragments(getSupportFragmentManager());
-        rgMain.setOnCheckedChangeListener(new RadioChangedListener());
-
-    }
 
     public void createFragments(FragmentManager fragmentManager) {
         this.fm = fragmentManager;
@@ -127,6 +105,34 @@ public class MainActivity extends BaseActivity {
         return context.getResources().getDimensionPixelSize(resourceId);
     }
 
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    protected String getTag() {
+        return null;
+    }
+
+    @Override
+    protected int setLayoutResourceID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void setUpView() {
+        StatusBarCompat.translucentStatusBar(MainActivity.this, false);
+        StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
+        createFragments(getSupportFragmentManager());
+        rgMain.setOnCheckedChangeListener(new RadioChangedListener());
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
+    }
+
     public class RadioChangedListener implements RadioGroup.OnCheckedChangeListener {
 
         @Override
@@ -159,7 +165,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         switch (resultCode) { //resultCode为回传的标记，我在B中回传的是RESULT_OK
             case 5:
                 Intent intent = new Intent();
@@ -172,21 +177,13 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-//        // 保存最后登录时间  --  7天未登录自动退出登录
-//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-//        sp.edit().putLong(GlobalVariable.LAST_LOGIN_TIME, SystemClock.currentThreadTimeMillis()).apply();
-    }
-
-    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime) > GlobalVariable.KEY_DOWN_TIME) {
                 ToastUtils.show(getString(R.string.twopress_finish));
                 exitTime = System.currentTimeMillis();
             } else {
-                AppManager.getAppManager().AppExit(MainActivity.this,false);
+                AppManager.getAppManager().AppExit(MainActivity.this, false);
                 finish();
                 System.exit(0);
             }

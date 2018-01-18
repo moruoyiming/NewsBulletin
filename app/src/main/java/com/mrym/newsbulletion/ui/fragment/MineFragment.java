@@ -33,7 +33,7 @@ import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.widget.DialogView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -45,43 +45,42 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class MineFragment extends MvpFragment<MinePresenter> implements MineView {
 
-    @Bind(R.id.main_iv_placeholder)
+    @BindView(R.id.main_iv_placeholder)
     ImageView mainIvPlaceholder;
-    @Bind(R.id.fragment_mine_setting)
+    @BindView(R.id.fragment_mine_setting)
     ImageView wifistate;
-    @Bind(R.id.profile_image)
+    @BindView(R.id.profile_image)
     CircleImageView profileImage;
-    @Bind(R.id.fragment_mine_collect_r1)
+    @BindView(R.id.fragment_mine_collect_r1)
     RelativeLayout fragmentMineCollectR1;
-    @Bind(R.id.fragment_mine_commont_r1)
+    @BindView(R.id.fragment_mine_commont_r1)
     RelativeLayout fragmentMineCommontR1;
-    @Bind(R.id.fragment_mine_setting_r1)
+    @BindView(R.id.fragment_mine_setting_r1)
     RelativeLayout fragmentMineSettingR1;
-    @Bind(R.id.mine_rl_message)
+    @BindView(R.id.mine_rl_message)
     RelativeLayout mineRlMessage;
-    @Bind(R.id.mine_rl_offline)
+    @BindView(R.id.mine_rl_offline)
     RelativeLayout mineRlOffline;
-    @Bind(R.id.mine_rl_skin)
+    @BindView(R.id.mine_rl_skin)
     RelativeLayout mineRlSkin;
-    @Bind(R.id.mine_rl_about)
+    @BindView(R.id.mine_rl_about)
     RelativeLayout mineRlAbout;
-    @Bind(R.id.profile_name)
+    @BindView(R.id.profile_name)
     TextView profileName;
+    @BindView(R.id.weather_icon)
+    ImageView weathericon;
+    @BindView(R.id.weather)
+    TextView mweather;
+    @BindView(R.id.city)
+    TextView city;
+    @BindView(R.id.district)
+    TextView district;
+    @BindView(R.id.week)
+    TextView week;
+    @BindView(R.id.temperature)
+    TextView temperature;
     private Dialog loadingDialog;
     private WifiStateReceiver wifiReceiver;
-    @Bind(R.id.weather_icon)
-    ImageView weathericon;
-    @Bind(R.id.weather)
-    TextView mweather;
-    @Bind(R.id.city)
-    TextView city;
-    @Bind(R.id.district)
-    TextView district;
-    @Bind(R.id.week)
-    TextView week;
-    @Bind(R.id.temperature)
-    TextView temperature;
-
 
     @Override
     protected MinePresenter createPresenter() {
@@ -89,15 +88,12 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mine, container, false);
-        ButterKnife.bind(this, view);
-        return view;
+    protected int getLayoutId() {
+        return R.layout.fragment_mine;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void initView() {
         mvpPresenter.initUserData();
 //        mvpPresenter.initMap();
         //WIFI状态接收器
@@ -108,6 +104,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
         filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
         getActivity().registerReceiver(wifiReceiver, filter);
     }
+
 
     @Override
     public void showLoading(String msg) {
@@ -124,7 +121,7 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
         profileName.setText("游客");
-        PicassoUtils.display(NewsApplication.getContext(), profileImage,userBean.getHeadImg() , R.mipmap.touxiang, R.mipmap.touxiang);
+        PicassoUtils.display(NewsApplication.getContext(), profileImage, userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
     }
 
     @Override
@@ -140,8 +137,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     }
 
     @Override
-    public void showWeather(Weather weather,String addres) {
-        city.setText( weather.getCity());
+    public void showWeather(Weather weather, String addres) {
+        city.setText(weather.getCity());
         mweather.setText(weather.getWeather());
         week.setText(weather.getWeek());
         district.setText(addres);
@@ -154,7 +151,6 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
 //        RefWatcher refWatcher = NewsApplication.getRefWatcher(getActivity());
 //        refWatcher.watch(this);
         getActivity().unregisterReceiver(wifiReceiver);
-        ButterKnife.unbind(this);
     }
 
     @OnClick({R.id.main_iv_placeholder, R.id.profile_image, R.id.fragment_mine_collect_r1, R.id.fragment_mine_commont_r1, R.id.fragment_mine_setting_r1, R.id.mine_rl_message, R.id.mine_rl_offline, R.id.mine_rl_skin, R.id.mine_rl_about})

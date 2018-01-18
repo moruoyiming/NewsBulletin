@@ -11,7 +11,6 @@ import com.mrym.newsbulletion.authenticator.account.AccountTool;
  * Github: https://github.com/moruoyiming
  */
 public interface SplashView {
-    AccountTool getAccountTool();
 
     void startMain();
 

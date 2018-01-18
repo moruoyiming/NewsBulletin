@@ -27,7 +27,6 @@
     <color name="color_55000000">#55000000</color>
     <color name="color_f4f4f4">#f4f4f4</color>
     <color name="color_d8d8d8">#d8d8d8</color>
-    <color name="color_353535">#353535</color>
     <color name="item_pressed">#f6f6f9</color>
     <color name="accent">#40C4FF</color>
     <color name="item_bg">#e0e4e7</color>
@@ -96,4 +95,31 @@
     <color name="alpha_85_black">#D9000000</color>
     <color name="alpha_90_black">#E6000000</color>
     <color name="alpha_95_black">#F2000000</color>
+
+    <color name="color_f7602b">#f7602b</color>
+    <color name="color_545454">#545454</color>
+    <color name="color_b5b5b5">#a5a5a5</color>
+    <color name="color_c8c8c8">#c8c8c8</color>
+    <color name="color_424242">#424242</color>
+    <color name="color_007fcf">#007fcf</color>
+    <color name="color_00418b">#00418b</color>
+    <color name="color_919191">#919191</color>
+    <color name="color_eeeeee">#EEEEEE</color>
+    <color name="color_ee652f">#ee652f</color>
+    <color name="color_353535">#353535</color>
+    <color name="color_a4a4a4">#a4a4a4</color>
+    <color name="color_1071ae">#1071ae</color>
+    <color name="color_7f7d7f">#7f7d7f</color>
+    <color name="color_e5054f">#e5054f</color>
+    <color name="color_8f8f8f">#8f8f8f</color>
+    <color name="color_202020">#99202020</color>
+    <color name="color_303030">#303030</color>
+    <color name="color_a3a3a3">#a3a3a3</color>
+    <color name="color_66bc5a">#66bc5a</color>
+    <color name="color_454545">#454545</color>
+    <color name="color_4c4c4c">#4c4c4c</color>
+    <color name="color_fb575e">#fb575e</color>
+    <color name="color_3e3e3e">#3e3e3e</color>
+    <color name="color_fe7171">#fe7171</color>
+
 </resources>
