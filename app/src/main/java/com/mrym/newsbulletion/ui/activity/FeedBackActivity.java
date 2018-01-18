@@ -1,10 +1,8 @@
 package com.mrym.newsbulletion.ui.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +14,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.feedback.FeedBackPresenter;
 import com.mrym.newsbulletion.mvp.activity.feedback.FeedBackView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 项目名称：SigmaClassBoard
@@ -30,7 +27,7 @@ import butterknife.ButterKnife;
  * 创建时间：2017/1/23 21:16
  * 修改备注：
  */
-public class FeedBackActivity extends MvpActivity<FeedBackPresenter> implements FeedBackView {
+public class FeedBackActivity extends BaseActivity<FeedBackPresenter> implements FeedBackView {
     @BindView(R.id.left_back_title)
     TextView leftBackTitle;
     @BindView(R.id.back)
@@ -97,14 +94,15 @@ public class FeedBackActivity extends MvpActivity<FeedBackPresenter> implements 
         return null;
     }
 
+
     @Override
-    protected int getLayoutId() {
+    protected int setLayoutResourceID() {
         return R.layout.activity_feedback;
     }
 
     @Override
-    protected void initView() {
-        dynamicAddView(header, "background", R.color.primary_dark);
+    protected void setUpView() {
+//        dynamicAddView(header, "background", R.color.primary_dark);
         leftBackTitle.setText("反馈");
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,5 +111,10 @@ public class FeedBackActivity extends MvpActivity<FeedBackPresenter> implements 
             }
         });
         etFeedbackMag.addTextChangedListener(textWatcher.get());
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
     }
 }

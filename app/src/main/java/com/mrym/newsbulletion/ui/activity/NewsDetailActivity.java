@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -21,9 +20,9 @@ import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsDetail;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsPresenter;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.common.DateUtils;
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +37,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements DetailsView {
+public class NewsDetailActivity extends BaseActivity<DetailsPresenter> implements DetailsView {
 
     public static final String TAG = NewsDetailActivity.class.getCanonicalName();
     @BindView(R.id.news_detail_photo_iv)
@@ -64,8 +63,38 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
     private String mShareLink;
 
 
+    private void showShare() {
+        ShareSDK.initSDK(this);
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间等使用
+        oks.setTitle(mNewsTitle);
+        // titleUrl是标题的网络链接，QQ和QQ空间等使用
+        oks.setTitleUrl(mShareLink);
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText(mNewsTitle);
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        // url仅在微信（包括好友和朋友圈）中使用
+        oks.setUrl(mShareLink);
+        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+        oks.setComment(mNewsTitle);
+        // site是分享此内容的网站名称，仅在QQ空间使用
+        oks.setSite(getString(R.string.app_name));
+        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+        oks.setSiteUrl(mShareLink);
+        // 启动分享GUI
+        oks.show(this);
+    }
+
     @Override
-    public void initView() {
+    protected int setLayoutResourceID() {
+        return R.layout.act_news_detail;
+    }
+
+    @Override
+    protected void setUpView() {
         SetTranslanteBar();
         postId = getIntent().getStringExtra(GlobalVariable.NEWS_POST_ID);
         mvpPresenter.getOneNewsDataRequest(postId);
@@ -120,30 +149,9 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
         });
     }
 
+    @Override
+    protected void destroyActivityBefore() {
 
-    private void showShare() {
-        ShareSDK.initSDK(this);
-        OnekeyShare oks = new OnekeyShare();
-        //关闭sso授权
-        oks.disableSSOWhenAuthorize();
-        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间等使用
-        oks.setTitle(mNewsTitle);
-        // titleUrl是标题的网络链接，QQ和QQ空间等使用
-        oks.setTitleUrl(mShareLink);
-        // text是分享文本，所有平台都需要这个字段
-        oks.setText(mNewsTitle);
-        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
-        // url仅在微信（包括好友和朋友圈）中使用
-        oks.setUrl(mShareLink);
-        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
-        oks.setComment(mNewsTitle);
-        // site是分享此内容的网站名称，仅在QQ空间使用
-        oks.setSite(getString(R.string.app_name));
-        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
-        oks.setSiteUrl(mShareLink);
-        // 启动分享GUI
-        oks.show(this);
     }
 
     @Override
@@ -152,7 +160,6 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
         mvpPresenter = null;
         mShareLink = null;
         maskView = null;
-        mActivity = null;
         mNewsTitle = null;
         toolbar = null;
 //        RefWatcher refWatcher = NewsApplication.getRefWatcher(NewsDetailActivity.this);
@@ -238,8 +245,5 @@ public class NewsDetailActivity extends MvpActivity<DetailsPresenter> implements
         return TAG;
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.act_news_detail;
-    }
+
 }

@@ -2,7 +2,6 @@ package com.mrym.newsbulletion.ui.activity;
 
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.view.Window;
@@ -11,9 +10,9 @@ import android.widget.RelativeLayout;
 
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.about.AboutPresenter;
 import com.mrym.newsbulletion.mvp.activity.about.AboutView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 
 import butterknife.BindView;
 
@@ -23,7 +22,7 @@ import butterknife.BindView;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class AboutActivity extends MvpActivity<AboutPresenter> implements AboutView {
+public class AboutActivity extends BaseActivity<AboutPresenter> implements AboutView {
     public static String TAG = AboutActivity.class.getCanonicalName();
     @BindView(R.id.fab)
     FloatingActionButton fab;
@@ -41,13 +40,14 @@ public class AboutActivity extends MvpActivity<AboutPresenter> implements AboutV
         return TAG;
     }
 
+
     @Override
-    protected int getLayoutId() {
+    protected int setLayoutResourceID() {
         return R.layout.activity_about;
     }
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             // Translucent status bar
@@ -78,9 +78,13 @@ public class AboutActivity extends MvpActivity<AboutPresenter> implements AboutV
     }
 
     @Override
+    protected void destroyActivityBefore() {
+
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        mActivity = null;
         mvpPresenter = null;
         back = null;
     }

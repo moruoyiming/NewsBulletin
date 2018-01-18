@@ -30,6 +30,7 @@ import com.mrym.newsbulletion.db.entity.ChannelunSelected;
 import com.mrym.newsbulletion.db.gen.ChannelSelectedDao;
 import com.mrym.newsbulletion.db.gen.ChannelunSelectedDao;
 import com.mrym.newsbulletion.db.other.NewsChannelTableManager;
+import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.DragAdapter;
@@ -83,12 +84,6 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
     @BindView(R.id.header)
     LinearLayout header;
 
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_channel;
-    }
-
     /**
      * 初始化数据
      */
@@ -114,22 +109,6 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
         mContext.startActivityForResult(intent, 5);
     }
 
-
-    @Override
-    public void initView() {
-        userGridView = (DragGrid) findViewById(R.id.userGridView);
-        otherGridView = (OtherGridView) findViewById(R.id.otherGridView);
-        StatusBarCompat.translucentStatusBar(ChannelActivity.this, true);
-        dynamicAddView(header, "background", R.color.primary_dark);
-        mTitle.setText("频道设置");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        initData();
-    }
 
 
     @Override
@@ -332,9 +311,44 @@ public class ChannelActivity extends BaseActivity implements OnItemClickListener
     }
 
     @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    protected String getTag() {
+        return null;
+    }
+
+    @Override
+    protected int setLayoutResourceID() {
+        return R.layout.activity_channel;
+    }
+
+    @Override
+    protected void setUpView() {
+        userGridView = (DragGrid) findViewById(R.id.userGridView);
+        otherGridView = (OtherGridView) findViewById(R.id.otherGridView);
+        StatusBarCompat.translucentStatusBar(ChannelActivity.this, true);
+//        dynamicAddView(header, "background", R.color.primary_dark);
+        mTitle.setText("频道设置");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        initData();
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        mActivity = null;
         userGridView = null;
         otherGridView = null;
         userChannelList.clear();

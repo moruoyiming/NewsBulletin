@@ -1,6 +1,5 @@
 package com.mrym.newsbulletion.ui.activity;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -10,9 +9,9 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.skin.ChageSkinPresenter;
 import com.mrym.newsbulletion.mvp.activity.skin.SkinView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.BindView;
@@ -22,7 +21,7 @@ import butterknife.BindView;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implements SkinView {
+public class SkinChangeActivity extends BaseActivity<ChageSkinPresenter> implements SkinView {
     public static final String TAG = SkinChangeActivity.class.getCanonicalName();
     private MaterialDialog dialog;
     @BindView(R.id.btn_from_not)
@@ -48,15 +47,22 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
         return TAG;
     }
 
+
     @Override
-    protected int getLayoutId() {
+    public void showLoading(String message) {
+        dialog.setContent(message);
+        dialog.show();
+    }
+
+    @Override
+    protected int setLayoutResourceID() {
         return R.layout.activity_changeskin;
     }
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
         StatusBarCompat.translucentStatusBar(SkinChangeActivity.this, true);
-        dynamicAddView(header, "background", R.color.primary_dark);
+//        dynamicAddView(header, "background", R.color.primary_dark);
         dialog = new MaterialDialog.Builder(SkinChangeActivity.this)
                 .title("换肤中")
                 .content("请耐心等待")
@@ -85,9 +91,8 @@ public class SkinChangeActivity extends MvpActivity<ChageSkinPresenter> implemen
     }
 
     @Override
-    public void showLoading(String message) {
-        dialog.setContent(message);
-        dialog.show();
+    protected void destroyActivityBefore() {
+
     }
 
     @Override

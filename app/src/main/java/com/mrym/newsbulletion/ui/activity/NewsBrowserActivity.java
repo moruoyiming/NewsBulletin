@@ -2,7 +2,6 @@
 package com.mrym.newsbulletion.ui.activity;
 
 
-import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -13,12 +12,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.newsbrowser.NewsbrowserPresenter;
 import com.mrym.newsbulletion.mvp.activity.newsbrowser.NewsbrowserView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.BindView;
@@ -28,7 +26,7 @@ import butterknife.BindView;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class NewsBrowserActivity extends MvpActivity<NewsbrowserPresenter> implements NewsbrowserView {
+public class NewsBrowserActivity extends BaseActivity<NewsbrowserPresenter> implements NewsbrowserView {
     public static final String TAG = NewsBrowserActivity.class.getCanonicalName();
     @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
@@ -100,14 +98,14 @@ public class NewsBrowserActivity extends MvpActivity<NewsbrowserPresenter> imple
     }
 
     @Override
-    protected int getLayoutId() {
+    protected int setLayoutResourceID() {
         return R.layout.act_news_browser;
     }
 
     @Override
-    protected void initView() {
+    protected void setUpView() {
         StatusBarCompat.translucentStatusBar(NewsBrowserActivity.this, true);
-        dynamicAddView(header, "background", R.color.primary_dark);
+//        dynamicAddView(header, "background", R.color.primary_dark);
         mTitle.setText("新闻");
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +114,11 @@ public class NewsBrowserActivity extends MvpActivity<NewsbrowserPresenter> imple
             }
         });
         initWebView();
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
     }
 
     @Override

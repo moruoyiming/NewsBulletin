@@ -3,7 +3,6 @@ package com.mrym.newsbulletion.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +15,7 @@ import android.widget.RadioGroup;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.ui.AppManager;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.ui.fragment.FollowFragment;
@@ -36,16 +36,6 @@ import solid.ren.skinlibrary.loader.SkinManager;
  */
 public class MainActivity extends BaseActivity {
     public static String TAG = MainActivity.class.getCanonicalName();
-    @BindView(R.id.fl_content)
-    FrameLayout flContent;
-    @BindView(R.id.rb_home)
-    RadioButton rbHome;
-    @BindView(R.id.rb_video)
-    RadioButton tabVideo;
-    @BindView(R.id.rb_follow)
-    RadioButton rbFollow;
-    @BindView(R.id.rb_mine)
-    RadioButton rbMine;
     @BindView(R.id.rg_main)
     RadioGroup rgMain;
     private long exitTime = 0;
@@ -57,18 +47,6 @@ public class MainActivity extends BaseActivity {
     private FragmentManager fm;
     private boolean isFullScreen = false;
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    protected void initView() {
-        StatusBarCompat.translucentStatusBar(MainActivity.this, false);
-        StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
-        createFragments(getSupportFragmentManager());
-        rgMain.setOnCheckedChangeListener(new RadioChangedListener());
-    }
 
     public void createFragments(FragmentManager fragmentManager) {
         this.fm = fragmentManager;
@@ -125,6 +103,34 @@ public class MainActivity extends BaseActivity {
         // 获得状态栏高度
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         return context.getResources().getDimensionPixelSize(resourceId);
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    protected String getTag() {
+        return null;
+    }
+
+    @Override
+    protected int setLayoutResourceID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void setUpView() {
+        StatusBarCompat.translucentStatusBar(MainActivity.this, false);
+        StatusBarUtil.setColor(MainActivity.this, SkinManager.getInstance().getColor(R.color.primary_dark), 100);
+        createFragments(getSupportFragmentManager());
+        rgMain.setOnCheckedChangeListener(new RadioChangedListener());
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
     }
 
     public class RadioChangedListener implements RadioGroup.OnCheckedChangeListener {

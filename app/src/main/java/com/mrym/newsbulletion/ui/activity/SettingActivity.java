@@ -2,7 +2,6 @@ package com.mrym.newsbulletion.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -10,9 +9,9 @@ import android.widget.TextView;
 
 import com.allen.library.SuperTextView;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.setting.SettingPresenter;
 import com.mrym.newsbulletion.mvp.activity.setting.SettingView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 
 import butterknife.BindView;
@@ -23,7 +22,7 @@ import butterknife.OnClick;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class SettingActivity extends MvpActivity<SettingPresenter> implements SettingView {
+public class SettingActivity extends BaseActivity<SettingPresenter> implements SettingView {
     public static final String TAG = SettingActivity.class.getCanonicalName();
     @BindView(R.id.leftback_toobar_l1)
     RelativeLayout back;
@@ -55,24 +54,6 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
         return TAG;
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_setting;
-    }
-
-    @Override
-    protected void initView() {
-        StatusBarCompat.translucentStatusBar(SettingActivity.this, true);
-        dynamicAddView(header, "background", R.color.primary_dark);
-        mTitle.setText("设置");
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
     /**
      * 入口
      *
@@ -100,6 +81,29 @@ public class SettingActivity extends MvpActivity<SettingPresenter> implements Se
 
     @Override
     public void showProgress(int progress) {
+
+    }
+
+    @Override
+    protected int setLayoutResourceID() {
+        return R.layout.activity_setting;
+    }
+
+    @Override
+    protected void setUpView() {
+        StatusBarCompat.translucentStatusBar(SettingActivity.this, true);
+//        dynamicAddView(header, "background", R.color.primary_dark);
+        mTitle.setText("设置");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
 
     }
 }

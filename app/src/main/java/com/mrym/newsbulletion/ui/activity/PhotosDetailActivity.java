@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -15,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.mrym.newsbulletion.NewsApplication;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
+import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.ui.BaseActivity;
 import com.mrym.newsbulletion.utils.MyUtils;
 import com.mrym.newsbulletion.utils.PicassoUtils;
@@ -23,7 +21,6 @@ import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.PullBackLayout;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -57,18 +54,23 @@ public class PhotosDetailActivity extends BaseActivity implements PullBackLayout
 
 
     @Override
-    protected int getLayoutId() {
+    protected BasePresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    protected String getTag() {
+        return null;
+    }
+
+    @Override
+    protected int setLayoutResourceID() {
         StatusBarCompat.translucentStatusBar(this);
         return R.layout.act_photo_detail;
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    public void initView() {
+    protected void setUpView() {
         pullBackLayout.setCallback(this);
         toolBarFadeIn();
         initToolbar();
@@ -76,6 +78,16 @@ public class PhotosDetailActivity extends BaseActivity implements PullBackLayout
         loadPhotoIv();
         initImageView();
         setPhotoViewClickEvent();
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private void initToolbar() {

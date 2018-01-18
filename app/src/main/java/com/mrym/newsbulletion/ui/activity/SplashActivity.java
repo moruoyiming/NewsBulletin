@@ -1,20 +1,14 @@
 package com.mrym.newsbulletion.ui.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.WindowManager;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.authenticator.account.AccountTool;
-import com.mrym.newsbulletion.mvp.MvpActivity;
 import com.mrym.newsbulletion.mvp.activity.splash.SplashPresenter;
 import com.mrym.newsbulletion.mvp.activity.splash.SplashView;
+import com.mrym.newsbulletion.ui.BaseActivity;
 
 
 /**
@@ -22,7 +16,7 @@ import com.mrym.newsbulletion.mvp.activity.splash.SplashView;
  * Email: 798774875@qq.com
  * Github: https://github.com/moruoyiming
  */
-public class SplashActivity extends MvpActivity<SplashPresenter> implements SplashView {
+public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashView {
     public String TAG = SplashActivity.class.getCanonicalName();
     //    private ImageView loginSplash;
     private Handler handler;
@@ -35,21 +29,6 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     @Override
     protected String getTag() {
         return TAG;
-    }
-
-    @Override
-    protected int getLayoutId() {
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        return R.layout.activity_splash;
-    }
-
-    @Override
-    protected void initView() {
-        handler = new Handler();
-//        loginSplash = (ImageView) findViewById(R.id.login_splash);
-        mvpPresenter.showAdvertisement();
-        mvpPresenter.gotoNext();
-        Log.i("caonima", "caonima ");
     }
 
 
@@ -89,12 +68,31 @@ public class SplashActivity extends MvpActivity<SplashPresenter> implements Spla
     }
 
     @Override
+    protected int setLayoutResourceID() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    protected void setUpView() {
+        handler = new Handler();
+//        loginSplash = (ImageView) findViewById(R.id.login_splash);
+        mvpPresenter.showAdvertisement();
+        mvpPresenter.gotoNext();
+        Log.i("caonima", "caonima ");
+    }
+
+    @Override
+    protected void destroyActivityBefore() {
+
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         // 避免Handler导致内存泄漏
         handler.removeCallbacksAndMessages(null);
         handler = null;
         mvpPresenter = null;
-        mActivity = null;
     }
 }
