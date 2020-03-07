@@ -71,7 +71,7 @@ public class HomeFragment extends MvpFragment<HomePresenter> implements HomeView
 
     @Override
     protected void initView() {
-        dynamicAddView(header, "background", R.color.primary_dark);
+//        dynamicAddView(header, "background", R.color.primary_dark);
         channelNames = new ArrayList<>();
         mNewsFragmentList = new ArrayList<>();
         List<ChannelSelected> newsChannelTables = NewsChannelTableManager.loadNewsChannelsStatic();

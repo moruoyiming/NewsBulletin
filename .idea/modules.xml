@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-NewsBulletin.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidStudioProjects-NewsBulletin.iml" group="NewsBulletin" />
       <module fileurl="file://$PROJECT_DIR$/NewsBulletin.iml" filepath="$PROJECT_DIR$/NewsBulletin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/NewsBulletin-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/NewsBulletin-app.iml" group="NewsBulletin/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jcvideoplayer/NewsBulletin-jcvideoplayer.iml" filepath="$PROJECT_DIR$/.idea/modules/jcvideoplayer/NewsBulletin-jcvideoplayer.iml" group="NewsBulletin/jcvideoplayer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jsbridge/NewsBulletin-jsbridge.iml" filepath="$PROJECT_DIR$/.idea/modules/jsbridge/NewsBulletin-jsbridge.iml" group="NewsBulletin/jsbridge" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/supertextviewlib/NewsBulletin-supertextviewlib.iml" filepath="$PROJECT_DIR$/.idea/modules/supertextviewlib/NewsBulletin-supertextviewlib.iml" group="NewsBulletin/supertextviewlib" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\Zhikang\3.Project\github2\NewsBulletin\cordovalib\cordovalib.iml" filepath="D:\Zhikang\3.Project\github2\NewsBulletin\cordovalib\cordovalib.iml" />
+      <module fileurl="file://D:/Zhikang/3.Project/github2/NewsBulletin/cordovalib/cordovalib.iml" filepath="D:/Zhikang/3.Project/github2/NewsBulletin/cordovalib/cordovalib.iml" />
       <module fileurl="file://$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" filepath="$PROJECT_DIR$/jcvideoplayer/jcvideoplayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/jsbridge/jsbridge.iml" filepath="$PROJECT_DIR$/jsbridge/jsbridge.iml" />
       <module fileurl="file://$PROJECT_DIR$/supertextviewlib/supertextviewlib.iml" filepath="$PROJECT_DIR$/supertextviewlib/supertextviewlib.iml" />
-      <module fileurl="file://D:\Zhikang\3.Project\github2\NewsBulletin\xrecyclerviewlibrary\xrecyclerviewlibrary.iml" filepath="D:\Zhikang\3.Project\github2\NewsBulletin\xrecyclerviewlibrary\xrecyclerviewlibrary.iml" />
+      <module fileurl="file://D:/Zhikang/3.Project/github2/NewsBulletin/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" filepath="D:/Zhikang/3.Project/github2/NewsBulletin/xrecyclerviewlibrary/xrecyclerviewlibrary.iml" />
     </modules>
   </component>
 </project>

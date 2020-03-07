@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.mrym.newsbulletion.mvp.BasePresenter;
 
-import solid.ren.skinlibrary.listener.ILoaderListener;
+import solid.ren.skinlibrary.SkinLoaderListener;
 import solid.ren.skinlibrary.loader.SkinManager;
 
 /**
@@ -25,7 +25,7 @@ public class ChageSkinPresenter extends BasePresenter<SkinView> {
         if(skinUrl==null){
             return;
         }
-        SkinManager.getInstance().loadSkinFromUrl(skinUrl, new ILoaderListener() {
+        SkinManager.getInstance().loadSkin(skinUrl, new SkinLoaderListener() {
             @Override
             public void onStart() {
                 Log.i("ILoaderListener", "正在切换中");
@@ -56,7 +56,7 @@ public class ChageSkinPresenter extends BasePresenter<SkinView> {
         if(skinpath==null){
             return;
         }
-        SkinManager.getInstance().loadSkin(skinpath, new ILoaderListener() {
+        SkinManager.getInstance().loadSkin(skinpath, new SkinLoaderListener() {
             @Override
             public void onStart() {
                 Log.i("ILoaderListener", "正在切换中");

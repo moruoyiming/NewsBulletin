@@ -1,17 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'//greendao插件
 apply plugin: 'com.droidtitan.lintcleaner'
-apply plugin: 'com.google.gms.google-services'
-
+//apply plugin: 'com.google.gms.google-services'
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
     buildToolsVersion '27.0.3'
     //默认配置,所有 productFlavors 都会继承 defaultConfig 中配置的属性
     defaultConfig {
         //默认的 applicationId,一般与 AndroidManifest.xml 文件 package属性相同
         applicationId "com.mrym.newsbulletin"
-        minSdkVersion 17
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -80,49 +79,51 @@ allprojects {
     }
 }
 dependencies {
-    compile fileTree(include: '*.jar', exclude: 'android.support-v4.jar', dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'net.lingala.zip4j:zip4j:1.3.2'
-    compile 'org.xutils:xutils:3.3.22'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.android.support:cardview-v7:27.0.2'
-    compile 'com.afollestad.material-dialogs:core:0.8.6.1'
+    api fileTree(include: '*.jar', exclude: 'android.support-v4.jar', dir: 'libs')
+    api 'junit:junit:4.12'
+    api 'com.android.support:design:27.1.1'
+    api 'net.lingala.zip4j:zip4j:1.3.2'
+    api 'org.xutils:xutils:3.3.22'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.1'
+    implementation 'com.jakewharton:butterknife:8.0.1'
+    api 'com.android.support:cardview-v7:27.0.2'
+    api 'com.afollestad.material-dialogs:core:0.8.6.1'
     //Retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     //RxAndroid
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.2.1'
-    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
-    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
-    compile 'com.google.code.gson:gson:2.8.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.2.1'
+    implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
+    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     //imageloader
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
     //customview
-    compile 'com.solid.skin:skinlibrary:1.3.1'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.bm.photoview:library:1.4.1'
-    compile 'com.commit451:PhotoView:1.2.4'
+    implementation 'com.solid.skin:skinlibrary:2.0.0-beta7'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.bm.photoview:library:1.4.1'
+    implementation 'com.commit451:PhotoView:1.2.4'
     //db
-    compile 'org.greenrobot:greendao:3.2.0'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    compile 'jp.wasabeef:recyclerview-animators:2.2.5'
-    compile 'com.karumi:dexter:2.2.1'
-    compile 'com.android.support:support-v4:+'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.daimajia.slider:library:1.1.5@aar'
+    implementation 'org.greenrobot:greendao:3.2.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.5'
+    implementation 'com.karumi:dexter:2.2.1'
+    implementation 'com.android.support:support-v4:27.0.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
     //    compile 'com.android.support:multidex:'
-    compile project(':supertextviewlib')
-    compile project(':jcvideoplayer')
+    implementation project(':supertextviewlib')
+    implementation project(':jcvideoplayer')
     //多渠道打包 参考 https://github.com/mcxiaoke/packer-ng-plugin
-    compile 'com.mcxiaoke.gradle:packer-helper:1.0.8'
-    compile 'com.github.hackware1993:MagicIndicator:1.5.0'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-    compile 'com.google.firebase:firebase-core:11.8.0'
-    compile 'com.jcodecraeer:xrecyclerview:1.5.8'
+    implementation 'com.mcxiaoke.gradle:packer-helper:1.0.8'
+    implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+//    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.8'
 }

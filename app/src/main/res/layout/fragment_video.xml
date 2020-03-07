@@ -9,6 +9,7 @@
         android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/primary_dark"
         android:orientation="vertical">
 
         <net.lucode.hackware.magicindicator.MagicIndicator

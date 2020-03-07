@@ -62,7 +62,7 @@ public class VideoFragment extends MvpFragment<VideoPresenter> implements VideoV
 
     @Override
     protected void initView() {
-        dynamicAddView(l1, "background", R.color.primary_dark);
+//        dynamicAddView(l1, "background", R.color.primary_dark);
         channelNames = new ArrayList<>();
         List<VideoChannelTable> videoChannelTableList = VideosChannelTableManager.loadVideosChannelsMine();
         List<Fragment> mNewsFragmentList = new ArrayList<>();
