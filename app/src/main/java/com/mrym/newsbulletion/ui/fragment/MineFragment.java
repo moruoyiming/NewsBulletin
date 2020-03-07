@@ -23,13 +23,12 @@ import com.mrym.newsbulletion.mvp.fragment.mine.MinePresenter;
 import com.mrym.newsbulletion.mvp.fragment.mine.MineView;
 import com.mrym.newsbulletion.ui.activity.AboutActivity;
 import com.mrym.newsbulletion.ui.activity.ChannelActivity;
-import com.mrym.newsbulletion.ui.activity.FeedBackActivity;
 import com.mrym.newsbulletion.ui.activity.PushMsgActivity;
 import com.mrym.newsbulletion.ui.activity.SettingActivity;
 import com.mrym.newsbulletion.ui.activity.SkinChangeActivity;
 import com.mrym.newsbulletion.ui.activity.LoginActivity;
 import com.mrym.newsbulletion.ui.activity.UserDetailsActivity;
-import com.mrym.newsbulletion.utils.PicassoUtils;
+import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.common.ToastUtils;
 import com.mrym.newsbulletion.widget.DialogView;
 
@@ -121,7 +120,8 @@ public class MineFragment extends MvpFragment<MinePresenter> implements MineView
     public void initUserData(UserBean userBean) {
         Log.i("initUserData", userBean.toString());
         profileName.setText("游客");
-        PicassoUtils.display(NewsApplication.getContext(), profileImage, userBean.getHeadImg(), R.mipmap.touxiang, R.mipmap.touxiang);
+        GlideUtils.getInstance().LoadContextBitmap(getContext(),  userBean.getHeadImg(),
+                profileImage, R.mipmap.touxiang, R.mipmap.touxiang, GlideUtils.LOAD_BITMAP);
     }
 
     @Override

@@ -65,7 +65,6 @@ public class GuideActivity extends Activity {
             ImageView simpleDraweeView = new ImageView(getApplicationContext());
             simpleDraweeView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             GlideUtils.getInstance().LoadContextBitmap(this, "res://com.mrym.newsbulletion/" + guideIds[i], simpleDraweeView, R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
-//            Glide.with(this).load(Uri.parse("res://com.mrym.newsbulletion/"+guideIds[i])).centerCrop().crossFade().into(simpleDraweeView);
             imageViews.add(simpleDraweeView);
         }
     }

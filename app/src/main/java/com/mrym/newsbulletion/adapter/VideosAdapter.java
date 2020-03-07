@@ -9,16 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.VideoData;
-import com.mrym.newsbulletion.utils.PicassoUtils;
-import com.mrym.newsbulletion.utils.common.MsgDateUtils;
+import com.mrym.newsbulletion.utils.GlideUtils;
 
-import java.util.Date;
 import java.util.List;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
@@ -57,12 +51,14 @@ public class VideosAdapter extends BaseRecyclerViewAdapter<VideoData> {
             hd.getTv_play_time().setText(videoData.getTopicName());
             hd.getTv_from().setText(videoData.getVideosource());
             JCVideoPlayerStandard jcVideoPlayerStandard = hd.getJcVideoPlayerStandard();
-            PicassoUtils.display(mContext,hd.getVideologo(),videoData.getTopicImg());
+            GlideUtils.getInstance().LoadContextBitmap(mContext, videoData.getTopicImg(),
+                    hd.getVideologo(), R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
             boolean setUp =  jcVideoPlayerStandard.setUp(
                     videoData.getMp4_url(), JCVideoPlayer.SCREEN_LAYOUT_LIST,
                     TextUtils.isEmpty(videoData.getDescription())?videoData.getTitle()+"":videoData.getDescription());
             if (setUp) {
-                PicassoUtils.display(mContext,jcVideoPlayerStandard.thumbImageView,videoData.getCover());
+                GlideUtils.getInstance().LoadContextBitmap(mContext, videoData.getCover(),
+                        jcVideoPlayerStandard.thumbImageView, R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
             }
 
         } catch (Exception e) {

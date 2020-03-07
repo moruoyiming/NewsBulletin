@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
-import com.mrym.newsbulletion.utils.ImageLoaderUtils;
-import com.mrym.newsbulletion.utils.PicassoUtils;
+import com.mrym.newsbulletion.utils.GlideUtils;
 
 import java.util.List;
 
@@ -37,8 +36,8 @@ public class PushMsgAdapter extends BaseRecyclerViewAdapter<NewsSummary.AdsBean>
         try {
             PushViewHolder hd = (PushViewHolder) holder;
             NewsSummary.AdsBean newInfo = list.get(position);
-//            ImageLoaderUtils.display(mContext,hd.getmImagepushImage(),newInfo.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
-            PicassoUtils.display(mContext,hd.getmImagepushImage(), newInfo.getImgsrc());
+            GlideUtils.getInstance().LoadContextBitmap(mContext, newInfo.getImgsrc(),
+                    hd.getmImagepushImage(), R.mipmap.touxiang, R.mipmap.touxiang, GlideUtils.LOAD_BITMAP);
             hd.getmImagepushTitle().setText(newInfo.getTitle());
         } catch (Exception e) {
             e.printStackTrace();

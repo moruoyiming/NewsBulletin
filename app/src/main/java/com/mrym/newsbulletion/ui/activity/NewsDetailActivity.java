@@ -23,8 +23,8 @@ import com.mrym.newsbulletion.domain.modle.NewsDetail;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsPresenter;
 import com.mrym.newsbulletion.mvp.activity.details.DetailsView;
 import com.mrym.newsbulletion.ui.BaseActivity;
+import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.common.DateUtils;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -189,12 +189,7 @@ public class NewsDetailActivity extends BaseActivity<DetailsPresenter> implement
     }
 
     private void setNewsDetailPhotoIv(String imgSrc) {
-        Picasso.with(NewsDetailActivity.this)
-                .load(imgSrc)
-                .placeholder(R.mipmap.shouyetu)
-                .error(R.mipmap.shouyetu)
-                .config(Bitmap.Config.RGB_565)
-                .into(newsDetailPhotoIv);
+        GlideUtils.getInstance().LoadContextBitmap(this, imgSrc, newsDetailPhotoIv, R.mipmap.shouyetu,R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
     }
 
 

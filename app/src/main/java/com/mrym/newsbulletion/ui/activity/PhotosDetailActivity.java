@@ -14,8 +14,8 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.mvp.BasePresenter;
 import com.mrym.newsbulletion.ui.BaseActivity;
+import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.MyUtils;
-import com.mrym.newsbulletion.utils.PicassoUtils;
 import com.mrym.newsbulletion.utils.SystemUiVisibilityUtil;
 import com.mrym.newsbulletion.utils.statusbar.StatusBarCompat;
 import com.mrym.newsbulletion.widget.PullBackLayout;
@@ -105,7 +105,8 @@ public class PhotosDetailActivity extends BaseActivity implements PullBackLayout
 
     private void loadPhotoIv() {
         String url = getIntent().getStringExtra(GlobalVariable.PHOTO_DETAIL);
-        PicassoUtils.display(NewsApplication.getContext(), photoTouchIv, url);
+        GlideUtils.getInstance().LoadContextBitmap(this, url,
+                photoTouchIv, R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
     }
 
     private void setPhotoViewClickEvent() {

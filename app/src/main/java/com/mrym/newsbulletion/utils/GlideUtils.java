@@ -1,6 +1,5 @@
 package com.mrym.newsbulletion.utils;
 
-import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
@@ -18,9 +17,12 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.widget.ImageView;
+
+import java.security.MessageDigest;
 
 /**
  * Created by Jian on 2016/9/1.
@@ -162,9 +164,9 @@ public class GlideUtils {
      */
     public void LoadContextBitmap(Context context, String path, ImageView imageView, int placeid, int errorid, String bitmapOrgif) {
         if (bitmapOrgif == null || bitmapOrgif.equals(LOAD_BITMAP)) {
-            Glide.with(context).load(path).placeholder(placeid).error(errorid).crossFade().into(imageView);
+            Glide.with(context).load(path).placeholder(placeid).error(errorid).into(imageView);
         } else if (bitmapOrgif.equals(LOAD_GIF)) {
-            Glide.with(context).load(path).asGif().crossFade().into(imageView);
+            Glide.with(context).load(path).into(imageView);
         }
     }
     /**
@@ -178,11 +180,11 @@ public class GlideUtils {
      * @param bitmapOrgif 加载普通图片 或者GIF图片 ，GIF图片设置bitmap显示第一帧
      */
     public void LoadFragmentBitmap(android.app.Fragment fragment, String path, ImageView imageView, int placeid, int errorid, String bitmapOrgif) {
-        if (bitmapOrgif == null || bitmapOrgif.equals(LOAD_BITMAP)) {
-            Glide.with(fragment).load(path).placeholder(placeid).error(errorid).crossFade().into(imageView);
-        } else if (bitmapOrgif.equals(LOAD_GIF)) {
-            Glide.with(fragment).load(path).asGif().crossFade().into(imageView);
-        }
+//        if (bitmapOrgif == null || bitmapOrgif.equals(LOAD_BITMAP)) {
+//            Glide.with(fragment).load(path).placeholder(placeid).error(errorid).crossFade().into(imageView);
+//        } else if (bitmapOrgif.equals(LOAD_GIF)) {
+//            Glide.with(fragment).load(path).asGif().crossFade().into(imageView);
+//        }
     }
 
     /**
@@ -196,11 +198,11 @@ public class GlideUtils {
      * @param bitmapOrgif 加载普通图片 或者GIF图片 ，GIF图片设置bitmap显示第一帧
      */
     public void LoadSupportv4FragmentBitmap(Fragment fragment, String path, ImageView imageView, int placeid, int errorid, String bitmapOrgif) {
-        if (bitmapOrgif == null || bitmapOrgif.equals(LOAD_BITMAP)) {
-            Glide.with(fragment).load(path).placeholder(placeid).error(errorid).crossFade().into(imageView);
-        } else if (bitmapOrgif.equals(LOAD_GIF)) {
-            Glide.with(fragment).load(path).asGif().crossFade().into(imageView);
-        }
+//        if (bitmapOrgif == null || bitmapOrgif.equals(LOAD_BITMAP)) {
+//            Glide.with(fragment).load(path).placeholder(placeid).error(errorid).crossFade().into(imageView);
+//        } else if (bitmapOrgif.equals(LOAD_GIF)) {
+//            Glide.with(fragment).load(path).asGif().crossFade().into(imageView);
+//        }
     }
     //---------------------圆形图片-------------------
 
@@ -216,7 +218,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadContextCircleBitmap(Context context, String path, ImageView imageView) {
-        Glide.with(context).load(path).bitmapTransform(new GlideCircleTransform(context)).into(imageView);
+//        Glide.with(context).load(path).bitmapTransform(new GlideCircleTransform(context)).into(imageView);
     }
 
     /**
@@ -228,7 +230,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadfragmentCircleBitmap(android.app.Fragment fragment, String path, ImageView imageView) {
-        Glide.with(fragment).load(path).bitmapTransform(new GlideCircleTransform(fragment.getActivity())).into(imageView);
+//        Glide.with(fragment).load(path).bitmapTransform(new GlideCircleTransform(fragment.getActivity())).into(imageView);
     }
 
     /**
@@ -240,7 +242,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadSupportv4FragmentCircleBitmap(android.support.v4.app.Fragment fragment, String path, ImageView imageView) {
-        Glide.with(fragment).load(path).bitmapTransform(new GlideCircleTransform(fragment.getActivity())).into(imageView);
+//        Glide.with(fragment).load(path).bitmapTransform(new GlideCircleTransform(fragment.getActivity())).into(imageView);
     }
     //-----------------------圆角图片----------------------
 
@@ -257,11 +259,11 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadContextRoundBitmap(Context context, String path, ImageView imageView, int roundradius) {
-        if (roundradius < 0) {
-            Glide.with(context).load(path).bitmapTransform(new GlideRoundTransform(context)).into(imageView);
-        } else {
-            Glide.with(context).load(path).bitmapTransform(new GlideRoundTransform(context, roundradius)).into(imageView);
-        }
+//        if (roundradius < 0) {
+//            Glide.with(context).load(path).bitmapTransform(new GlideRoundTransform(context)).into(imageView);
+//        } else {
+//            Glide.with(context).load(path).bitmapTransform(new GlideRoundTransform(context, roundradius)).into(imageView);
+//        }
     }
 
     /**
@@ -274,11 +276,11 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadfragmentRoundBitmap(android.app.Fragment fragment, String path, ImageView imageView, int roundradius) {
-        if (roundradius < 0) {
-            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity())).into(imageView);
-        } else {
-            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity(), roundradius)).into(imageView);
-        }
+//        if (roundradius < 0) {
+//            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity())).into(imageView);
+//        } else {
+//            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity(), roundradius)).into(imageView);
+//        }
     }
 
     /**
@@ -291,11 +293,11 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadSupportv4FragmentRoundBitmap(android.support.v4.app.Fragment fragment, String path, ImageView imageView, int roundradius) {
-        if (roundradius < 0) {
-            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity())).into(imageView);
-        } else {
-            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity(), roundradius)).into(imageView);
-        }
+//        if (roundradius < 0) {
+//            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity())).into(imageView);
+//        } else {
+//            Glide.with(fragment).load(path).bitmapTransform(new GlideRoundTransform(fragment.getActivity(), roundradius)).into(imageView);
+//        }
     }
     //-------------------------------------------------
 
@@ -311,7 +313,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadContextBlurBitmap(Context context, String path, ImageView imageView) {
-        Glide.with(context).load(path).bitmapTransform(new BlurTransformation(context)).into(imageView);
+//        Glide.with(context).load(path).bitmapTransform(new BlurTransformation(context)).into(imageView);
     }
 
     /**
@@ -323,7 +325,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadFragmentBlurBitmap(Fragment fragment, String path, ImageView imageView) {
-        Glide.with(fragment).load(path).bitmapTransform(new BlurTransformation(fragment.getActivity())).into(imageView);
+//        Glide.with(fragment).load(path).bitmapTransform(new BlurTransformation(fragment.getActivity())).into(imageView);
     }
 
     /**
@@ -335,7 +337,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadSupportv4FragmentBlurBitmap(Fragment fragment, String path, ImageView imageView) {
-        Glide.with(fragment).load(path).bitmapTransform(new BlurTransformation(fragment.getActivity())).into(imageView);
+//        Glide.with(fragment).load(path).bitmapTransform(new BlurTransformation(fragment.getActivity())).into(imageView);
     }
     //---------------------------------------------------------
 
@@ -352,7 +354,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadContextRotateBitmap(Context context, String path, ImageView imageView, Float rotateRotationAngle) {
-        Glide.with(context).load(path).bitmapTransform(new RotateTransformation(context, rotateRotationAngle)).into(imageView);
+//        Glide.with(context).load(path).bitmapTransform(new RotateTransformation(context, rotateRotationAngle)).into(imageView);
     }
 
     /**
@@ -365,7 +367,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadFragmentRotateBitmap(android.app.Fragment fragment, String path, ImageView imageView, Float rotateRotationAngle) {
-        Glide.with(fragment).load(path).bitmapTransform(new RotateTransformation(fragment.getActivity(), rotateRotationAngle)).into(imageView);
+//        Glide.with(fragment).load(path).bitmapTransform(new RotateTransformation(fragment.getActivity(), rotateRotationAngle)).into(imageView);
     }
 
     /**
@@ -378,7 +380,7 @@ public class GlideUtils {
      */
     @SuppressWarnings("unchecked")
     public void LoadSupportv4FragmentRotateBitmap(android.support.v4.app.Fragment fragment, String path, ImageView imageView, Float rotateRotationAngle) {
-        Glide.with(fragment).load(path).bitmapTransform(new RotateTransformation(fragment.getActivity(), rotateRotationAngle)).into(imageView);
+//        Glide.with(fragment).load(path).bitmapTransform(new RotateTransformation(fragment.getActivity(), rotateRotationAngle)).into(imageView);
     }
     //----------------------旋转---------------------------
 
@@ -390,8 +392,6 @@ public class GlideUtils {
         private float rotateRotationAngle = 0f;
 
         public RotateTransformation(Context context, float rotateRotationAngle) {
-            super(context);
-
             this.rotateRotationAngle = rotateRotationAngle;
         }
 
@@ -405,8 +405,8 @@ public class GlideUtils {
         }
 
         @Override
-        public String getId() {
-            return "rotate" + rotateRotationAngle;
+        public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
         }
     }
     //--------------------------------------------------
@@ -416,7 +416,6 @@ public class GlideUtils {
      */
     public class GlideCircleTransform extends BitmapTransformation {
         public GlideCircleTransform(Context context) {
-            super(context);
         }
 
         @Override
@@ -448,8 +447,8 @@ public class GlideUtils {
         }
 
         @Override
-        public String getId() {
-            return getClass().getName();
+        public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
         }
     }
     //-----------------------------图片模糊----------------------------------
@@ -462,8 +461,6 @@ public class GlideUtils {
         private RenderScript rs;
 
         public BlurTransformation(Context context) {
-            super(context);
-
             rs = RenderScript.create(context);
         }
 
@@ -499,8 +496,8 @@ public class GlideUtils {
         }
 
         @Override
-        public String getId() {
-            return "blur";
+        public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
         }
     }
     //-------------------图片转换圆角图片------------------------------
@@ -523,7 +520,6 @@ public class GlideUtils {
          * @param dp
          */
         public GlideRoundTransform(Context context, int dp) {
-            super(context);
             this.radius = Resources.getSystem().getDisplayMetrics().density * dp;
         }
 
@@ -550,8 +546,8 @@ public class GlideUtils {
         }
 
         @Override
-        public String getId() {
-            return getClass().getName() + Math.round(radius);
+        public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+
         }
     }
 }

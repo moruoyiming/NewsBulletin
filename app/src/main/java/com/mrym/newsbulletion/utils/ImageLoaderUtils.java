@@ -20,7 +20,7 @@ public class ImageLoaderUtils {
             throw new IllegalArgumentException("argument error");
         }
         Glide.with(context).load(url).placeholder(placeholder)
-                .error(error).crossFade().into(imageView);
+                .error(error).into(imageView);
     }
 
     public static void display(Context context, ImageView imageView, String url) {
@@ -32,7 +32,7 @@ public class ImageLoaderUtils {
                 .centerCrop()
                 .placeholder(R.mipmap.shouyetu)
                 .error(R.mipmap.shouyetu)
-                .crossFade().into(imageView);
+                .into(imageView);
     }
 
     public static void display(Context context, ImageView imageView, File url) {
@@ -44,14 +44,14 @@ public class ImageLoaderUtils {
                 .centerCrop()
                 .placeholder(R.mipmap.shouyetu)
                 .error(R.mipmap.shouyetu)
-                .crossFade().into(imageView);
+                .into(imageView);
     }
 
     public static void displaySmallPhoto(Context context, ImageView imageView, String url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
-        Glide.with(context).load(url).asBitmap()
+        Glide.with(context).load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.mipmap.shouyetu)
                 .error(R.mipmap.shouyetu)
@@ -63,7 +63,7 @@ public class ImageLoaderUtils {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
-        Glide.with(context).load(url).asBitmap()
+        Glide.with(context).load(url)
                 .format(DecodeFormat.PREFER_ARGB_8888)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.mipmap.shouyetu)
@@ -80,7 +80,7 @@ public class ImageLoaderUtils {
                 .centerCrop()
                 .placeholder(R.mipmap.shouyetu)
                 .error(R.mipmap.shouyetu)
-                .crossFade().into(imageView);
+                .into(imageView);
     }
 
     public static void displayRound(Context context, ImageView imageView, String url) {
@@ -97,7 +97,7 @@ public class ImageLoaderUtils {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
-        Glide.with(context).load(url).fitCenter().crossFade().into(imageView);
+        Glide.with(context).load(url).fitCenter().into(imageView);
     }
 
     public static void display(Context context, ImageView imageView, String url, boolean fag) {

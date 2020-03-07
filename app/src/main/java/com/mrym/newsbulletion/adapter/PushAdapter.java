@@ -15,8 +15,7 @@ import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
 import com.mrym.newsbulletion.ui.activity.NewsDetailActivity;
-import com.mrym.newsbulletion.utils.ImageLoaderUtils;
-import com.mrym.newsbulletion.utils.PicassoUtils;
+import com.mrym.newsbulletion.utils.GlideUtils;
 import com.mrym.newsbulletion.utils.common.DateUtils;
 
 import java.util.List;
@@ -78,26 +77,28 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
         try {
             PushViewHolder hd = (PushViewHolder) holder;
             NewsSummary newsSummary = list.get(position);
-            if(newsSummary==null){
+            if (newsSummary == null) {
                 return;
             }
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_ONE_PIC:
-                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
+                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify() == null ? "" : newsSummary.getLmodify()));
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
-//                    ImageLoaderUtils.display(mContext,hd.getmSinglePushImage(),newsSummary.getImgsrc(),R.mipmap.shouyetu,R.mipmap.shouyetu);
-                    PicassoUtils.display(mContext, hd.getmSinglePushImage(), newsSummary.getImgsrc());
+                    GlideUtils.getInstance().LoadContextBitmap(mContext, newsSummary.getImgsrc(),
+                            hd.getmSinglePushImage(), R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
-                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
+                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify() == null ? "" : newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
                     if (newsSummary.getAds() != null && newsSummary.getImgextra() != null) {
                         if (newsSummary.getAds().size() > 0) {
-                            PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getAds().get(0).getImgsrc());
+                            GlideUtils.getInstance().LoadContextBitmap(mContext, newsSummary.getAds().get(0).getImgsrc(),
+                                    hd.getmMultipushImage(), R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
                         } else if (newsSummary.getImgextra().size() > 0) {
-                            PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
+                            GlideUtils.getInstance().LoadContextBitmap(mContext, newsSummary.getImgextra().get(0).getImgsrc(),
+                                    hd.getmMultipushImage(), R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
                         }
                     }
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
@@ -106,20 +107,22 @@ public class PushAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
                     adapter.setOnInViewClickListener(R.id.layout_item_pushmsg_l1, onInternalClickListener);
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
-                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
+                    hd.getmMultipushTime().setText(DateUtils.formatDate(newsSummary.getLmodify() == null ? "" : newsSummary.getLmodify()));
                     hd.getmMultipushTitle().setText(newsSummary.getTitle());
-                    PicassoUtils.display(mContext, hd.getmMultipushImage(), newsSummary.getImgextra().get(0).getImgsrc());
+                    GlideUtils.getInstance().LoadContextBitmap(mContext, newsSummary.getImgextra().get(0).getImgsrc(),
+                            hd.getmMultipushImage(), R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
                     hd.getmMultiRecycleview().setLayoutManager(new LinearLayoutManager(mContext));
                     PushMsgAdapter adapter2 = new PushMsgAdapter(mContext, newsSummary.getAds());
                     hd.getmMultiRecycleview().setAdapter(adapter2);
                     adapter2.setOnInViewClickListener(R.id.layout_item_pushmsg_l1, onInternalClickListener);
                     break;
                 case GlobalVariable.ITEM_OTHER:
-                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify()==null?"":newsSummary.getLmodify()));
+                    hd.getmSinglepushTime().setText(DateUtils.formatDate(newsSummary.getLmodify() == null ? "" : newsSummary.getLmodify()));
                     hd.getmSingleAuthName().setText(newsSummary.getSource());
                     hd.getmSinglePushTitle().setText(newsSummary.getTitle());
                     hd.getmSinglePubliTime().setText(DateUtils.formatDate(newsSummary.getLmodify()));
-                    PicassoUtils.display(mContext, hd.getmSinglePushImage(), newsSummary.getAds().get(0).getImgsrc());
+                    GlideUtils.getInstance().LoadContextBitmap(mContext, newsSummary.getAds().get(0).getImgsrc(),
+                            hd.getmMultipushImage(), R.color.gray, R.color.gray, GlideUtils.LOAD_BITMAP);
                     break;
             }
         } catch (Exception e) {

@@ -13,9 +13,7 @@ import com.bumptech.glide.Glide;
 import com.mrym.newsbulletion.R;
 import com.mrym.newsbulletion.domain.constans.GlobalVariable;
 import com.mrym.newsbulletion.domain.modle.NewsSummary;
-import com.mrym.newsbulletion.utils.ImageLoaderUtils;
-import com.mrym.newsbulletion.utils.PicassoUtils;
-import com.squareup.picasso.Picasso;
+import com.mrym.newsbulletion.utils.GlideUtils;
 
 import java.util.List;
 
@@ -72,61 +70,33 @@ public class NewsAdapter extends BaseRecyclerViewAdapter<NewsSummary> {
             hd.getmTiltle().setText(newsEntity.getTitle());
             hd.getmCommontNumber().setText(newsEntity.getReplyCount() + "评论");
             hd.getmPublicdate().setText(newsEntity.getPtime());
-            Picasso.with(mContext)
-                    .load(newsEntity.getImgsrc())
-                    .placeholder(R.mipmap.shouyetu)
-                    .error(R.mipmap.shouyetu)
-                    .config(Bitmap.Config.ALPHA_8)
-                    .into(hd.getmAutherHead());
+            GlideUtils.getInstance().LoadContextBitmap(mContext, newsEntity.getImgsrc(),
+                    hd.getmAutherHead(),R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
             switch (getItemViewType(position)) {
                 case GlobalVariable.ITEM_TEXT:
                     break;
                 case GlobalVariable.ITEM_BIGPIC:
-                    Picasso.with(mContext)
-                            .load(newsEntity.getImgsrc())
-                            .placeholder(R.mipmap.shouyetu)
-                            .error(R.mipmap.shouyetu)
-                            .config(Bitmap.Config.ALPHA_8)
-                            .into(hd.getmToppic());
+                    GlideUtils.getInstance().LoadContextBitmap(mContext, newsEntity.getImgsrc(),
+                            hd.getmToppic(),R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
                     break;
                 case GlobalVariable.ITEM_ONE_PIC:
-                    Picasso.with(mContext)
-                            .load(newsEntity.getImgsrc())
-                            .placeholder(R.mipmap.shouyetu)
-                            .error(R.mipmap.shouyetu)
-                            .config(Bitmap.Config.ALPHA_8)
-                            .into(hd.getmRightpic());
+                    GlideUtils.getInstance().LoadContextBitmap(mContext, newsEntity.getImgsrc(),
+                            hd.getmRightpic(),R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
                     break;
                 case GlobalVariable.ITEM_TWO_PIC:
                     if (newsEntity.getAds() != null && newsEntity.getAds().size() > 0) {
-                        Picasso.with(mContext)
-                                .load(newsEntity.getAds().get(0).getImgsrc())
-                                .placeholder(R.mipmap.shouyetu)
-                                .error(R.mipmap.shouyetu)
-                                .config(Bitmap.Config.ALPHA_8)
-                                .into(hd.getmBottom_t1());
+                        GlideUtils.getInstance().LoadContextBitmap(mContext, newsEntity.getAds().get(0).getImgsrc(),
+                                hd.getmBottom_t1(),R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
                         if (newsEntity.getAds().size() > 1) {
-                            Picasso.with(mContext)
-                                    .load(newsEntity.getAds().get(1).getImgsrc())
-                                    .placeholder(R.mipmap.shouyetu)
-                                    .error(R.mipmap.shouyetu)
-                                    .config(Bitmap.Config.ALPHA_8)
-                                    .into(hd.getmBottom_t2());
+                            GlideUtils.getInstance().LoadContextBitmap(mContext, newsEntity.getAds().get(1).getImgsrc(),
+                                    hd.getmBottom_t2(),R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
                         }
                     } else if (newsEntity.getImgextra() != null && newsEntity.getImgextra().size() > 0) {
-                        Picasso.with(mContext)
-                                .load(newsEntity.getImgextra().get(0).getImgsrc())
-                                .placeholder(R.mipmap.shouyetu)
-                                .error(R.mipmap.shouyetu)
-                                .config(Bitmap.Config.ALPHA_8)
-                                .into(hd.getmBottom_t1());
+                        GlideUtils.getInstance().LoadContextBitmap(mContext, newsEntity.getImgextra().get(0).getImgsrc(),
+                                hd.getmBottom_t1(),R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
                         if (newsEntity.getImgextra().size() > 1) {
-                            Picasso.with(mContext)
-                                    .load(newsEntity.getImgextra().get(1).getImgsrc())
-                                    .placeholder(R.mipmap.shouyetu)
-                                    .error(R.mipmap.shouyetu)
-                                    .config(Bitmap.Config.ALPHA_8)
-                                    .into(hd.getmBottom_t2());
+                            GlideUtils.getInstance().LoadContextBitmap(mContext, newsEntity.getImgextra().get(1).getImgsrc(),
+                                    hd.getmBottom_t2(),R.mipmap.shouyetu, R.mipmap.shouyetu, GlideUtils.LOAD_BITMAP);
                         }
 
                     }

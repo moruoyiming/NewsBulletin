@@ -8,20 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.mrym.newsbulletion.R;
-import com.mrym.newsbulletion.domain.constans.GlobalVariable;
-import com.mrym.newsbulletion.domain.modle.NewsEntity;
 import com.mrym.newsbulletion.domain.modle.PhotoGirl;
-import com.mrym.newsbulletion.utils.PicassoUtils;
-import com.mrym.newsbulletion.utils.common.MsgDateUtils;
+import com.mrym.newsbulletion.utils.GlideUtils;
 
-import java.util.Date;
 import java.util.List;
-
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 
 /**
@@ -51,7 +42,7 @@ public class PhotoGirlsAdapter extends BaseRecyclerViewAdapter<PhotoGirl> {
         try {
             GirlsViewHolder hd = (GirlsViewHolder) holder;
             PhotoGirl photoGirl = list.get(position);
-            PicassoUtils.display(mContext,hd.getGirlsimage(),photoGirl.getUrl());
+            GlideUtils.getInstance().LoadImageViewBitmap(mContext,photoGirl.getUrl(),hd.getGirlsimage(),R.mipmap.shouyetu,R.mipmap.shouyetu);
         } catch (Exception e) {
             e.printStackTrace();
         }
